@@ -1,8 +1,18 @@
 import React from "react";
-import "./App.scss";
+import styles from "./App.module.scss";
+import { Header } from "../../components/index";
+import { Routes } from "../Routes/Routes";
+import { ThemeContextProvider } from "../../contexts/index";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className={styles.app}>
+      <ThemeContextProvider>
+        <Header />
+        <Routes />
+      </ThemeContextProvider>
+    </div>
+  );
 }
 
 export default App;
