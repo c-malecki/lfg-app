@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./ToggleSwitch.module.scss";
+import style from "../../../styles/index.module.scss";
 
 export const ToggleSwitch = (props) => {
   const [val, setVal] = useState(0);

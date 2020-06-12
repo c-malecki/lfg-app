@@ -1,11 +1,13 @@
 import React, { createContext, Component } from "react";
+import { sampleUser, samplePosts } from "../dumbydata/index";
 
 export const AppContext = createContext();
 
 export class AppContextProvider extends Component {
   state = {
-    isLoggedIn: false,
-    user: "",
+    isLoggedIn: true,
+    user: sampleUser,
+    posts: samplePosts,
   };
   logIn = (user) => {
     this.setState({ isLoggedIn: true, user: user });
@@ -13,7 +15,7 @@ export class AppContextProvider extends Component {
   logOut = () => {
     this.setState({
       isLoggedIn: false,
-      user: "",
+      user: null,
     });
   };
   render() {
