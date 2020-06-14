@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
-import styles from "../../styles/index.module.scss";
-import { ToggleSwitch, LogInOut } from "../index";
-import { ThemeContext } from "../../contexts/index";
+import { ToggleSwitch, LogInOut } from "../components_index";
+import { ThemeContext } from "../../contexts/context_index";
 
 export const Header = (props) => {
   const { toggleTheme, isLightTheme } = useContext(ThemeContext);
   return (
-    <div className={styles.headerContainer}>
+    <div className="Header-container">
       <ToggleSwitch method={toggleTheme} boolean={isLightTheme} />
       <LogInOut />
     </div>

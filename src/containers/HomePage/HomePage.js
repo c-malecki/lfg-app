@@ -1,17 +1,12 @@
-import React, { useContext } from "react";
-import { ThemeContext } from "../../contexts/index";
-import { TopRecentPosts } from '../../components/index';
-import styles from "../../styles/index.module.scss"
+import React from "react";
+// import { ThemeContext } from "../../contexts/index";
+import { RecentPosts } from "../../components/components_index";
 
 export const HomePage = (props) => {
-  const { isLightTheme } = useContext(ThemeContext);
+  // const { isLightTheme } = useContext(ThemeContext);
   return (
-    <div
-      className={`${styles.HomePageContainer} ${
-        isLightTheme ? "" : styles.dark
-      }`}
-    >
-      <TopRecentPosts />
+    <div className="HomePage-container">
+      <RecentPosts />
     </div>
   );
 };

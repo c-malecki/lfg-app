@@ -1,11 +1,10 @@
 import React from "react";
-import { Post, Comments } from "../../components/index";
+import { Post } from "../../components/components_index";
 
 export const PostPage = (props) => {
   return (
     <div>
       <Post />
-      <Comments />
     </div>
   );
 };

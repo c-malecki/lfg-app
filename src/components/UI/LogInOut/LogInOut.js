@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { AppContext } from "../../../contexts/index";
-import { sampleUser } from "../../../contexts/dumbydata/sample_user";
+import { AppContext } from "../../../contexts/context_index";
+import { sampleUsers } from "../../../contexts/dumbydata/sample_user";
 
 export const LogInOut = (props) => {
-  const { logIn, logOut, user, isLoggedIn } = useContext(AppContext);
+  const { logIn, logOut, currentUser, isLoggedIn } = useContext(AppContext);
   const handleLogIn = () => {
-    logIn(sampleUser);
+    logIn(sampleUsers[0]);
   };
   const handleLogOut = () => {
     logOut();
@@ -14,7 +14,7 @@ export const LogInOut = (props) => {
     <div>
       {isLoggedIn ? (
         <span>
-          {user.userName}
+          {currentUser.account.user_name}
           <button onClick={() => handleLogOut()}>Log Out</button>
         </span>
       ) : (

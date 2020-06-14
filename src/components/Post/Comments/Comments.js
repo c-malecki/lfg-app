@@ -1,15 +1,14 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 
 export const Comments = (props) => {
-  const history = useHistory();
-  const { comments } = history.location.state;
+  const { comments } = props;
   return (
     <div>
       {comments.map((comment) => {
         return (
-          <div>
-            {comment.user}
+          <div key={comment.id}>
+            {comment.date}
+            {comment.user_name}
             <p>{comment.content}</p>
           </div>
         );

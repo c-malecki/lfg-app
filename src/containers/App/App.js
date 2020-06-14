@@ -1,12 +1,14 @@
 import React from "react";
-import styles from "../../styles/index.module.scss";
-import { Header } from "../../components/index";
-import { PageContent } from "../index";
-import { ThemeContextProvider, AppContextProvider } from "../../contexts/index";
+import { Header } from "../../components/components_index";
+import { PageContent } from "../containers_index";
+import {
+  ThemeContextProvider,
+  AppContextProvider,
+} from "../../contexts/context_index";
 
 function App() {
   return (
-    <div className={styles.app}>
+    <div className="App">
       <AppContextProvider>
         <ThemeContextProvider>
           <Header />

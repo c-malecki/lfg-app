@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import style from "../../../styles/index.module.scss";
 
 export const ToggleSwitch = (props) => {
   const [val, setVal] = useState(0);
@@ -8,13 +7,13 @@ export const ToggleSwitch = (props) => {
     props.method();
   };
   return (
-    <div className={style.container}>
+    <div className="ToggleSwitch-container">
       <input
         type="range"
         min={0}
         max={1}
         value={val}
-        onClick={handleMethod}
+        onChange={handleMethod}
         readOnly
       />
     </div>
