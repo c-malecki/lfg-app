@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { AppContext } from "../../../contexts/context_index";
 import { PostsDispatchContext } from "../../../contexts/context_index";
+import { reformatDate } from "../../../assets/util/reformatDate";
 
 export const CommentForm = (props) => {
   const [formState, setFormState] = useState({
@@ -28,15 +29,14 @@ export const CommentForm = (props) => {
   };
 
   const handleSubmit = (e) => {
-    const date = new Date();
+    const date = reformatDate(new Date());
     e.preventDefault();
     setFormState((prevState) => ({ ...prevState, isSubmitting: true }));
     submitDebounce();
     const data = {
       user_name: currentUser.account.user_name,
-      date: JSON.stringify(date),
+      date: date,
       content: formState.message,
-      comment_id: "3",
     };
     dispatch({ type: "ADD_COMMENT", post_id: props.post_id, comment: data });
     resetForm();

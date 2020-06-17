@@ -1,7 +1,11 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { AppContext } from "../../contexts/context_index";
-import { PostsDispatchContext } from "../../contexts/context_index";
+import {
+  PostsDispatchContext,
+  PostsStateContext,
+} from "../../contexts/context_index";
+import { reformatDate } from "../../assets/util/reformatDate";
 
 export const NewPostForm = (props) => {
   const [formState, setFormState] = useState({
@@ -11,6 +15,7 @@ export const NewPostForm = (props) => {
   });
 
   const { currentUser } = useContext(AppContext);
+  const { posts } = useContext(PostsStateContext);
   const dispatch = useContext(PostsDispatchContext);
   const history = useHistory();
 
@@ -24,15 +29,18 @@ export const NewPostForm = (props) => {
   };
 
   const handleSubmit = async (e) => {
-    const date = new Date();
+    const date = reformatDate(new Date());
+    const genPostId =
+      posts.length > 0 ? parseInt(posts[posts.length - 1].post_id) + 1 : "1";
+    const postId = genPostId.toString();
     e.preventDefault();
     const data = {
       author: currentUser.account.user_name,
-      date: JSON.stringify(date),
+      date: date,
       title: formState.title,
       content: formState.message,
-      post_id: "4",
       tags: ["test"],
+      post_id: postId,
       comments: [],
     };
     await dispatch({ type: "ADD_POST", post: data });

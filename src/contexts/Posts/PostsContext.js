@@ -26,17 +26,24 @@ const postsReducer = (state, action) => {
       );
       const newPosts = [...posts];
       const { comments } = newPosts[idx];
+      const commentId =
+        comments.length > 0
+          ? parseInt(comments[comments.length - 1].comment_id) + 1
+          : "1";
       newPosts[idx] = {
         ...newPosts[idx],
-        comments: [...comments, action.comment],
+        comments: [
+          ...comments,
+          { ...action.comment, comment_id: commentId.toString() },
+        ],
       };
       return {
         posts: [...newPosts],
       };
     }
     case "ADD_POST": {
-      const newPost = action.post;
       const { posts } = state;
+      const newPost = action.post;
       return { posts: [...posts, newPost] };
     }
     default: {
