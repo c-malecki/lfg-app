@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { UserLink } from "../../components_index";
+import {
+  AppContext,
+  PostsDispatchContext,
+} from "../../../contexts/context_index";
 
 export const Comments = (props) => {
-  const { comments } = props;
+  const { comments, post_id } = props;
+  const { currentUser } = useContext(AppContext);
+  const dispatch = useContext(PostsDispatchContext);
   return (
     <div className="Comments-container">
       <h4>Comments</h4>
@@ -12,6 +18,21 @@ export const Comments = (props) => {
             <span className="head-text-content">By</span>
             <UserLink username={comment.user_name} />
             <span className="head-text-content">at {comment.date}</span>
+            {currentUser.account.user_name === comment.user_name ? (
+              <button
+                onClick={() =>
+                  dispatch({
+                    type: "DELETE_COMMENT",
+                    post_id: post_id,
+                    comment_id: comment.comment_id,
+                  })
+                }
+              >
+                X
+              </button>
+            ) : (
+              ""
+            )}
             <p>{comment.content}</p>
           </div>
         );

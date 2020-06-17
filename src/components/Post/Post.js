@@ -23,7 +23,10 @@ export const Post = (props) => {
       {postContent !== null ? (
         <>
           <PostBody content={postContent} />
-          <Comments comments={postContent.comments} />
+          <Comments
+            comments={postContent.comments}
+            post_id={postContent.post_id}
+          />
           <CommentForm post_id={postContent.post_id} />
         </>
       ) : (

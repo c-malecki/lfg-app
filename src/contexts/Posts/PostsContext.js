@@ -41,10 +41,38 @@ const postsReducer = (state, action) => {
         posts: [...newPosts],
       };
     }
+    case "DELETE_COMMENT": {
+      const { posts } = state;
+      const idx = state.posts.findIndex(
+        (post) => post.post_id === action.post_id
+      );
+      const newPosts = [...posts];
+      const { comments } = newPosts[idx];
+      const newComments = comments.filter(
+        (comment) => comment.comment_id !== action.comment_id
+      );
+      newPosts[idx] = {
+        ...newPosts[idx],
+        comments: [...newComments],
+      };
+      return {
+        posts: [...newPosts],
+      };
+    }
     case "ADD_POST": {
       const { posts } = state;
       const newPost = action.post;
       return { posts: [...posts, newPost] };
+    }
+    case "DELETE_POST": {
+      const { posts } = state;
+      const newPosts = [...posts];
+      const filteredPosts = newPosts.filter(
+        (post) => post.post_id !== action.post_id
+      );
+      return {
+        posts: [...filteredPosts],
+      };
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
