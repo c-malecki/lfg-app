@@ -1,14 +1,12 @@
 import React, { createContext, Component } from "react";
-import { sampleUsers, samplePosts } from "../dumbydata/index";
+import { sampleUser } from "../dumbydata/sample_user";
 
 export const AppContext = createContext();
 
 export class AppContextProvider extends Component {
   state = {
     isLoggedIn: true,
-    currentUser: sampleUsers[0],
-    posts: samplePosts,
-    allUsers: sampleUsers,
+    currentUser: sampleUser,
   };
   logIn = (user) => {
     this.setState({ isLoggedIn: true, user: user });

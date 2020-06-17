@@ -1,2 +1,8 @@
 @import "./Comments/Comments";
 @import "./PostBody/PostBody";
+@import "./CommentForm/CommentForm";
+
+.Post-container {
+  display: flex;
+  flex-direction: column;
+}

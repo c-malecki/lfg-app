@@ -3,7 +3,7 @@ import { Post } from "../../components/components_index";
 
 export const PostPage = (props) => {
   return (
-    <div>
+    <div className="PostPage-container">
       <Post />
     </div>
   );

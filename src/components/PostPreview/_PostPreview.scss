@@ -1,0 +1,13 @@
+.PostPreview-container {
+  border: 1px solid black;
+
+  .PostPreview-head {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .PostPreview-content {
+    display: flex;
+    flex-direction: column;
+  }
+}
