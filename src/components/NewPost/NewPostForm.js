@@ -40,7 +40,7 @@ export const NewPostForm = (props) => {
       date: date,
       title: formState.title,
       content: formState.message,
-      tags: ["test"],
+      tags: ["#test"],
       post_id: postId,
       comments: [],
     };

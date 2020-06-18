@@ -4,6 +4,7 @@ export * from "./UI/ToggleSwitch/ToggleSwitch";
 export * from "./UI/LogInOut/LogInOut";
 export * from "./UI/UserLink/UserLink";
 export * from "./UI/PostLink/PostLink";
+export * from "./UI/PostTagLink/PostTagLink";
 export * from "./UI/GeneralButton/GeneralButton";
 export * from "./UI/ButtonLink/ButtonLink";
 
