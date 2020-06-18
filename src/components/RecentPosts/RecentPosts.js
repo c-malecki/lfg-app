@@ -1,9 +1,13 @@
 import React, { useContext } from "react";
-import { PostsStateContext } from "../../contexts/context_index";
-import { PostPreview } from "../components_index";
+import {
+  PostsStateContext,
+  AppStateContext,
+} from "../../contexts/context_index";
+import { PostPreview, ButtonLink } from "../components_index";
 
 export const RecentPosts = (props) => {
   const { posts } = useContext(PostsStateContext);
+  const { isLoggedIn } = useContext(AppStateContext);
   return (
     <div className="RecentPosts-container">
       <h2>Recent Posts</h2>
@@ -14,6 +18,15 @@ export const RecentPosts = (props) => {
       ) : (
         <div>loading</div>
       )}
+      {isLoggedIn ? (
+        <div>
+          <ButtonLink
+            url="/newpost"
+            text="new post"
+            addClass="page-buttonlink"
+          />
+        </div>
+      ) : null}
     </div>
   );
 };

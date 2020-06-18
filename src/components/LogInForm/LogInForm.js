@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { AppDispatchContext, UsersContext } from "../../contexts/context_index";
+import { GeneralButton } from "../components_index";
 
 export const LogInForm = () => {
   const [formState, setFormState] = useState({
@@ -49,41 +50,43 @@ export const LogInForm = () => {
   };
   return (
     <div className="LogInForm-container">
-      <div className="LogInForm-container">
-        <form className="LogInForm-form" onSubmit={(e) => handleSubmit(e)}>
-          <div className="LogInForm-username-container">
-            <input
-              type="text"
-              onChange={(e) =>
-                setFormState({ ...formState, user_name: e.target.value })
-              }
-              name="user_name"
-              placeholder="username"
-              value={formState.user_name}
-            />
-            <input
-              onChange={(e) =>
-                setFormState({ ...formState, password: e.target.value })
-              }
-              name="password"
-              className="LogInForm-password-input"
-              type="text"
-              placeholder="password"
-              value={formState.password}
-            />
-          </div>
-          <div className="LogInForm-submit-container">
-            <button type="submit" className="LogInForm-submit-button">
-              post
-            </button>
-          </div>
-          {formState.error ? (
-            <div className="LogInForm-error">{formState.error}</div>
-          ) : (
-            ""
-          )}
-        </form>
-      </div>
+      <form className="LogInForm-form" onSubmit={(e) => handleSubmit(e)}>
+        <div className="LogInForm-username-container">
+          <input
+            type="text"
+            onChange={(e) =>
+              setFormState({ ...formState, user_name: e.target.value })
+            }
+            name="user_name"
+            placeholder="username"
+            value={formState.user_name}
+          />
+        </div>
+        <div className="LogInForm-password-container">
+          <input
+            onChange={(e) =>
+              setFormState({ ...formState, password: e.target.value })
+            }
+            name="password"
+            className="LogInForm-password-input"
+            type="text"
+            placeholder="password"
+            value={formState.password}
+          />
+        </div>
+        <div className="LogInForm-submit-container">
+          <GeneralButton
+            type="submit"
+            addClass="general-theme-button"
+            text="log in"
+          />
+        </div>
+        {formState.error ? (
+          <div className="LogInForm-error">{formState.error}</div>
+        ) : (
+          ""
+        )}
+      </form>
     </div>
   );
 };

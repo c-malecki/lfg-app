@@ -4,22 +4,23 @@ import {
   HomePage,
   UserProfile,
   NewPostPage,
-  LogInpage,
+  LogInPage,
   PostsByTagPage,
+  PostPage,
 } from "../containers_index";
-import { Post, PostDeleted } from "../../components/components_index";
+import { PostDeleted } from "../../components/components_index";
 
 export const PageContent = (props) => {
   return (
     <div className="Page-content">
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/posts/:id" component={Post} />
+        <Route exact path="/posts/:id" component={PostPage} />
         <Route exact path="/posts/tags/:tag" component={PostsByTagPage} />
         <Route path="/users/:user" component={UserProfile} />
         <Route path="/newpost" component={NewPostPage} />
         <Route path="/post-deleted" component={PostDeleted} />
-        <Route path="/login" component={LogInpage} />
+        <Route path="/login" component={LogInPage} />
       </Switch>
     </div>
   );

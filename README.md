@@ -6,8 +6,7 @@ for games of all kinds, from niche genres and retro games to popular modern fran
 
 As of 6/17/2020, the data supplied is not thematic and purely for initial prototyping purposes.
 
-The initial data supplied is basic static data from a Node/Express server.  
-The rest of the CRUD functionality is all currently handled within the client application for demo purposes.  
+The intial data and CRUD functionality is all currently handled within the client application for demo purposes.  
 The client side "database" is implemented via the React content API.
 
 After initial prototyping of basic features and the UI/UX, I will progressively build and implement an API and database.

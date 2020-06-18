@@ -1,0 +1,6 @@
+.LogInPage-container {
+  @extend %page-container;
+  .LogIn-container {
+    @extend %page-content-container;
+  }
+}

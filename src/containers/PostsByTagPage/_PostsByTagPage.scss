@@ -1,6 +1,6 @@
-.UserProfile-container {
+.PostsByTagPage-container {
   @extend %page-container;
-  .UserProfile-content {
+  .PostByTag-container {
     @extend %page-content-container;
   }
 }

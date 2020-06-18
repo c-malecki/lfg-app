@@ -1,0 +1,6 @@
+.PostPage-container {
+  @extend %page-container;
+  .Post-container {
+    @extend %page-content-container;
+  }
+}

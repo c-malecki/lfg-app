@@ -9,3 +9,15 @@ body,
     height: calc(100% - 64px);
   }
 }
+
+@media only screen and (min-width: 0px) and (max-width: 480px),
+  only screen and (min-device-width: 0px) and (max-width: 480px) {
+  html,
+  body,
+  #root,
+  #root > .App {
+    height: auto;
+    min-height: 100vh;
+    background-color: rgb(255, 255, 255);
+  }
+}

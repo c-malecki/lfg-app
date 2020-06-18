@@ -6,3 +6,16 @@
 .hide {
   display: none;
 }
+
+%page-container {
+  width: 90%;
+  padding-top: 2rem;
+  margin: auto;
+}
+
+%page-content-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding-bottom: 2rem;
+}

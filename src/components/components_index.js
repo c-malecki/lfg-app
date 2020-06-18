@@ -10,7 +10,6 @@ export * from "./UI/ButtonLink/ButtonLink";
 
 // Components
 export * from "./PostPreview/PostPreview";
-export * from "./Post/Post";
 export * from "./Post/CommentForm/CommentForm";
 export * from "./NewPost/NewPostForm";
 export * from "./PostDeleted/PostDeleted";

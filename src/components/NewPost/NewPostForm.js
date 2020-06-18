@@ -40,7 +40,7 @@ export const NewPostForm = (props) => {
       date: date,
       title: formState.title,
       content: formState.message,
-      tags: ["#test"],
+      tags: ["test"],
       post_id: postId,
       comments: [],
     };
@@ -51,38 +51,40 @@ export const NewPostForm = (props) => {
 
   return (
     <div className="PostForm-container">
-      <div className="PostForm-container">
-        <form className="PostForm-form" onSubmit={(e) => handleSubmit(e)}>
-          <div className="PostForm-comment-container">
-            <input
-              type="text"
-              onChange={(e) =>
-                setFormState({ ...formState, title: e.target.value })
-              }
-              name="title"
-              placeholder="Title the post..."
-              value={formState.title}
-            />
-            <textarea
-              onChange={(e) =>
-                setFormState({ ...formState, message: e.target.value })
-              }
-              name="message"
-              className="PostForm-comment-input"
-              type="text"
-              placeholder="Write a post..."
-              value={formState.message}
-            />
-          </div>
-          <div className="PostForm-submit-container">
-            <GeneralButton
-              type="submit"
-              addClass="general-theme-button"
-              text="post"
-            />
-          </div>
-        </form>
-      </div>
+      <h2>New Post</h2>
+      <form className="PostForm-form" onSubmit={(e) => handleSubmit(e)}>
+        <div className="PostForm-title-container">
+          <input
+            type="text"
+            onChange={(e) =>
+              setFormState({ ...formState, title: e.target.value })
+            }
+            name="title"
+            placeholder="Title the post..."
+            value={formState.title}
+          />
+          {/* tags input */}
+        </div>
+        <div className="PostForm-content-container">
+          <textarea
+            onChange={(e) =>
+              setFormState({ ...formState, message: e.target.value })
+            }
+            name="message"
+            className="PostForm-content-input"
+            type="text"
+            placeholder="Write a post..."
+            value={formState.message}
+          />
+        </div>
+        <div className="PostForm-submit-container">
+          <GeneralButton
+            type="submit"
+            addClass="general-theme-button"
+            text="post"
+          />
+        </div>
+      </form>
     </div>
   );
 };
