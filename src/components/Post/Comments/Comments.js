@@ -28,6 +28,7 @@ export const Comments = (props) => {
                     comment_id: comment.comment_id,
                   })
                 }
+                className="close-delete-button"
               >
                 X
               </button>

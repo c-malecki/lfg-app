@@ -6,6 +6,7 @@ import {
   PostsStateContext,
 } from "../../contexts/context_index";
 import { reformatDate } from "../../assets/util/reformatDate";
+import { GeneralButton } from "../components_index";
 
 export const NewPostForm = (props) => {
   const [formState, setFormState] = useState({
@@ -74,9 +75,11 @@ export const NewPostForm = (props) => {
             />
           </div>
           <div className="PostForm-submit-container">
-            <button type="submit" className="PostForm-submit-button">
-              post
-            </button>
+            <GeneralButton
+              type="submit"
+              addClass="general-theme-button"
+              text="post"
+            />
           </div>
         </form>
       </div>

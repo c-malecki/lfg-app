@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { AppStateContext } from "../../../contexts/context_index";
 import { PostsDispatchContext } from "../../../contexts/context_index";
 import { reformatDate } from "../../../assets/util/reformatDate";
+import { GeneralButton } from "../../components_index";
 
 export const CommentForm = (props) => {
   const [formState, setFormState] = useState({
@@ -44,14 +45,11 @@ export const CommentForm = (props) => {
 
   return (
     <div className="CommentForm-container">
-      <button
-        className={`CommentForm-toggle-button ${
-          formState.openForm ? "hide" : ""
-        }`}
-        onClick={() => toggleForm()}
-      >
-        comment
-      </button>
+      <GeneralButton
+        method={toggleForm}
+        text="comment"
+        addClass={formState.openForm ? "hide" : "general-theme-button"}
+      />
       <div
         className={`CommentForm-container ${formState.openForm ? "" : "hide"}`}
       >
@@ -69,16 +67,18 @@ export const CommentForm = (props) => {
             />
           </div>
           <div className="CommentForm-submit-container">
-            <button
+            <GeneralButton
               type="submit"
-              className="CommentForm-submit-button"
+              addClass="general-theme-button"
+              text="comment"
               disabled={formState.isSubmitting}
-            >
-              comment
-            </button>
-            <button type="button" onClick={() => toggleForm()}>
-              X
-            </button>
+            />
+
+            <GeneralButton
+              method={toggleForm}
+              text="close"
+              addClass="close-delete-button"
+            />
           </div>
         </form>
       </div>

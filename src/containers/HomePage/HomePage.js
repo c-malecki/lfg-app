@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { RecentPosts, NewPostLink } from "../../components/components_index";
+import { RecentPosts, ButtonLink } from "../../components/components_index";
 import { AppStateContext } from "../../contexts/context_index";
 
 export const HomePage = (props) => {
@@ -7,7 +7,11 @@ export const HomePage = (props) => {
   return (
     <div className="HomePage-container">
       <RecentPosts />
-      {isLoggedIn ? <NewPostLink /> : ""}
+      {isLoggedIn ? (
+        <ButtonLink url="/newpost" text="new post" addClass="page-buttonlink" />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

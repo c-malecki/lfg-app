@@ -1,0 +1,22 @@
+.UI-ButtonLink {
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.header-buttonlink {
+  border-radius: 0.25rem;
+  padding: 0.4rem;
+  background-color: rgb(148, 204, 207);
+  font-weight: bold;
+  color: white;
+}
+
+.page-buttonlink {
+  border-radius: 0.25rem;
+  padding: 0.4rem;
+  background-color: rgb(162, 207, 148);
+  font-weight: bold;
+  color: white;
+  margin: 0.5rem;
+}

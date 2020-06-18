@@ -1,0 +1,25 @@
+.UI-GeneralButton {
+  text-transform: uppercase;
+}
+
+.general-theme-button {
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.4rem;
+  background-color: rgb(162, 207, 148);
+  font-weight: bold;
+  color: white;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.close-delete-button {
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.4rem;
+  background-color: rgb(207, 148, 148);
+  font-weight: bold;
+  color: white;
+  margin: 0.5rem;
+  cursor: pointer;
+}
