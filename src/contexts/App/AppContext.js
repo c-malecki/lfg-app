@@ -1,29 +1,35 @@
-import React, { createContext, Component } from "react";
+import React, { createContext, useReducer } from "react";
 import { sampleUser } from "../dumbydata/sample_user";
 
-export const AppContext = createContext();
+export const AppStateContext = createContext();
+export const AppDispatchContext = createContext();
 
-export class AppContextProvider extends Component {
-  state = {
-    isLoggedIn: true,
-    currentUser: sampleUser,
-  };
-  logIn = (user) => {
-    this.setState({ isLoggedIn: true, user: user });
-  };
-  logOut = () => {
-    this.setState({
-      isLoggedIn: false,
-      user: null,
-    });
-  };
-  render() {
-    return (
-      <AppContext.Provider
-        value={{ ...this.state, logIn: this.logIn, logOut: this.logOut }}
-      >
-        {this.props.children}
-      </AppContext.Provider>
-    );
+const initialState = {
+  isLoggedIn: true,
+  currentUser: sampleUser,
+};
+
+const appReducer = (state, action) => {
+  switch (action.type) {
+    case "LOGIN": {
+      return { isLoggedIn: true, currentUser: action.userData };
+    }
+    case "LOGOUT": {
+      return { isLoggedIn: false, currentUser: null };
+    }
+    default: {
+      throw new Error(`Unhandled action type: ${action.type}`);
+    }
   }
-}
+};
+
+export const AppContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(appReducer, initialState);
+  return (
+    <AppStateContext.Provider value={state}>
+      <AppDispatchContext.Provider value={dispatch}>
+        {children}
+      </AppDispatchContext.Provider>
+    </AppStateContext.Provider>
+  );
+};

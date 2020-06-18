@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { PostsStateContext } from "../../contexts/context_index";
+import {
+  PostsStateContext,
+  AppStateContext,
+} from "../../contexts/context_index";
 import { PostBody } from "./PostBody/PostBody";
 import { Comments } from "./Comments/Comments";
 import { CommentForm } from "./CommentForm/CommentForm";
@@ -8,6 +11,7 @@ import { CommentForm } from "./CommentForm/CommentForm";
 export const Post = (props) => {
   const [postContent, setPostContent] = useState(null);
   const { posts } = useContext(PostsStateContext) || null;
+  const { currentUser } = useContext(AppStateContext) || null;
   const { id } = useParams();
   useEffect(() => {
     if (posts !== null) {
@@ -27,7 +31,11 @@ export const Post = (props) => {
             comments={postContent.comments}
             post_id={postContent.post_id}
           />
-          <CommentForm post_id={postContent.post_id} />
+          {currentUser !== null ? (
+            <CommentForm post_id={postContent.post_id} />
+          ) : (
+            ""
+          )}
         </>
       ) : (
         <div>loading...</div>

@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { UserLink } from "../../components_index";
 import {
-  AppContext,
+  AppStateContext,
   PostsDispatchContext,
 } from "../../../contexts/context_index";
 
 export const Comments = (props) => {
   const { comments, post_id } = props;
-  const { currentUser } = useContext(AppContext);
+  const { currentUser } = useContext(AppStateContext);
   const dispatch = useContext(PostsDispatchContext);
   return (
     <div className="Comments-container">
@@ -18,7 +18,8 @@ export const Comments = (props) => {
             <span className="head-text-content">By</span>
             <UserLink username={comment.user_name} />
             <span className="head-text-content">at {comment.date}</span>
-            {currentUser.account.user_name === comment.user_name ? (
+            {currentUser !== null &&
+            currentUser.account.user_name === comment.user_name ? (
               <button
                 onClick={() =>
                   dispatch({

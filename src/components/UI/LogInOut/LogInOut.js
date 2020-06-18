@@ -1,25 +1,31 @@
 import React, { useContext } from "react";
-import { AppContext } from "../../../contexts/context_index";
-import { sampleUser } from "../../../contexts/dumbydata/sample_user";
+import { useHistory } from "react-router-dom";
+import {
+  AppStateContext,
+  AppDispatchContext,
+} from "../../../contexts/context_index";
 
 export const LogInOut = (props) => {
-  const { logIn, logOut, currentUser, isLoggedIn } = useContext(AppContext);
-  const handleLogIn = () => {
-    logIn(sampleUser);
-  };
-  const handleLogOut = () => {
-    logOut();
-  };
+  const { currentUser, isLoggedIn } = useContext(AppStateContext);
+  const dispatch = useContext(AppDispatchContext);
+  const history = useHistory();
   return (
     <div>
       {isLoggedIn ? (
         <span>
           {currentUser.account.user_name}
-          <button onClick={() => handleLogOut()}>Log Out</button>
+          <button
+            onClick={async () => {
+              await dispatch({ type: "LOGOUT" });
+              history.push("/");
+            }}
+          >
+            Log Out
+          </button>
         </span>
       ) : (
         <span>
-          <button onClick={() => handleLogIn()}>Log In</button>
+          <button onClick={() => history.push("/login")}>Log In</button>
         </span>
       )}
     </div>

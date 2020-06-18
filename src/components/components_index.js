@@ -12,6 +12,7 @@ export * from "./Post/Post";
 export * from "./Post/CommentForm/CommentForm";
 export * from "./NewPost/NewPostForm";
 export * from "./PostDeleted/PostDeleted";
+export * from "./LogInForm/LogInForm";
 
 // HomePage
 export * from "./RecentPosts/RecentPosts";

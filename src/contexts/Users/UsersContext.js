@@ -1,28 +1,23 @@
-import React, { createContext, Component } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 export const UsersContext = createContext();
 
-export class UsersContextProvider extends Component {
-  state = {
-    allUsers: null,
-  };
-  componentDidMount() {
+export const UsersContextProvider = ({ children }) => {
+  const [allUsers, setAllUsers] = useState();
+  useEffect(() => {
     axios
       .get("http://localhost:5000/api/v1/users")
       .then((res) => {
         const users = res.data;
-        this.setState({
-          allUsers: users,
-        });
+        setAllUsers(users);
       })
       .catch((error) => console.log(error));
-  }
-  render() {
-    return (
-      <UsersContext.Provider value={{ ...this.state }}>
-        {this.props.children}
-      </UsersContext.Provider>
-    );
-  }
-}
+  });
+
+  return (
+    <UsersContext.Provider value={{ allUsers }}>
+      {children}
+    </UsersContext.Provider>
+  );
+};

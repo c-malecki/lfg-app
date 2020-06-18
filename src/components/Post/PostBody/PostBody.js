@@ -2,19 +2,20 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { UserLink } from "../../components_index";
 import {
-  AppContext,
+  AppStateContext,
   PostsDispatchContext,
 } from "../../../contexts/context_index";
 
 export const PostBody = (props) => {
   const { content } = props;
-  const { currentUser } = useContext(AppContext);
+  const { currentUser } = useContext(AppStateContext);
   const dispatch = useContext(PostsDispatchContext);
   const history = useHistory();
   return (
     <div className="PostBody-container">
       <h3>{content.title}</h3>
-      {currentUser.account.user_name === content.author ? (
+      {currentUser !== null &&
+      currentUser.account.user_name === content.author ? (
         <button
           onClick={async () => {
             await dispatch({

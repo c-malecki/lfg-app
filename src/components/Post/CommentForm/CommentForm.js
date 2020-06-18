@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { AppContext } from "../../../contexts/context_index";
+import { AppStateContext } from "../../../contexts/context_index";
 import { PostsDispatchContext } from "../../../contexts/context_index";
 import { reformatDate } from "../../../assets/util/reformatDate";
 
@@ -10,7 +10,7 @@ export const CommentForm = (props) => {
     openForm: false,
   });
 
-  const { currentUser } = useContext(AppContext);
+  const { currentUser } = useContext(AppStateContext);
   const dispatch = useContext(PostsDispatchContext);
 
   const toggleForm = () => {

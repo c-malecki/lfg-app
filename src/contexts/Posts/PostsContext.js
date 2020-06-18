@@ -8,12 +8,6 @@ const initialState = {
   posts: null,
 };
 
-// ???
-// const rootReducer = (state, action) => ({
-//   comments: commentsReducer(state.comments, action),
-//   posts: postsReducer(state.posts, action),
-// })
-
 const postsReducer = (state, action) => {
   switch (action.type) {
     case "GET_POSTS": {
@@ -98,3 +92,9 @@ export const PostsContextProvider = ({ children }) => {
     </PostsStateContext.Provider>
   );
 };
+
+// ???
+// const rootReducer = (state, action) => ({
+//   comments: commentsReducer(state.comments, action),
+//   posts: postsReducer(state.posts, action),
+// })

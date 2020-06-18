@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { AppContext } from "../../contexts/context_index";
+import { AppStateContext } from "../../contexts/context_index";
 import {
   PostsDispatchContext,
   PostsStateContext,
@@ -14,7 +14,7 @@ export const NewPostForm = (props) => {
     tags: [],
   });
 
-  const { currentUser } = useContext(AppContext);
+  const { currentUser } = useContext(AppStateContext);
   const { posts } = useContext(PostsStateContext);
   const dispatch = useContext(PostsDispatchContext);
   const history = useHistory();
@@ -74,11 +74,7 @@ export const NewPostForm = (props) => {
             />
           </div>
           <div className="PostForm-submit-container">
-            <button
-              type="submit"
-              className="PostForm-submit-button"
-              disabled={formState.isSubmitting}
-            >
+            <button type="submit" className="PostForm-submit-button">
               post
             </button>
           </div>

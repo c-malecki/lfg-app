@@ -1,21 +1,15 @@
-import React, { createContext, Component } from "react";
+import React, { createContext, useState } from "react";
 
 export const ThemeContext = createContext();
 
-export class ThemeContextProvider extends Component {
-  state = {
-    isLightTheme: true,
+export const ThemeContextProvider = ({ children }) => {
+  const [isLightTheme, setIsLightTheme] = useState(false);
+  const toggleTheme = () => {
+    setIsLightTheme(!isLightTheme);
   };
-  toggleTheme = () => {
-    this.setState({ isLightTheme: !this.state.isLightTheme });
-  };
-  render() {
-    return (
-      <ThemeContext.Provider
-        value={{ ...this.state, toggleTheme: this.toggleTheme }}
-      >
-        {this.props.children}
-      </ThemeContext.Provider>
-    );
-  }
-}
+  return (
+    <ThemeContext.Provider value={{ isLightTheme, toggleTheme: toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
