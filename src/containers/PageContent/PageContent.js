@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import {
   HomePage,
-  UserProfile,
+  UserProfilePage,
   NewPostPage,
   LogInPage,
   PostsByTagPage,
@@ -17,7 +17,7 @@ export const PageContent = (props) => {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/posts/:id" component={PostPage} />
         <Route exact path="/posts/tags/:tag" component={PostsByTagPage} />
-        <Route path="/users/:user" component={UserProfile} />
+        <Route path="/users/:user" component={UserProfilePage} />
         <Route path="/newpost" component={NewPostPage} />
         <Route path="/post-deleted" component={PostDeleted} />
         <Route path="/login" component={LogInPage} />

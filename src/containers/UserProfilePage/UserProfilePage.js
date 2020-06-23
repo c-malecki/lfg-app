@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
+import { UserProfile } from "../../components/components_index";
 import { UsersContext } from "../../contexts/context_index";
 import { useParams } from "react-router-dom";
 
-export const UserProfile = (props) => {
+export const UserProfilePage = (props) => {
   const [userProfile, setUserProfile] = useState(null);
   const { allUsers } = useContext(UsersContext) || null;
   const { user } = useParams();
@@ -20,10 +21,7 @@ export const UserProfile = (props) => {
       {userProfile !== null ? (
         <div className="UserProfile-content">
           <h2>{userProfile.user_name}</h2>
-          <span>
-            Name: {userProfile.first_name} {userProfile.last_name}
-          </span>
-          <span>Email: {userProfile.email}</span>
+          <UserProfile userProfile={userProfile} />
         </div>
       ) : (
         <div>loading...</div>

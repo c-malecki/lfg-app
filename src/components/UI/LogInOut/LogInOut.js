@@ -11,9 +11,6 @@ export const LogInOut = (props) => {
   const handleLogOut = () => {
     dispatch({ type: "LOGOUT" });
   };
-  // const handleLogIn = () => {
-  //   history.push("/login");
-  // };
   return (
     <div className="LogInOut-container">
       {isLoggedIn ? (
@@ -24,6 +21,7 @@ export const LogInOut = (props) => {
             method={handleLogOut}
             text="log out"
             addClass="header-buttonlink"
+            s
           />
         </span>
       ) : (

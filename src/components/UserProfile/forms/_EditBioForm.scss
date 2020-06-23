@@ -1,0 +1,13 @@
+.EditBioForm-container {
+  margin: auto 1rem;
+
+  .EditBioForm-input-container {
+    display: flex;
+    textarea {
+      height: 5rem;
+      width: 100%;
+    }
+  }
+  .EditBioForm-submit-container {
+  }
+}
