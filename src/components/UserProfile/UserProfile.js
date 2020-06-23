@@ -43,7 +43,11 @@ export const UserProfile = (props) => {
         <h3>Bio:</h3>
 
         {editBio.editMode ? (
-          <EditBioForm bio={bio} toggleEditBio={toggleEditBio} />
+          <EditBioForm
+            bio={bio}
+            toggleEditBio={toggleEditBio}
+            user_name={user_name}
+          />
         ) : (
           <div className="UserProfile-bio">
             <p>{bio}</p>

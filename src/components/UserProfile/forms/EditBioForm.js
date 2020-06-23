@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { GeneralButton } from "../../components_index";
+import { UsersDispatch } from "../../../contexts/context_index";
 
 export const EditBioForm = (props) => {
   const [formState, setFormState] = useState({
     bio: props.bio,
   });
-  const handleSubmit = (e) => {
+  const dispatch = useContext(UsersDispatch);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await dispatch({
+      type: "UPDATE_BIO",
+      user_name: props.user_name,
+      bio: formState.bio,
+    });
+    props.toggleEditBio();
   };
   return (
     <div className="EditBioForm-container">
