@@ -9,7 +9,7 @@ export const UserProfile = (props) => {
     showButton: true,
   });
   const { currentUser } = useContext(AppStateContext);
-  const user = currentUser.account.user_name;
+  // const user = currentUser.account.user_name;
   const {
     user_name,
     profile_pic,
@@ -50,11 +50,13 @@ export const UserProfile = (props) => {
           />
         ) : (
           <div className="UserProfile-bio">
-            <p>{bio}</p>
+            <span>{bio}</span>
           </div>
         )}
 
-        {user === user_name && editBio.showButton ? (
+        {currentUser &&
+        currentUser.account.user_name === user_name &&
+        editBio.showButton ? (
           <div>
             <GeneralButton
               method={toggleEditBio}
