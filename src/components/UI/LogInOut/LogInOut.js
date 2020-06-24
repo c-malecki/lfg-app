@@ -3,10 +3,10 @@ import {
   AppStateContext,
   AppDispatchContext,
 } from "../../../contexts/context_index";
-import { UserLink, ButtonLink } from "../../components_index";
+import { ButtonLink } from "../../components_index";
 
 export const LogInOut = (props) => {
-  const { currentUser, isLoggedIn } = useContext(AppStateContext);
+  const { isLoggedIn } = useContext(AppStateContext);
   const dispatch = useContext(AppDispatchContext);
   const handleLogOut = () => {
     dispatch({ type: "LOGOUT" });
@@ -15,7 +15,6 @@ export const LogInOut = (props) => {
     <div className="LogInOut-container">
       {isLoggedIn ? (
         <span>
-          <UserLink username={currentUser.account.user_name} />
           <ButtonLink
             url="/"
             method={handleLogOut}

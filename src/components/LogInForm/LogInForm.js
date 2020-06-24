@@ -22,7 +22,7 @@ export const LogInForm = () => {
     });
   };
 
-  const validate = async (data) => {
+  const validate = (data) => {
     const check = allUsers.find(
       (user) =>
         user.account.user_name.toLowerCase() === data.user_name.toLowerCase() &&
@@ -34,7 +34,7 @@ export const LogInForm = () => {
         error: "Username or password is incorrect.",
       }));
     } else if (check !== undefined || check !== null) {
-      await dispatch({ type: "LOGIN", userData: check });
+      dispatch({ type: "LOGIN", userData: check });
       resetForm();
       history.push("/");
     }

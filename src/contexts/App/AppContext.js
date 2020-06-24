@@ -1,12 +1,12 @@
 import React, { createContext, useReducer } from "react";
-import { sampleUser } from "../dumbydata/sample_user";
+import { users } from "../dumbydata/sample_user";
 
 export const AppStateContext = createContext();
 export const AppDispatchContext = createContext();
 
 const initialState = {
   isLoggedIn: true,
-  currentUser: sampleUser,
+  currentUser: users[0],
 };
 
 const appReducer = (state, action) => {

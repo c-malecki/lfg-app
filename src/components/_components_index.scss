@@ -1,11 +1,18 @@
 @import "./Header/Header";
+
 @import "./PostPreview/PostPreview";
 @import "./Post/Post";
-@import "./RecentPosts/RecentPosts";
-@import "./PostDeleted/PostDeleted";
-@import "./LogInForm/LoginForm";
 @import "./NewPost/NewPostForm";
+
+@import "./RecentPosts/RecentPosts";
+
+@import "./LogInForm/LoginForm";
+
 @import "./UserProfile/UserProfile";
 @import "./UserProfile/forms/EditBioForm";
+
+@import "./Messages/Inbox/Inbox";
+@import "./Messages/MessageBody/MessageBody";
+@import "./Messages/SentMessages/SentMessages";
 
 @import "./UI/ui_index";

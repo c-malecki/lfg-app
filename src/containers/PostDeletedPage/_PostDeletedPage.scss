@@ -1,0 +1,11 @@
+.PostDeletedPage-container {
+  @extend %page-container;
+  .PostDeletedPage-content {
+    @extend %page-content-container;
+    a {
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+  }
+}

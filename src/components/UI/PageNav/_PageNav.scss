@@ -1,0 +1,13 @@
+.PageNav-container {
+  display: flex;
+  flex-direction: row;
+  height: 2rem;
+  padding-top: 0.5rem;
+  align-items: center;
+  margin-left: 3.5rem;
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}

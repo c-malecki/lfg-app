@@ -29,7 +29,7 @@ export const NewPostForm = (props) => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     const date = reformatDate(new Date());
     const genPostId =
       posts.length > 0 ? parseInt(posts[posts.length - 1].post_id) + 1 : "1";
@@ -44,7 +44,7 @@ export const NewPostForm = (props) => {
       post_id: postId,
       comments: [],
     };
-    await dispatch({ type: "ADD_POST", post: data });
+    dispatch({ type: "ADD_POST", post: data });
     resetForm();
     history.push(`/posts/${data.post_id}`);
   };

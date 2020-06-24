@@ -8,9 +8,9 @@ export const EditBioForm = (props) => {
   });
   const dispatch = useContext(UsersDispatch);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    await dispatch({
+    dispatch({
       type: "UPDATE_BIO",
       user_name: props.user_name,
       bio: formState.bio,
