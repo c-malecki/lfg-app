@@ -1,13 +1,10 @@
 import React, { useContext } from "react";
-import {
-  AppStateContext,
-  AppDispatchContext,
-} from "../../../contexts/context_index";
+import { UsersState, UsersDispatch } from "../../../contexts/context_index";
 import { ButtonLink } from "../../components_index";
 
 export const LogInOut = (props) => {
-  const { isLoggedIn } = useContext(AppStateContext);
-  const dispatch = useContext(AppDispatchContext);
+  const { isLoggedIn } = useContext(UsersState);
+  const dispatch = useContext(UsersDispatch);
   const handleLogOut = () => {
     dispatch({ type: "LOGOUT" });
   };

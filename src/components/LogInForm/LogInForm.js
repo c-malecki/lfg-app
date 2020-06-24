@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { AppDispatchContext, UsersContext } from "../../contexts/context_index";
+import { UsersDispatch, UsersState } from "../../contexts/context_index";
 import { GeneralButton } from "../components_index";
 
 export const LogInForm = () => {
@@ -10,8 +10,8 @@ export const LogInForm = () => {
     error: null,
   });
 
-  const { allUsers } = useContext(UsersContext);
-  const dispatch = useContext(AppDispatchContext);
+  const { allUsers } = useContext(UsersState);
+  const dispatch = useContext(UsersDispatch);
   const history = useHistory();
 
   const resetForm = () => {

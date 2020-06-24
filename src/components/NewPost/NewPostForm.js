@@ -1,10 +1,8 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { AppStateContext } from "../../contexts/context_index";
-import {
-  PostsDispatchContext,
-  PostsStateContext,
-} from "../../contexts/context_index";
+import { v4 as uuidv4 } from "uuid";
+import { UsersState } from "../../contexts/context_index";
+import { PostsDispatchContext } from "../../contexts/context_index";
 import { reformatDate } from "../../assets/util/reformatDate";
 import { GeneralButton } from "../components_index";
 
@@ -15,8 +13,7 @@ export const NewPostForm = (props) => {
     tags: [],
   });
 
-  const { currentUser } = useContext(AppStateContext);
-  const { posts } = useContext(PostsStateContext);
+  const { currentUser } = useContext(UsersState);
   const dispatch = useContext(PostsDispatchContext);
   const history = useHistory();
 
@@ -31,9 +28,6 @@ export const NewPostForm = (props) => {
 
   const handleSubmit = (e) => {
     const date = reformatDate(new Date());
-    const genPostId =
-      posts.length > 0 ? parseInt(posts[posts.length - 1].post_id) + 1 : "1";
-    const postId = genPostId.toString();
     e.preventDefault();
     const data = {
       author: currentUser.account.user_name,
@@ -41,7 +35,7 @@ export const NewPostForm = (props) => {
       title: formState.title,
       content: formState.message,
       tags: ["test"],
-      post_id: postId,
+      post_id: uuidv4(),
       comments: [],
     };
     dispatch({ type: "ADD_POST", post: data });

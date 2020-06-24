@@ -1,15 +1,26 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
 import { users } from "../dumbydata/sample_user";
 
-export const UsersContext = createContext();
+export const UsersState = createContext();
 export const UsersDispatch = createContext();
 
 const initialState = {
+  isLoggedIn: false,
+  currentUser: null,
   allUsers: users,
 };
 
 const usersReducer = (state, action) => {
   switch (action.type) {
+    case "SET_DEMO_USER": {
+      return { ...state, isLoggedIn: true, currentUser: action.demoUser };
+    }
+    case "LOGIN": {
+      return { ...state, isLoggedIn: true, currentUser: action.userData };
+    }
+    case "LOGOUT": {
+      return { ...state, isLoggedIn: false, currentUser: null };
+    }
     case "UPDATE_BIO": {
       const { allUsers } = state;
       const idx = allUsers.findIndex(
@@ -23,7 +34,7 @@ const usersReducer = (state, action) => {
           bio: action.bio,
         },
       };
-      return { allUsers: newAllUsers };
+      return { ...state, allUsers: newAllUsers, currentUser: newAllUsers[idx] };
     }
     case "SEND_MESSAGE": {
       const { allUsers } = state;
@@ -38,7 +49,7 @@ const usersReducer = (state, action) => {
           sent: [...newAllUsers[idx].messages.sent, action.sent_message],
         },
       };
-      return { allUsers: newAllUsers };
+      return { ...state, allUsers: newAllUsers, currentUser: newAllUsers[idx] };
     }
     case "RECEIVE_MESSAGE": {
       const { allUsers } = state;
@@ -50,10 +61,14 @@ const usersReducer = (state, action) => {
         ...newAllUsers[idx],
         messages: {
           ...newAllUsers[idx].messages,
+          unread:
+            newAllUsers[idx].messages.inbox
+              .map((message) => message.read === false)
+              .filter(Boolean).length + 1,
           inbox: [...newAllUsers[idx].messages.inbox, action.received_message],
         },
       };
-      return { allUsers: newAllUsers };
+      return { ...state, allUsers: newAllUsers };
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
@@ -63,11 +78,14 @@ const usersReducer = (state, action) => {
 
 export const UsersContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(usersReducer, initialState);
+  useEffect(() => {
+    dispatch({ type: "SET_DEMO_USER", demoUser: users[0] });
+  }, []);
   return (
-    <UsersContext.Provider value={state}>
+    <UsersState.Provider value={state}>
       <UsersDispatch.Provider value={dispatch}>
         {children}
       </UsersDispatch.Provider>
-    </UsersContext.Provider>
+    </UsersState.Provider>
   );
 };

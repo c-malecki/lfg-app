@@ -1,9 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  PostsStateContext,
-  AppStateContext,
-} from "../../contexts/context_index";
+import { PostsStateContext, UsersState } from "../../contexts/context_index";
 import { PostBody } from "../../components/Post/PostBody/PostBody";
 import { Comments } from "../../components/Post/Comments/Comments";
 import { CommentForm } from "../../components/Post/CommentForm/CommentForm";
@@ -11,7 +8,7 @@ import { CommentForm } from "../../components/Post/CommentForm/CommentForm";
 export const PostPage = (props) => {
   const [postContent, setPostContent] = useState(null);
   const { posts } = useContext(PostsStateContext) || null;
-  const { currentUser } = useContext(AppStateContext) || null;
+  const { currentUser } = useContext(UsersState) || null;
   const { id } = useParams();
   useEffect(() => {
     if (posts !== null && posts !== undefined) {

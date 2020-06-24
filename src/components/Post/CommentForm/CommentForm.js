@@ -1,6 +1,9 @@
 import React, { useState, useContext } from "react";
-import { AppStateContext } from "../../../contexts/context_index";
-import { PostsDispatchContext } from "../../../contexts/context_index";
+import { v4 as uuidv4 } from "uuid";
+import {
+  PostsDispatchContext,
+  UsersState,
+} from "../../../contexts/context_index";
 import { reformatDate } from "../../../assets/util/reformatDate";
 import { GeneralButton } from "../../components_index";
 
@@ -11,7 +14,7 @@ export const CommentForm = (props) => {
     openForm: false,
   });
 
-  const { currentUser } = useContext(AppStateContext);
+  const { currentUser } = useContext(UsersState);
   const dispatch = useContext(PostsDispatchContext);
 
   const toggleForm = () => {
@@ -38,6 +41,7 @@ export const CommentForm = (props) => {
       user_name: currentUser.account.user_name,
       date: date,
       content: formState.message,
+      comment_id: uuidv4(),
     };
     dispatch({ type: "ADD_COMMENT", post_id: props.post_id, comment: data });
     resetForm();

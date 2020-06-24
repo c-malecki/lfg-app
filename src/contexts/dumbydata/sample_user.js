@@ -2,10 +2,11 @@ import moose from "../../assets/images/moose.jpg";
 import nopic from "../../assets/images/noprofilepic.png";
 import meeps from "../../assets/images/Meeps.png";
 import { reformatDate } from "../../assets/util/reformatDate";
+import { v4 as uuidv4 } from "uuid";
 
 export const users = [
   {
-    user_id: "0",
+    user_id: uuidv4(),
     account: {
       user_name: "TestUser",
       profile_pic: moose,
@@ -17,6 +18,7 @@ export const users = [
       bio: "Test",
     },
     messages: {
+      unread: 1,
       inbox: [
         {
           read: false,
@@ -24,14 +26,14 @@ export const users = [
           from_username: "Meeps",
           subject: "Welcome to my demo app.",
           content: "Welcome!",
-          message_id: "1",
+          message_id: uuidv4(),
         },
       ],
       sent: [],
     },
   },
   {
-    user_id: "1",
+    user_id: uuidv4(),
     account: {
       user_name: "Meeps",
       profile_pic: meeps,
@@ -42,6 +44,7 @@ export const users = [
       email: "chrismmalecki@gmail.com",
     },
     messages: {
+      unread: 0,
       inbox: [],
       sent: [
         {
@@ -49,13 +52,13 @@ export const users = [
           to_username: "TestUser",
           subject: "Welcome to my demo app.",
           content: "Test",
-          message_id: "1",
+          message_id: uuidv4(),
         },
       ],
     },
   },
   {
-    user_id: "2",
+    user_id: uuidv4(),
     account: {
       user_name: "IAlsoLuvPuppies",
       profile_pic: nopic,
@@ -66,12 +69,13 @@ export const users = [
       email: "MorePuppiesPlz@email.com",
     },
     messages: {
+      unread: 0,
       inbox: [],
       sent: [],
     },
   },
   {
-    user_id: "3",
+    user_id: uuidv4(),
     account: {
       user_name: "PuppyLuver1",
       profile_pic: nopic,
@@ -82,12 +86,13 @@ export const users = [
       email: "MorePuppiesPlz@email.com",
     },
     messages: {
+      unread: 0,
       inbox: [],
       sent: [],
     },
   },
   {
-    user_id: "4",
+    user_id: uuidv4(),
     account: {
       user_name: "YesMasta74",
       profile_pic: nopic,
@@ -98,12 +103,13 @@ export const users = [
       email: "ItsEyeGor@email.com",
     },
     messages: {
+      unread: 0,
       inbox: [],
       sent: [],
     },
   },
   {
-    user_id: "5",
+    user_id: uuidv4(),
     account: {
       user_name: "StrangeAndFleek",
       profile_pic: nopic,
@@ -114,6 +120,7 @@ export const users = [
       email: "LetsGetWeird@email.com",
     },
     messages: {
+      unread: 0,
       inbox: [],
       sent: [],
     },

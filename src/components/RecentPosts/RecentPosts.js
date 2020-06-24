@@ -1,13 +1,10 @@
 import React, { useContext } from "react";
-import {
-  PostsStateContext,
-  AppStateContext,
-} from "../../contexts/context_index";
+import { PostsStateContext, UsersState } from "../../contexts/context_index";
 import { PostPreview, ButtonLink } from "../components_index";
 
 export const RecentPosts = (props) => {
   const { posts } = useContext(PostsStateContext);
-  const { isLoggedIn } = useContext(AppStateContext);
+  const { isLoggedIn } = useContext(UsersState);
   return (
     <div className="RecentPosts-container">
       <h2>Recent Posts</h2>

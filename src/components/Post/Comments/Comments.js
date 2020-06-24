@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { UserLink } from "../../components_index";
 import {
-  AppStateContext,
+  UsersState,
   PostsDispatchContext,
 } from "../../../contexts/context_index";
 
 export const Comments = (props) => {
   const { comments, post_id } = props;
-  const { currentUser } = useContext(AppStateContext);
+  const { currentUser } = useContext(UsersState);
   const dispatch = useContext(PostsDispatchContext);
   return (
     <div className="Comments-container">

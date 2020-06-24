@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { AppStateContext } from "../../contexts/App/AppContext";
+import { UsersState } from "../../contexts/context_index";
 import {
   Inbox,
   SentMessages,
@@ -8,9 +8,9 @@ import {
 
 export const MessagesPage = (props) => {
   const [isInbox, setIsInbox] = useState(true);
-  const { currentUser } = useContext(AppStateContext);
-  const { inbox } = currentUser.messages;
-  const { sent } = currentUser.messages;
+  const { currentUser } = useContext(UsersState);
+  const inbox = currentUser ? currentUser.messages.inbox : null;
+  const sent = currentUser ? currentUser.messages.sent : null;
   const displayInbox = () => {
     setIsInbox(true);
   };
@@ -32,11 +32,15 @@ export const MessagesPage = (props) => {
             addClass="general-theme-button"
           />
         </div>
-        {isInbox ? (
-          <Inbox messages={inbox} />
-        ) : (
-          <SentMessages messages={sent} />
-        )}
+        {currentUser && inbox && sent ? (
+          <>
+            {isInbox ? (
+              <Inbox messages={inbox} />
+            ) : (
+              <SentMessages messages={sent} />
+            )}
+          </>
+        ) : null}
       </div>
     </div>
   );

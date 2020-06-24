@@ -1,14 +1,14 @@
 import React, { useState, useContext } from "react";
 import { EditBioForm } from "./forms/EditBioForm";
 import { GeneralButton } from "../components_index";
-import { AppStateContext } from "../../contexts/context_index";
+import { UsersState } from "../../contexts/context_index";
 
 export const UserProfile = (props) => {
   const [editBio, setEditBio] = useState({
     editMode: false,
     showButton: true,
   });
-  const { currentUser } = useContext(AppStateContext);
+  const { currentUser } = useContext(UsersState);
   // const user = currentUser.account.user_name;
   const {
     user_name,

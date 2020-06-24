@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { UserLink, PostTagLink } from "../../components_index";
 import {
-  AppStateContext,
+  UsersState,
   PostsDispatchContext,
 } from "../../../contexts/context_index";
 
 export const PostBody = (props) => {
   const { content } = props;
-  const { currentUser } = useContext(AppStateContext);
+  const { currentUser } = useContext(UsersState);
   const dispatch = useContext(PostsDispatchContext);
   const history = useHistory();
   return (

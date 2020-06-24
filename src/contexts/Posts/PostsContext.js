@@ -1,6 +1,5 @@
 import React, { createContext, useReducer } from "react";
 import { samplePosts } from "../dumbydata/sample_posts";
-// import axios from "axios";
 
 export const PostsStateContext = createContext();
 export const PostsDispatchContext = createContext();
@@ -11,9 +10,6 @@ const initialState = {
 
 const postsReducer = (state, action) => {
   switch (action.type) {
-    // case "GET_POSTS": {
-    //   return { posts: action.posts };
-    // }
     case "ADD_COMMENT": {
       const { posts } = state;
       const idx = state.posts.findIndex(
@@ -21,16 +17,9 @@ const postsReducer = (state, action) => {
       );
       const newPosts = [...posts];
       const { comments } = newPosts[idx];
-      const commentId =
-        comments.length > 0
-          ? parseInt(comments[comments.length - 1].comment_id) + 1
-          : "1";
       newPosts[idx] = {
         ...newPosts[idx],
-        comments: [
-          ...comments,
-          { ...action.comment, comment_id: commentId.toString() },
-        ],
+        comments: [...comments, { ...action.comment }],
       };
       return {
         posts: [...newPosts],
@@ -77,14 +66,6 @@ const postsReducer = (state, action) => {
 
 export const PostsContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(postsReducer, initialState);
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:5000/api/v1/posts")
-  //     .then((res) => {
-  //       dispatch({ type: "GET_POSTS", posts: res.data });
-  //     })
-  //     .catch((error) => console.log(error));
-  // }, []);
   return (
     <PostsStateContext.Provider value={state}>
       <PostsDispatchContext.Provider value={dispatch}>

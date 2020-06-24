@@ -3,13 +3,13 @@ import {
   UserProfile,
   MessageUserLink,
 } from "../../components/components_index";
-import { UsersContext, AppStateContext } from "../../contexts/context_index";
+import { UsersState } from "../../contexts/context_index";
 import { useParams } from "react-router-dom";
 
 export const UserProfilePage = (props) => {
   const [userProfile, setUserProfile] = useState(null);
-  const { allUsers } = useContext(UsersContext) || null;
-  const { currentUser } = useContext(AppStateContext);
+  const { allUsers } = useContext(UsersState) || null;
+  const { currentUser } = useContext(UsersState);
   const { user } = useParams();
   useEffect(() => {
     if (allUsers !== null && allUsers !== undefined) {

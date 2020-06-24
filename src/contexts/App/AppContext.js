@@ -1,22 +1,12 @@
 import React, { createContext, useReducer } from "react";
-import { users } from "../dumbydata/sample_user";
 
 export const AppStateContext = createContext();
 export const AppDispatchContext = createContext();
 
-const initialState = {
-  isLoggedIn: true,
-  currentUser: users[0],
-};
+const initialState = {};
 
 const appReducer = (state, action) => {
   switch (action.type) {
-    case "LOGIN": {
-      return { isLoggedIn: true, currentUser: action.userData };
-    }
-    case "LOGOUT": {
-      return { isLoggedIn: false, currentUser: null };
-    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }

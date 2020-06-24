@@ -1,9 +1,7 @@
 import React, { useState, useContext } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { GeneralButton } from "../../components_index";
-import {
-  UsersDispatch,
-  AppStateContext,
-} from "../../../contexts/context_index";
+import { UsersDispatch, UsersState } from "../../../contexts/context_index";
 import { reformatDate } from "../../../assets/util/reformatDate";
 
 export const SendMessageForm = (props) => {
@@ -13,7 +11,7 @@ export const SendMessageForm = (props) => {
   });
 
   const dispatch = useContext(UsersDispatch);
-  const { currentUser } = useContext(AppStateContext);
+  const { currentUser } = useContext(UsersState);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +24,7 @@ export const SendMessageForm = (props) => {
         date_sent: date,
         subject: formState.subject,
         content: formState.message,
-        message_id: "2",
+        message_id: uuidv4(),
       },
     });
     dispatch({
@@ -38,7 +36,7 @@ export const SendMessageForm = (props) => {
         date_received: date,
         subject: formState.subject,
         content: formState.message,
-        message_id: "2",
+        message_id: uuidv4(),
       },
     });
   };
