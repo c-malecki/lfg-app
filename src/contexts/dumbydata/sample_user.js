@@ -18,7 +18,6 @@ export const users = [
       bio: "Test",
     },
     messages: {
-      unread: 1,
       inbox: [
         {
           read: false,
@@ -26,7 +25,7 @@ export const users = [
           from_username: "Meeps",
           subject: "Welcome to my demo app.",
           content: "Welcome!",
-          message_id: uuidv4(),
+          message_id: "fdf3c954-0746-488d-a1ab-18d711b3c6df",
         },
       ],
       sent: [],
@@ -44,7 +43,6 @@ export const users = [
       email: "chrismmalecki@gmail.com",
     },
     messages: {
-      unread: 0,
       inbox: [],
       sent: [
         {
@@ -52,7 +50,7 @@ export const users = [
           to_username: "TestUser",
           subject: "Welcome to my demo app.",
           content: "Test",
-          message_id: uuidv4(),
+          message_id: "b06b8eb7-9d32-4f18-a94b-4e03bf4f647b",
         },
       ],
     },
@@ -69,7 +67,6 @@ export const users = [
       email: "MorePuppiesPlz@email.com",
     },
     messages: {
-      unread: 0,
       inbox: [],
       sent: [],
     },
@@ -86,7 +83,6 @@ export const users = [
       email: "MorePuppiesPlz@email.com",
     },
     messages: {
-      unread: 0,
       inbox: [],
       sent: [],
     },
@@ -103,7 +99,6 @@ export const users = [
       email: "ItsEyeGor@email.com",
     },
     messages: {
-      unread: 0,
       inbox: [],
       sent: [],
     },
@@ -120,7 +115,6 @@ export const users = [
       email: "LetsGetWeird@email.com",
     },
     messages: {
-      unread: 0,
       inbox: [],
       sent: [],
     },

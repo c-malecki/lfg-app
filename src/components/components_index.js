@@ -9,6 +9,7 @@ export * from "./UI/GeneralButton/GeneralButton";
 export * from "./UI/ButtonLink/ButtonLink";
 export * from "./UI/PageNav/PageNav";
 export * from "./UI/MessageUserLink/MessageUserLink";
+export * from "./UI/MessageViewLink/MessageViewLink";
 
 // Components
 export * from "./PostPreview/PostPreview";

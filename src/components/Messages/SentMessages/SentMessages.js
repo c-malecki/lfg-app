@@ -1,17 +1,17 @@
 import React from "react";
-import { MessageBody } from "../MessageBody/MessageBody";
+import { MessagePreview } from "../MessagePreview/MessagePreview";
 
 export const SentMessages = (props) => {
   return (
     <div className="SentMessages-container">
       {props.messages.map((message) => {
         return (
-          <MessageBody
+          <MessagePreview
             to={message.to_username}
             date={message.date_sent}
             subject={message.subject}
-            content={message.content}
-            key={`message-${message.message_id}-${message.to_username}`}
+            key={message.message_id}
+            id={message.message_id}
           />
         );
       })}

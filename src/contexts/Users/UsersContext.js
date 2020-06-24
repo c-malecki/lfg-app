@@ -61,14 +61,35 @@ const usersReducer = (state, action) => {
         ...newAllUsers[idx],
         messages: {
           ...newAllUsers[idx].messages,
-          unread:
-            newAllUsers[idx].messages.inbox
-              .map((message) => message.read === false)
-              .filter(Boolean).length + 1,
           inbox: [...newAllUsers[idx].messages.inbox, action.received_message],
         },
       };
       return { ...state, allUsers: newAllUsers };
+    }
+    case "READ_MESSAGE": {
+      const { allUsers } = state;
+      const idx = allUsers.findIndex(
+        (user) => user.account.user_name === action.user
+      );
+      const newAllUsers = [...allUsers];
+      let readMessage = newAllUsers[idx].messages.inbox.find(
+        (message) => message.message_id === action.message_id
+      );
+      readMessage = {
+        ...readMessage,
+        read: true,
+      };
+      const previousMessages = newAllUsers[idx].messages.inbox.filter(
+        (message) => message.message_id !== action.message_id
+      );
+      newAllUsers[idx] = {
+        ...newAllUsers[idx],
+        messages: {
+          ...newAllUsers[idx].messages,
+          inbox: [...previousMessages, readMessage],
+        },
+      };
+      return { ...state, allUsers: newAllUsers, currentUser: newAllUsers[idx] };
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);

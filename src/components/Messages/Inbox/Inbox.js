@@ -1,17 +1,17 @@
 import React from "react";
-import { MessageBody } from "../MessageBody/MessageBody";
+import { MessagePreview } from "../MessagePreview/MessagePreview";
 
 export const Inbox = (props) => {
   return (
     <div className="Inbox-container">
       {props.messages.map((message) => {
         return (
-          <MessageBody
+          <MessagePreview
             from={message.from_username}
             date={message.date_received}
             subject={message.subject}
-            content={message.content}
-            key={`message-${message.message_id}-${message.from_username}`}
+            key={message.message_id}
+            id={message.message_id}
           />
         );
       })}
