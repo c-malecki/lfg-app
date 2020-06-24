@@ -9,6 +9,7 @@ export const Inbox = (props) => {
           <MessageBody
             from={message.from_username}
             date={message.date_received}
+            subject={message.subject}
             content={message.content}
             key={`message-${message.message_id}-${message.from_username}`}
           />

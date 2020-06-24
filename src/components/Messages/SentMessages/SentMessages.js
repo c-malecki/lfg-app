@@ -9,6 +9,7 @@ export const SentMessages = (props) => {
           <MessageBody
             to={message.to_username}
             date={message.date_sent}
+            subject={message.subject}
             content={message.content}
             key={`message-${message.message_id}-${message.to_username}`}
           />

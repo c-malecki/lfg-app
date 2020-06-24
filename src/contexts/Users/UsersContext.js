@@ -25,6 +25,36 @@ const usersReducer = (state, action) => {
       };
       return { allUsers: newAllUsers };
     }
+    case "SEND_MESSAGE": {
+      const { allUsers } = state;
+      const idx = allUsers.findIndex(
+        (user) => user.account.user_name === action.from
+      );
+      const newAllUsers = [...allUsers];
+      newAllUsers[idx] = {
+        ...newAllUsers[idx],
+        messages: {
+          ...newAllUsers[idx].messages,
+          sent: [...newAllUsers[idx].messages.sent, action.sent_message],
+        },
+      };
+      return { allUsers: newAllUsers };
+    }
+    case "RECEIVE_MESSAGE": {
+      const { allUsers } = state;
+      const idx = allUsers.findIndex(
+        (user) => user.account.user_name === action.to
+      );
+      const newAllUsers = [...allUsers];
+      newAllUsers[idx] = {
+        ...newAllUsers[idx],
+        messages: {
+          ...newAllUsers[idx].messages,
+          inbox: [...newAllUsers[idx].messages.inbox, action.received_message],
+        },
+      };
+      return { allUsers: newAllUsers };
+    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }

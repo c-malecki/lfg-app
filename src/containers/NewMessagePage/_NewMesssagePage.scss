@@ -1,0 +1,6 @@
+.NewMessagePage-container {
+  @extend %page-container;
+  .NewMessage-container {
+    @extend %page-content-container;
+  }
+}

@@ -9,6 +9,7 @@ import {
   PostPage,
   PostDeletedPage,
   MessagesPage,
+  NewMessagePage,
 } from "../containers_index";
 import { PageNav } from "../../components/components_index";
 
@@ -24,7 +25,8 @@ export const PageContent = (props) => {
         <Route path="/newpost" component={NewPostPage} />
         <Route path="/post-deleted" component={PostDeletedPage} />
         <Route path="/login" component={LogInPage} />
-        <Route path="/messages" component={MessagesPage} />
+        <Route exact path="/messages" component={MessagesPage} />
+        <Route exact path="/messages/new/to-:user" component={NewMessagePage} />
       </Switch>
     </div>
   );

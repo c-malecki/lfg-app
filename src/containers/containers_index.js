@@ -7,3 +7,4 @@ export * from "./UserProfilePage/UserProfilePage";
 export * from "./NewPostPage/NewPostPage";
 export * from "./LogInPage/LogInPage";
 export * from "./MessagesPage/MessagesPage";
+export * from "./NewMessagePage/NewMessagePage";

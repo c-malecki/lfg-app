@@ -7,6 +7,7 @@ export const MessageBody = (props) => {
       <span className="head-text-content">{props.from ? "From" : "To"}</span>
       <UserLink username={props.from ? props.from : props.to} />
       <span className="head-text-content">at {props.date}</span>
+      <h3>{props.subject}</h3>
       <p>{props.content}</p>
     </div>
   );
