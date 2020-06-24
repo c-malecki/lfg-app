@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { useHistory } from "react-router-dom";
 import { GeneralButton } from "../../components_index";
 import { UsersDispatch, UsersState } from "../../../contexts/context_index";
 import { reformatDate } from "../../../assets/util/reformatDate";
@@ -12,10 +13,12 @@ export const SendMessageForm = (props) => {
 
   const dispatch = useContext(UsersDispatch);
   const { currentUser } = useContext(UsersState);
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const date = reformatDate(new Date());
+    const messageId = uuidv4();
     dispatch({
       type: "SEND_MESSAGE",
       from: currentUser.account.user_name,
@@ -24,7 +27,7 @@ export const SendMessageForm = (props) => {
         date_sent: date,
         subject: formState.subject,
         content: formState.message,
-        message_id: uuidv4(),
+        message_id: messageId,
       },
     });
     dispatch({
@@ -36,9 +39,10 @@ export const SendMessageForm = (props) => {
         date_received: date,
         subject: formState.subject,
         content: formState.message,
-        message_id: uuidv4(),
+        message_id: messageId,
       },
     });
+    history.push(`/messages/${messageId}`);
   };
 
   return (
@@ -74,7 +78,11 @@ export const SendMessageForm = (props) => {
             text="send"
           />
 
-          <GeneralButton text="cancel" addClass="close-delete-button" />
+          <GeneralButton
+            text="cancel"
+            addClass="close-delete-button"
+            type="button"
+          />
         </div>
       </form>
     </div>
