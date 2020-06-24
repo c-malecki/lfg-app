@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export const samplePosts = [
   {
-    post_id: uuidv4(),
+    post_id: "ba7048d7-7fb6-479f-b9d4-3b10b2fe844b",
     author: "Meeps",
     date: "06/11/2020, 12:06 PM",
     title: "Welcome to LFG",
@@ -25,7 +25,7 @@ export const samplePosts = [
     ],
   },
   {
-    post_id: uuidv4(),
+    post_id: "1f36da45-bd5a-4e41-a93b-d2ca47dd33c2",
     author: "PuppyLuver1",
     date: "06/11/2020, 4:05 PM",
     title: "Best thing ever!",
@@ -41,7 +41,7 @@ export const samplePosts = [
     ],
   },
   {
-    post_id: uuidv4(),
+    post_id: "a797f2f5-5c1b-4093-a762-d092254dbb67",
     author: "YesMasta74",
     date: "06/11/2020, 6:23 PM",
     title: "Is pineapple on pizza really that bad?",
