@@ -1,7 +1,10 @@
+import LoD from "../../assets/images/Lod.png";
+
 export const sampleGroups = [
   {
-    group_name: "Path of Diablo",
+    group_name: "Diablo II LoD",
     group_id: "da7043d7-7fb6-489f-b9d4-3b1cb2fe844b",
+    group_img: LoD,
     group_genre: "ARPG",
     group_tags: ["Blizzard", "Diablo", "Mods", "ARPG"],
     date_created: "06/10/2020",

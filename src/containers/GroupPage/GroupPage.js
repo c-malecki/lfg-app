@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { GroupsState } from "../../contexts/context_index";
 import { useParams } from "react-router-dom";
+import { GroupInfo } from "../../components/components_index";
 
 export const GroupPage = (props) => {
   const [groupForPage, setGroupForPage] = useState(null);
@@ -14,7 +15,9 @@ export const GroupPage = (props) => {
     <div className="GroupPage-container">
       {groupForPage ? (
         <>
-          <div className="Group-row1-col1">{groupForPage.group_name}</div>
+          <div className="Group-row1-col1">
+            <GroupInfo data={groupForPage} />
+          </div>
           <div className="Group-row1-col2">members list</div>
         </>
       ) : (

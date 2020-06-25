@@ -23,6 +23,8 @@ export * from "./Messages/SentMessages/SentMessages";
 export * from "./Messages/MessageBody/MessageBody";
 export * from "./Messages/forms/SendMessageForm";
 
+export * from "./Group/GroupInfo/GroupInfo";
+
 // HomePage
 export * from "./Home/RecentPosts/RecentPosts";
 export * from "./Home/JoinedGroups/JoinedGroups";

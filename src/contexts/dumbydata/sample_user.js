@@ -15,7 +15,7 @@ export const users = [
       last_name: "Moose",
       email: "AnonAnimal72@email.com",
     },
-    groups: ["Path of Diablo"],
+    groups: ["Diablo II LoD"],
     profile: {
       user_name: "TestUser",
       profile_pic: moose,
@@ -48,7 +48,7 @@ export const users = [
       last_name: "Malecki",
       email: "chrismmalecki@gmail.com",
     },
-    groups: ["Path of Diablo"],
+    groups: ["Diablo II LoD"],
     profile: {
       user_name: "Meeps",
       profile_pic: meeps,
