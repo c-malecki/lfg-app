@@ -15,7 +15,6 @@ export const UserProfile = (props) => {
     profile_pic,
     first_name,
     last_name,
-    email,
     date_joined,
     bio,
   } = props.userProfile;
@@ -36,7 +35,6 @@ export const UserProfile = (props) => {
         <span>
           Name: {first_name} {last_name}
         </span>
-        <span>Email: {email}</span>
         <span>Member since: {date_joined}</span>
       </div>
       <div className="UserProfile-bio-container">

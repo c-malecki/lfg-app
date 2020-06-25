@@ -77,12 +77,6 @@ export const SendMessageForm = (props) => {
             addClass="general-theme-button"
             text="send"
           />
-
-          <GeneralButton
-            text="cancel"
-            addClass="close-delete-button"
-            type="button"
-          />
         </div>
       </form>
     </div>

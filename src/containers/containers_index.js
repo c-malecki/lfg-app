@@ -9,3 +9,4 @@ export * from "./LogInPage/LogInPage";
 export * from "./MessagesPage/MessagesPage";
 export * from "./NewMessagePage/NewMessagePage";
 export * from "./ViewMessagePage/ViewMessagePage";
+export * from "./GroupPage/GroupPage";

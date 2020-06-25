@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { UserLink } from "../../components_index";
+import { GeneralLink } from "../../components_index";
 import {
   UsersState,
   PostsDispatchContext,
@@ -16,7 +16,11 @@ export const Comments = (props) => {
         return (
           <div className="Comment-content" key={comment.comment_id}>
             <span className="head-text-content">By</span>
-            <UserLink username={comment.user_name} />
+            <GeneralLink
+              url={`/users/${comment.user_name}`}
+              text={comment.user_name}
+              addClass="UserLink"
+            />
             <span className="head-text-content">at {comment.date}</span>
             {currentUser !== null &&
             currentUser.account.user_name === comment.user_name ? (

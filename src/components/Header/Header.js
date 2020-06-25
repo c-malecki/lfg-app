@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { LogInOut, UserLink } from "../components_index";
+import { LogInOut, GeneralLink } from "../components_index";
 import { UsersState } from "../../contexts/context_index";
 
 export const Header = (props) => {
@@ -19,7 +19,11 @@ export const Header = (props) => {
       <div className="Header-actions">
         {isLoggedIn ? (
           <>
-            <UserLink username={currentUser.account.user_name} />
+            <GeneralLink
+              url={`/users/${currentUser.account.user_name}`}
+              text={currentUser.account.user_name}
+              addClass="UserLink"
+            />
             <Link to="/messages" style={{ textDecoration: "none" }}>
               messages ({messageCount})
             </Link>

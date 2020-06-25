@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { PostsStateContext, UsersState } from "../../contexts/context_index";
-import { PostPreview, ButtonLink } from "../components_index";
+import { PostsStateContext, UsersState } from "../../../contexts/context_index";
+import { PostPreview, ButtonLink } from "../../components_index";
 
 export const RecentPosts = (props) => {
   const { posts } = useContext(PostsStateContext);

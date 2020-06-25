@@ -2,9 +2,9 @@ import React from "react";
 import { Header } from "../../components/components_index";
 import { PageContent } from "../containers_index";
 import {
-  ThemeContextProvider,
   PostsContextProvider,
   UsersContextProvider,
+  GroupsContextProvider,
 } from "../../contexts/context_index";
 
 function App() {
@@ -12,10 +12,10 @@ function App() {
     <div className="App">
       <UsersContextProvider>
         <PostsContextProvider>
-          <ThemeContextProvider>
+          <GroupsContextProvider>
             <Header />
             <PageContent />
-          </ThemeContextProvider>
+          </GroupsContextProvider>
         </PostsContextProvider>
       </UsersContextProvider>
     </div>

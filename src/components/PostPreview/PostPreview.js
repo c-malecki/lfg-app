@@ -1,5 +1,5 @@
 import React from "react";
-import { UserLink, PostLink, PostTagLink } from "../components_index";
+import { GeneralLink, PostLink, PostTagLink } from "../components_index";
 
 export const PostPreview = (props) => {
   const { post } = props;
@@ -7,7 +7,11 @@ export const PostPreview = (props) => {
     <div className="PostPreview-container">
       <div className="PostPreview-head">
         <span className="head-text-content">By</span>
-        <UserLink username={post.author} />
+        <GeneralLink
+          url={`/users/${post.author}`}
+          text={post.author}
+          addClass="UserLink"
+        />
         <span className="head-text-content">at {post.date}</span>
       </div>
       <div className="PostPreview-content">

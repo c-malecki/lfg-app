@@ -2,7 +2,6 @@
 export * from "./Header/Header";
 export * from "./UI/ToggleSwitch/ToggleSwitch";
 export * from "./UI/LogInOut/LogInOut";
-export * from "./UI/UserLink/UserLink";
 export * from "./UI/PostLink/PostLink";
 export * from "./UI/PostTagLink/PostTagLink";
 export * from "./UI/GeneralButton/GeneralButton";
@@ -10,6 +9,7 @@ export * from "./UI/ButtonLink/ButtonLink";
 export * from "./UI/PageNav/PageNav";
 export * from "./UI/MessageUserLink/MessageUserLink";
 export * from "./UI/MessageViewLink/MessageViewLink";
+export * from "./UI/GeneralLink/GeneralLink";
 
 // Components
 export * from "./PostPreview/PostPreview";
@@ -24,4 +24,5 @@ export * from "./Messages/MessageBody/MessageBody";
 export * from "./Messages/forms/SendMessageForm";
 
 // HomePage
-export * from "./RecentPosts/RecentPosts";
+export * from "./Home/RecentPosts/RecentPosts";
+export * from "./Home/JoinedGroups/JoinedGroups";

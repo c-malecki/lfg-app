@@ -13,8 +13,8 @@ export const UserProfilePage = (props) => {
   const { user } = useParams();
   useEffect(() => {
     if (allUsers !== null && allUsers !== undefined) {
-      const users = allUsers.map((user) => user.account).flat();
-      const userForPage = users.find((account) => account.user_name === user);
+      const users = allUsers.map((user) => user.profile).flat();
+      const userForPage = users.find((profile) => profile.user_name === user);
       setUserProfile(userForPage);
     } else {
       setUserProfile(null);

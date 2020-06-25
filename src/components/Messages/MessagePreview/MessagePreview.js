@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { UserLink, MessageViewLink } from "../../components_index";
+import { GeneralLink, MessageViewLink } from "../../components_index";
 import { UsersDispatch, UsersState } from "../../../contexts/context_index";
 
 export const MessagePreview = (props) => {
@@ -19,7 +19,11 @@ export const MessagePreview = (props) => {
         }
       />
       <span className="head-text-content">{props.from ? "From" : "To"}</span>
-      <UserLink username={props.from ? props.from : props.to} />
+      <GeneralLink
+        url={`/users/${props.from ? props.from : props.to}`}
+        text={props.from ? props.from : props.to}
+        addClass="UserLink"
+      />
       <span className="head-text-content">at {props.date}</span>
     </div>
   );

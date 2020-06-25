@@ -1,5 +1,5 @@
 import React from "react";
-import { UserLink } from "../../components_index";
+import { GeneralLink } from "../../components_index";
 
 export const MessageBody = (props) => {
   const { message } = props;
@@ -8,10 +8,14 @@ export const MessageBody = (props) => {
       <span className="head-text-content">
         {message.from_username ? "From" : "To"}
       </span>
-      <UserLink
-        username={
+      <GeneralLink
+        url={`/users/${
+          message.from_username ? message.from_username : message.to_username
+        }`}
+        text={
           message.from_username ? message.from_username : message.to_username
         }
+        addClass="UserLink"
       />
       <span className="head-text-content">
         at {message.date_received ? message.date_received : message.date_sent}

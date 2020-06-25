@@ -29,8 +29,8 @@ const usersReducer = (state, action) => {
       const newAllUsers = [...allUsers];
       newAllUsers[idx] = {
         ...newAllUsers[idx],
-        account: {
-          ...newAllUsers[idx].account,
+        profile: {
+          ...newAllUsers[idx].profile,
           bio: action.bio,
         },
       };

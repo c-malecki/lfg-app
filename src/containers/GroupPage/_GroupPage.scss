@@ -1,22 +1,22 @@
-.HomePage-container {
+.GroupPage-container {
   @extend %page-container;
   display: grid;
   grid-template-rows: [row1] 50% [row2] 50%;
   grid-template-columns: [col1] 65% [col2] 35%;
 
-  .Home-row1-col1 {
+  .Group-row1-col1 {
     grid-row: 1;
     grid-column: 1;
   }
-  .Home-row1-col2 {
+  .Group-row1-col2 {
     grid-row: 1;
     grid-column: 2;
   }
-  .Home-row2-col1 {
+  .Group-row2-col1 {
     grid-row: 2;
     grid-column: 1;
   }
-  .Home-row2-col2 {
+  .Group-row2-col2 {
     grid-row: 2;
     grid-column: 2;
   }
@@ -24,7 +24,7 @@
 
 @media only screen and (min-width: 0) and (max-width: 900px),
   only screen and (min-device-width: 0) and (max-width: 900px) {
-  .HomePage-container {
+  .GroupPage-container {
     display: flex;
     flex-direction: column;
   }
