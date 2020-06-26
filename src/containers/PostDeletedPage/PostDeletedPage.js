@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { GeneralLink } from "../../components/components_index";
 
 export const PostDeletedPage = () => {
   return (
     <div className="PostDeletedPage-container">
       <div className="PostDeletedPage-content">
         <span>Post successfully deleted.</span>
-        <Link to="/">Return to Home</Link>
+        <GeneralLink url="/" text="Return to Home" />
       </div>
     </div>
   );

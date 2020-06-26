@@ -1,5 +1,6 @@
 .GroupPage-container {
   @extend %page-container;
+  height: 100%;
   display: grid;
   grid-template-rows: [row1] 50% [row2] 50%;
   grid-template-columns: [col1] 65% [col2] 35%;

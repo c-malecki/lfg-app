@@ -30,6 +30,7 @@ export const samplePosts = [
     date: "06/11/2020, 4:05 PM",
     title: "Best thing ever!",
     tags: ["dogs", "puppies"],
+    group: "DogStuff",
     content: "Blah blah blah, something about puppies, blah blah blah.",
     comments: [
       {
@@ -57,5 +58,16 @@ export const samplePosts = [
           "Have you ever tried black licorice on pizza? Get on my level.",
       },
     ],
+  },
+  {
+    post_id: "c798f2f5-5c1b-4093-a7g2-d0222d4dbb67",
+    author: "Meeps",
+    date: "06/11/2020, 1:19 PM",
+    title: "Diablo II calculator project",
+    tags: ["ARPG", "Diablo"],
+    group: "Diablo II LoD",
+    content:
+      "I've been working on a project over time to create a full scale Diablo II character calcultor. Along side the calculator, I have been creating the first Diablo II public resource API to help other fans and developers create their own content or applications with ease.",
+    comments: [],
   },
 ];

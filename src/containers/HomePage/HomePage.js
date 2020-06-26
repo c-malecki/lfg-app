@@ -10,6 +10,7 @@ export const HomePage = (props) => {
       <div className="Home-row1-col2">
         <JoinedGroups />
       </div>
+      <div className="Home-row2-col1"></div>
     </div>
   );
 };

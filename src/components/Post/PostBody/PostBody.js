@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { GeneralLink, PostTagLink } from "../../components_index";
+import { GeneralLink } from "../../components_index";
 import {
   UsersState,
   PostsDispatchContext,
@@ -41,7 +41,12 @@ export const PostBody = (props) => {
       />
       <span className="head-text-content">at {content.date}</span>
       {content.tags.map((tag) => (
-        <PostTagLink tag={tag} text={tag} key={`${content.title}-${tag}`} />
+        <GeneralLink
+          url={`/posts/tags/${tag}`}
+          key={`${content.title}-${tag}`}
+          text={`#${tag}`}
+          addClass="PostTag-link "
+        />
       ))}
       <p>{content.content}</p>
     </div>

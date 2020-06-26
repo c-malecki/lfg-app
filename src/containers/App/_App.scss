@@ -4,10 +4,6 @@ body,
 #root > .App {
   height: 100%;
   background-color: rgb(15, 15, 15);
-
-  .App {
-    height: calc(100% - 64px);
-  }
 }
 
 @media only screen and (min-width: 0px) and (max-width: 480px),

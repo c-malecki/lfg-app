@@ -7,16 +7,16 @@
   font-weight: bold;
 }
 
-// .PostLink {
-//   font-size: 1.2rem;
-//  font-weight: bold;
-// }
+.PostLink {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
 
-// .MessageUserLink {
-//   display: inline-block;
-//   text-transform: uppercase;
-//   font-weight: bold;
-// }
+.MessageUserLink {
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: bold;
+}
 
 // .page-buttonlink {
 //   border-radius: 0.25rem;
@@ -27,14 +27,20 @@
 //   margin: 0.5rem;
 // }
 
-// .PostTag-link {
-//   text-decoration: none;
-//   font-size: 0.9rem;
-//   font-weight: bold;
-//   margin-right: 0.2rem;
-// }
+.PostTag-link {
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-right: 0.2rem;
+}
 
 .UserLink {
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 0.2rem;
+}
+
+.PostHeadLink {
   text-decoration: none;
   font-weight: bold;
   margin-right: 0.2rem;

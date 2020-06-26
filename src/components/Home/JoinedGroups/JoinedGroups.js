@@ -31,15 +31,6 @@ export const JoinedGroups = (props) => {
       ) : (
         <div>loading</div>
       )}
-      {/* {isLoggedIn ? (
-        <div>
-          <ButtonLink
-            url="/newpost"
-            text="new post"
-            addClass="page-buttonlink"
-          />
-        </div>
-      ) : null} */}
     </div>
   );
 };

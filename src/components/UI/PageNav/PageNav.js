@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { GeneralLink } from "../../components_index";
 
 export const PageNav = (props) => {
   return (
     <div className="PageNav-container">
-      <Link to="/">home</Link>
+      <GeneralLink url="/" text="home" />
     </div>
   );
 };

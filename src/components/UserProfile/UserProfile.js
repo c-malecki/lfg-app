@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { EditBioForm } from "./forms/EditBioForm";
-import { GeneralButton } from "../components_index";
+import { GeneralButton, GeneralLink } from "../components_index";
 import { UsersState } from "../../contexts/context_index";
 
 export const UserProfile = (props) => {
@@ -18,6 +18,7 @@ export const UserProfile = (props) => {
     date_joined,
     bio,
   } = props.userProfile;
+  const { groups } = props;
   const toggleEditBio = () => {
     setEditBio({
       editMode: !editBio.editMode,
@@ -63,6 +64,20 @@ export const UserProfile = (props) => {
             />
           </div>
         ) : null}
+
+        <div className="UserProfile-groups-container">
+          <h3>Groups:</h3>
+          {groups.map((group) => {
+            return (
+              <GeneralLink
+                url={`/groups/${group}`}
+                text={group}
+                addClass="PostHeadLink"
+                key={group}
+              />
+            );
+          })}
+        </div>
       </div>
     </>
   );

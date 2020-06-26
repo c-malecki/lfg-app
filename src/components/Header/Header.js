@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { LogInOut, GeneralLink } from "../components_index";
 import { UsersState } from "../../contexts/context_index";
 
@@ -24,9 +23,10 @@ export const Header = (props) => {
               text={currentUser.account.user_name}
               addClass="UserLink"
             />
-            <Link to="/messages" style={{ textDecoration: "none" }}>
-              messages ({messageCount})
-            </Link>
+            <GeneralLink
+              url={`/messages`}
+              text={`messages (${messageCount})`}
+            />
           </>
         ) : null}
         <LogInOut />

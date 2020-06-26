@@ -1,5 +1,5 @@
 import React from "react";
-import { GeneralLink, PostLink, PostTagLink } from "../components_index";
+import { GeneralLink } from "../components_index";
 
 export const PostPreview = (props) => {
   const { post } = props;
@@ -10,17 +10,36 @@ export const PostPreview = (props) => {
         <GeneralLink
           url={`/users/${post.author}`}
           text={post.author}
-          addClass="UserLink"
+          addClass="PostHeadLink"
         />
         <span className="head-text-content">at {post.date}</span>
+        {post.group ? (
+          <>
+            <span className="head-text-content">in</span>
+            <GeneralLink
+              url={`/groups/${post.group}`}
+              text={post.group}
+              addClass="PostHeadLink"
+            />
+          </>
+        ) : null}
       </div>
       <div className="PostPreview-content">
         <span className="PostPreview-tags">
           {post.tags.map((tag) => (
-            <PostTagLink tag={tag} text={tag} key={`${post.title}-${tag}`} />
+            <GeneralLink
+              url={`/posts/tags/${tag}`}
+              key={`${post.title}-${tag}`}
+              text={`#${tag}`}
+              addClass="PostTag-link "
+            />
           ))}
         </span>
-        <PostLink title={post.title} id={post.post_id} />
+        <GeneralLink
+          url={`/posts/${post.post_id}`}
+          text={post.title}
+          addClass="PostLink"
+        />
       </div>
     </div>
   );
