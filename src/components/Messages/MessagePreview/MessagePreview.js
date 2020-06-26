@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { GeneralLink, MessageViewLink } from "../../components_index";
-import { UsersDispatch, UsersState } from "../../../contexts/context_index";
+import { MessagesDispatch, UsersState } from "../../../contexts/context_index";
 
 export const MessagePreview = (props) => {
-  const dispatch = useContext(UsersDispatch);
+  const dispatch = useContext(MessagesDispatch);
   const { currentUser } = useContext(UsersState);
   return (
     <div className="MessagePreview-container">
@@ -13,7 +13,7 @@ export const MessagePreview = (props) => {
         method={() =>
           dispatch({
             type: "READ_MESSAGE",
-            user: currentUser.account.user_name,
+            user: currentUser.user_name,
             message_id: props.id,
           })
         }

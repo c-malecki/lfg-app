@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useHistory } from "react-router-dom";
 import { GeneralButton } from "../../components_index";
-import { UsersDispatch, UsersState } from "../../../contexts/context_index";
+import { MessagesDispatch, UsersState } from "../../../contexts/context_index";
 import { reformatDate } from "../../../assets/util/reformatDate";
 
 export const SendMessageForm = (props) => {
@@ -11,7 +11,7 @@ export const SendMessageForm = (props) => {
     message: "",
   });
 
-  const dispatch = useContext(UsersDispatch);
+  const dispatch = useContext(MessagesDispatch);
   const { currentUser } = useContext(UsersState);
   const history = useHistory();
 
@@ -21,7 +21,7 @@ export const SendMessageForm = (props) => {
     const messageId = uuidv4();
     dispatch({
       type: "SEND_MESSAGE",
-      from: currentUser.account.user_name,
+      from: currentUser.user_name,
       sent_message: {
         to_username: props.toUser,
         date_sent: date,
@@ -35,7 +35,7 @@ export const SendMessageForm = (props) => {
       to: props.toUser,
       received_message: {
         read: false,
-        from_username: currentUser.account.user_name,
+        from_username: currentUser.user_name,
         date_received: date,
         subject: formState.subject,
         content: formState.message,
@@ -48,6 +48,9 @@ export const SendMessageForm = (props) => {
   return (
     <div className="SendMessageForm-container">
       <form onSubmit={(e) => handleSubmit(e)}>
+        <div className="SendMessageForm-user-container">
+          <span>To: {props.toUser} (turn into input with user search?)</span>
+        </div>
         <div className="SendMessageForm-subject-container">
           <input
             type="text"

@@ -5,6 +5,7 @@ import {
   PostsContextProvider,
   UsersContextProvider,
   GroupsContextProvider,
+  MessagesContextProvider,
 } from "../../contexts/context_index";
 
 function App() {
@@ -12,10 +13,12 @@ function App() {
     <div className="App">
       <UsersContextProvider>
         <PostsContextProvider>
-          <GroupsContextProvider>
-            <Header />
-            <PageContent />
-          </GroupsContextProvider>
+          <MessagesContextProvider>
+            <GroupsContextProvider>
+              <Header />
+              <PageContent />
+            </GroupsContextProvider>
+          </MessagesContextProvider>
         </PostsContextProvider>
       </UsersContextProvider>
     </div>

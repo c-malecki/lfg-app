@@ -2,7 +2,6 @@ import moose from "../../assets/images/moose.jpg";
 import nopic from "../../assets/images/noprofilepic.png";
 import meeps from "../../assets/images/Meeps.png";
 import igor from "../../assets/images/igor.jpg";
-import { reformatDate } from "../../assets/util/reformatDate";
 import { v4 as uuidv4 } from "uuid";
 
 export const users = [
@@ -26,19 +25,6 @@ export const users = [
       last_name: "Moose",
       bio: "I am a demo user. You can edit my profile.",
     },
-    messages: {
-      inbox: [
-        {
-          read: false,
-          date_received: reformatDate(new Date()),
-          from_username: "Meeps",
-          subject: "Welcome to my demo app.",
-          content: "Welcome!",
-          message_id: "fdf3c954-0746-488d-a1ab-18d711b3c6df",
-        },
-      ],
-      sent: [],
-    },
   },
   {
     user_id: uuidv4(),
@@ -59,18 +45,6 @@ export const users = [
       first_name: "Chris",
       last_name: "Malecki",
       bio: "I am the creator of LFG.",
-    },
-    messages: {
-      inbox: [],
-      sent: [
-        {
-          date_sent: reformatDate(new Date()),
-          to_username: "TestUser",
-          subject: "Welcome to my demo app.",
-          content: "Test",
-          message_id: "b06b8eb7-9d32-4f18-a94b-4e03bf4f647b",
-        },
-      ],
     },
   },
   {
@@ -93,10 +67,6 @@ export const users = [
       last_name: "BeNice",
       bio: "Random dumby user.",
     },
-    messages: {
-      inbox: [],
-      sent: [],
-    },
   },
   {
     user_id: uuidv4(),
@@ -117,10 +87,6 @@ export const users = [
       first_name: "Emily",
       last_name: "Elizabeth",
       bio: "Random dumby user.",
-    },
-    messages: {
-      inbox: [],
-      sent: [],
     },
   },
   {
@@ -143,10 +109,6 @@ export const users = [
       last_name: "Igor",
       bio: "Random dumby user.",
     },
-    messages: {
-      inbox: [],
-      sent: [],
-    },
   },
   {
     user_id: uuidv4(),
@@ -167,10 +129,6 @@ export const users = [
       first_name: "Ally",
       last_name: "Yankovic",
       bio: "Random dumby user.",
-    },
-    messages: {
-      inbox: [],
-      sent: [],
     },
   },
 ];

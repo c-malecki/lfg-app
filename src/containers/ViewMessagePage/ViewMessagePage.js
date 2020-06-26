@@ -1,29 +1,30 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { MessageBody } from "../../components/components_index";
-import { UsersState } from "../../contexts/context_index";
+import { UsersState, MessagesState } from "../../contexts/context_index";
 
 export const ViewMessagePage = (props) => {
   const [message, setMessage] = useState(null);
   const { id } = useParams();
   const { currentUser } = useContext(UsersState);
+  const { userMessages } = useContext(MessagesState);
   useEffect(() => {
     let messageToFind = {};
-    if (currentUser !== null) {
-      messageToFind = currentUser.messages.inbox.find(
-        (message) => message.message_id === id
-      );
+    let user = {};
+    if (currentUser && userMessages) {
+      user = userMessages.find((u) => u.user_name === currentUser.user_name);
+      messageToFind = user.inbox.find((message) => message.message_id === id);
     }
 
     if (messageToFind !== undefined && messageToFind !== null) {
       setMessage(messageToFind);
     } else {
-      messageToFind = currentUser.messages.sent.find((message) => {
+      messageToFind = user.sent.find((message) => {
         return message.message_id === id;
       });
       setMessage(messageToFind);
     }
-  }, [id, currentUser]);
+  }, [id, currentUser, userMessages]);
 
   return (
     <div className="ViewMessagePage-container">

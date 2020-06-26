@@ -1,18 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
 import { LogInOut, GeneralLink } from "../components_index";
-import { UsersState } from "../../contexts/context_index";
+import { UsersState, MessagesState } from "../../contexts/context_index";
 
 export const Header = (props) => {
   const [messageCount, setMessageCount] = useState(null);
   const { currentUser, isLoggedIn } = useContext(UsersState);
+  const { userMessages } = useContext(MessagesState);
   useEffect(() => {
-    if (currentUser) {
-      const unreadMessages = currentUser.messages.inbox.filter(
+    if (currentUser && userMessages) {
+      const user = userMessages.find(
+        (u) => u.user_name === currentUser.user_name
+      );
+      const unreadMessages = user.inbox.filter(
         (message) => message.read === false
       ).length;
       setMessageCount(unreadMessages);
     }
-  }, [currentUser]);
+  }, [currentUser, userMessages]);
   return (
     <div className="Header-container">
       <div className="Header-actions">

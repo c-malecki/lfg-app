@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { UsersState } from "../../contexts/context_index";
+import React, { useContext, useState, useEffect } from "react";
+import { UsersState, MessagesState } from "../../contexts/context_index";
 import {
   Inbox,
   SentMessages,
@@ -8,9 +8,21 @@ import {
 
 export const MessagesPage = (props) => {
   const [isInbox, setIsInbox] = useState(true);
+  const [curMessages, setCurMessages] = useState(null);
   const { currentUser } = useContext(UsersState);
-  const inbox = currentUser ? currentUser.messages.inbox : null;
-  const sent = currentUser ? currentUser.messages.sent : null;
+  const { userMessages } = useContext(MessagesState);
+  useEffect(() => {
+    if (currentUser && userMessages) {
+      const user = userMessages.find(
+        (user) => user.user_name === currentUser.user_name
+      );
+      const { inbox, sent } = user;
+      setCurMessages({
+        inbox,
+        sent,
+      });
+    }
+  }, [currentUser, userMessages]);
   const displayInbox = () => {
     setIsInbox(true);
   };
@@ -32,12 +44,12 @@ export const MessagesPage = (props) => {
             addClass="general-theme-button"
           />
         </div>
-        {currentUser && inbox && sent ? (
+        {currentUser && curMessages ? (
           <>
             {isInbox ? (
-              <Inbox messages={inbox} />
+              <Inbox messages={curMessages.inbox} />
             ) : (
-              <SentMessages messages={sent} />
+              <SentMessages messages={curMessages.sent} />
             )}
           </>
         ) : null}
