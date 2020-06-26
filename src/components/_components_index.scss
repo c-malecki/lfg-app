@@ -5,11 +5,14 @@
 @import "./LogInForm/LoginForm";
 @import "./UserProfile/UserProfile";
 @import "./UserProfile/forms/EditBioForm";
+
 @import "./Messages/Inbox/Inbox";
 @import "./Messages/MessageBody/MessageBody";
 @import "./Messages/SentMessages/SentMessages";
 @import "./Messages/MessagePreview/MessagePreview";
 @import "./Messages/forms/SendMessageForm";
+@import "./Messages/MessageReplies/MessageReplies";
+
 @import "./Home/JoinedGroups/JoinedGroups";
 @import "./Home/RecentPosts/RecentPosts";
 

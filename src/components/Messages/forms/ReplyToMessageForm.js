@@ -35,14 +35,16 @@ export const ReplyToMessageForm = (props) => {
     setFormState((prevState) => ({ ...prevState, isSubmitting: true }));
     submitDebounce();
     const data = {
-      user_name: currentUser.account.user_name,
-      date: date,
+      user_name: currentUser.user_name,
+      date_sent: date,
       content: formState.message,
       reply_id: uuidv4(),
     };
     dispatch({
       type: "REPLY_TO_MESSAGE",
       message_id: props.message_id,
+      to: props.to,
+      from: props.from,
       reply: data,
     });
     resetForm();
@@ -77,7 +79,7 @@ export const ReplyToMessageForm = (props) => {
             <GeneralButton
               type="submit"
               addClass="general-theme-button"
-              text="comment"
+              text="send"
               disabled={formState.isSubmitting}
             />
 

@@ -1,6 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { MessageBody } from "../../components/components_index";
+import {
+  MessageBody,
+  ReplyToMessageForm,
+  MessageReplies,
+} from "../../components/components_index";
 import { UsersState, MessagesState } from "../../contexts/context_index";
 
 export const ViewMessagePage = (props) => {
@@ -23,7 +27,21 @@ export const ViewMessagePage = (props) => {
   return (
     <div className="ViewMessagePage-container">
       <div className="ViewMessagePage-content">
-        {message ? <MessageBody message={message} /> : <div>...loading</div>}
+        {message ? (
+          <>
+            <MessageBody message={message} />{" "}
+            {message.replies.map((r) => {
+              return <MessageReplies reply={r} />;
+            })}
+            <ReplyToMessageForm
+              message_id={message.message_id}
+              to={message.to_username}
+              from={message.from_username}
+            />{" "}
+          </>
+        ) : (
+          <div>...loading</div>
+        )}
       </div>
     </div>
   );

@@ -19,6 +19,8 @@ export * from "./Messages/Inbox/Inbox";
 export * from "./Messages/SentMessages/SentMessages";
 export * from "./Messages/MessageBody/MessageBody";
 export * from "./Messages/forms/SendMessageForm";
+export * from "./Messages/forms/ReplyToMessageForm";
+export * from "./Messages/MessageReplies/MessageReplies";
 
 export * from "./Group/GroupInfo/GroupInfo";
 export * from "./Group/GroupMembers/GroupMembers";

@@ -74,6 +74,45 @@ const messagesReducer = (state, action) => {
       };
       return { userMessages: newUserMessages };
     }
+    case "REPLY_TO_MESSAGE": {
+      const { userMessages } = state;
+      const fromIdx = userMessages.findIndex(
+        (user) => user.user_name === action.from
+      );
+      const toIdx = userMessages.findIndex(
+        (user) => user.user_name === action.to
+      );
+      const newUserMessages = [...userMessages];
+      let replyFrom = newUserMessages[fromIdx].messages.find(
+        (message) => message.message_id === action.message_id
+      );
+      let replyTo = newUserMessages[toIdx].messages.find(
+        (message) => message.message_id === action.message_id
+      );
+      replyFrom = {
+        ...replyFrom,
+        replies: [...replyFrom.replies, action.reply],
+      };
+      replyTo = {
+        ...replyTo,
+        replies: [...replyTo.replies, action.reply],
+      };
+      const prevFrom = newUserMessages[fromIdx].messages.filter(
+        (message) => message.message_id !== action.message_id
+      );
+      const prevTo = newUserMessages[toIdx].messages.filter(
+        (message) => message.message_id !== action.message_id
+      );
+      newUserMessages[fromIdx] = {
+        ...newUserMessages[fromIdx],
+        messages: [...prevFrom, replyFrom],
+      };
+      newUserMessages[toIdx] = {
+        ...newUserMessages[toIdx],
+        messages: [...prevTo, replyTo],
+      };
+      return { userMessages: newUserMessages };
+    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
