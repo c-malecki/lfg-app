@@ -1,2 +1,4 @@
 .GroupPosts-container {
+  @extend %ui-content-container;
+  margin-top: 1rem;
 }

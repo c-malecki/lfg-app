@@ -1,8 +1,8 @@
 .GroupPreview-container {
+  @extend %ui-content-container;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 0.5rem;
 
   img {
     height: 6rem;

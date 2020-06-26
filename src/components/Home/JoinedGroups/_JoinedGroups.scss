@@ -1,7 +1,7 @@
 .JoinedGroups-container {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  @extend %ui-content-container;
 
   h2 {
     text-align: center;

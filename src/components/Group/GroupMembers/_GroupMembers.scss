@@ -1,4 +1,5 @@
 .GroupMembers-container {
+  @extend %ui-content-container;
   .GroupMembers-list {
     .GroupMember-item {
     }

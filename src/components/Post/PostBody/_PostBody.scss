@@ -1,4 +1,5 @@
 .PostBody-container {
+  @extend %ui-content-container;
   .PostBody-head {
     display: flex;
     flex-direction: row;

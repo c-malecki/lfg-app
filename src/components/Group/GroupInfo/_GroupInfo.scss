@@ -1,6 +1,7 @@
 .GroupInfo-container {
   display: flex;
   flex-direction: column;
+  @extend %ui-content-container;
   img {
     height: 15rem;
     width: 15rem;

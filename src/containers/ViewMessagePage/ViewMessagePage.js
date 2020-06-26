@@ -31,7 +31,7 @@ export const ViewMessagePage = (props) => {
           <>
             <MessageBody message={message} />{" "}
             {message.replies.map((r) => {
-              return <MessageReplies reply={r} />;
+              return <MessageReplies reply={r} key={r.reply_id} />;
             })}
             <ReplyToMessageForm
               message_id={message.message_id}

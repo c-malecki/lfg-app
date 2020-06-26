@@ -1,32 +1,88 @@
 .GroupPage-container {
   @extend %page-container;
-  height: 100%;
-  display: grid;
-  grid-template-rows: [row1] 50% [row2] 50%;
-  grid-template-columns: [col1] 65% [col2] 35%;
+  display: flex;
+  flex-direction: column;
 
-  .Group-row1-col1 {
-    grid-row: 1;
-    grid-column: 1;
-  }
-  .Group-row1-col2 {
-    grid-row: 1;
-    grid-column: 2;
-  }
-  .Group-row2-col1 {
-    grid-row: 2;
-    grid-column: 1;
-  }
-  .Group-row2-col2 {
-    grid-row: 2;
-    grid-column: 2;
-  }
-}
-
-@media only screen and (min-width: 0) and (max-width: 900px),
-  only screen and (min-device-width: 0) and (max-width: 900px) {
-  .GroupPage-container {
+  .GroupPage-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+
+    .GroupPage-content-col1 {
+      width: 60%;
+    }
+    .GroupPage-content-col2 {
+      width: 40%;
+    }
   }
 }
+
+@media only screen and (max-width: 1100px),
+  only screen and (max-width: 1100px) {
+  .GroupPage-container {
+    .GroupPage-content {
+      display: flex;
+      flex-direction: column;
+      .GroupPage-content-col1 {
+        width: 70%;
+        margin: auto;
+      }
+
+      .GroupPage-content-col2 {
+        width: 70%;
+        margin: auto;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 0) and (max-width: 768px),
+  only screen and (min-device-width: 0) and (max-width: 768px) {
+  .GroupPage-container {
+    .GroupPage-content {
+      display: flex;
+      flex-direction: column;
+      .GroupPage-content-col1 {
+        width: 100%;
+        margin: auto;
+      }
+
+      .GroupPage-content-col2 {
+        width: 100%;
+        margin: auto;
+      }
+    }
+  }
+}
+
+// .GroupPage-container {
+//   @extend %page-container;
+//   height: 100%;
+//   display: grid;
+//   grid-template-rows: [row1] 50% [row2] 50%;
+//   grid-template-columns: [col1] 65% [col2] 35%;
+
+//   .Group-row1-col1 {
+//     grid-row: 1;
+//     grid-column: 1;
+//   }
+//   .Group-row1-col2 {
+//     grid-row: 1;
+//     grid-column: 2;
+//   }
+//   .Group-row2-col1 {
+//     grid-row: 2;
+//     grid-column: 1;
+//   }
+//   .Group-row2-col2 {
+//     grid-row: 2;
+//     grid-column: 2;
+//   }
+// }
+
+// @media only screen and (min-width: 0) and (max-width: 900px),
+//   only screen and (min-device-width: 0) and (max-width: 900px) {
+//   .GroupPage-container {
+//     display: flex;
+//     flex-direction: column;
+//   }
+// }
