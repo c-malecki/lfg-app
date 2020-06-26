@@ -1,6 +1,6 @@
 .PostsByTagPage-container {
   @extend %page-container;
-  .PostByTag-container {
+  .PostsByTagPage-content {
     @extend %page-content-container;
   }
 }

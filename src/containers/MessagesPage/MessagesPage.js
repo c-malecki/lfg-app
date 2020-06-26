@@ -19,7 +19,7 @@ export const MessagesPage = (props) => {
   };
   return (
     <div className="MessagesPage-container">
-      <div className="Messages-container">
+      <div className="MessagesPage-content">
         <div className="Messages-action-bar">
           <GeneralButton
             method={displayInbox}

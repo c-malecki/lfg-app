@@ -27,7 +27,7 @@ export const ViewMessagePage = (props) => {
 
   return (
     <div className="ViewMessagePage-container">
-      <div className="ViewMessage-container">
+      <div className="ViewMessagePage-content">
         {message ? <MessageBody message={message} /> : <div>...loading</div>}
       </div>
     </div>

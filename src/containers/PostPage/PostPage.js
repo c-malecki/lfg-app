@@ -21,7 +21,7 @@ export const PostPage = (props) => {
 
   return (
     <div className="PostPage-container">
-      <div className="Post-container">
+      <div className="PostPage-content">
         {postContent !== null ? (
           <>
             <PostBody content={postContent} />

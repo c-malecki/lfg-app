@@ -12,6 +12,7 @@ import {
   NewMessagePage,
   ViewMessagePage,
   GroupPage,
+  GroupsListPage,
 } from "../containers_index";
 import { PageNav } from "../../components/components_index";
 
@@ -30,6 +31,7 @@ export const PageContent = (props) => {
         <Route exact path="/messages" component={MessagesPage} />
         <Route exact path="/messages/:id" component={ViewMessagePage} />
         <Route exact path="/messages/new/to-:user" component={NewMessagePage} />
+        <Route exact path="/groups" component={GroupsListPage} />
         <Route exact path="/groups/:group" component={GroupPage} />
       </Switch>
     </div>

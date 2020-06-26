@@ -10,3 +10,4 @@ export * from "./MessagesPage/MessagesPage";
 export * from "./NewMessagePage/NewMessagePage";
 export * from "./ViewMessagePage/ViewMessagePage";
 export * from "./GroupPage/GroupPage";
+export * from "./GroupsListPage/GroupsListPage";

@@ -28,20 +28,23 @@
 // }
 
 .PostTag-link {
-  text-decoration: none;
   font-size: 0.9rem;
   font-weight: bold;
   margin-right: 0.2rem;
 }
 
 .UserLink {
-  text-decoration: none;
   font-weight: bold;
   margin-right: 0.2rem;
 }
 
 .PostHeadLink {
-  text-decoration: none;
   font-weight: bold;
   margin-right: 0.2rem;
+}
+
+.PageNavLink {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 2rem;
 }

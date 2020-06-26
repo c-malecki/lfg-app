@@ -8,7 +8,7 @@ export const PostsByTagPage = () => {
   const { tag } = useParams();
   return (
     <div className="PostsByTagPage-container">
-      <div className="PostByTag-container">
+      <div className="PostsByTagPage-content">
         <h2>{tag}</h2>
         {posts && tag ? (
           posts.map((post) => {

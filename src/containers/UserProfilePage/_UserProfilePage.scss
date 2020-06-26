@@ -1,6 +1,6 @@
-.UserProfile-container {
+.UserProfilePage-container {
   @extend %page-container;
-  .UserProfile-content {
+  .UserProfilePage-content {
     @extend %page-content-container;
   }
 }

@@ -17,9 +17,9 @@ export const UserProfilePage = (props) => {
     }
   }, [allUsers, user]);
   return (
-    <div className="UserProfile-container">
+    <div className="UserProfilePage-container">
       {userProfile !== null ? (
-        <div className="UserProfile-content">
+        <div className="UserProfilePage-content">
           <h2>{userProfile.user_name}</h2>
           {currentUser &&
           currentUser.account.user_name !== userProfile.user_name ? (

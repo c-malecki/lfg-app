@@ -1,6 +1,6 @@
 .ViewMessagePage-container {
   @extend %page-container;
-  .ViewMessage-container {
+  .ViewMessagePage-content {
     @extend %page-content-container;
   }
 }
