@@ -7,8 +7,9 @@ export const Inbox = (props) => {
       {props.messages.map((message) => {
         return (
           <MessagePreview
+            to={message.to_username}
             from={message.from_username}
-            date={message.date_received}
+            date={message.date_sent}
             subject={message.subject}
             key={message.message_id}
             id={message.message_id}

@@ -1,9 +1,6 @@
 import React, { useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
-import {
-  PostsDispatchContext,
-  UsersState,
-} from "../../../contexts/context_index";
+import { MessagesDispatch, UsersState } from "../../../contexts/context_index";
 import { reformatDate } from "../../../assets/util/reformatDate";
 import { GeneralButton } from "../../components_index";
 
@@ -15,7 +12,7 @@ export const ReplyToMessageForm = (props) => {
   });
 
   const { currentUser } = useContext(UsersState);
-  const dispatch = useContext(PostsDispatchContext);
+  const dispatch = useContext(MessagesDispatch);
 
   const toggleForm = () => {
     const { openForm } = formState;
@@ -41,36 +38,42 @@ export const ReplyToMessageForm = (props) => {
       user_name: currentUser.account.user_name,
       date: date,
       content: formState.message,
-      comment_id: uuidv4(),
+      reply_id: uuidv4(),
     };
-    dispatch({ type: "ADD_COMMENT", post_id: props.post_id, comment: data });
+    dispatch({
+      type: "REPLY_TO_MESSAGE",
+      message_id: props.message_id,
+      reply: data,
+    });
     resetForm();
   };
 
   return (
-    <div className="CommentForm-container">
+    <div className="ReplyToMessage-container">
       <GeneralButton
         method={toggleForm}
-        text="comment"
+        text="reply"
         addClass={formState.openForm ? "hide" : "general-theme-button"}
       />
       <div
-        className={`CommentForm-container ${formState.openForm ? "" : "hide"}`}
+        className={`ReplyToMessage-container ${
+          formState.openForm ? "" : "hide"
+        }`}
       >
-        <form className="CommentForm-form" onSubmit={(e) => handleSubmit(e)}>
-          <div className="CommentForm-comment-container">
+        <form className="ReplyToMessage-form" onSubmit={(e) => handleSubmit(e)}>
+          <div className="ReplyToMessage-comment-container">
             <textarea
               onChange={(e) =>
                 setFormState({ ...formState, message: e.target.value })
               }
               name="message"
-              className="CommentForm-comment-input"
+              className="ReplyToMessage-comment-input"
               type="text"
-              placeholder="Leave a comment..."
+              placeholder="Send a reply..."
               value={formState.message}
             />
           </div>
-          <div className="CommentForm-submit-container">
+          <div className="ReplyToMessage-submit-container">
             <GeneralButton
               type="submit"
               addClass="general-theme-button"

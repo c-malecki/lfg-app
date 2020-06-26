@@ -11,8 +11,8 @@ export const Header = (props) => {
       const user = userMessages.find(
         (u) => u.user_name === currentUser.user_name
       );
-      const unreadMessages = user.inbox.filter(
-        (message) => message.read === false
+      const unreadMessages = user.messages.filter(
+        (message) => message.read === false && message.sender === false
       ).length;
       setMessageCount(unreadMessages);
     }

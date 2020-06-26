@@ -10,49 +10,67 @@ const initialState = {
 
 const messagesReducer = (state, action) => {
   switch (action.type) {
-    case "SEND_MESSAGE": {
+    case "SEND_RECEIVE_MESSAGE": {
       const { userMessages } = state;
-      const idx = userMessages.findIndex(
-        (user) => user.user_name === action.from
+      const fromIdx = userMessages.findIndex(
+        (user) => user.user_name === action.message.from_username
+      );
+      const toIdx = userMessages.findIndex(
+        (user) => user.user_name === action.message.to_username
       );
       const newUserMessages = [...userMessages];
-      newUserMessages[idx] = {
-        ...newUserMessages[idx],
-        sent: [...newUserMessages[idx].sent, action.sent_message],
+      newUserMessages[fromIdx] = {
+        ...newUserMessages[fromIdx],
+        messages: [
+          ...newUserMessages[fromIdx].messages,
+          { sender: true, ...action.message },
+        ],
       };
-      return { userMessages: newUserMessages };
-    }
-    case "RECEIVE_MESSAGE": {
-      const { userMessages } = state;
-      const idx = userMessages.findIndex(
-        (user) => user.user_name === action.to
-      );
-      const newUserMessages = [...userMessages];
-      newUserMessages[idx] = {
-        ...newUserMessages[idx],
-        inbox: [...newUserMessages[idx].inbox, action.received_message],
+      newUserMessages[toIdx] = {
+        ...newUserMessages[toIdx],
+        messages: [
+          ...newUserMessages[toIdx].messages,
+          { sender: false, ...action.message },
+        ],
       };
       return { userMessages: newUserMessages };
     }
     case "READ_MESSAGE": {
       const { userMessages } = state;
-      const idx = userMessages.findIndex(
-        (user) => user.user_name === action.user
+      const fromIdx = userMessages.findIndex(
+        (user) => user.user_name === action.from
+      );
+      const toIdx = userMessages.findIndex(
+        (user) => user.user_name === action.to
       );
       const newUserMessages = [...userMessages];
-      let readMessage = newUserMessages[idx].inbox.find(
+      let readFrom = newUserMessages[fromIdx].messages.find(
         (message) => message.message_id === action.message_id
       );
-      readMessage = {
-        ...readMessage,
+      let readTo = newUserMessages[toIdx].messages.find(
+        (message) => message.message_id === action.message_id
+      );
+      readFrom = {
+        ...readFrom,
         read: true,
       };
-      const previousMessages = newUserMessages[idx].inbox.filter(
+      readTo = {
+        ...readTo,
+        read: true,
+      };
+      const prevFrom = newUserMessages[fromIdx].messages.filter(
         (message) => message.message_id !== action.message_id
       );
-      newUserMessages[idx] = {
-        ...newUserMessages[idx],
-        inbox: [...previousMessages, readMessage],
+      const prevTo = newUserMessages[toIdx].messages.filter(
+        (message) => message.message_id !== action.message_id
+      );
+      newUserMessages[fromIdx] = {
+        ...newUserMessages[fromIdx],
+        messages: [...prevFrom, readFrom],
+      };
+      newUserMessages[toIdx] = {
+        ...newUserMessages[toIdx],
+        messages: [...prevTo, readTo],
       };
       return { userMessages: newUserMessages };
     }

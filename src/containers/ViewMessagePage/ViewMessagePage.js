@@ -13,15 +13,9 @@ export const ViewMessagePage = (props) => {
     let user = {};
     if (currentUser && userMessages) {
       user = userMessages.find((u) => u.user_name === currentUser.user_name);
-      messageToFind = user.inbox.find((message) => message.message_id === id);
-    }
-
-    if (messageToFind !== undefined && messageToFind !== null) {
-      setMessage(messageToFind);
-    } else {
-      messageToFind = user.sent.find((message) => {
-        return message.message_id === id;
-      });
+      messageToFind = user.messages.find(
+        (message) => message.message_id === id
+      );
       setMessage(messageToFind);
     }
   }, [id, currentUser, userMessages]);

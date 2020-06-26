@@ -10,13 +10,16 @@ export const MessagePreview = (props) => {
       <MessageViewLink
         id={props.id}
         subject={props.subject}
-        method={() =>
-          dispatch({
-            type: "READ_MESSAGE",
-            user: currentUser.user_name,
-            message_id: props.id,
-          })
-        }
+        method={() => {
+          if (currentUser.user_name === props.to) {
+            dispatch({
+              type: "READ_MESSAGE",
+              to: props.to,
+              from: props.from,
+              message_id: props.id,
+            });
+          }
+        }}
       />
       <span className="head-text-content">{props.from ? "From" : "To"}</span>
       <GeneralLink

@@ -16,9 +16,11 @@ export const MessagesPage = (props) => {
       const user = userMessages.find(
         (user) => user.user_name === currentUser.user_name
       );
-      const { inbox, sent } = user;
+      const { messages } = user;
+      const sent = messages.filter((m) => m.sender === true);
+      const received = messages.filter((m) => m.sender === false);
       setCurMessages({
-        inbox,
+        received,
         sent,
       });
     }
@@ -47,7 +49,7 @@ export const MessagesPage = (props) => {
         {currentUser && curMessages ? (
           <>
             {isInbox ? (
-              <Inbox messages={curMessages.inbox} />
+              <Inbox messages={curMessages.received} />
             ) : (
               <SentMessages messages={curMessages.sent} />
             )}

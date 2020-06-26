@@ -20,26 +20,16 @@ export const SendMessageForm = (props) => {
     const date = reformatDate(new Date());
     const messageId = uuidv4();
     dispatch({
-      type: "SEND_MESSAGE",
-      from: currentUser.user_name,
-      sent_message: {
+      type: "SEND_RECEIVE_MESSAGE",
+      message: {
+        read: false,
+        from_username: currentUser.user_name,
         to_username: props.toUser,
         date_sent: date,
         subject: formState.subject,
         content: formState.message,
         message_id: messageId,
-      },
-    });
-    dispatch({
-      type: "RECEIVE_MESSAGE",
-      to: props.toUser,
-      received_message: {
-        read: false,
-        from_username: currentUser.user_name,
-        date_received: date,
-        subject: formState.subject,
-        content: formState.message,
-        message_id: messageId,
+        replies: [],
       },
     });
     history.push(`/messages/${messageId}`);

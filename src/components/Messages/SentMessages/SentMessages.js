@@ -8,6 +8,7 @@ export const SentMessages = (props) => {
         return (
           <MessagePreview
             to={message.to_username}
+            from={message.from_username}
             date={message.date_sent}
             subject={message.subject}
             key={message.message_id}

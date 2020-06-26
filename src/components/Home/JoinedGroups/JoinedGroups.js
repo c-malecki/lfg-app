@@ -5,7 +5,7 @@ import { GeneralLink } from "../../components_index";
 export const JoinedGroups = (props) => {
   const [userGroups, setUserGroups] = useState(null);
   const { groups } = useContext(GroupsState);
-  const { currentUser } = useContext(UsersState);
+  const { currentUser, isLoggedIn } = useContext(UsersState);
   useEffect(() => {
     if (currentUser) {
       const joinedGroups = groups.filter((group) =>
@@ -17,7 +17,7 @@ export const JoinedGroups = (props) => {
   return (
     <div className="JoinedGroups-container">
       <h2>Your Groups</h2>
-      {userGroups ? (
+      {userGroups && isLoggedIn ? (
         userGroups.map((group) => {
           return (
             <GeneralLink
@@ -29,7 +29,7 @@ export const JoinedGroups = (props) => {
           );
         })
       ) : (
-        <div>loading</div>
+        <div>Login to view your groups or register to join groups.</div>
       )}
     </div>
   );
