@@ -71,3 +71,14 @@ export const samplePosts = [
     comments: [],
   },
 ];
+
+export const sampleTags = [
+  "ARPG",
+  "Diablo",
+  "food",
+  "weird",
+  "dogs",
+  "puppies",
+  "lfg",
+  "gamers",
+];

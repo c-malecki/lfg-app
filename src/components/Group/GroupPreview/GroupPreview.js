@@ -7,11 +7,7 @@ export const GroupPreview = (props) => {
     <div className="GroupPreview-container">
       <img src={img} alt={name} />
       <div className="GroupPreview-content">
-        <GeneralLink
-          url={`/groups/${name}`}
-          text={name}
-          addClass="GroupsLink"
-        />
+        <GeneralLink url={`/g/${name}`} text={name} addClass="GroupsLink" />
         <span>{description}</span>
       </div>
     </div>

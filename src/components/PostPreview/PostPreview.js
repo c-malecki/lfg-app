@@ -6,6 +6,15 @@ export const PostPreview = (props) => {
   return (
     <div className="PostPreview-container">
       <div className="PostPreview-head">
+        {post.group ? (
+          <>
+            <GeneralLink
+              url={`/g/${post.group}`}
+              text={`g/${post.group}`}
+              addClass="PostHeadLink"
+            />
+          </>
+        ) : null}
         <span className="head-text-content">By</span>
         <GeneralLink
           url={`/users/${post.author}`}
@@ -13,16 +22,6 @@ export const PostPreview = (props) => {
           addClass="PostHeadLink"
         />
         <span className="head-text-content">at {post.date}</span>
-        {post.group ? (
-          <>
-            <span className="head-text-content">in</span>
-            <GeneralLink
-              url={`/groups/${post.group}`}
-              text={post.group}
-              addClass="PostHeadLink"
-            />
-          </>
-        ) : null}
       </div>
       <div className="PostPreview-content">
         <span className="PostPreview-tags">
@@ -36,10 +35,16 @@ export const PostPreview = (props) => {
           ))}
         </span>
         <GeneralLink
-          url={`/posts/${post.post_id}`}
+          url={`/g/${post.group}/posts/${post.post_id}`}
           text={post.title}
           addClass="PostLink"
         />
+        <span className="PostPreview-comments">
+          <GeneralLink
+            url={`/g/${post.group}/posts/${post.post_id}`}
+            text={`${post.comments.length} comments`}
+          />
+        </span>
       </div>
     </div>
   );

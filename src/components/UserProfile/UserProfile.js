@@ -70,7 +70,7 @@ export const UserProfile = (props) => {
           {groups.map((group) => {
             return (
               <GeneralLink
-                url={`/groups/${group}`}
+                url={`/g/${group}`}
                 text={group}
                 addClass="PostHeadLink"
                 key={group}

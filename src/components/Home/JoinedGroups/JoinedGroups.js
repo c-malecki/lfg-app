@@ -21,7 +21,7 @@ export const JoinedGroups = (props) => {
         userGroups.map((group) => {
           return (
             <GeneralLink
-              url={`/groups/${group.group_name}`}
+              url={`/g/${group.group_name}`}
               text={group.group_name}
               addClass="GroupsLink"
               key={group.group_id}

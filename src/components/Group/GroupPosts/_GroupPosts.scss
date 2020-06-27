@@ -1,4 +1,12 @@
 .GroupPosts-container {
   @extend %ui-content-container;
   margin-top: 1rem;
+
+  .GroupPosts-head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
 }

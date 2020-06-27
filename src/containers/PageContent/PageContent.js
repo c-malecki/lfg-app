@@ -22,17 +22,17 @@ export const PageContent = (props) => {
       <PageNav />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/posts/:id" component={PostPage} />
+        <Route exact path="/g/:group/posts/:id" component={PostPage} />
         <Route exact path="/posts/tags/:tag" component={PostsByTagPage} />
         <Route path="/users/:user" component={UserProfilePage} />
-        <Route path="/newpost" component={NewPostPage} />
         <Route path="/post-deleted" component={PostDeletedPage} />
         <Route path="/login" component={LogInPage} />
         <Route exact path="/messages" component={MessagesPage} />
         <Route exact path="/messages/:id" component={ViewMessagePage} />
         <Route exact path="/messages/new/to-:user" component={NewMessagePage} />
-        <Route exact path="/groups" component={GroupsListPage} />
-        <Route exact path="/groups/:group" component={GroupPage} />
+        <Route exact path="/g" component={GroupsListPage} />
+        <Route exact path="/g/:group" component={GroupPage} />
+        <Route exact path="/g/:group/newpost/" component={NewPostPage} />
       </Switch>
     </div>
   );

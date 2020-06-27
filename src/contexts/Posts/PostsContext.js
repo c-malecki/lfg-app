@@ -1,11 +1,12 @@
 import React, { createContext, useReducer } from "react";
-import { samplePosts } from "../dumbydata/sample_posts";
+import { samplePosts, sampleTags } from "../dumbydata/sample_posts";
 
 export const PostsStateContext = createContext();
 export const PostsDispatchContext = createContext();
 
 const initialState = {
   posts: samplePosts,
+  tags: sampleTags,
 };
 
 const postsReducer = (state, action) => {
@@ -22,6 +23,7 @@ const postsReducer = (state, action) => {
         comments: [...comments, { ...action.comment }],
       };
       return {
+        ...state,
         posts: [...newPosts],
       };
     }
@@ -40,10 +42,11 @@ const postsReducer = (state, action) => {
         comments: [...newComments],
       };
       return {
+        ...state,
         posts: [...newPosts],
       };
     }
-    case "ADD_POST": {
+    case "CREATE_POST": {
       const { posts } = state;
       const newPost = action.post;
       return { posts: [...posts, newPost] };
@@ -55,6 +58,7 @@ const postsReducer = (state, action) => {
         (post) => post.post_id !== action.post_id
       );
       return {
+        ...state,
         posts: [...filteredPosts],
       };
     }

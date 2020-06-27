@@ -4,8 +4,10 @@ import { GeneralLink } from "../../components_index";
 export const PageNav = (props) => {
   return (
     <div className="PageNav-container">
-      <GeneralLink url="/" text="home" addClass="PageNavLink" />
-      <GeneralLink url="/groups" text="groups" addClass="PageNavLink" />
+      <span>
+        <GeneralLink url="/" text="home" addClass="PageNavLink" />
+        <GeneralLink url="/g" text="groups" addClass="PageNavLink" />
+      </span>
     </div>
   );
 };
