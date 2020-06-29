@@ -7,6 +7,7 @@ export const samplePosts = [
     date: "06/11/2020, 12:06 PM",
     title: "Welcome to LFG",
     tags: ["lfg", "gamers"],
+    group: "LFG",
     content:
       'Looking For Gamers, or otherwise LFG, is a play on the gaming lingo acronym LFG which stands for "Looking For Group." LFG is a social media app to help gamers of all kinds, from retro or niche genres to modern and popular franchises, find a play group.',
     comments: [
@@ -47,6 +48,7 @@ export const samplePosts = [
     date: "06/11/2020, 6:23 PM",
     title: "Is pineapple on pizza really that bad?",
     tags: ["food", "weird"],
+    group: "Oddballs",
     content:
       "Aren't we being a little hyperbolic these days about food preferences??",
     comments: [

@@ -20,9 +20,19 @@
 }
 
 %ui-content-container {
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   margin: 0.5rem;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid $ui-border;
   overflow: hidden;
+}
+
+@media only screen and (min-width: 0) and (max-width: 768px),
+  only screen and (min-device-width: 0) and (max-width: 768px) {
+  %page-container {
+    width: 100%;
+  }
+  %ui-content-container {
+    margin: 0.2rem 0.5rem;
+  }
 }

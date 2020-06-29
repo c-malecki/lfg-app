@@ -1,5 +1,6 @@
 .PostBody-container {
   @extend %ui-content-container;
+  padding: 0.5rem;
   .PostBody-head {
     display: flex;
     flex-direction: row;

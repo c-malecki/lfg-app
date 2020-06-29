@@ -5,7 +5,7 @@ export const GroupMembers = (props) => {
   const members = props.members;
   return (
     <div className="GroupMembers-container">
-      <h2>Members</h2>
+      <h3>Members</h3>
       <ul className="GroupMembers-list">
         {members.map((member) => {
           return (

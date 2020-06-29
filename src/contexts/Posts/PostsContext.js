@@ -47,9 +47,18 @@ const postsReducer = (state, action) => {
       };
     }
     case "CREATE_POST": {
-      const { posts } = state;
+      const { posts, tags } = state;
+      // new tags created by post need to be added to tags array in state
+      const newTags = [...tags];
+      debugger;
+      const filterExistingTags = newTags.filter(
+        (t) => !action.post.tags.includes(t)
+      );
       const newPost = action.post;
-      return { posts: [...posts, newPost] };
+      return {
+        posts: [...posts, newPost],
+        tags: [...filterExistingTags, ...action.post.tags],
+      };
     }
     case "DELETE_POST": {
       const { posts } = state;

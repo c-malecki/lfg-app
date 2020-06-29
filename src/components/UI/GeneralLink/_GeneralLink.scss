@@ -7,11 +7,6 @@
   font-weight: bold;
 }
 
-.PostLink {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
 .MessageUserLink {
   display: inline-block;
   text-transform: uppercase;
@@ -27,6 +22,20 @@
 //   margin: 0.5rem;
 // }
 
+.PostLink {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.PostPreviewText {
+  font-size: 0.9rem;
+}
+
+.PostHeadLink {
+  font-weight: bold;
+  margin-right: 0.2rem;
+}
+
 .PostTag-link {
   font-size: 0.9rem;
   font-weight: bold;
@@ -38,13 +47,23 @@
   margin-right: 0.2rem;
 }
 
-.PostHeadLink {
-  font-weight: bold;
-  margin-right: 0.2rem;
-}
-
 .PageNavLink {
   font-weight: bold;
   text-transform: uppercase;
   margin-right: 2rem;
+}
+
+@media only screen and (min-width: 0) and (max-width: 768px),
+  only screen and (min-device-width: 0) and (max-width: 768px) {
+  .GroupsLink {
+    font-size: 1rem;
+  }
+
+  .PostLink {
+    font-size: 1rem;
+  }
+
+  .PostHeadLink {
+    font-size: 0.9rem;
+  }
 }

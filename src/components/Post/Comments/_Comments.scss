@@ -1,3 +1,8 @@
-.Comment-content {
-  @extend %ui-content-container;
+.Comments-container {
+  h4 {
+    margin-left: 0.5rem;
+  }
+  .Comment-content {
+    @extend %ui-content-container;
+  }
 }

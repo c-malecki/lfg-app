@@ -5,6 +5,7 @@ export const MessageBody = (props) => {
   const { message } = props;
   return (
     <div className="MessageBody-container">
+      <h3>{message.subject}</h3>
       <span className="head-text-content">
         {message.sender === false ? "From" : "To"}
       </span>
@@ -25,7 +26,6 @@ export const MessageBody = (props) => {
             : "read"
           : ""}
       </span>
-      <h3>{message.subject}</h3>
       <p>{message.content}</p>
     </div>
   );

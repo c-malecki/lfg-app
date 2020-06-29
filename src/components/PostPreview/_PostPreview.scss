@@ -1,5 +1,6 @@
 .PostPreview-container {
   @extend %ui-content-container;
+  padding: 0.5rem;
   .PostPreview-head {
     display: flex;
     flex-direction: row;
@@ -34,4 +35,13 @@
 
 .PostPreview-container:nth-of-type(1) {
   border-top: 1px solid black;
+}
+
+@media only screen and (min-width: 0) and (max-width: 768px),
+  only screen and (min-device-width: 0) and (max-width: 768px) {
+  .PostPreview-container {
+    .PostPreview-head {
+      flex-wrap: wrap;
+    }
+  }
 }

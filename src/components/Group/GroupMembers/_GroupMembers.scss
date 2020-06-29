@@ -1,7 +1,17 @@
 .GroupMembers-container {
   @extend %ui-content-container;
+  h3 {
+    text-align: center;
+  }
   .GroupMembers-list {
+    list-style: none;
+    padding: 0 0.5rem;
     .GroupMember-item {
+      display: flex;
+      flex-direction: row;
+      span {
+        margin-left: auto;
+      }
     }
   }
 }

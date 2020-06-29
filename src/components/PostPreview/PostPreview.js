@@ -1,5 +1,6 @@
 import React from "react";
 import { GeneralLink } from "../components_index";
+import { utilPostPreviewText } from "../../assets/util/textHelpers";
 
 export const PostPreview = (props) => {
   const { post } = props;
@@ -38,6 +39,15 @@ export const PostPreview = (props) => {
           url={`/g/${post.group}/posts/${post.post_id}`}
           text={post.title}
           addClass="PostLink"
+        />
+        <GeneralLink
+          url={`/g/${post.group}/posts/${post.post_id}`}
+          text={
+            post.content.length > 60
+              ? `${utilPostPreviewText(post.content)}...`
+              : post.content
+          }
+          addClass="PostPreviewText"
         />
         <span className="PostPreview-comments">
           <GeneralLink

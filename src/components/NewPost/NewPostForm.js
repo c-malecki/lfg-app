@@ -15,7 +15,7 @@ export const NewPostForm = (props) => {
     tag_search: "",
     filtered_tags: tags,
     all_tags: tags,
-    error: null,
+    error: { error: null, message: "" },
   });
 
   const { currentUser } = useContext(UsersState);
@@ -25,19 +25,19 @@ export const NewPostForm = (props) => {
 
   const addTag = (tag) => {
     const { tags } = formState;
-    // debugger;
-    // const check = tags.forEach((t) => {
-    //   if (t === tag) {
-    //     return true
-    //   } else {
-    //     return false
-    //   }
-    // }
 
-    setFormState((prevState) => ({
-      ...prevState,
-      tags: [...formState.tags, tag],
-    }));
+    if (tags.find((t) => t === tag)) {
+      setFormState((prevState) => ({
+        ...prevState,
+        error: { error: true, message: `Tags already include ${tag}` },
+      }));
+    } else {
+      setFormState((prevState) => ({
+        ...prevState,
+        tags: [...formState.tags, tag],
+        error: { error: null, message: "" },
+      }));
+    }
   };
 
   const removeTag = (rTag) => {
@@ -92,6 +92,7 @@ export const NewPostForm = (props) => {
             name="title"
             placeholder="Title the post..."
             value={formState.title}
+            required
           />
         </div>
         <div className="PostForm-tags-container">
@@ -113,9 +114,11 @@ export const NewPostForm = (props) => {
             value={formState.tag_search}
           />
           <ul className="PostForm-filtered-tags">
-            <li onClick={() => addTag(formState.tag_search)}>
-              {formState.tag_search}
-            </li>
+            {formState.tag_search !== "" ? (
+              <li onClick={() => addTag(formState.tag_search)}>
+                {`add #${formState.tag_search}`}
+              </li>
+            ) : null}
             {formState.filtered_tags.map((tag) => {
               return <li key={tag} onClick={() => addTag(tag)}>{`#${tag}`}</li>;
             })}
@@ -132,6 +135,9 @@ export const NewPostForm = (props) => {
               );
             })}
           </ul>
+          {formState.error.error ? (
+            <span>{formState.error.message}</span>
+          ) : null}
         </div>
         <div className="PostForm-content-container">
           <textarea
@@ -143,6 +149,7 @@ export const NewPostForm = (props) => {
             type="text"
             placeholder="Write a post..."
             value={formState.message}
+            required
           />
         </div>
         <div className="PostForm-submit-container">

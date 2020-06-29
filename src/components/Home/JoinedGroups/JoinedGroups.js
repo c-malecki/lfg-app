@@ -16,7 +16,7 @@ export const JoinedGroups = (props) => {
   }, [currentUser, groups]);
   return (
     <div className="JoinedGroups-container">
-      <h2>Your Groups</h2>
+      <h3>Your Groups</h3>
       {userGroups && isLoggedIn ? (
         userGroups.map((group) => {
           return (

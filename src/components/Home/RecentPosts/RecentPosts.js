@@ -6,7 +6,7 @@ export const RecentPosts = (props) => {
   const { posts } = useContext(PostsStateContext);
   return (
     <div className="RecentPosts-container">
-      <h2>Recent Posts</h2>
+      <h3>Recent Posts</h3>
       {posts ? (
         posts.map((post) => {
           return <PostPreview post={post} key={`post-${post.post_id}`} />;

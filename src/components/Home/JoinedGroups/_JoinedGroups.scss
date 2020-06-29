@@ -2,8 +2,12 @@
   display: flex;
   flex-direction: column;
   @extend %ui-content-container;
+  padding-bottom: 0.5rem;
 
-  h2 {
+  h3 {
     text-align: center;
+  }
+  a {
+    margin-left: 0.5rem;
   }
 }
