@@ -2,6 +2,10 @@ import React from "react";
 import { GeneralLink } from "../../components_index";
 
 export const PageNav = (props) => {
+  // const [ isFixed, setIsFixed] = useState({
+  //   yOffSet: window.pageYOffSet,
+
+  // })
   return (
     <div className="PageNav-container">
       <span>

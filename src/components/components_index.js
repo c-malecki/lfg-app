@@ -1,5 +1,6 @@
 // UI
 export * from "./Header/Header";
+export * from "./Footer/Footer";
 export * from "./UI/ToggleSwitch/ToggleSwitch";
 export * from "./UI/LogInOut/LogInOut";
 export * from "./UI/GeneralButton/GeneralButton";

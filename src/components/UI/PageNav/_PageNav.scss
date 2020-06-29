@@ -1,7 +1,9 @@
 .PageNav-container {
+  position: fixed;
   display: flex;
   flex-direction: row;
   height: 2rem;
+  width: calc(54% + (54% / 6));
   padding: 0.5rem 0;
   align-items: center;
   margin: auto;
@@ -9,5 +11,13 @@
 
   span {
     margin: auto;
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 1100px),
+  only screen and (min-device-width: 0px) and (max-width: 1100px) {
+  .PageNav-container {
+    width: 100%;
+    min-width: 100%;
   }
 }

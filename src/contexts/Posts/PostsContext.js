@@ -50,7 +50,6 @@ const postsReducer = (state, action) => {
       const { posts, tags } = state;
       // new tags created by post need to be added to tags array in state
       const newTags = [...tags];
-      debugger;
       const filterExistingTags = newTags.filter(
         (t) => !action.post.tags.includes(t)
       );
