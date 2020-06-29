@@ -1,0 +1,10 @@
+.UserJoinedGroups-container {
+  @extend %ui-content-container;
+  h3 {
+    text-align: center;
+  }
+  .UserJoinedGroups-list {
+    list-style: none;
+    padding: 0 0.5rem;
+  }
+}

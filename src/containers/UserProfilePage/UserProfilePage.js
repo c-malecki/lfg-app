@@ -1,11 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
-import { UserProfile, GeneralLink } from "../../components/components_index";
+import {
+  UserProfileInfo,
+  UserJoinedGroups,
+  UserBio,
+} from "../../components/components_index";
 import { UsersState } from "../../contexts/context_index";
 import { useParams } from "react-router-dom";
 
 export const UserProfilePage = (props) => {
   const [userProfile, setUserProfile] = useState(null);
-  const { allUsers } = useContext(UsersState) || null;
+  const { allUsers } = useContext(UsersState);
   const { currentUser } = useContext(UsersState);
   const { user } = useParams();
   useEffect(() => {
@@ -19,21 +23,28 @@ export const UserProfilePage = (props) => {
   return (
     <div className="UserProfilePage-container">
       {userProfile !== null ? (
-        <div className="UserProfilePage-content">
-          <h2>{userProfile.user_name}</h2>
-          {currentUser &&
-          currentUser.account.user_name !== userProfile.user_name ? (
-            <GeneralLink
-              url={`/messages/new/to-${userProfile.user_name}`}
-              text="message"
-              addClass="MessageUserLink"
-            />
-          ) : null}
-          <UserProfile
-            userProfile={userProfile.profile}
-            groups={userProfile.groups}
-          />
-        </div>
+        <>
+          <div className="UserProfilePage-content">
+            {currentUser && userProfile ? (
+              <>
+                <div className="UserProfilePage-content-col1">
+                  <UserProfileInfo userProfile={userProfile} />
+                </div>
+
+                <div className="UserProfilePage-content-col2">
+                  <UserJoinedGroups userProfile={userProfile} />
+                </div>
+              </>
+            ) : null}
+          </div>
+          <div className="UserProfilePage-content">
+            {currentUser && userProfile ? (
+              <div className="UserProfilePage-content-col1">
+                <UserBio userProfile={userProfile} />
+              </div>
+            ) : null}
+          </div>
+        </>
       ) : (
         <div>loading...</div>
       )}

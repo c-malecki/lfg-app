@@ -37,7 +37,7 @@ export const users = [
       last_name: "Malecki",
       email: "chrismmalecki@gmail.com",
     },
-    groups: ["Diablo II LoD"],
+    groups: ["Diablo II LoD", "LFG"],
     profile: {
       user_name: "Meeps",
       profile_pic: meeps,

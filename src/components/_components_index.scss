@@ -3,8 +3,11 @@
 @import "./Post/Post";
 @import "./NewPost/NewPostForm";
 @import "./LogInForm/LoginForm";
-@import "./UserProfile/UserProfile";
+
+@import "./UserProfile/UserProfileInfo/UserProfileInfo";
 @import "./UserProfile/forms/EditBioForm";
+@import "./UserProfile/UserJoinedGroups/UserJoinedGroups";
+@import "./UserProfile/UserBio/UserBio";
 
 @import "./Messages/Inbox/Inbox";
 @import "./Messages/MessageBody/MessageBody";

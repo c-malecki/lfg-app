@@ -1,0 +1,17 @@
+.UserProfile-bio-container {
+  @extend %ui-content-container;
+  display: flex;
+  flex-direction: column;
+  h3 {
+    margin-left: 0.5rem;
+  }
+  .UserProfile-bio {
+    border: 1px solid black;
+    height: 5rem;
+    margin: 0 0.5rem;
+  }
+
+  .bio-toggle-container {
+    margin-left: 0.5rem;
+  }
+}

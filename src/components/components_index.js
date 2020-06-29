@@ -13,7 +13,10 @@ export * from "./PostPreview/PostPreview";
 export * from "./Post/CommentForm/CommentForm";
 export * from "./NewPost/NewPostForm";
 export * from "./LogInForm/LogInForm";
-export * from "./UserProfile/UserProfile";
+
+export * from "./UserProfile/UserProfileInfo/UserProfileInfo";
+export * from "./UserProfile/UserJoinedGroups/UserJoinedGroups";
+export * from "./UserProfile/UserBio/UserBio";
 
 export * from "./Messages/Inbox/Inbox";
 export * from "./Messages/SentMessages/SentMessages";
