@@ -1,6 +1,3 @@
 .NewPostPage-container {
-  @extend %page-container;
-  .NewPostPage-content {
-    @extend %page-content-container;
-  }
+  @extend %page-center-content;
 }

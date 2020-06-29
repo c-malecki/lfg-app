@@ -9,6 +9,10 @@ export * from "./UI/PageNav/PageNav";
 export * from "./UI/MessageViewLink/MessageViewLink";
 export * from "./UI/GeneralLink/GeneralLink";
 
+// Widgets
+export * from "./Widgets/CurrentUser/CurrentUser";
+export * from "./Widgets/JoinedGroups/JoinedGroups";
+
 // Components
 export * from "./PostPreview/PostPreview";
 export * from "./Post/CommentForm/CommentForm";
@@ -33,4 +37,3 @@ export * from "./Group/GroupPreview/GroupPreview";
 
 // HomePage
 export * from "./Home/RecentPosts/RecentPosts";
-export * from "./Home/JoinedGroups/JoinedGroups";

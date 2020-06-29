@@ -4,19 +4,61 @@
   margin: auto;
   padding-top: 3rem;
   overflow-y: hidden;
-}
-.Page-content {
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  background: $bg-off-white;
-  overflow-y: scroll;
+
+  .Page-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background: $bg-off-white;
+
+    .Page-content-col1 {
+      padding-top: 3rem;
+      width: 22.5%;
+    }
+    .Page-content-col2 {
+      width: calc(65% - (65% / 6));
+      overflow-y: scroll;
+    }
+    .Page-content-col3 {
+      padding-top: 3rem;
+      width: 22.5%;
+    }
+  }
 }
 
-@media only screen and (min-width: 0px) and (max-width: 1100px),
-  only screen and (min-device-width: 0px) and (max-width: 1100px) {
+@media only screen and (min-width: 0px) and (max-width: 1200px),
+  only screen and (min-device-width: 0px) and (max-width: 1200px) {
   .Page-container {
     width: 100%;
     min-width: 100%;
+    .Page-content {
+      .Page-content-col1 {
+        width: 22.5%;
+      }
+      .Page-content-col2 {
+        width: 55%;
+        overflow-y: scroll;
+      }
+      .Page-content-col3 {
+        width: 22.5%;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 768px),
+  only screen and (min-device-width: 0px) and (max-width: 768px) {
+  .Page-container {
+    .Page-content {
+      .Page-content-col1,
+      .Page-content-col3 {
+        display: none;
+      }
+      .Page-content-col2 {
+        width: 100%;
+      }
+    }
   }
 }

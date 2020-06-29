@@ -7,16 +7,18 @@
   display: none;
 }
 
-%page-container {
-  width: 90%;
+%page-center-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   padding-top: 3rem;
   margin: auto;
 }
 
-%page-content-container {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 2rem;
+%page-side-content {
+  width: 100%;
+  padding-top: 3rem;
+  margin: auto;
 }
 
 %ui-content-container {

@@ -72,6 +72,26 @@ export const samplePosts = [
       "I've been working on a project over time to create a full scale Diablo II character calcultor. Along side the calculator, I have been creating the first Diablo II public resource API to help other fans and developers create their own content or applications with ease.",
     comments: [],
   },
+  {
+    post_id: "c792a2f5-5c1b-4093-a7g2-d0222d4dbb67",
+    author: "TestUser",
+    date: "06/11/2020, 1:19 PM",
+    title: "Dumby post",
+    tags: ["LFG"],
+    group: "LFG",
+    content: "Test test test test test test test test.",
+    comments: [],
+  },
+  {
+    post_id: "c728a2f5-5c1b-4293-a7g2-d0222d4dbb67",
+    author: "TestUser",
+    date: "06/11/2020, 1:19 PM",
+    title: "Dumby post",
+    tags: ["LFG"],
+    group: "LFG",
+    content: "Test test test test test test test test.",
+    comments: [],
+  },
 ];
 
 export const sampleTags = [

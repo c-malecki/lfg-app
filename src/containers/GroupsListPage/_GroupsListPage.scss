@@ -1,6 +1,3 @@
 .GroupsListPage-container {
-  @extend %page-container;
-  .GroupsListPage-content {
-    @extend %page-content-container;
-  }
+  @extend %page-center-content;
 }

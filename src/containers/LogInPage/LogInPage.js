@@ -4,7 +4,7 @@ import { LogInForm } from "../../components/components_index";
 export const LogInPage = () => {
   return (
     <div className="LogInPage-container">
-      <div className="LogInPage-content">
+      <div className="LogIn">
         <LogInForm />
       </div>
     </div>

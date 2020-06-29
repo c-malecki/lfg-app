@@ -1,6 +1,3 @@
 .NewMessagePage-container {
-  @extend %page-container;
-  .NewMessagePage-content {
-    @extend %page-content-container;
-  }
+  @extend %page-center-content;
 }

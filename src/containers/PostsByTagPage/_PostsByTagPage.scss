@@ -1,6 +1,7 @@
 .PostsByTagPage-container {
-  @extend %page-container;
-  .PostsByTagPage-content {
-    @extend %page-content-container;
+  @extend %page-center-content;
+
+  h2 {
+    text-align: center;
   }
 }

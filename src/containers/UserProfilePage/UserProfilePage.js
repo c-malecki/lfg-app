@@ -10,7 +10,6 @@ import { useParams } from "react-router-dom";
 export const UserProfilePage = (props) => {
   const [userProfile, setUserProfile] = useState(null);
   const { allUsers } = useContext(UsersState);
-  const { currentUser } = useContext(UsersState);
   const { user } = useParams();
   useEffect(() => {
     if (allUsers !== null && allUsers !== undefined) {
@@ -24,26 +23,9 @@ export const UserProfilePage = (props) => {
     <div className="UserProfilePage-container">
       {userProfile !== null ? (
         <>
-          <div className="UserProfilePage-content">
-            {currentUser && userProfile ? (
-              <>
-                <div className="UserProfilePage-content-col1">
-                  <UserProfileInfo userProfile={userProfile} />
-                </div>
-
-                <div className="UserProfilePage-content-col2">
-                  <UserJoinedGroups userProfile={userProfile} />
-                </div>
-              </>
-            ) : null}
-          </div>
-          <div className="UserProfilePage-content">
-            {currentUser && userProfile ? (
-              <div className="UserProfilePage-content-col1">
-                <UserBio userProfile={userProfile} />
-              </div>
-            ) : null}
-          </div>
+          <UserProfileInfo userProfile={userProfile} />
+          <UserBio userProfile={userProfile} />
+          <UserJoinedGroups userProfile={userProfile} />
         </>
       ) : (
         <div>loading...</div>

@@ -17,29 +17,15 @@ export const GroupPage = (props) => {
   }, [group, groups]);
   return (
     <div className="GroupPage-container">
-      <div className="GroupPage-content">
-        {groupForPage ? (
-          <>
-            <div className="GroupPage-content-col1">
-              <GroupInfo data={groupForPage} />
-            </div>
-            <div className="GroupPage-content-col2">
-              <GroupMembers members={groupForPage.group_members} />
-            </div>
-          </>
-        ) : (
-          <div>...loading</div>
-        )}
-      </div>
-      <div className="GroupPage-content">
-        {groupForPage ? (
-          <div className="GroupPage-content-col1">
-            <GroupPosts groupName={groupForPage.group_name} />
-          </div>
-        ) : (
-          <div>...loading</div>
-        )}
-      </div>
+      {groupForPage ? (
+        <>
+          <GroupInfo data={groupForPage} />
+          <GroupMembers members={groupForPage.group_members} />
+          <GroupPosts groupName={groupForPage.group_name} />
+        </>
+      ) : (
+        <div>...loading</div>
+      )}
     </div>
   );
 };

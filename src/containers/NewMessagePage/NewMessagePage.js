@@ -6,9 +6,7 @@ export const NewMessagePage = (props) => {
   const { user } = useParams();
   return (
     <div className="NewMessagePage-container">
-      <div className="NewMessagePage-content">
-        <SendMessageForm toUser={user} />
-      </div>
+      <SendMessageForm toUser={user} />
     </div>
   );
 };

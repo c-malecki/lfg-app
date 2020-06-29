@@ -33,29 +33,27 @@ export const MessagesPage = (props) => {
   };
   return (
     <div className="MessagesPage-container">
-      <div className="MessagesPage-content">
-        <div className="Messages-action-bar">
-          <GeneralButton
-            method={displayInbox}
-            text="inbox"
-            addClass="general-theme-button"
-          />
-          <GeneralButton
-            method={displaySent}
-            text="sent"
-            addClass="general-theme-button"
-          />
-        </div>
-        {currentUser && curMessages ? (
-          <>
-            {isInbox ? (
-              <Inbox messages={curMessages.received} />
-            ) : (
-              <SentMessages messages={curMessages.sent} />
-            )}
-          </>
-        ) : null}
+      <div className="Messages-action-bar">
+        <GeneralButton
+          method={displayInbox}
+          text="inbox"
+          addClass="general-theme-button"
+        />
+        <GeneralButton
+          method={displaySent}
+          text="sent"
+          addClass="general-theme-button"
+        />
       </div>
+      {currentUser && curMessages ? (
+        <>
+          {isInbox ? (
+            <Inbox messages={curMessages.received} />
+          ) : (
+            <SentMessages messages={curMessages.sent} />
+          )}
+        </>
+      ) : null}
     </div>
   );
 };

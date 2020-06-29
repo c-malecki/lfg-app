@@ -21,24 +21,22 @@ export const PostPage = (props) => {
 
   return (
     <div className="PostPage-container">
-      <div className="PostPage-content">
-        {postContent !== null ? (
-          <>
-            <PostBody content={postContent} />
-            <Comments
-              comments={postContent.comments}
-              post_id={postContent.post_id}
-            />
-            {currentUser !== null ? (
-              <CommentForm post_id={postContent.post_id} />
-            ) : (
-              ""
-            )}
-          </>
-        ) : (
-          <div>loading...</div>
-        )}
-      </div>
+      {postContent !== null ? (
+        <>
+          <PostBody content={postContent} />
+          <Comments
+            comments={postContent.comments}
+            post_id={postContent.post_id}
+          />
+          {currentUser !== null ? (
+            <CommentForm post_id={postContent.post_id} />
+          ) : (
+            ""
+          )}
+        </>
+      ) : (
+        <div>loading...</div>
+      )}
     </div>
   );
 };
