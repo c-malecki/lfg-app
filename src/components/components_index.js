@@ -36,4 +36,4 @@ export * from "./Group/GroupPosts/GroupPosts";
 export * from "./Group/GroupPreview/GroupPreview";
 
 // HomePage
-export * from "./Home/RecentPosts/RecentPosts";
+export * from "./RecentPosts/RecentPosts";
