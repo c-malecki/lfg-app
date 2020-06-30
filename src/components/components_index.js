@@ -22,6 +22,7 @@ export * from "./LogInForm/LogInForm";
 export * from "./UserProfile/UserProfileInfo/UserProfileInfo";
 export * from "./UserProfile/UserJoinedGroups/UserJoinedGroups";
 export * from "./UserProfile/UserBio/UserBio";
+export * from "./UserPreview/UserPreview";
 
 export * from "./Messages/Unread/Unread";
 export * from "./Messages/SentMessages/SentMessages";

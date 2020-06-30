@@ -17,6 +17,7 @@ export const users = [
       email: "AnonAnimal72@email.com",
     },
     groups: ["Diablo II LoD", "DogStuff"],
+    friends: ["Meeps"],
     profile: {
       user_name: "TestUser",
       profile_pic: moose,
@@ -38,6 +39,7 @@ export const users = [
       email: "chrismmalecki@gmail.com",
     },
     groups: ["Diablo II LoD", "LFG"],
+    friends: ["TestUser"],
     profile: {
       user_name: "Meeps",
       profile_pic: meeps,
@@ -59,6 +61,7 @@ export const users = [
       email: "MorePuppiesPlz@email.com",
     },
     groups: ["DogStuff"],
+    friends: [],
     profile: {
       user_name: "IAlsoLuvPuppies",
       profile_pic: nopic,
@@ -80,6 +83,7 @@ export const users = [
       email: "MorePuppiesPlz@email.com",
     },
     groups: ["DogStuff"],
+    friends: [],
     profile: {
       user_name: "PuppyLuver1",
       profile_pic: nopic,
@@ -101,6 +105,7 @@ export const users = [
       email: "ItsEyeGor@email.com",
     },
     groups: [],
+    friends: [],
     profile: {
       user_name: "YesMasta74",
       profile_pic: igor,
@@ -122,6 +127,7 @@ export const users = [
       email: "LetsGetWeird@email.com",
     },
     groups: [],
+    friends: [],
     profile: {
       user_name: "StrangeAndFleek",
       profile_pic: nopic,

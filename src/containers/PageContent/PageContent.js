@@ -13,6 +13,7 @@ import {
   ViewMessagePage,
   GroupPage,
   GroupsListPage,
+  FriendsPage,
 } from "../containers_index";
 import {
   JoinedGroups,
@@ -46,6 +47,7 @@ export const PageContent = (props) => {
             <Route exact path="/g" component={GroupsListPage} />
             <Route exact path="/g/:group" component={GroupPage} />
             <Route exact path="/g/:group/newpost/" component={NewPostPage} />
+            <Route exact path="/friends" component={FriendsPage} />
           </Switch>
         </div>
         <div className="Page-content-col3">

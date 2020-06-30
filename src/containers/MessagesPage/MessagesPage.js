@@ -47,6 +47,7 @@ export const MessagesPage = (props) => {
   };
   return (
     <div className="MessagesPage-container">
+      <h3 className="page-heading">Messages</h3>
       <div className="Messages-action-bar">
         <GeneralButton
           method={toggleAll}

@@ -6,6 +6,7 @@ export const GroupsListPage = (props) => {
   const { groups } = useContext(GroupsState);
   return (
     <div className="GroupsListPage-container">
+      <h3 className="page-heading">Groups</h3>
       {groups.map((group) => {
         return (
           <GroupPreview

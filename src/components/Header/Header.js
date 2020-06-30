@@ -34,6 +34,7 @@ export const Header = (props) => {
               url={`/messages`}
               text={`messages (${messageCount})`}
             />
+            <GeneralLink url={`/friends`} text={`friends`} />
           </>
         ) : null}
         <LogInOut />

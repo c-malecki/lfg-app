@@ -37,7 +37,6 @@ export const ReplyToMessageForm = (props) => {
     const data = {
       user_name: currentUser.user_name,
       date_sent: date,
-      read: false,
       content: formState.message,
       reply_id: uuidv4(),
     };
