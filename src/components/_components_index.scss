@@ -10,12 +10,13 @@
 @import "./UserProfile/UserJoinedGroups/UserJoinedGroups";
 @import "./UserProfile/UserBio/UserBio";
 
-@import "./Messages/Inbox/Inbox";
+@import "./Messages/Unread/Unread";
 @import "./Messages/MessageBody/MessageBody";
 @import "./Messages/SentMessages/SentMessages";
 @import "./Messages/MessagePreview/MessagePreview";
 @import "./Messages/forms/SendMessageForm";
 @import "./Messages/MessageReplies/MessageReplies";
+@import "./Messages/AllMessages/AllMessages";
 
 @import "./RecentPosts/RecentPosts";
 

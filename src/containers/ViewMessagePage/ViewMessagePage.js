@@ -34,8 +34,16 @@ export const ViewMessagePage = (props) => {
           })}
           <ReplyToMessageForm
             message_id={message.message_id}
-            to={message.to_username}
-            from={message.from_username}
+            to={
+              currentUser.user_name === message.to_username
+                ? message.from_username
+                : message.to_username
+            }
+            from={
+              currentUser.user_name === message.from_username
+                ? message.from_username
+                : message.to_username
+            }
           />{" "}
         </>
       ) : (

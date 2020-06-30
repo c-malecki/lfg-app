@@ -1,9 +1,9 @@
 import React from "react";
 import { MessagePreview } from "../MessagePreview/MessagePreview";
 
-export const SentMessages = (props) => {
+export const Unread = (props) => {
   return (
-    <div className="SentMessages-container">
+    <div className="Unread-container">
       {props.messages.length > 0 ? (
         <>
           {props.messages.map((message) => {
@@ -24,7 +24,7 @@ export const SentMessages = (props) => {
           })}
         </>
       ) : (
-        <span className="no-messages">No sent messages.</span>
+        <span className="no-messages">No unread messages.</span>
       )}
     </div>
   );

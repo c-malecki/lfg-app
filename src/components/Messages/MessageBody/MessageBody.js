@@ -19,13 +19,6 @@ export const MessageBody = (props) => {
         addClass="UserLink"
       />
       <span className="head-text-content">at {message.date_sent}</span>
-      <span className="head-text-content" style={{ fontWeight: "bold" }}>
-        {message.sender === true
-          ? message.read === false
-            ? "unread"
-            : "read"
-          : ""}
-      </span>
       <p>{message.content}</p>
     </div>
   );

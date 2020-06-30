@@ -1,13 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
 import { UsersState, MessagesState } from "../../contexts/context_index";
 import {
-  Inbox,
+  Unread,
   SentMessages,
+  AllMessages,
   GeneralButton,
 } from "../../components/components_index";
 
 export const MessagesPage = (props) => {
-  const [isInbox, setIsInbox] = useState(true);
+  const [messageType, setMessageType] = useState(0);
   const [curMessages, setCurMessages] = useState(null);
   const { currentUser } = useContext(UsersState);
   const { userMessages } = useContext(MessagesState);
@@ -18,42 +19,52 @@ export const MessagesPage = (props) => {
       );
       const { messages } = user;
       const sent = messages.filter((m) => m.sender === true);
-      const received = messages.filter((m) => m.sender === false);
+      const unread = messages.filter((m) => m.read === false);
       setCurMessages({
-        received,
+        all: messages,
+        unread,
         sent,
       });
     }
   }, [currentUser, userMessages]);
-  const displayInbox = () => {
-    setIsInbox(true);
+  const toggleAll = () => {
+    setMessageType(0);
   };
-  const displaySent = () => {
-    setIsInbox(false);
+  const toggleUnread = () => {
+    setMessageType(1);
+  };
+  const toggleSent = () => {
+    setMessageType(2);
+  };
+  const displayMessageType = () => {
+    if (messageType === 0) {
+      return <AllMessages messages={curMessages.all} />;
+    } else if (messageType === 1) {
+      return <Unread messages={curMessages.unread} />;
+    } else if (messageType === 2) {
+      return <SentMessages messages={curMessages.sent} />;
+    }
   };
   return (
     <div className="MessagesPage-container">
       <div className="Messages-action-bar">
         <GeneralButton
-          method={displayInbox}
-          text="inbox"
+          method={toggleAll}
+          text="All"
           addClass="general-theme-button"
         />
         <GeneralButton
-          method={displaySent}
+          method={toggleUnread}
+          text="unread"
+          addClass="general-theme-button"
+        />
+        <GeneralButton
+          method={toggleSent}
           text="sent"
           addClass="general-theme-button"
         />
       </div>
-      {currentUser && curMessages ? (
-        <>
-          {isInbox ? (
-            <Inbox messages={curMessages.received} />
-          ) : (
-            <SentMessages messages={curMessages.sent} />
-          )}
-        </>
-      ) : null}
+      {currentUser && curMessages ? displayMessageType() : null}
     </div>
   );
 };

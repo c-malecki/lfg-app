@@ -22,7 +22,6 @@ export const SendMessageForm = (props) => {
     dispatch({
       type: "SEND_RECEIVE_MESSAGE",
       message: {
-        read: false,
         from_username: currentUser.user_name,
         to_username: props.toUser,
         date_sent: date,

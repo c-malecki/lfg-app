@@ -23,14 +23,26 @@ const messagesReducer = (state, action) => {
         ...newUserMessages[fromIdx],
         messages: [
           ...newUserMessages[fromIdx].messages,
-          { sender: true, ...action.message },
+          {
+            sender: true,
+            read: true,
+            ...action.message,
+            total_unread_replies: 0,
+            unread_reply: false,
+          },
         ],
       };
       newUserMessages[toIdx] = {
         ...newUserMessages[toIdx],
         messages: [
           ...newUserMessages[toIdx].messages,
-          { sender: false, ...action.message },
+          {
+            sender: false,
+            read: false,
+            ...action.message,
+            total_unread_replies: 0,
+            unread_reply: false,
+          },
         ],
       };
       return { userMessages: newUserMessages };
@@ -53,10 +65,13 @@ const messagesReducer = (state, action) => {
       readFrom = {
         ...readFrom,
         read: true,
+        total_unread_replies: 0,
       };
       readTo = {
         ...readTo,
         read: true,
+        total_unread_replies: 0,
+        unread_reply: false,
       };
       const prevFrom = newUserMessages[fromIdx].messages.filter(
         (message) => message.message_id !== action.message_id
@@ -91,11 +106,14 @@ const messagesReducer = (state, action) => {
       );
       replyFrom = {
         ...replyFrom,
-        replies: [...replyFrom.replies, action.reply],
+        replies: [...replyFrom.replies, { ...action.reply, sender: true }],
       };
       replyTo = {
         ...replyTo,
-        replies: [...replyTo.replies, action.reply],
+        read: false,
+        total_unread_replies: replyTo.total_unread_replies + 1,
+        unread_reply: true,
+        replies: [...replyTo.replies, { ...action.reply, sender: false }],
       };
       const prevFrom = newUserMessages[fromIdx].messages.filter(
         (message) => message.message_id !== action.message_id

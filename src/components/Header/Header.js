@@ -12,9 +12,12 @@ export const Header = (props) => {
         (u) => u.user_name === currentUser.user_name
       );
       const unreadMessages = user.messages.filter(
-        (message) => message.read === false && message.sender === false
+        (m) => m.read === false && m.sender === false
       ).length;
-      setMessageCount(unreadMessages);
+      const unreadReply = user.messages.filter((m) => m.unread_reply === true)
+        .length;
+      const count = unreadMessages + unreadReply;
+      setMessageCount(count);
     }
   }, [currentUser, userMessages]);
   return (
