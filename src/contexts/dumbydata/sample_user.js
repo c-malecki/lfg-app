@@ -2,11 +2,10 @@ import moose from "../../assets/images/moose.jpg";
 import nopic from "../../assets/images/noprofilepic.png";
 import meeps from "../../assets/images/Meeps.png";
 import igor from "../../assets/images/igor.jpg";
-import { v4 as uuidv4 } from "uuid";
 
 export const users = [
   {
-    user_id: uuidv4(),
+    user_id: "11f3c9s4-0746-488d-a1ab-18d711b3c6df",
     user_name: "TestUser",
     account: {
       user_name: "TestUser",
@@ -17,7 +16,17 @@ export const users = [
       email: "AnonAnimal72@email.com",
     },
     groups: ["Diablo II LoD", "DogStuff"],
-    friends: ["Meeps"],
+    friends: [
+      {
+        user_id: "22f3c9s4-a746-488d-a1ab-18d711b3c6df",
+        user_name: "Meeps",
+        profile_pic: meeps,
+        date_accepted: "06/10/2020",
+        date_requested: "06/10/2020",
+        pending: false,
+        sender: false,
+      },
+    ],
     profile: {
       user_name: "TestUser",
       profile_pic: moose,
@@ -28,7 +37,7 @@ export const users = [
     },
   },
   {
-    user_id: uuidv4(),
+    user_id: "22f3c9s4-a746-488d-a1ab-18d711b3c6df",
     user_name: "Meeps",
     account: {
       user_name: "Meeps",
@@ -39,7 +48,17 @@ export const users = [
       email: "chrismmalecki@gmail.com",
     },
     groups: ["Diablo II LoD", "LFG"],
-    friends: ["TestUser"],
+    friends: [
+      {
+        user_id: "11f3c9s4-0746-488d-a1ab-18d711b3c6df",
+        user_name: "TestUser",
+        profile_pic: moose,
+        date_accepted: "06/10/2020",
+        date_requested: "06/10/2020",
+        pending: false,
+        sender: true,
+      },
+    ],
     profile: {
       user_name: "Meeps",
       profile_pic: meeps,
@@ -50,7 +69,7 @@ export const users = [
     },
   },
   {
-    user_id: uuidv4(),
+    user_id: "33f3c9s4-3746-488d-a1ab-18d711b3c6df",
     user_name: "IAlsoLuvPuppies",
     account: {
       user_name: "IAlsoLuvPuppies",
@@ -72,7 +91,7 @@ export const users = [
     },
   },
   {
-    user_id: uuidv4(),
+    user_id: "44f3c9s4-4746-488d-a1ab-18d711b3c6df",
     user_name: "PuppyLuver1",
     account: {
       user_name: "PuppyLuver1",
@@ -94,7 +113,7 @@ export const users = [
     },
   },
   {
-    user_id: uuidv4(),
+    user_id: "55f3c9s4-5746-488d-a1ab-18d711b3c6df",
     user_name: "YesMasta74",
     account: {
       user_name: "YesMasta74",
@@ -116,7 +135,7 @@ export const users = [
     },
   },
   {
-    user_id: uuidv4(),
+    user_id: "66f3c9s4-6746-488d-a1ab-18d711b3c6df",
     user_name: "StrangeAndFleek",
     account: {
       user_name: "StrangeAndFleek",

@@ -6,6 +6,12 @@
   h2 {
     text-align: center;
   }
+
+  .UserProfile-user-actions {
+    display: flex;
+    flex-direction: row;
+  }
+
   img {
     height: 10rem;
     width: 10rem;

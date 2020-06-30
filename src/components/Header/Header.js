@@ -4,6 +4,7 @@ import { UsersState, MessagesState } from "../../contexts/context_index";
 
 export const Header = (props) => {
   const [messageCount, setMessageCount] = useState(null);
+  const [friendRequests, setFriendRequests] = useState(null);
   const { currentUser, isLoggedIn } = useContext(UsersState);
   const { userMessages } = useContext(MessagesState);
   useEffect(() => {
@@ -16,8 +17,12 @@ export const Header = (props) => {
       ).length;
       const unreadReply = user.messages.filter((m) => m.unread_reply === true)
         .length;
+      const friendRequestCount = currentUser.friends.filter(
+        (f) => f.pending === true && f.sender === false
+      ).length;
       const count = unreadMessages + unreadReply;
       setMessageCount(count);
+      setFriendRequests(friendRequestCount);
     }
   }, [currentUser, userMessages]);
   return (
@@ -34,7 +39,12 @@ export const Header = (props) => {
               url={`/messages`}
               text={`messages (${messageCount})`}
             />
-            <GeneralLink url={`/friends`} text={`friends`} />
+            <GeneralLink
+              url={`/friends`}
+              text={`friends ${
+                friendRequests > 0 ? `(${friendRequests})` : ""
+              }`}
+            />
           </>
         ) : null}
         <LogInOut />
