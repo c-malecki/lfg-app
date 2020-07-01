@@ -47,25 +47,27 @@ export const MessagesPage = (props) => {
   };
   return (
     <div className="MessagesPage-container">
-      <h3 className="page-heading">Messages</h3>
-      <div className="Messages-action-bar">
-        <GeneralButton
-          method={toggleAll}
-          text="All"
-          addClass="general-theme-button"
-        />
-        <GeneralButton
-          method={toggleUnread}
-          text="unread"
-          addClass="general-theme-button"
-        />
-        <GeneralButton
-          method={toggleSent}
-          text="sent"
-          addClass="general-theme-button"
-        />
+      <div className="MessagesPage-content">
+        <h3 className="page-heading">Messages</h3>
+        <div className="Messages-action-bar">
+          <GeneralButton
+            method={toggleAll}
+            text="All"
+            addClass="general-theme-button"
+          />
+          <GeneralButton
+            method={toggleUnread}
+            text="unread"
+            addClass="general-theme-button"
+          />
+          <GeneralButton
+            method={toggleSent}
+            text="sent"
+            addClass="general-theme-button"
+          />
+        </div>
+        {currentUser && curMessages ? displayMessageType() : null}
       </div>
-      {currentUser && curMessages ? displayMessageType() : null}
     </div>
   );
 };

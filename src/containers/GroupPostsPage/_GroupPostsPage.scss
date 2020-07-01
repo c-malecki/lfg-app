@@ -1,0 +1,13 @@
+.GroupPostsPage-container {
+  @extend %page-center-content;
+  .GroupPostsPage-content {
+    @extend %ui-content-container;
+    .GroupPostsPage-head {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+}

@@ -2,17 +2,11 @@
   display: flex;
   flex-direction: column;
   @extend %ui-content-container;
-  padding-bottom: 0.5rem;
-  h3 {
-    text-align: center;
-  }
+  padding: 0.5rem;
+
   img {
     height: 6rem;
     width: 6rem;
     margin: auto;
-  }
-
-  .not-logged-in {
-    text-align: center;
   }
 }

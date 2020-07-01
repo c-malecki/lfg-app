@@ -1,6 +1,9 @@
 .GroupPosts-container {
   @extend %ui-content-container;
-  margin-top: 1rem;
+  padding-top: 0.5rem;
+
+  max-height: 650px;
+  overflow-y: scroll;
 
   .GroupPosts-head {
     display: flex;

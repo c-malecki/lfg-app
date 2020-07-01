@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import {
   GroupInfo,
   GroupMembers,
-  GroupPosts,
+  GroupNewPosts,
 } from "../../components/components_index";
 
 export const GroupPage = (props) => {
@@ -21,7 +21,7 @@ export const GroupPage = (props) => {
         <>
           <GroupInfo data={groupForPage} />
           <GroupMembers members={groupForPage.group_members} />
-          <GroupPosts groupName={groupForPage.group_name} />
+          <GroupNewPosts groupName={groupForPage.group_name} />
         </>
       ) : (
         <div>...loading</div>

@@ -16,13 +16,17 @@ export const LogInOut = (props) => {
             url="/"
             method={handleLogOut}
             text="log out"
-            addClass="header-buttonlink"
+            addClass="general-theme-link"
             s
           />
         </span>
       ) : (
         <span>
-          <ButtonLink url="/login" text="log in" addClass="header-buttonlink" />
+          <ButtonLink
+            url="/login"
+            text="log in"
+            addClass="general-theme-link"
+          />
         </span>
       )}
     </div>

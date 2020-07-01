@@ -3,9 +3,7 @@
   flex-direction: column;
   padding: 0.5rem;
   @extend %ui-content-container;
-  h2 {
-    text-align: center;
-  }
+
   img {
     height: 15rem;
     width: 15rem;

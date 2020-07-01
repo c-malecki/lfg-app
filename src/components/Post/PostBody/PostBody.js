@@ -1,12 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { GeneralLink } from "../../components_index";
+import {
+  GeneralLink,
+  PopUpConfirm,
+  GeneralButton,
+} from "../../components_index";
 import {
   UsersState,
   PostsDispatchContext,
 } from "../../../contexts/context_index";
 
 export const PostBody = (props) => {
+  const [showConfirm, setShowConfirm] = useState(false);
   const { content } = props;
   const { currentUser } = useContext(UsersState);
   const dispatch = useContext(PostsDispatchContext);
@@ -14,25 +19,31 @@ export const PostBody = (props) => {
   return (
     <div className="PostBody-container">
       <div className="PostBody-head">
-        <h3>{content.title}</h3>
+        <h3 className="post-title-heading">{content.title}</h3>
         {currentUser !== null &&
         currentUser.account.user_name === content.author ? (
           <span>
-            <button
-              onClick={() => {
-                dispatch({
-                  type: "DELETE_POST",
-                  post_id: content.post_id,
-                });
-                history.push("/post-deleted");
-              }}
-              className="close-delete-button"
-            >
-              X
-            </button>
+            <GeneralButton
+              text="X"
+              method={() => setShowConfirm(true)}
+              addClass="close-delete-button"
+            />
           </span>
         ) : null}
       </div>
+      {showConfirm ? (
+        <PopUpConfirm
+          message="Are you sure you want to delete this post?"
+          cancel={() => setShowConfirm(false)}
+          ok={() => {
+            dispatch({
+              type: "DELETE_POST",
+              post_id: content.post_id,
+            });
+            history.push("/post-deleted");
+          }}
+        />
+      ) : null}
       <span className="head-text-content">By</span>
       <GeneralLink
         url={`/users/${content.author}`}

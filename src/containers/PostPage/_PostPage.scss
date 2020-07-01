@@ -1,3 +1,8 @@
 .PostPage-container {
   @extend %page-center-content;
+  .PostPage-content {
+    display: flex;
+    flex-direction: column;
+    @extend %ui-content-container;
+  }
 }

@@ -4,31 +4,15 @@
   .PostPreview-head {
     display: flex;
     flex-direction: row;
-
-    a {
-      color: $text-d-gray;
-    }
   }
 
   .PostPreview-content {
     display: flex;
     flex-direction: column;
-    .PostPreview-tags {
-      a {
-        color: $text-l-gray;
-        font-weight: 500;
-      }
-    }
-    a {
-      color: $text-d-gray;
-    }
   }
-
-  .PostPreview-comments {
+  .PostPreview-tags {
     a {
-      color: $text-l-gray;
-      font-size: 0.9rem;
-      font-weight: 500;
+      margin-right: 0.5rem;
     }
   }
 }

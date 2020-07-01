@@ -1,7 +1,9 @@
 import moose from "../../assets/images/moose.jpg";
-import nopic from "../../assets/images/noprofilepic.png";
 import meeps from "../../assets/images/Meeps.png";
 import igor from "../../assets/images/igor.jpg";
+import dred from "../../assets/images/LFGdefaultRed.png";
+import dgre from "../../assets/images/LFGdefaultGreen.png";
+import dpur from "../../assets/images/LFGdefaultPurple.png";
 
 export const users = [
   {
@@ -15,7 +17,7 @@ export const users = [
       last_name: "Moose",
       email: "AnonAnimal72@email.com",
     },
-    groups: ["Diablo II LoD", "DogStuff"],
+    groups: ["Diablo II LoD", "DogStuff", "LFG"],
     friends: [
       {
         user_id: "22f3c9s4-a746-488d-a1ab-18d711b3c6df",
@@ -83,7 +85,7 @@ export const users = [
     friends: [],
     profile: {
       user_name: "IAlsoLuvPuppies",
-      profile_pic: nopic,
+      profile_pic: dred,
       date_joined: "06/10/2020",
       first_name: "Buenovella",
       last_name: "BeNice",
@@ -105,7 +107,7 @@ export const users = [
     friends: [],
     profile: {
       user_name: "PuppyLuver1",
-      profile_pic: nopic,
+      profile_pic: dgre,
       date_joined: "06/10/2020",
       first_name: "Emily",
       last_name: "Elizabeth",
@@ -149,7 +151,7 @@ export const users = [
     friends: [],
     profile: {
       user_name: "StrangeAndFleek",
-      profile_pic: nopic,
+      profile_pic: dpur,
       date_joined: "06/10/2020",
       first_name: "Ally",
       last_name: "Yankovic",

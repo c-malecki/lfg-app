@@ -11,9 +11,11 @@ The client side "database" is implemented via the React content API.
 
 After initial prototyping of basic features and the UI/UX, I will progressively build and implement an API and database.
 
-**Features and Functionality as of 6/30/2020**
+**Features and Functionality as of 6/31/2020**
 
 - General layout decided on. Still needs to be optimized for mobile viewing.
+
+- Styling is basic and mostly for layout purposes. It is not pretty or thematic yet.
 
 - Currently you can log in and out of the application. When logged out, you can still view posts and their comments, but cannot add posts or comments.
 

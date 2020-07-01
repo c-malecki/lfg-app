@@ -35,14 +35,14 @@
     min-width: 100%;
     .Page-content {
       .Page-content-col1 {
-        width: 22.5%;
+        display: none;
       }
       .Page-content-col2 {
-        width: 55%;
+        width: 70%;
         overflow-y: scroll;
       }
       .Page-content-col3 {
-        width: 22.5%;
+        width: 30%;
       }
     }
   }

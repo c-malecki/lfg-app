@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { GeneralLink } from "../../components_index";
+import { GeneralLink, GeneralButton } from "../../components_index";
 import { UsersState, UsersDispatch } from "../../../contexts/context_index";
 
 export const UserProfileInfo = (props) => {
@@ -36,20 +36,20 @@ export const UserProfileInfo = (props) => {
           <GeneralLink
             url={`/messages/new/to-${user_name}`}
             text="message"
-            addClass="MessageUserLink"
+            addClass="general-theme-link"
           />
-          <button
+          <GeneralButton
             disabled={friendButtonDisabled}
-            onClick={() =>
+            addClass="general-theme-button"
+            text={addFriendText()}
+            method={() =>
               dispatch({
                 type: "SEND_FRIEND_REQUEST",
                 from: currentUser.user_name,
                 to: user_name,
               })
             }
-          >
-            {addFriendText()}
-          </button>
+          />
         </div>
       ) : null}
       <img src={profile_pic} alt={user_name} />

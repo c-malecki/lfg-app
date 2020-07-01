@@ -3,6 +3,7 @@ import {
   UserProfileInfo,
   UserJoinedGroups,
   UserBio,
+  UserRecentPosts,
 } from "../../components/components_index";
 import { UsersState } from "../../contexts/context_index";
 import { useParams } from "react-router-dom";
@@ -26,6 +27,7 @@ export const UserProfilePage = (props) => {
           <UserProfileInfo userProfile={userProfile} />
           <UserBio userProfile={userProfile} />
           <UserJoinedGroups userProfile={userProfile} />
+          <UserRecentPosts username={userProfile.user_name} />
         </>
       ) : (
         <div>loading...</div>

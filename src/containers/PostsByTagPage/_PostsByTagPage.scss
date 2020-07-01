@@ -1,7 +1,8 @@
 .PostsByTagPage-container {
   @extend %page-center-content;
-
-  h2 {
-    text-align: center;
+  .PostsByTagPage-content {
+    display: flex;
+    flex-direction: column;
+    @extend %ui-content-container;
   }
 }

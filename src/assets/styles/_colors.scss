@@ -1,8 +1,15 @@
-$dark-theme-bg: black;
-
-$text-l-gray: rgb(150, 150, 150);
-$text-d-gray: rgb(75, 75, 75);
+// html, body, root, app backgound colors
 $bg-off-white: rgb(240, 240, 240);
 $bg-l-gray: rgb(216, 216, 216);
-$bg-d-gray: rgb(49, 49, 49);
-$ui-border: rgb(150, 150, 150);
+
+// theme colors
+$lfg-l-blue: #71aada;
+$lfg-d-blue: #6091ba;
+$lfg-l-red: #d87870;
+$lfg-d-red: #cb3131;
+$lfg-l-purple: #963e93;
+$lfg-d-purple: #542352;
+$lfg-l-gray: #8c8686;
+$lfg-d-gray: #645f5f;
+
+$ui-green: #64e770;

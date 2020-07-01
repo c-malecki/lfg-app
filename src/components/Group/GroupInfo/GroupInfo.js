@@ -10,7 +10,7 @@ export const GroupInfo = (props) => {
   } = props.data;
   return (
     <div className="GroupInfo-container">
-      <h2>{group_name}</h2>
+      <h2 className="component-heading">{group_name}</h2>
       <img src={group_img} alt={group_name} />
       <span>Date Created: {date_created}</span>
       <span>Genre: {group_genre}</span>

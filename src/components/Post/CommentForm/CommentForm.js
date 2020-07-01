@@ -45,6 +45,7 @@ export const CommentForm = (props) => {
     };
     dispatch({ type: "ADD_COMMENT", post_id: props.post_id, comment: data });
     resetForm();
+    toggleForm();
   };
 
   return (
@@ -55,7 +56,9 @@ export const CommentForm = (props) => {
         addClass={formState.openForm ? "hide" : "general-theme-button"}
       />
       <div
-        className={`CommentForm-container ${formState.openForm ? "" : "hide"}`}
+        className={`CommentForm-inner-container ${
+          formState.openForm ? "" : "hide"
+        }`}
       >
         <form className="CommentForm-form" onSubmit={(e) => handleSubmit(e)}>
           <div className="CommentForm-comment-container">
@@ -73,7 +76,7 @@ export const CommentForm = (props) => {
           <div className="CommentForm-submit-container">
             <GeneralButton
               type="submit"
-              addClass="general-theme-button"
+              addClass="ok-confirm-button"
               text="comment"
               disabled={formState.isSubmitting}
             />

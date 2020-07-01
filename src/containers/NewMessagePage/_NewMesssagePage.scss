@@ -1,3 +1,9 @@
 .NewMessagePage-container {
   @extend %page-center-content;
+  .NewMessagePage-content {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    @extend %ui-content-container;
+  }
 }

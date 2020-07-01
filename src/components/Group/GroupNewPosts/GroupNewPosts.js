@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { PostsStateContext, UsersState } from "../../../contexts/context_index";
 import { PostPreview, GeneralLink } from "../../components_index";
 
-export const GroupPosts = (props) => {
+export const GroupNewPosts = (props) => {
   const [postsInGroup, setPostsInGroup] = useState(null);
   const { posts } = useContext(PostsStateContext);
   const { isLoggedIn } = useContext(UsersState);
@@ -14,12 +14,12 @@ export const GroupPosts = (props) => {
   return (
     <div className="GroupPosts-container">
       <div className="GroupPosts-head">
-        <h2>{name} Posts</h2>
+        <h3 className="component-heading">New {name} Posts</h3>
         {isLoggedIn ? (
           <GeneralLink
             url={`/g/${name}/newpost`}
             text="new post"
-            addClass="page-buttonlink"
+            addClass="general-theme-link"
           />
         ) : null}
       </div>
@@ -30,7 +30,7 @@ export const GroupPosts = (props) => {
           })}
         </>
       ) : (
-        <div>...loading</div>
+        <span className="no-content-message">...loading</span>
       )}
     </div>
   );

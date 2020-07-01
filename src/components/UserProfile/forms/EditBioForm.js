@@ -32,7 +32,7 @@ export const EditBioForm = (props) => {
         <div className="EditBioForm-submit-container">
           <GeneralButton
             type="submit"
-            addClass="general-theme-button"
+            addClass="ok-confirm-button"
             text="save"
           />
 
