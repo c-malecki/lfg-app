@@ -17,7 +17,7 @@ export const users = [
       last_name: "Moose",
       email: "AnonAnimal72@email.com",
     },
-    groups: ["Diablo II LoD", "DogStuff", "LFG"],
+    groups: ["Diablo II LoD", "LFG"],
     friends: [
       {
         user_id: "22f3c9s4-a746-488d-a1ab-18d711b3c6df",

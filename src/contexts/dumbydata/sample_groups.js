@@ -59,7 +59,7 @@ export const sampleGroups = [
     group_description: "We all are dog freaks.",
     group_tags: ["Dogs", "Puppies", "Animals"],
     date_created: "06/11/2020",
-    members_list: ["IAlsoLuvPuppies", "TestUser"],
+    members_list: ["IAlsoLuvPuppies", "PuppyLuver1"],
     group_members: [
       {
         user_name: "PuppyLuver1",
@@ -72,12 +72,6 @@ export const sampleGroups = [
         date_joined: "06/11/2020",
         role: "mod",
         member_id: "2",
-      },
-      {
-        user_name: "TestUser",
-        date_joined: "06/11/2020",
-        role: "initiate",
-        member_id: "3",
       },
     ],
   },

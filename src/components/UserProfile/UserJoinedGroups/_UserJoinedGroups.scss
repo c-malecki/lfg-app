@@ -3,8 +3,11 @@
   h3 {
     text-align: center;
   }
-  .UserJoinedGroups-list {
-    list-style: none;
-    padding: 0 0.5rem;
+  .UserJoinedGroups-content {
+    @extend %ui-content-inner;
+    .UserJoinedGroups-list {
+      list-style: none;
+      padding: 0 0.5rem;
+    }
   }
 }

@@ -58,7 +58,7 @@ export const ReplyToMessageForm = (props) => {
         addClass={formState.openForm ? "hide" : "general-theme-button"}
       />
       <div
-        className={`ReplyToMessage-container ${
+        className={`ReplyToMessage-inner-container ${
           formState.openForm ? "" : "hide"
         }`}
       >

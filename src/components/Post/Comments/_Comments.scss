@@ -6,7 +6,7 @@
     margin-left: 0.5rem;
   }
   .Comment-content {
-    @extend %ui-content-container;
+    @extend %ui-content-inner;
     padding: 0.5rem;
   }
 }

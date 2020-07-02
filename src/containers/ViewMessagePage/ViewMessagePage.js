@@ -26,29 +26,31 @@ export const ViewMessagePage = (props) => {
 
   return (
     <div className="ViewMessagePage-container">
-      {message ? (
-        <>
-          <MessageBody message={message} />{" "}
-          {message.replies.map((r) => {
-            return <MessageReplies reply={r} key={r.reply_id} />;
-          })}
-          <ReplyToMessageForm
-            message_id={message.message_id}
-            to={
-              currentUser.user_name === message.to_username
-                ? message.from_username
-                : message.to_username
-            }
-            from={
-              currentUser.user_name === message.from_username
-                ? message.from_username
-                : message.to_username
-            }
-          />{" "}
-        </>
-      ) : (
-        <div>...loading</div>
-      )}
+      <div className="ViewMessagePage-content">
+        {message ? (
+          <>
+            <MessageBody message={message} />{" "}
+            {message.replies.map((r) => {
+              return <MessageReplies reply={r} key={r.reply_id} />;
+            })}
+            <ReplyToMessageForm
+              message_id={message.message_id}
+              to={
+                currentUser.user_name === message.to_username
+                  ? message.from_username
+                  : message.to_username
+              }
+              from={
+                currentUser.user_name === message.from_username
+                  ? message.from_username
+                  : message.to_username
+              }
+            />{" "}
+          </>
+        ) : (
+          <div>...loading</div>
+        )}
+      </div>
     </div>
   );
 };

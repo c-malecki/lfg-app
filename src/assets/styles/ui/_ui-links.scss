@@ -87,15 +87,17 @@
 
 @media only screen and (min-width: 0) and (max-width: 768px),
   only screen and (min-device-width: 0) and (max-width: 768px) {
+  .PostLink,
   .GroupsLink {
-    font-size: 1rem;
-  }
-
-  .PostLink {
     font-size: 1rem;
   }
 
   .PostHeadLink {
     font-size: 0.9rem;
+  }
+
+  .PageNavLink {
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
   }
 }

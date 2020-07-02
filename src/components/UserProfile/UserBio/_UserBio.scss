@@ -1,5 +1,5 @@
 .UserProfile-bio-container {
-  @extend %ui-content-container;
+  @extend %ui-content-inner;
   display: flex;
   flex-direction: column;
   h3 {

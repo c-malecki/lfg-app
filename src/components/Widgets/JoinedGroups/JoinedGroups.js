@@ -29,9 +29,14 @@ export const JoinedGroups = (props) => {
           );
         })
       ) : (
-        <span className="not-logged-in">
-          Login to view your groups or register to join groups.
-        </span>
+        <div className="not-logged-in">
+          <GeneralLink
+            text="Login"
+            url="/login"
+            addClass="PostPreviewHeadLink"
+          />
+          to view your groups or register to join groups.
+        </div>
       )}
     </div>
   );

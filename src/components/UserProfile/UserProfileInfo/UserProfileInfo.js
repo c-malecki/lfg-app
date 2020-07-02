@@ -9,19 +9,23 @@ export const UserProfileInfo = (props) => {
   const { currentUser, isLoggedIn } = useContext(UsersState);
   const dispatch = useContext(UsersDispatch);
   const addFriendText = () => {
-    const { friends } = currentUser;
-    const mutualFriends = friends.filter(
-      (f) => f.user_name === user_name && f.pending === false
-    ).length;
-    const pendingFriends = friends.filter(
-      (f) => f.user_name === user_name && f.pending === true
-    ).length;
-    if (mutualFriends > 0) {
-      return "Friends";
-    } else if (pendingFriends > 0) {
-      return "Pending";
+    if (currentUser && isLoggedIn) {
+      const { friends } = currentUser;
+      const mutualFriends = friends.filter(
+        (f) => f.user_name === user_name && f.pending === false
+      ).length;
+      const pendingFriends = friends.filter(
+        (f) => f.user_name === user_name && f.pending === true
+      ).length;
+      if (mutualFriends > 0) {
+        return "Friends";
+      } else if (pendingFriends > 0) {
+        return "Pending";
+      } else {
+        return "Add Friend";
+      }
     } else {
-      return "Add Friend";
+      return;
     }
   };
   const friendButtonDisabled =

@@ -1,5 +1,5 @@
 .GroupMembers-container {
-  @extend %ui-content-container;
+  @extend %ui-content-inner;
   padding: 0.5rem;
   .GroupMembers-list {
     list-style: none;

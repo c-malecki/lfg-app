@@ -1,5 +1,5 @@
 .PostPreview-container {
-  @extend %ui-content-container;
+  @extend %ui-content-inner;
   padding: 0.5rem;
   .PostPreview-head {
     display: flex;

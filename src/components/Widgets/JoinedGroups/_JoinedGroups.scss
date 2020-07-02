@@ -1,6 +1,6 @@
 .JoinedGroups-container {
   display: flex;
   flex-direction: column;
-  @extend %ui-content-container;
+  @extend %ui-content-inner;
   padding: 0.5rem;
 }

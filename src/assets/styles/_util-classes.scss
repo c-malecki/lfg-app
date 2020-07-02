@@ -47,7 +47,15 @@
 %ui-content-container {
   border-radius: 0.3rem;
   margin: 0.5rem;
-  background-color: white;
+  background-color: $bg-l-gray;
+  border: 1px solid $lfg-l-gray;
+  overflow: hidden;
+}
+
+%ui-content-inner {
+  border-radius: 0.3rem;
+  margin: 0.5rem;
+  background-color: $bg-off-white;
   border: 1px solid $lfg-l-gray;
   overflow: hidden;
 }

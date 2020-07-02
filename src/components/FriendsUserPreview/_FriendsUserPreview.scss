@@ -1,5 +1,5 @@
 .UserPreview-container {
-  @extend %ui-content-container;
+  @extend %ui-content-inner;
   display: flex;
   flex-direction: row;
   align-items: center;

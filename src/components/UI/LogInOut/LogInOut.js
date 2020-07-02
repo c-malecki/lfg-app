@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { UsersState, UsersDispatch } from "../../../contexts/context_index";
-import { ButtonLink } from "../../components_index";
+import { ButtonLink, GeneralButton } from "../../components_index";
 
 export const LogInOut = (props) => {
   const { isLoggedIn } = useContext(UsersState);
@@ -12,12 +12,10 @@ export const LogInOut = (props) => {
     <div className="LogInOut-container">
       {isLoggedIn ? (
         <span>
-          <ButtonLink
-            url="/"
+          <GeneralButton
             method={handleLogOut}
             text="log out"
-            addClass="general-theme-link"
-            s
+            addClass="general-theme-button"
           />
         </span>
       ) : (
