@@ -7,7 +7,8 @@ export const GroupsListPage = (props) => {
   return (
     <div className="GroupsListPage-container">
       <div className="GroupsListPage-content">
-        <h3 className="page-heading">Groups</h3>
+        <h2 className="page-heading">Groups</h2>
+        <span className="search-placeholder">search placeholder</span>
         {groups.map((group) => {
           return (
             <GroupPreview

@@ -16,12 +16,12 @@ export const GroupPostsPage = (props) => {
     <div className="GroupPostsPage-container">
       <div className="GroupPostsPage-content">
         <div className="GroupPostsPage-head">
-          {/* <h3 className="component-heading">{group} Posts</h3> */}
           <GeneralLink
             url={`/g/${group}`}
             text={`${group}`}
             addClass="PageContentLink"
           />
+          <span className="search-placeholder">search placeholder</span>
           {isLoggedIn ? (
             <GeneralLink
               url={`/g/${group}/newpost`}

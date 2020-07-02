@@ -23,6 +23,11 @@ export const GroupNewPosts = (props) => {
           />
         ) : null}
       </div>
+      <GeneralLink
+        url={`${name}/posts`}
+        text="see all"
+        addClass="PageContentLink"
+      />
       {postsInGroup ? (
         <>
           {postsInGroup.map((post) => {

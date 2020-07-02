@@ -10,6 +10,7 @@ export const PostsByTagPage = () => {
     <div className="PostsByTagPage-container">
       <div className="PostsByTagPage-content">
         <h2 className="page-heading">{`#${tag}`}</h2>
+        <span className="search-placeholder">search placeholder</span>
         {posts && tag ? (
           posts.map((post) => {
             if (post.tags.includes(tag)) {

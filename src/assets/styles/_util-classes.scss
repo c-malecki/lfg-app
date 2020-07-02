@@ -30,6 +30,15 @@
   margin-block-start: 0.5rem;
 }
 
+.search-placeholder {
+  border: 1px solid $lfg-l-gray;
+  width: 10rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.3rem;
+  background-color: $bg-off-white;
+  margin-left: 0.5rem;
+}
+
 %page-center-content {
   display: flex;
   flex-direction: column;

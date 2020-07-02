@@ -28,7 +28,7 @@ export const RecentPosts = (props) => {
   };
   return (
     <div className="RecentPosts-container">
-      <h3 className="page-heading">Recent Posts</h3>
+      <h2 className="page-heading">Recent Posts</h2>
       {isLoggedIn && posts ? (
         <>
           <div className="RecentPosts-actions">
@@ -43,6 +43,7 @@ export const RecentPosts = (props) => {
               method={() => handleToggleGroups()}
             />
           </div>
+          <span className="search-placeholder">search placeholder</span>
           {pagePosts.viewAll && posts ? (
             <>
               {posts.map((post) => {
@@ -59,6 +60,7 @@ export const RecentPosts = (props) => {
         </>
       ) : (
         <>
+          <span className="search-placeholder">search placeholder</span>
           {posts.map((post) => {
             return <PostPreview post={post} key={`post-${post.post_id}`} />;
           })}

@@ -16,7 +16,8 @@ export const PostsByUserPage = (props) => {
   return (
     <div className="PostsByUserPage-container">
       <div className="PostsByUserPage-content">
-        <h3 className="page-heading">{user}'s Posts</h3>
+        <h2 className="page-heading">{user}'s Posts </h2>
+        <span className="search-placeholder">search placeholder</span>
         {postsForPage ? (
           <>
             {postsForPage.map((post) => {

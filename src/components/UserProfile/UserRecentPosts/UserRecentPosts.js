@@ -15,7 +15,11 @@ export const UserRecentPosts = (props) => {
   return (
     <div className="UserRecentPosts-container">
       <h3 className="page-heading">{user}'s Recent Posts</h3>
-      <GeneralLink url={`${user}/posts`} text="see all" />
+      <GeneralLink
+        url={`${user}/posts`}
+        text="see all"
+        addClass="PageContentLink"
+      />
       {postsByUser ? (
         <>
           {postsByUser.map((post) => {
