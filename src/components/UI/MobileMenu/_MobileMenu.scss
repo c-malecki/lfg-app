@@ -1,0 +1,30 @@
+.MobileMenu-container {
+  position: absolute;
+  width: 100%;
+  bottom: -23.25rem;
+  background-color: $bg-l-gray;
+  height: 20rem;
+  border-bottom: 2px solid $lfg-d-gray;
+  .MobileMenu-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    span {
+      font-size: 1.2rem;
+      padding: 0.2rem 1rem;
+      margin: 0.5rem 0;
+    }
+
+    span:nth-of-type(1) {
+      margin-top: 1.5rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 768.1px),
+  only screen and (min-device-width: 768.1px) {
+  .MobileMenu-container {
+    display: none;
+  }
+}

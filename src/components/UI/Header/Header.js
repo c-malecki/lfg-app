@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import { LogInOut, LfgHeaderLink } from "../../components_index";
+import { LogInOut, LfgHeaderLink, MobileMenu } from "../../components_index";
 import { Link } from "react-router-dom";
 import { UsersState, MessagesState } from "../../../contexts/context_index";
 import mail from "../../../assets/images/mailicon2.svg";
 import allies from "../../../assets/images/alliesicon.svg";
+import menubars from "../../../assets/images/menubars.svg";
 
 export const Header = (props) => {
   const [messageCount, setMessageCount] = useState(null);
   const [friendRequests, setFriendRequests] = useState(null);
+  const [openMobile, setOpenMobile] = useState(false);
   const { currentUser, isLoggedIn } = useContext(UsersState);
   const { userMessages } = useContext(MessagesState);
   useEffect(() => {
@@ -34,17 +36,6 @@ export const Header = (props) => {
       <div className="Header-actions">
         {isLoggedIn ? (
           <>
-            <Link
-              to={`/users/${currentUser.account.user_name}`}
-              className="current-user-link"
-            >
-              <img
-                src={currentUser.profile.profile_pic}
-                alt=""
-                className="current-user-pic"
-              />
-              <span className="UserLink">{currentUser.account.user_name}</span>
-            </Link>
             <Link to="/messages" className="header-link">
               <img src={mail} className="header-icon" alt="" />
               <span className="header-count">
@@ -56,6 +47,17 @@ export const Header = (props) => {
               <span className="header-count">
                 {friendRequests > 0 ? friendRequests : ""}
               </span>
+            </Link>
+            <Link
+              to={`/users/${currentUser.account.user_name}`}
+              className="current-user-link"
+            >
+              <img
+                src={currentUser.profile.profile_pic}
+                alt=""
+                className="current-user-pic"
+              />
+              <span className="UserLink">{currentUser.account.user_name}</span>
             </Link>
           </>
         ) : null}
@@ -88,8 +90,14 @@ export const Header = (props) => {
             </Link>
           </>
         ) : null}
-        <div className="Mobile-Menu-Button"></div>
+        <button
+          className="Mobile-Menu-Button"
+          onClick={() => setOpenMobile(!openMobile)}
+        >
+          <img src={menubars} alt="" />
+        </button>
       </div>
+      {openMobile ? <MobileMenu /> : null}
     </div>
   );
 };

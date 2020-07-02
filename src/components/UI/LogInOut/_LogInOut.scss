@@ -1,6 +1,5 @@
 .LogInOut-container {
-  margin-left: auto;
-  margin-right: 2rem;
+  margin: auto 2rem;
 
   a {
     margin-right: 1rem;
@@ -10,6 +9,6 @@
 @media only screen and (min-width: 0) and (max-width: 768px),
   only screen and (min-device-width: 0) and (max-width: 768px) {
   .LogInOut-container {
-    margin-right: 0.5rem;
+    margin: auto;
   }
 }
