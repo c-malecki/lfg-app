@@ -9,6 +9,8 @@ export * from "./UI/PageNav/PageNav";
 export * from "./UI/MessageViewLink/MessageViewLink";
 export * from "./UI/GeneralLink/GeneralLink";
 export * from "./UI/PopUpConfirm/PopUpConfirm";
+export * from "./UI/LfgMiniBanner/LfgMiniBanner";
+export * from "./UI/LfgHeaderLink/LfgHeaderLink";
 
 // Widgets
 export * from "./Widgets/CurrentUser/CurrentUser";

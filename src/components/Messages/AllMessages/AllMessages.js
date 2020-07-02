@@ -24,7 +24,7 @@ export const AllMessages = (props) => {
           })}
         </>
       ) : (
-        <span className="no-content-message">No messages.</span>
+        <div className="no-content-message">No messages.</div>
       )}
     </div>
   );

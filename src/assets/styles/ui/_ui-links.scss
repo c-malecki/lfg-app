@@ -1,0 +1,101 @@
+.GeneralLink {
+  text-decoration: none;
+}
+
+.GroupsLink {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: $lfg-d-purple;
+}
+
+.PageContentLink {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: $lfg-d-purple;
+  margin-left: 0.5rem;
+}
+
+.MessageUserLink {
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.general-theme-link {
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.2rem;
+  background-color: $lfg-l-blue;
+  font-weight: bold;
+  color: white;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.PostLink {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: $lfg-d-purple;
+}
+
+.PostPreviewText {
+  font-size: 0.9rem;
+  color: $lfg-d-gray;
+}
+
+.PostPreviewHeadLink {
+  font-weight: bold;
+  margin-right: 0.2rem;
+  color: $lfg-d-purple;
+}
+
+.PostPreviewBodyLink {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: $lfg-l-gray;
+}
+
+.PostTag-link {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-right: 0.2rem;
+}
+
+.UserLink {
+  font-weight: bold;
+  margin-right: 0.2rem;
+}
+
+.PageNavLink {
+  display: inline-block;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 1rem;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  font-family: "PS2P";
+}
+
+@media (hover: hover) {
+  .PageNavLink:hover {
+    background-color: $lfg-d-blue;
+  }
+}
+
+@media only screen and (min-width: 0) and (max-width: 768px),
+  only screen and (min-device-width: 0) and (max-width: 768px) {
+  .GroupsLink {
+    font-size: 1rem;
+  }
+
+  .PostLink {
+    font-size: 1rem;
+  }
+
+  .PostHeadLink {
+    font-size: 0.9rem;
+  }
+}

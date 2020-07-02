@@ -24,7 +24,7 @@ export const Unread = (props) => {
           })}
         </>
       ) : (
-        <span className="no-content-message">No unread messages.</span>
+        <div className="no-content-message">No unread messages.</div>
       )}
     </div>
   );

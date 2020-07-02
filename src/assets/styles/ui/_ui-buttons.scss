@@ -2,6 +2,21 @@
   text-transform: uppercase;
 }
 
+.UI-ButtonLink {
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.header-buttonlink {
+  border-radius: 0.25rem;
+  padding: 0.2rem;
+  font-size: 0.9rem;
+  background-color: rgb(148, 204, 207);
+  font-weight: bold;
+  color: white;
+}
+
 %button-style {
   border: none;
   border-radius: 0.25rem;

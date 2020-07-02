@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { LogInOut, GeneralLink } from "../components_index";
+import { LogInOut, LfgHeaderLink } from "../components_index";
+import { Link } from "react-router-dom";
 import { UsersState, MessagesState } from "../../contexts/context_index";
+import mail from "../../assets/images/mailicon2.svg";
+import allies from "../../assets/images/alliesicon.svg";
 
 export const Header = (props) => {
   const [messageCount, setMessageCount] = useState(null);
@@ -27,24 +30,33 @@ export const Header = (props) => {
   }, [currentUser, userMessages]);
   return (
     <div className="Header-container">
+      <LfgHeaderLink />
       <div className="Header-actions">
         {isLoggedIn ? (
           <>
-            <GeneralLink
-              url={`/users/${currentUser.account.user_name}`}
-              text={currentUser.account.user_name}
-              addClass="UserLink"
-            />
-            <GeneralLink
-              url={`/messages`}
-              text={`messages (${messageCount})`}
-            />
-            <GeneralLink
-              url={`/friends`}
-              text={`friends ${
-                friendRequests > 0 ? `(${friendRequests})` : ""
-              }`}
-            />
+            <Link
+              to={`/users/${currentUser.account.user_name}`}
+              className="current-user-link"
+            >
+              <img
+                src={currentUser.profile.profile_pic}
+                alt=""
+                className="current-user-pic"
+              />
+              <span className="UserLink">{currentUser.account.user_name}</span>
+            </Link>
+            <Link to="/messages" className="header-link">
+              <img src={mail} className="header-icon" alt="" />
+              <span className="header-count">
+                {messageCount > 0 ? messageCount : ""}
+              </span>
+            </Link>
+            <Link to="/friends" className="header-link">
+              <img src={allies} className="header-icon" alt="" />
+              <span className="header-count">
+                {friendRequests > 0 ? friendRequests : ""}
+              </span>
+            </Link>
           </>
         ) : null}
         <LogInOut />

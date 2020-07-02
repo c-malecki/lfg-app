@@ -2,7 +2,9 @@
   @extend %page-center-content;
   .LogIn {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding: 1rem 0;
     @extend %ui-content-container;
   }
