@@ -1,5 +1,5 @@
 import React from "react";
-import { LogInOut, GeneralLink } from "../../components_index";
+import { LogInOut } from "../../components_index";
 
 export const MobileMenu = (props) => {
   return (
