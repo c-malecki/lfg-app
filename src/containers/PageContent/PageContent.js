@@ -23,6 +23,7 @@ import {
   PageNav,
   CurrentUser,
   YourPosts,
+  MobilePageNav,
 } from "../../components/components_index";
 
 export const PageContent = (props) => {
@@ -30,6 +31,7 @@ export const PageContent = (props) => {
     <div className="Page-container">
       <div className="Page-content">
         <PageNav />
+        <MobilePageNav />
         <div className="Page-content-col1">
           <Route path="/" component={CurrentUser} />
         </div>
