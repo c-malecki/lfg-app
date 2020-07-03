@@ -13,6 +13,7 @@ export * from "./UI/LfgMiniBanner/LfgMiniBanner";
 export * from "./UI/LfgHeaderLink/LfgHeaderLink";
 export * from "./UI/MobileMenu/MobileMenu";
 export * from "./UI/MobilePageNav/MobilePageNav";
+export * from "./UI/MobileArrowButton/MobileArrowButton";
 
 // Widgets
 export * from "./Widgets/CurrentUser/CurrentUser";

@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { GeneralLink, GeneralButton } from "../../components_index";
+import React, { useContext } from "react";
+import { GeneralLink } from "../../components_index";
+import { AppState } from "../../../contexts/context_index";
 
 export const MobilePageNav = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { openMobilePageNav } = useContext(AppState);
   return (
-    <div className={`MobilePageNav-container ${isOpen ? "open-nav" : ""}`}>
-      <GeneralButton
-        text={isOpen ? `>` : `<`}
-        addClass="mobile-arrow-button"
-        method={() => setIsOpen(!isOpen)}
-      />
+    <div
+      className={`MobilePageNav-container ${
+        openMobilePageNav ? "open-nav" : ""
+      }`}
+    >
       <span>
         <GeneralLink url="/" text="home" addClass="PageNavLink" />
         <GeneralLink url="/g" text="groups" addClass="PageNavLink" />

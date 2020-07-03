@@ -6,21 +6,24 @@ import {
   UsersContextProvider,
   GroupsContextProvider,
   MessagesContextProvider,
+  AppContextProvider,
 } from "../../contexts/context_index";
 
 function App() {
   return (
     <div className="App">
-      <UsersContextProvider>
-        <PostsContextProvider>
-          <MessagesContextProvider>
-            <GroupsContextProvider>
-              <Header />
-              <PageContent />
-            </GroupsContextProvider>
-          </MessagesContextProvider>
-        </PostsContextProvider>
-      </UsersContextProvider>
+      <AppContextProvider>
+        <UsersContextProvider>
+          <PostsContextProvider>
+            <MessagesContextProvider>
+              <GroupsContextProvider>
+                <Header />
+                <PageContent />
+              </GroupsContextProvider>
+            </MessagesContextProvider>
+          </PostsContextProvider>
+        </UsersContextProvider>
+      </AppContextProvider>
     </div>
   );
 }

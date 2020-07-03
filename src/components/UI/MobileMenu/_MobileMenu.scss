@@ -6,6 +6,8 @@
   height: 20rem;
   max-height: 20rem;
   border-bottom: 2px solid $lfg-d-gray;
+  z-index: 10;
+
   .MobileMenu-content {
     display: flex;
     flex-direction: column;
@@ -13,6 +15,14 @@
 
     a {
       margin: auto;
+    }
+
+    span {
+      margin: auto;
+
+      button {
+        margin: auto;
+      }
     }
   }
 }

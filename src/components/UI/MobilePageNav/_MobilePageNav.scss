@@ -8,20 +8,9 @@
   align-items: center;
   margin: auto;
   background-color: $lfg-l-blue;
-  right: calc(0% - (92% + 92% / 70));
+  left: 100%;
   border-radius: 0.3rem;
-
-  .mobile-arrow-button {
-    border: 2px solid white;
-    background-color: $lfg-d-blue;
-    border-radius: 0.25rem;
-    padding: 0.4rem 0.4rem;
-    margin-left: 0.5rem;
-    font-weight: bold;
-    font-size: 1.2rem;
-    font-family: "PS2P";
-    color: white;
-  }
+  z-index: 8;
 
   span {
     margin: auto;
@@ -33,7 +22,7 @@
 }
 
 .open-nav {
-  right: 0;
+  left: 0;
   border-radius: 0;
 }
 
@@ -41,5 +30,18 @@
   only screen and (min-device-width: 768.1px) {
   .MobilePageNav-container {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 480px),
+  only screen and (max-device-width: 480px) {
+  .MobilePageNav-container {
+    span {
+      margin-left: 0.5rem;
+
+      a {
+        font-size: 0.8rem;
+      }
+    }
   }
 }
