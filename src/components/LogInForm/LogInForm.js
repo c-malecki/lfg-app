@@ -1,92 +1,77 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { UsersDispatch, UsersState } from "../../contexts/context_index";
 import { GeneralButton } from "../components_index";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
 
 export const LogInForm = () => {
-  const [formState, setFormState] = useState({
-    user_name: "",
-    password: "",
-    error: null,
-  });
-
   const { allUsers } = useContext(UsersState);
   const dispatch = useContext(UsersDispatch);
   const history = useHistory();
 
-  const resetForm = () => {
-    setFormState({
-      user_name: "",
-      password: "",
-      error: null,
-    });
-  };
+  const LoginSchema = Yup.object().shape({
+    user_name: Yup.string()
+      .required("Username is required.")
+      .test("valid-username", "Username or password is incorrect.", (value) => {
+        if (
+          allUsers.find(
+            (user) =>
+              user.account.user_name.toLowerCase() === value.toLowerCase()
+          )
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      }),
+    password: Yup.string()
+      .required("Password is required.")
+      .test("valid-password", "Username or password is incorrect.", (value) => {
+        if (
+          allUsers.find(
+            (user) =>
+              user.account.password.toLowerCase() === value.toLowerCase()
+          )
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      }),
+  });
 
-  const validate = (data) => {
-    const check = allUsers.find(
-      (user) =>
-        user.account.user_name.toLowerCase() === data.user_name.toLowerCase() &&
-        user.account.password === data.password
-    );
-    if (check === undefined || check === null) {
-      setFormState((prevState) => ({
-        ...prevState,
-        error: "Username or password is incorrect.",
-      }));
-    } else if (check !== undefined || check !== null) {
-      dispatch({ type: "LOGIN", userData: check });
-      resetForm();
-      history.push("/");
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = {
-      user_name: formState.user_name,
-      password: formState.password,
-    };
-    validate(data);
-  };
   return (
     <div className="LogInForm-container">
-      <form className="LogInForm-form" onSubmit={(e) => handleSubmit(e)}>
-        <div className="LogInForm-username-container">
-          <input
-            type="text"
-            onChange={(e) =>
-              setFormState({ ...formState, user_name: e.target.value })
-            }
-            name="user_name"
-            placeholder="username"
-            value={formState.user_name}
-          />
-        </div>
-        <div className="LogInForm-password-container">
-          <input
-            onChange={(e) =>
-              setFormState({ ...formState, password: e.target.value })
-            }
-            name="password"
-            className="LogInForm-password-input"
-            type="text"
-            placeholder="password"
-            value={formState.password}
-          />
-        </div>
-        <div className="LogInForm-submit-container">
-          <GeneralButton
-            type="submit"
-            addClass="general-theme-button"
-            text="log in"
-          />
-        </div>
-        {formState.error ? (
-          <div className="LogInForm-error">{formState.error}</div>
-        ) : (
-          ""
+      <Formik
+        initialValues={{
+          user_name: "",
+          password: "",
+        }}
+        validationSchema={LoginSchema}
+        onSubmit={(values) => {
+          dispatch({ type: "LOGIN", userData: values });
+          history.push("/");
+        }}
+        validateOnChange={false}
+        validateOnBlur={false}
+      >
+        {({ errors }) => (
+          <Form>
+            <div className="LogInForm-content">
+              <Field name="user_name" placeholder="username" />
+              {errors.user_name ? <div>{errors.user_name}</div> : null}
+              <Field name="password" placeholder="password" />
+              {errors.password ? <div>{errors.password}</div> : null}
+              <GeneralButton
+                type="submit"
+                addClass="general-theme-button"
+                text="log in"
+              />
+            </div>
+          </Form>
         )}
-      </form>
+      </Formik>
     </div>
   );
 };

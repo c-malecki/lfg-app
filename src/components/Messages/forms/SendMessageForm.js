@@ -1,76 +1,71 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useHistory } from "react-router-dom";
 import { GeneralButton } from "../../components_index";
 import { MessagesDispatch, UsersState } from "../../../contexts/context_index";
 import { reformatDate } from "../../../assets/util/reformatDate";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
 
 export const SendMessageForm = (props) => {
-  const [formState, setFormState] = useState({
-    subject: "",
-    message: "",
-  });
-
   const dispatch = useContext(MessagesDispatch);
   const { currentUser } = useContext(UsersState);
   const history = useHistory();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const date = reformatDate(new Date());
-    const messageId = uuidv4();
-    dispatch({
-      type: "SEND_RECEIVE_MESSAGE",
-      message: {
-        from_username: currentUser.user_name,
-        to_username: props.toUser,
-        date_sent: date,
-        subject: formState.subject,
-        content: formState.message,
-        message_id: messageId,
-        replies: [],
-      },
-    });
-    history.push(`/messages/${messageId}`);
-  };
+  const MessageSchema = Yup.object().shape({
+    subject: Yup.string().required("Subject is required"),
+    message: Yup.string().required("Message is required"),
+  });
 
   return (
     <div className="SendMessageForm-container">
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div className="SendMessageForm-user-container">
-          <span>To: {props.toUser} (turn into input with user search?)</span>
-        </div>
-        <div className="SendMessageForm-subject-container">
-          <input
-            type="text"
-            onChange={(e) =>
-              setFormState({ ...formState, subject: e.target.value })
-            }
-            name="subject"
-            className="SendMessageForm-subject-input"
-            placeholder="Subject..."
-            value={formState.subject}
-          />
-        </div>
-        <div className="SendMessageForm-content-container">
-          <textarea
-            onChange={(e) =>
-              setFormState({ ...formState, message: e.target.value })
-            }
-            name="send-message"
-            className="SendMessageForm-content-input"
-            type="text"
-            value={formState.message}
-          />
-        </div>
-        <div className="SendMessageForm-submit-container">
-          <GeneralButton
-            type="submit"
-            addClass="general-theme-button"
-            text="send"
-          />
-        </div>
-      </form>
+      <div className="SendMessageForm-user-container">
+        <span>To: {props.toUser} (turn into input with user search?)</span>
+      </div>
+      <Formik
+        initialValues={{
+          subject: "",
+          message: "",
+        }}
+        validationSchema={MessageSchema}
+        onSubmit={(values) => {
+          const date = reformatDate(new Date());
+          const messageId = uuidv4();
+          dispatch({
+            type: "SEND_RECEIVE_MESSAGE",
+            message: {
+              from_username: currentUser.user_name,
+              to_username: props.toUser,
+              date_sent: date,
+              subject: values.subject,
+              content: values.message,
+              message_id: messageId,
+              replies: [],
+            },
+          });
+          history.push(`/messages/${messageId}`);
+        }}
+        validateOnChange={false}
+        validateOnBlur={false}
+      >
+        {({ errors }) => (
+          <Form>
+            <div className="SendMessageForm-content">
+              <Field name="subject" placeholder="subject" />
+              {errors.subject ? <div>{errors.subject}</div> : null}
+              <Field name="message" as="textarea" placeholder="message..." />
+              {errors.message ? <div>{errors.message}</div> : null}
+              <span>
+                <GeneralButton
+                  type="submit"
+                  addClass="general-theme-button"
+                  text="send"
+                />
+              </span>
+            </div>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };

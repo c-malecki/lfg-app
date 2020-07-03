@@ -3,14 +3,14 @@ import { v4 as uuidv4 } from "uuid";
 import { MessagesDispatch, UsersState } from "../../../contexts/context_index";
 import { reformatDate } from "../../../assets/util/reformatDate";
 import { GeneralButton } from "../../components_index";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
 
 export const ReplyToMessageForm = (props) => {
   const [formState, setFormState] = useState({
-    message: "",
-    isSubmitting: false,
     openForm: false,
+    isSubmitting: false,
   });
-
   const { currentUser } = useContext(UsersState);
   const dispatch = useContext(MessagesDispatch);
 
@@ -19,36 +19,15 @@ export const ReplyToMessageForm = (props) => {
     setFormState((prevState) => ({ ...prevState, openForm: !openForm }));
   };
 
-  const resetForm = () => {
-    setFormState((prevState) => ({ ...prevState, message: "" }));
-  };
-
   const submitDebounce = () => {
     setTimeout(function () {
       setFormState((prevState) => ({ ...prevState, isSubmitting: false }));
     }, 2000);
   };
 
-  const handleSubmit = (e) => {
-    const date = reformatDate(new Date());
-    e.preventDefault();
-    setFormState((prevState) => ({ ...prevState, isSubmitting: true }));
-    submitDebounce();
-    const data = {
-      user_name: currentUser.user_name,
-      date_sent: date,
-      content: formState.message,
-      reply_id: uuidv4(),
-    };
-    dispatch({
-      type: "REPLY_TO_MESSAGE",
-      message_id: props.message_id,
-      to: props.to,
-      from: props.from,
-      reply: data,
-    });
-    resetForm();
-  };
+  const ReplySchema = Yup.object().shape({
+    message: Yup.string().required("Message is required"),
+  });
 
   return (
     <div className="ReplyToMessage-container">
@@ -62,34 +41,53 @@ export const ReplyToMessageForm = (props) => {
           formState.openForm ? "" : "hide"
         }`}
       >
-        <form className="ReplyToMessage-form" onSubmit={(e) => handleSubmit(e)}>
-          <div className="ReplyToMessage-comment-container">
-            <textarea
-              onChange={(e) =>
-                setFormState({ ...formState, message: e.target.value })
-              }
-              name="message"
-              className="ReplyToMessage-comment-input"
-              type="text"
-              placeholder="Send a reply..."
-              value={formState.message}
-            />
-          </div>
-          <div className="ReplyToMessage-submit-container">
-            <GeneralButton
-              type="submit"
-              addClass="general-theme-button"
-              text="send"
-              disabled={formState.isSubmitting}
-            />
+        <Formik
+          initialValues={{
+            message: "",
+          }}
+          onSubmit={(values, { resetForm }) => {
+            submitDebounce();
+            const date = reformatDate(new Date());
+            const replyId = uuidv4();
+            dispatch({
+              type: "REPLY_TO_MESSAGE",
+              message_id: props.message_id,
+              to: props.to,
+              from: props.from,
+              reply: {
+                user_name: currentUser.user_name,
+                date_sent: date,
+                content: values.message,
+                reply_id: replyId,
+              },
+            });
+            resetForm();
+          }}
+          validationSchema={ReplySchema}
+          validateOnChange={false}
+          validateOnBlur={false}
+        >
+          {({ errors }) => (
+            <Form>
+              <Field name="message" as="textarea" />
+              {errors.message ? <div>{errors.message}</div> : null}
+              <div className="ReplyToMessage-submit-container">
+                <GeneralButton
+                  type="submit"
+                  addClass="general-theme-button"
+                  text="send"
+                  disabled={formState.isSubmitting}
+                />
 
-            <GeneralButton
-              method={toggleForm}
-              text="close"
-              addClass="close-delete-button"
-            />
-          </div>
-        </form>
+                <GeneralButton
+                  method={toggleForm}
+                  text="close"
+                  addClass="close-delete-button"
+                />
+              </div>
+            </Form>
+          )}
+        </Formik>
       </div>
     </div>
   );

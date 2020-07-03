@@ -17,7 +17,11 @@ const usersReducer = (state, action) => {
       return { ...state, isLoggedIn: true, currentUser: action.demoUser };
     }
     case "LOGIN": {
-      return { ...state, isLoggedIn: true, currentUser: action.userData };
+      const { allUsers } = state;
+      const newUser = allUsers.find(
+        (u) => u.user_name === action.userData.user_name
+      );
+      return { ...state, isLoggedIn: true, currentUser: newUser };
     }
     case "LOGOUT": {
       return { ...state, isLoggedIn: false, currentUser: null };
