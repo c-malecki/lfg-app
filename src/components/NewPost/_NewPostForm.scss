@@ -2,5 +2,20 @@
   .PostForm-content {
     display: flex;
     flex-direction: column;
+
+    .filtered-tags-list,
+    .added-tags-list {
+      list-style: none;
+      margin-block-start: 0.5rem;
+      padding-inline-start: 0;
+      li {
+        display: inline-block;
+        border: 1px solid $lfg-l-gray;
+        border-radius: 0.3rem;
+        padding-left: 0.3rem;
+        background-color: $bg-off-white;
+        font-size: 0.9rem;
+      }
+    }
   }
 }

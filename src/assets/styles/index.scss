@@ -6,8 +6,9 @@
 @import "../../components/components_index";
 @import "../../containers/containers_index";
 // ui
-@import "../styles/ui/ui-buttons";
-@import "../styles/ui/ui-links";
+@import "./ui/ui-buttons";
+@import "./ui/ui-links";
+@import "./forms/forms";
 
 body {
   margin: 0;

@@ -59,15 +59,25 @@ export const LogInForm = () => {
         {({ errors }) => (
           <Form>
             <div className="LogInForm-content">
-              <Field name="user_name" placeholder="username" />
-              {errors.user_name ? <div>{errors.user_name}</div> : null}
-              <Field name="password" placeholder="password" />
-              {errors.password ? <div>{errors.password}</div> : null}
-              <GeneralButton
-                type="submit"
-                addClass="general-theme-button"
-                text="log in"
+              <Field
+                name="user_name"
+                placeholder="username"
+                className="form-text"
               />
+              {errors.user_name ? <div>{errors.user_name}</div> : null}
+              <Field
+                name="password"
+                placeholder="password"
+                className="form-text"
+              />
+              {errors.password ? <div>{errors.password}</div> : null}
+              <span>
+                <GeneralButton
+                  type="submit"
+                  addClass="general-theme-button"
+                  text="log in"
+                />
+              </span>
             </div>
           </Form>
         )}

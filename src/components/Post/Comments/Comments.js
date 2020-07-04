@@ -68,7 +68,7 @@ export const Comments = (props) => {
                     message: "Are you sure you want to delete this comment?",
                   })
                 }
-                addClass="close-delete-button"
+                addClass="form-delete-button"
                 text="X"
               />
             ) : (

@@ -51,9 +51,18 @@ export const SendMessageForm = (props) => {
         {({ errors }) => (
           <Form>
             <div className="SendMessageForm-content">
-              <Field name="subject" placeholder="subject" />
+              <Field
+                name="subject"
+                placeholder="subject"
+                className="form-text"
+              />
               {errors.subject ? <div>{errors.subject}</div> : null}
-              <Field name="message" as="textarea" placeholder="message..." />
+              <Field
+                name="message"
+                as="textarea"
+                placeholder="message..."
+                className="form-textarea"
+              />
               {errors.message ? <div>{errors.message}</div> : null}
               <span>
                 <GeneralButton

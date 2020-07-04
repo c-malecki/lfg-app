@@ -6,14 +6,14 @@ import {
 } from "../../../contexts/context_index";
 import { reformatDate } from "../../../assets/util/reformatDate";
 import { GeneralButton } from "../../components_index";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
 
 export const CommentForm = (props) => {
   const [formState, setFormState] = useState({
-    message: "",
     isSubmitting: false,
     openForm: false,
   });
-
   const { currentUser } = useContext(UsersState);
   const dispatch = useContext(PostsDispatchContext);
 
@@ -22,31 +22,15 @@ export const CommentForm = (props) => {
     setFormState((prevState) => ({ ...prevState, openForm: !openForm }));
   };
 
-  const resetForm = () => {
-    setFormState((prevState) => ({ ...prevState, message: "" }));
-  };
-
   const submitDebounce = () => {
     setTimeout(function () {
       setFormState((prevState) => ({ ...prevState, isSubmitting: false }));
-    }, 3000);
+    }, 2000);
   };
 
-  const handleSubmit = (e) => {
-    const date = reformatDate(new Date());
-    e.preventDefault();
-    setFormState((prevState) => ({ ...prevState, isSubmitting: true }));
-    submitDebounce();
-    const data = {
-      user_name: currentUser.account.user_name,
-      date: date,
-      content: formState.message,
-      comment_id: uuidv4(),
-    };
-    dispatch({ type: "ADD_COMMENT", post_id: props.post_id, comment: data });
-    resetForm();
-    toggleForm();
-  };
+  const CommentSchema = Yup.object().shape({
+    content: Yup.string().required("Comment content is required"),
+  });
 
   return (
     <div className="CommentForm-container">
@@ -60,34 +44,52 @@ export const CommentForm = (props) => {
           formState.openForm ? "" : "hide"
         }`}
       >
-        <form className="CommentForm-form" onSubmit={(e) => handleSubmit(e)}>
-          <div className="CommentForm-comment-container">
-            <textarea
-              onChange={(e) =>
-                setFormState({ ...formState, message: e.target.value })
-              }
-              name="message"
-              className="CommentForm-comment-input"
-              type="text"
-              placeholder="Leave a comment..."
-              value={formState.message}
-            />
-          </div>
-          <div className="CommentForm-submit-container">
-            <GeneralButton
-              type="submit"
-              addClass="ok-confirm-button"
-              text="comment"
-              disabled={formState.isSubmitting}
-            />
+        <Formik
+          initialValues={{
+            content: "",
+          }}
+          onSubmit={(values, { resetForm }) => {
+            submitDebounce();
+            const date = reformatDate(new Date());
+            const commentId = uuidv4();
+            dispatch({
+              type: "ADD_COMMENT",
+              post_id: props.post_id,
+              comment: {
+                user_name: currentUser.account.user_name,
+                date: date,
+                content: values.content,
+                comment_id: commentId,
+              },
+            });
+            resetForm();
+            toggleForm();
+          }}
+          validationSchema={CommentSchema}
+          validateOnChange={false}
+          validateOnBlur={false}
+        >
+          {({ errors }) => (
+            <Form>
+              <Field name="content" as="textarea" className="form-textarea" />
+              {errors.content ? <div>{errors.content}</div> : null}
+              <div className="CommentForm-submit-container">
+                <GeneralButton
+                  type="submit"
+                  addClass="general-theme-button"
+                  text="comment"
+                  disabled={formState.isSubmitting}
+                />
 
-            <GeneralButton
-              method={toggleForm}
-              text="close"
-              addClass="close-delete-button"
-            />
-          </div>
-        </form>
+                <GeneralButton
+                  method={toggleForm}
+                  text="close"
+                  addClass="close-delete-button"
+                />
+              </div>
+            </Form>
+          )}
+        </Formik>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import { GeneralButton } from "../../components_index";
 
 export const PopUpConfirm = (props) => {
   return (
@@ -6,12 +7,16 @@ export const PopUpConfirm = (props) => {
       <div className="PopUpConfirm-content">
         <span className="PopUpConfirm-message">{props.message}</span>
         <div className="PopUpConfirm-buttons">
-          <button onClick={props.ok} className="ok-confirm-button">
-            ok
-          </button>
-          <button onClick={props.cancel} className="close-delete-button">
-            cancel
-          </button>
+          <GeneralButton
+            text="ok"
+            method={props.ok}
+            addClass="general-theme-button"
+          />
+          <GeneralButton
+            text="cancel"
+            method={props.cancel}
+            addClass="close-delete-button"
+          />
         </div>
       </div>
     </div>

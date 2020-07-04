@@ -1,18 +1,8 @@
 .CommentForm-container {
   margin-left: 0.5rem;
-  .CommentForm-toggle-button {
-  }
-  .CommentForm-form-container {
-  }
-}
+  margin-right: 0.5rem;
 
-.CommentForm-form {
-  .CommentForm-comment-container {
-    .CommentForm-comment-input {
-    }
-  }
-  .CommentForm-submit-container {
-    .CommentForm-submit-button {
-    }
+  .form-textarea {
+    width: calc(100% - 6px);
   }
 }

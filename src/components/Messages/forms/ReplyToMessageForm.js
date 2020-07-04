@@ -69,7 +69,7 @@ export const ReplyToMessageForm = (props) => {
         >
           {({ errors }) => (
             <Form>
-              <Field name="message" as="textarea" />
+              <Field name="message" as="textarea" className="form-textarea" />
               {errors.message ? <div>{errors.message}</div> : null}
               <div className="ReplyToMessage-submit-container">
                 <GeneralButton

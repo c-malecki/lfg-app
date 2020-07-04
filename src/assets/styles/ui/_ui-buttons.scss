@@ -23,7 +23,6 @@
   padding: 0.2rem;
   font-weight: bold;
   color: white;
-  margin: 0.5rem 0.5rem 0.5rem 0;
   text-transform: uppercase;
   font-size: 0.9rem;
   cursor: pointer;
@@ -32,14 +31,17 @@
 .general-theme-button {
   @extend %button-style;
   background-color: $lfg-l-blue;
+  margin: 0.5rem 0.5rem 0.5rem 0;
 }
 
 .close-delete-button {
   @extend %button-style;
   background-color: $lfg-l-red;
+  margin: 0.5rem 0.5rem 0.5rem 0;
 }
 
 .ok-confirm-button {
   @extend %button-style;
   background-color: $ui-green;
+  margin: 0.5rem 0.5rem 0.5rem 0;
 }

@@ -61,10 +61,15 @@ export const NewPostForm = (props) => {
         {({ values, errors, handleChange, setFieldValue }) => (
           <Form>
             <div className="PostForm-content">
-              <Field name="title" placeholder="Title the post..." />
+              <Field
+                name="title"
+                className="form-text"
+                placeholder="Title the post..."
+              />
               {errors.title ? <div>{errors.title}</div> : null}
               <Field
                 name="tag_search"
+                className="form-text"
                 placeholder="Search for or add tags..."
                 onChange={(e) => {
                   handleChange(e);
@@ -81,23 +86,26 @@ export const NewPostForm = (props) => {
               <FieldArray
                 name="tags"
                 render={(arrayHelpers) => (
-                  <ul>
-                    <li>
-                      <span>{values.tag_search}</span>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setFieldValue("tags", [
-                            ...values.tags,
-                            values.tag_search,
-                          ]);
-                          setFieldValue("tag_search", "");
-                          setFieldValue("filtered_tags", [...tags]);
-                        }}
-                      >
-                        +
-                      </button>
-                    </li>
+                  <ul className="filtered-tags-list">
+                    {values.tag_search === "" ? null : (
+                      <li>
+                        <span>{values.tag_search}</span>
+                        <GeneralButton
+                          addClass="form-add-button"
+                          text="+"
+                          method={() => {
+                            setFieldValue("tags", [
+                              ...values.tags,
+                              values.tag_search,
+                            ]);
+                            setFieldValue("tag_search", "");
+                            setFieldValue("filtered_tags", [...tags]);
+                          }}
+                        >
+                          +
+                        </GeneralButton>
+                      </li>
+                    )}
                     {values.filtered_tags.length > 0
                       ? values.filtered_tags.map((t, i) => {
                           if (values.tags.includes(t)) {
@@ -107,12 +115,13 @@ export const NewPostForm = (props) => {
                               <li key={i}>
                                 <span>{t}</span>
 
-                                <button
-                                  type="button"
-                                  onClick={() => arrayHelpers.insert(i, t)}
+                                <GeneralButton
+                                  text="+"
+                                  addClass="form-add-button"
+                                  method={() => arrayHelpers.insert(i, t)}
                                 >
                                   +
-                                </button>
+                                </GeneralButton>
                               </li>
                             );
                           }
@@ -124,19 +133,21 @@ export const NewPostForm = (props) => {
               <FieldArray
                 name="tags"
                 render={(arrayHelpers) => (
-                  <ul>
+                  <ul className="added-tags-list">
+                    <div>Tags for post</div>
                     {values.tags.length > 0
                       ? values.tags.map((t, i) => {
                           return (
                             <li key={i}>
                               <span>{t}</span>
 
-                              <button
-                                type="button"
-                                onClick={() => arrayHelpers.remove(t)}
+                              <GeneralButton
+                                text="-"
+                                addClass="form-delete-button"
+                                method={() => arrayHelpers.remove(t)}
                               >
                                 -
-                              </button>
+                              </GeneralButton>
                             </li>
                           );
                         })
@@ -148,6 +159,7 @@ export const NewPostForm = (props) => {
               <Field
                 name="content"
                 as="textarea"
+                className="form-textarea"
                 placeholder="Write a post..."
               />
               {errors.content ? <div>{errors.content}</div> : null}

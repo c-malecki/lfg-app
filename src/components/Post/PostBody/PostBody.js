@@ -26,7 +26,7 @@ export const PostBody = (props) => {
             <GeneralButton
               text="X"
               method={() => setShowConfirm(true)}
-              addClass="close-delete-button"
+              addClass="form-delete-button"
             />
           </span>
         ) : null}
