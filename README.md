@@ -11,24 +11,22 @@ The client side "database" is implemented via the React content API.
 
 After initial prototyping of basic features and the UI/UX, I will progressively build and implement an API and database.
 
-- General layout decided on. Still needs to be optimized for mobile viewing.
+- Styling is still being implemented as well as experimenting with mobile UI differences from desktop view.
 
-- Styling is still being implemented.
-
-**Features and Functionality as of 6/31/2020**
-
-- Currently you can log in and out of the application. When logged out, you can still view posts and their comments, but cannot add posts or comments.
+**Features and Functionality as of 7/4/2020**
 
 - By default, you are logged in as "TestUser." You can log in as any of the users seen in the app. The password for each mock account is "password."
 
+- Currently you can log in and out of the application. When logged out, you can still view posts and their comments, but cannot add posts or comments.
+
 - You can only create posts or add comments to a post while being logged in and only delete posts or comments associated with the logged in user account.
 
-- Posts can be browsed by tags.
+- Posts can be browsed by tags, users, or groups.
 
-- Posts are tied to Groups. (basically like subreddits)
+- Posts are made within Groups. (basically like subreddits)
 
 - Messages and replies to messages can be sent between users.
 
-- User profile bio can be edited so long as you are the logged in user of the profile being viewed.
+- Friend requests can be sent, accepted, canceled, or denied between users. Users can also remove current friends.
 
-- Logged in user can send friend requests to other users, cancel sent requests, or deny pending requests.
+- User profile bio can be edited so long as you are the logged in user of the profile being viewed.

@@ -1,0 +1,17 @@
+.CurrentUserMobile-container {
+  position: fixed;
+  width: 100%;
+  background-color: $lfg-l-red;
+  .CurrentUserMobile-content {
+    display: flex;
+    flex-direction: column;
+    @extend %ui-content-inner;
+    padding: 0.5rem;
+
+    img {
+      height: 6rem;
+      width: 6rem;
+      margin: auto;
+    }
+  }
+}

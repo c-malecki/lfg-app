@@ -1,4 +1,4 @@
-.MobileArrowButton-container {
+.MobileArrowButton1-container {
   position: fixed;
   top: 3rem;
   right: 0;
@@ -8,30 +8,66 @@
   width: 3.2rem;
   background-color: $lfg-l-blue;
   border-radius: 0.3rem 0 0 0.3rem;
+
+  .pagenav-arrow-button {
+    position: relative;
+    display: block;
+    height: 36px;
+    width: 36px;
+    z-index: 9;
+    bottom: -12%;
+
+    border: 2px solid white;
+    background-color: $lfg-d-blue;
+    border-radius: 0.25rem;
+    padding: 0.4rem 0.4rem;
+    margin-left: 0.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    font-family: "PS2P";
+    color: white;
+  }
 }
 
-.pagenav-arrow-button {
-  position: relative;
-  display: block;
-  height: 36px;
-  width: 36px;
+.MobileArrowButton2-container {
+  position: fixed;
+  top: 5.9rem;
+  right: 0;
   z-index: 9;
-  bottom: -12%;
+  transform: rotate(270deg);
 
-  border: 2px solid white;
-  background-color: $lfg-d-blue;
-  border-radius: 0.25rem;
-  padding: 0.4rem 0.4rem;
-  margin-left: 0.5rem;
-  font-weight: bold;
-  font-size: 1.2rem;
-  font-family: "PS2P";
-  color: white;
+  height: 3.2rem;
+  width: 3rem;
+  background-color: $lfg-d-red;
+  border-radius: 0.3rem 0.3rem 0 0;
+
+  .pagenav-arrow-button {
+    position: relative;
+    display: block;
+    height: 36px;
+    width: 36px;
+    z-index: 9;
+    bottom: -14%;
+    left: -4%;
+
+    border: 2px solid white;
+    background-color: $lfg-l-red;
+    border-radius: 0.25rem;
+    padding: 0.4rem 0.4rem;
+    margin-left: 0.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    font-family: "PS2P";
+    color: white;
+  }
 }
 
 @media only screen and (min-width: 768.1px),
   only screen and (min-device-width: 768.1px) {
-  .MobileArrowButton-container {
+  .MobileArrowButton1-container {
+    display: none;
+  }
+  .MobileArrowButton2-container {
     display: none;
   }
 }

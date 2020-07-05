@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 import {
   HomePage,
@@ -19,21 +19,36 @@ import {
   RecentPostsPage,
 } from "../containers_index";
 import {
-  JoinedGroups,
+  YourGroups,
   PageNav,
   CurrentUser,
   YourPosts,
   MobilePageNav,
-  MobileArrowButton,
+  MobileArrowButton1,
+  MobileArrowButton2,
+  MobileUserActions,
+  YourGroupsMobile,
+  YourPostsMobile,
+  CurrentUserMobile,
 } from "../../components/components_index";
+import { UsersState, AppState } from "../../contexts/context_index";
 
 export const PageContent = (props) => {
+  const { isLoggedIn, currentUser } = useContext(UsersState);
+  const { openYourPosts, openYourGroups, openCurrentUser } = useContext(
+    AppState
+  );
   return (
     <div className="Page-container">
       <div className="Page-content">
         <PageNav />
         <MobilePageNav />
-        <MobileArrowButton />
+        <MobileArrowButton1 />
+        <MobileUserActions />
+        {isLoggedIn && currentUser ? <MobileArrowButton2 /> : null}
+        {openYourPosts ? <YourPostsMobile /> : null}
+        {openYourGroups ? <YourGroupsMobile /> : null}
+        {openCurrentUser ? <CurrentUserMobile /> : null}
         <div className="Page-content-col1">
           <Route path="/" component={CurrentUser} />
         </div>
@@ -66,7 +81,7 @@ export const PageContent = (props) => {
           </Switch>
         </div>
         <div className="Page-content-col3">
-          <Route path="/" component={JoinedGroups} />
+          <Route path="/" component={YourGroups} />
           <Route path="/" component={YourPosts} />
         </div>
       </div>

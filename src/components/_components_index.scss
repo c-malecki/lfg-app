@@ -29,8 +29,11 @@
 @import "./Group/GroupPreview/GroupPreview";
 
 // Widgets
-@import "./Widgets/JoinedGroups/JoinedGroups";
+@import "./Widgets/YourGroups/YourGroups";
 @import "./Widgets/CurrentUser/CurrentUser";
 @import "./Widgets/YourPosts/YourPosts";
+@import "./Widgets/YourGroupsMobile/YourGroupsMobile";
+@import "./Widgets/YourPostsMobile/YourPostsMobile";
+@import "./Widgets/CurrentUserMobile/CurrentUserMobile";
 
 @import "./UI/ui_index";

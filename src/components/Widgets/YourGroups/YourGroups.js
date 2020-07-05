@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { GroupsState, UsersState } from "../../../contexts/context_index";
 import { GeneralLink } from "../../components_index";
 
-export const JoinedGroups = (props) => {
+export const YourGroups = (props) => {
   const [userGroups, setUserGroups] = useState(null);
   const { groups } = useContext(GroupsState);
   const { currentUser, isLoggedIn } = useContext(UsersState);
@@ -15,7 +15,7 @@ export const JoinedGroups = (props) => {
     }
   }, [currentUser, groups]);
   return (
-    <div className="JoinedGroups-container">
+    <div className="YourGroups-container">
       <h3 className="component-heading">Your Groups</h3>
       {userGroups && isLoggedIn ? (
         userGroups.map((group) => {

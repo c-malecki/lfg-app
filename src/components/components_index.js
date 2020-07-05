@@ -14,11 +14,15 @@ export * from "./UI/LfgHeaderLink/LfgHeaderLink";
 export * from "./UI/MobileMenu/MobileMenu";
 export * from "./UI/MobilePageNav/MobilePageNav";
 export * from "./UI/MobileArrowButton/MobileArrowButton";
+export * from "./UI/MobileUserActions/MobileUserActions";
 
 // Widgets
 export * from "./Widgets/CurrentUser/CurrentUser";
-export * from "./Widgets/JoinedGroups/JoinedGroups";
+export * from "./Widgets/YourGroups/YourGroups";
 export * from "./Widgets/YourPosts/YourPosts";
+export * from "./Widgets/YourGroupsMobile/YourGroupsMobile";
+export * from "./Widgets/YourPostsMobile/YourPostsMobile";
+export * from "./Widgets/CurrentUserMobile/CurrentUserMobile";
 
 // Components
 export * from "./NewPost/NewPostForm";

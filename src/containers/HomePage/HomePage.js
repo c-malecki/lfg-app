@@ -14,7 +14,7 @@ export const HomePage = (props) => {
         </div>
 
         <div className="HomePage-getting-started">
-          <h2 className="component-heading">Getting started</h2>
+          <h2 className="component-heading">Getting Started</h2>
           <p>
             <GeneralLink
               url="/g"
@@ -22,9 +22,12 @@ export const HomePage = (props) => {
               addClass="PostPreviewHeadLink"
             />
             are the life blood of LFG. Groups are centered around a specific
-            genre, franchise, or game. Posts are made by members of a group.
-            Recent posts can be seen on the group's page and all posts within
-            the group can be found at the group's posts page.
+            genre, franchise, or game. Groups consist of members of the LFG
+            community who want to connect with other users around a specific
+            topic. You can view all posts within a group by checking the groups
+            posts page or see the newest posts on the group's info page. <br />
+            (Will change with more fleshed out group roles, privledges, options,
+            etc...)
           </p>
           <p>
             <GeneralLink
@@ -33,7 +36,27 @@ export const HomePage = (props) => {
               addClass="PostPreviewHeadLink"
             />
             in the page content navigation menu show all posts within all groups
-            or by all groups you are part of.
+            or by all groups you are part of. Users can currently add posts
+            within any group. You can also view a user's posts from within their
+            profile. <br />
+            (Will change when user settings are added and more group features
+            are fleshed out.)
+          </p>
+          <p>
+            <GeneralLink
+              url="/messages"
+              text="Messages"
+              addClass="PostPreviewHeadLink"
+            />
+            can be sent between all users currently, regardless of{" "}
+            <GeneralLink
+              url="/friends"
+              text="Friend"
+              addClass="PostPreviewHeadLink"
+            />
+            status. You can also request to be friends with other users of LFG.{" "}
+            <br />
+            (Will change when user interaction and friends is more fleshed out.)
           </p>
         </div>
       </div>

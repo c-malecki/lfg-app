@@ -1,0 +1,17 @@
+.YourPostsMobile-container {
+  position: fixed;
+  width: 100%;
+  background-color: $lfg-l-red;
+  .YourPostsMobile-content {
+    display: flex;
+    flex-direction: column;
+    @extend %ui-content-inner;
+    padding: 0.5rem;
+    max-height: 321px;
+    overflow-y: scroll;
+    .YourPosts-item {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
