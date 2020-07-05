@@ -25,7 +25,8 @@ export const NewPostForm = (props) => {
   return (
     <div className="PostForm-container">
       <h2>
-        New Post in <GeneralLink url={`/g/${group}`} text={`g/${group}`} />
+        New Post in{" "}
+        <GeneralLink url={`/g/${group}/posts`} text={`g/${group}`} />
       </h2>
       <Formik
         initialValues={{
@@ -65,12 +66,14 @@ export const NewPostForm = (props) => {
                 name="title"
                 className="form-text"
                 placeholder="Title the post..."
+                id="PostForm-title"
               />
               {errors.title ? <div>{errors.title}</div> : null}
               <Field
                 name="tag_search"
                 className="form-text"
                 placeholder="Search for or add tags..."
+                id="PostForm-tag-search"
                 onChange={(e) => {
                   handleChange(e);
                   setFieldValue(
@@ -134,7 +137,9 @@ export const NewPostForm = (props) => {
                 name="tags"
                 render={(arrayHelpers) => (
                   <ul className="added-tags-list">
-                    <div>Tags for post</div>
+                    {values.tags.length > 0 ? (
+                      <div id="PostForm-tags-for-post">Tags for post</div>
+                    ) : null}
                     {values.tags.length > 0
                       ? values.tags.map((t, i) => {
                           return (

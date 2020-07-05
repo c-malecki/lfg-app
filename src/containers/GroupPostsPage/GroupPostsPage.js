@@ -21,14 +21,16 @@ export const GroupPostsPage = (props) => {
             text={`${group}`}
             addClass="PageContentLink"
           />
-          <span className="search-placeholder">search placeholder</span>
-          {isLoggedIn ? (
-            <GeneralLink
-              url={`/g/${group}/newpost`}
-              text="new post"
-              addClass="general-theme-link"
-            />
-          ) : null}
+          <div className="GroupPostsPage-actions">
+            {isLoggedIn ? (
+              <GeneralLink
+                url={`/g/${group}/newpost`}
+                text="new post"
+                addClass="general-theme-link"
+              />
+            ) : null}
+            <span className="search-placeholder">search placeholder</span>
+          </div>
         </div>
         {postsInGroup ? (
           <>

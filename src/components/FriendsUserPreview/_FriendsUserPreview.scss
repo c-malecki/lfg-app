@@ -13,5 +13,11 @@
   .UserPreview-content {
     display: flex;
     flex-direction: column;
+    width: 100%;
+
+    .UserPreview-user-info {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

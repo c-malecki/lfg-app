@@ -31,12 +31,18 @@
 .general-theme-button {
   @extend %button-style;
   background-color: $lfg-l-blue;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   margin: 0.5rem 0.5rem 0.5rem 0;
 }
 
 .close-delete-button {
   @extend %button-style;
   background-color: $lfg-l-red;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   margin: 0.5rem 0.5rem 0.5rem 0;
 }
 

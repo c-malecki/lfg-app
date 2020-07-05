@@ -7,7 +7,7 @@ export const FriendsPage = (props) => {
     mutual: [],
     pending: [],
   });
-  const { allUsers, currentUser } = useContext(UsersState);
+  const { allUsers, currentUser, isLoggedIn } = useContext(UsersState);
   useEffect(() => {
     if (currentUser) {
       const findMutual = currentUser.friends.filter((f) => f.pending === false);
@@ -21,12 +21,34 @@ export const FriendsPage = (props) => {
   return (
     <div className="FriendsPage-container">
       <div className="FriendsPage-content">
-        <h3 className="page-heading">Pending Requests</h3>
-        {userFriends && currentUser ? (
+        {isLoggedIn && currentUser ? (
           <>
-            {userFriends.pending.length > 0 ? (
+            <h3 className="page-heading">Pending Requests</h3>
+            {userFriends && currentUser ? (
               <>
-                {userFriends.pending.map((f) => (
+                {userFriends.pending.length > 0 ? (
+                  <>
+                    {userFriends.pending.map((f) => (
+                      <FriendsUserPreview
+                        friend={f}
+                        key={f.user_id}
+                        currentUser={currentUser.user_name}
+                      />
+                    ))}
+                  </>
+                ) : (
+                  <span className="no-content-message">
+                    No requests pending.
+                  </span>
+                )}
+              </>
+            ) : (
+              <div>...loading</div>
+            )}
+            <h3 className="page-heading">Friends</h3>
+            {userFriends ? (
+              <>
+                {userFriends.mutual.map((f) => (
                   <FriendsUserPreview
                     friend={f}
                     key={f.user_id}
@@ -35,25 +57,13 @@ export const FriendsPage = (props) => {
                 ))}
               </>
             ) : (
-              <span className="no-content-message">No requests pending.</span>
+              <div>...loading</div>
             )}
           </>
         ) : (
-          <div>...loading</div>
-        )}
-        <h3 className="page-heading">Friends</h3>
-        {userFriends ? (
-          <>
-            {userFriends.mutual.map((f) => (
-              <FriendsUserPreview
-                friend={f}
-                key={f.user_id}
-                currentUser={currentUser.user_name}
-              />
-            ))}
-          </>
-        ) : (
-          <div>...loading</div>
+          <div>
+            Must be logged in. (create redirect to log in or modal log in)
+          </div>
         )}
       </div>
     </div>

@@ -42,8 +42,9 @@ export const RecentPosts = (props) => {
               addClass="general-theme-button"
               method={() => handleToggleGroups()}
             />
+            <span className="search-placeholder">search placeholder</span>
           </div>
-          <span className="search-placeholder">search placeholder</span>
+
           {pagePosts.viewAll && posts ? (
             <>
               {posts.map((post) => {
