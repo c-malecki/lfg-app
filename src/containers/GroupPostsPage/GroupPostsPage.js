@@ -16,11 +16,15 @@ export const GroupPostsPage = (props) => {
     <div className="GroupPostsPage-container">
       <div className="GroupPostsPage-content">
         <div className="GroupPostsPage-head">
-          <GeneralLink
-            url={`/g/${group}`}
-            text={`${group}`}
-            addClass="PageContentLink"
-          />
+          <h2 className="page-heading">
+            <GeneralLink
+              url={`/g/${group}`}
+              text={`${group}`}
+              addClass="PageHeaderLink"
+            />{" "}
+            Posts
+          </h2>
+
           <div className="GroupPostsPage-actions">
             {isLoggedIn ? (
               <GeneralLink

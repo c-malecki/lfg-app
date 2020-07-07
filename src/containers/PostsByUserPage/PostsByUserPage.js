@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { PostPreview } from "../../components/components_index";
+import { PostPreview, GeneralLink } from "../../components/components_index";
 import { PostsStateContext } from "../../contexts/context_index";
 
 export const PostsByUserPage = (props) => {
@@ -16,7 +16,14 @@ export const PostsByUserPage = (props) => {
   return (
     <div className="PostsByUserPage-container">
       <div className="PostsByUserPage-content">
-        <h2 className="page-heading">{user}'s Posts </h2>
+        <h2 className="page-heading">
+          <GeneralLink
+            text={user}
+            url={`/users/${user}`}
+            addClass="PageHeaderLink"
+          />
+          's Posts{" "}
+        </h2>
         <span className="search-placeholder">search placeholder</span>
         {postsForPage ? (
           <>

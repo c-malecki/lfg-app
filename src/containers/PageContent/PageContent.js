@@ -17,6 +17,7 @@ import {
   FriendsPage,
   PostsByUserPage,
   RecentPostsPage,
+  UserJoinedGroupsPage,
 } from "../containers_index";
 import {
   YourGroups,
@@ -59,7 +60,7 @@ export const PageContent = (props) => {
             <Route exact path="/g/:group/posts/:id" component={PostPage} />
             <Route exact path="/posts" component={RecentPostsPage} />
             <Route exact path="/posts/tags/:tag" component={PostsByTagPage} />
-            <Route exact path="/users/:user" component={UserProfilePage} />
+
             <Route exact path="/post-deleted" component={PostDeletedPage} />
             <Route exact path="/login" component={LogInPage} />
             <Route exact path="/messages" component={MessagesPage} />
@@ -73,10 +74,16 @@ export const PageContent = (props) => {
             <Route exact path="/g/:group" component={GroupPage} />
             <Route exact path="/g/:group/newpost/" component={NewPostPage} />
             <Route exact path="/friends" component={FriendsPage} />
+            <Route exact path="/users/:user" component={UserProfilePage} />
             <Route
               exact
               path="/users/:user/posts"
               component={PostsByUserPage}
+            />
+            <Route
+              exact
+              path="/users/:user/groups"
+              component={UserJoinedGroupsPage}
             />
           </Switch>
         </div>

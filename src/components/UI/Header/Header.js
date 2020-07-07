@@ -1,10 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { LogInOut, LfgHeaderLink, MobileMenu } from "../../components_index";
-import { Link } from "react-router-dom";
+import { LfgHeaderLink, MobileMenu } from "../../components_index";
 import { UsersState, MessagesState } from "../../../contexts/context_index";
-import mail from "../../../assets/images/mailicon2.svg";
-import allies from "../../../assets/images/alliesicon.svg";
-import menubars from "../../../assets/images/menubars.svg";
+import { HeaderActions } from "./HeaderActions/HeaderActions";
 
 export const Header = (props) => {
   const [messageCount, setMessageCount] = useState(null);
@@ -32,70 +29,19 @@ export const Header = (props) => {
   }, [currentUser, userMessages]);
   return (
     <div className="Header-container">
-      <LfgHeaderLink />
-      <div className="Header-actions">
+      <div className="Header-content">
         {isLoggedIn ? (
           <>
-            <Link to="/messages" className="header-link">
-              <img src={mail} className="header-icon" alt="" />
-              <span className="header-count">
-                {messageCount > 0 ? messageCount : ""}
-              </span>
-            </Link>
-            <Link to="/friends" className="header-link">
-              <img src={allies} className="header-icon" alt="" />
-              <span className="header-count">
-                {friendRequests > 0 ? friendRequests : ""}
-              </span>
-            </Link>
-            <Link
-              to={`/users/${currentUser.account.user_name}`}
-              className="current-user-link"
-            >
-              <img
-                src={currentUser.profile.profile_pic}
-                alt=""
-                className="current-user-pic"
-              />
-              <span className="UserLink">{currentUser.account.user_name}</span>
-            </Link>
+            <LfgHeaderLink />
+            <HeaderActions
+              messageCount={messageCount}
+              friendRequests={friendRequests}
+              currentUser={currentUser}
+              setOpenMobile={setOpenMobile}
+              openMobile={openMobile}
+            />
           </>
         ) : null}
-        <LogInOut />
-      </div>
-      <div className="Mobile-Header-actions">
-        {isLoggedIn ? (
-          <>
-            <Link to="/messages" className="header-link">
-              <img src={mail} className="header-icon" alt="" />
-              <span className="header-count">
-                {messageCount > 0 ? messageCount : ""}
-              </span>
-            </Link>
-            <Link to="/friends" className="header-link">
-              <img src={allies} className="header-icon" alt="" />
-              <span className="header-count">
-                {friendRequests > 0 ? friendRequests : ""}
-              </span>
-            </Link>
-            <Link
-              to={`/users/${currentUser.account.user_name}`}
-              className="current-user-link"
-            >
-              <img
-                src={currentUser.profile.profile_pic}
-                alt=""
-                className="current-user-pic"
-              />
-            </Link>
-          </>
-        ) : null}
-        <button
-          className="Mobile-Menu-Button"
-          onClick={() => setOpenMobile(!openMobile)}
-        >
-          <img src={menubars} alt="" />
-        </button>
       </div>
       {openMobile ? <MobileMenu /> : null}
     </div>

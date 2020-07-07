@@ -1,0 +1,8 @@
+.UserJoinedGroupsPage-container {
+  @extend %page-center-content;
+  .UserJoinedGroupsPage-content {
+    display: flex;
+    flex-direction: column;
+    @extend %ui-content-container;
+  }
+}

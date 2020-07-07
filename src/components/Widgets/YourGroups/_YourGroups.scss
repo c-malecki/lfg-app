@@ -3,4 +3,6 @@
   flex-direction: column;
   @extend %ui-content-inner;
   padding: 0.5rem;
+  max-height: 221px;
+  overflow-y: scroll;
 }

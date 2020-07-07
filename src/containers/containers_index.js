@@ -15,3 +15,4 @@ export * from "./FriendsPage/FriendsPage";
 export * from "./PostsByUserPage/PostsByUserPage";
 export * from "./GroupPostsPage/GroupPostsPage";
 export * from "./RecentPostsPage/RecentPostsPage";
+export * from "./UserJoinedGroupsPage/UserJoinedGroupsPage";

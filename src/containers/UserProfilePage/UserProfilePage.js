@@ -26,7 +26,10 @@ export const UserProfilePage = (props) => {
         <>
           <UserProfileInfo userProfile={userProfile} />
           <UserBio userProfile={userProfile} />
-          <UserJoinedGroups userProfile={userProfile} />
+          <UserJoinedGroups
+            userProfile={userProfile}
+            username={userProfile.user_name}
+          />
           <UserRecentPosts username={userProfile.user_name} />
         </>
       ) : (

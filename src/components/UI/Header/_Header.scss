@@ -13,49 +13,13 @@
     display: none;
   }
 
-  .Header-actions {
+  .Header-content {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-left: auto;
-
-    .header-link {
-      position: relative;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      text-decoration: none;
-      margin-right: 1rem;
-      width: 2rem;
-      .header-icon {
-        height: 2rem;
-        width: 2rem;
-      }
-
-      .header-count {
-        position: absolute;
-        font-weight: bold;
-        font-size: 1.2rem;
-        color: $lfg-d-purple;
-      }
-    }
-
-    .current-user-link {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      text-decoration: none;
-      margin-right: 1rem;
-      .current-user-pic {
-        height: 2rem;
-        width: 2rem;
-        overflow: hidden;
-        border-radius: 50%;
-        margin-right: 0.2rem;
-      }
-    }
+    width: 100%;
+    max-width: 1500px;
+    margin: auto;
   }
 }
 
@@ -63,69 +27,5 @@
   only screen and (min-device-width: 0) and (max-width: 768px) {
   .Header-container {
     position: relative;
-    .Header-actions {
-      display: none;
-    }
-
-    .Mobile-Header-actions {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin-left: auto;
-      position: relative;
-
-      .header-link {
-        position: relative;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none;
-        margin-right: 1rem;
-        width: 2rem;
-        .header-icon {
-          height: 2rem;
-          width: 2rem;
-        }
-
-        .header-count {
-          position: absolute;
-          font-weight: bold;
-          font-size: 1.2rem;
-          color: $lfg-d-purple;
-        }
-      }
-
-      .current-user-link {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none;
-        margin-right: 1rem;
-        .current-user-pic {
-          height: 2rem;
-          width: 2rem;
-          overflow: hidden;
-          border-radius: 50%;
-          margin-right: 0.2rem;
-        }
-      }
-
-      .Mobile-Menu-Button {
-        border: 1px solid $lfg-d-gray;
-        background-color: $lfg-l-gray;
-        height: 2rem;
-        width: 2rem;
-        border-radius: 0.3rem;
-        margin-right: 0.5rem;
-        margin-left: 0.5rem;
-
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-    }
   }
 }
