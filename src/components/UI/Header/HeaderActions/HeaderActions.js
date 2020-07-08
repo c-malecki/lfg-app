@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { LogInOut } from "../../LogInOut/LogInOut";
 import mail from "../../../../assets/images/mailicon2.svg";
 import allies from "../../../../assets/images/alliesicon.svg";
 import menubars from "../../../../assets/images/menubars.svg";
@@ -40,9 +39,6 @@ export const HeaderActions = (props) => {
           {currentUser.account.user_name}
         </span>
       </Link>
-      <div className="LogOut-desktop">
-        <LogInOut />
-      </div>
       <div className="MobileMenu-button-container">
         <button
           className="Mobile-Menu-Button"

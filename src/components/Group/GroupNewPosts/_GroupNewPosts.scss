@@ -5,15 +5,15 @@
   max-height: 650px;
   overflow-y: scroll;
 
+  .general-theme-link {
+    margin-left: 0.5rem;
+  }
+
   .GroupPosts-head {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 100%;
-
-    a {
-      margin-left: 0.5rem;
-    }
   }
 }

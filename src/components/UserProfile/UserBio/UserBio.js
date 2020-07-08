@@ -18,34 +18,32 @@ export const UserBio = (props) => {
     });
   };
   return (
-    <>
-      <div className="UserProfile-bio-container">
-        <h3>Bio:</h3>
+    <div className="UserProfile-bio-container">
+      <h3>Bio:</h3>
 
-        {editBio.editMode ? (
-          <EditBioForm
-            bio={bio}
-            toggleEditBio={toggleEditBio}
-            user_name={user_name}
+      {editBio.editMode ? (
+        <EditBioForm
+          bio={bio}
+          toggleEditBio={toggleEditBio}
+          user_name={user_name}
+        />
+      ) : (
+        <div className="UserProfile-bio">
+          <span>{bio}</span>
+        </div>
+      )}
+
+      {currentUser &&
+      currentUser.account.user_name === user_name &&
+      editBio.showButton ? (
+        <div className="bio-toggle-container">
+          <GeneralButton
+            method={toggleEditBio}
+            text="edit"
+            addClass="general-theme-button"
           />
-        ) : (
-          <div className="UserProfile-bio">
-            <span>{bio}</span>
-          </div>
-        )}
-
-        {currentUser &&
-        currentUser.account.user_name === user_name &&
-        editBio.showButton ? (
-          <div className="bio-toggle-container">
-            <GeneralButton
-              method={toggleEditBio}
-              text="edit"
-              addClass="general-theme-button"
-            />
-          </div>
-        ) : null}
-      </div>
-    </>
+        </div>
+      ) : null}
+    </div>
   );
 };

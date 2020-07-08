@@ -16,3 +16,4 @@ export * from "./PostsByUserPage/PostsByUserPage";
 export * from "./GroupPostsPage/GroupPostsPage";
 export * from "./RecentPostsPage/RecentPostsPage";
 export * from "./UserJoinedGroupsPage/UserJoinedGroupsPage";
+export * from "./GroupMembersPage/GroupMembersPage";

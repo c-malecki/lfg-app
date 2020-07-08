@@ -20,7 +20,10 @@ export const GroupPage = (props) => {
       {groupForPage ? (
         <>
           <GroupInfo data={groupForPage} />
-          <GroupMembers members={groupForPage.group_members} />
+          <GroupMembers
+            members={groupForPage.group_members}
+            groupName={groupForPage.group_name}
+          />
           <GroupNewPosts groupName={groupForPage.group_name} />
         </>
       ) : (

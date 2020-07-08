@@ -3,9 +3,15 @@ import { GeneralLink } from "../../components_index";
 
 export const GroupMembers = (props) => {
   const members = props.members;
+  const group = props.groupName;
   return (
     <div className="GroupMembers-container">
       <h3 className="component-heading">Members</h3>
+      <GeneralLink
+        url={`/g/${group}/members`}
+        text="see all"
+        addClass="PageContentLink"
+      />
       <ul className="GroupMembers-list">
         {members.map((member) => {
           return (

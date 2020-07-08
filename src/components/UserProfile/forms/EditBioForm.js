@@ -1,48 +1,57 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { GeneralButton } from "../../components_index";
 import { UsersDispatch } from "../../../contexts/context_index";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
 
 export const EditBioForm = (props) => {
-  const [formState, setFormState] = useState({
-    bio: props.bio,
-  });
   const dispatch = useContext(UsersDispatch);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch({
-      type: "UPDATE_BIO",
-      user_name: props.user_name,
-      bio: formState.bio,
-    });
-    props.toggleEditBio();
-  };
+  const BioSchema = Yup.object().shape({
+    bio: Yup.string().max(300, "Bio cannot be more than 300 characters."),
+  });
   return (
     <div className="EditBioForm-container">
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div className="EditBioForm-input-container">
-          <textarea
-            onChange={(e) => setFormState({ bio: e.target.value })}
-            name="bio"
-            className="EditBioForm-input"
-            type="text"
-            value={formState.bio}
-          />
-        </div>
-        <div className="EditBioForm-submit-container">
-          <GeneralButton
-            type="submit"
-            addClass="ok-confirm-button"
-            text="save"
-          />
+      <Formik
+        initialValues={{
+          bio: props.bio,
+        }}
+        validationSchema={BioSchema}
+        onSubmit={(values) => {
+          dispatch({
+            type: "UPDATE_BIO",
+            user_name: props.user_name,
+            bio: values.bio,
+          });
+          props.toggleEditBio();
+        }}
+        validateOnChange={false}
+        validateOnBlur={false}
+      >
+        {({ errors }) => (
+          <Form>
+            <div className="EditBioForm-content">
+              <Field as="textarea" name="bio" className="form-textarea" />
+              {errors.bio ? (
+                <div className="form-error">{errors.bio}</div>
+              ) : null}
 
-          <GeneralButton
-            text="cancel"
-            addClass="close-delete-button"
-            method={props.toggleEditBio}
-          />
-        </div>
-      </form>
+              <div className="EditBioForm-submit-container">
+                <GeneralButton
+                  type="submit"
+                  addClass="general-theme-button"
+                  text="save"
+                />
+
+                <GeneralButton
+                  text="cancel"
+                  addClass="close-delete-button"
+                  method={props.toggleEditBio}
+                />
+              </div>
+            </div>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };

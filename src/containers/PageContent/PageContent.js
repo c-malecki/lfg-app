@@ -18,6 +18,7 @@ import {
   PostsByUserPage,
   RecentPostsPage,
   UserJoinedGroupsPage,
+  GroupMembersPage,
 } from "../containers_index";
 import {
   YourGroups,
@@ -56,8 +57,17 @@ export const PageContent = (props) => {
         <div className="Page-content-col2">
           <Switch>
             <Route exact path="/" component={HomePage} />
+            <Route exact path="/g" component={GroupsListPage} />
+            <Route exact path="/g/:group" component={GroupPage} />
+            <Route exact path="/g/:group/newpost/" component={NewPostPage} />
             <Route exact path="/g/:group/posts" component={GroupPostsPage} />
             <Route exact path="/g/:group/posts/:id" component={PostPage} />
+            <Route
+              exact
+              path="/g/:group/members"
+              component={GroupMembersPage}
+            />
+
             <Route exact path="/posts" component={RecentPostsPage} />
             <Route exact path="/posts/tags/:tag" component={PostsByTagPage} />
 
@@ -70,9 +80,7 @@ export const PageContent = (props) => {
               path="/messages/new/to-:user"
               component={NewMessagePage}
             />
-            <Route exact path="/g" component={GroupsListPage} />
-            <Route exact path="/g/:group" component={GroupPage} />
-            <Route exact path="/g/:group/newpost/" component={NewPostPage} />
+
             <Route exact path="/friends" component={FriendsPage} />
             <Route exact path="/users/:user" component={UserProfilePage} />
             <Route

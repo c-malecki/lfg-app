@@ -15,19 +15,19 @@ export const GroupNewPosts = (props) => {
     <div className="GroupPosts-container">
       <div className="GroupPosts-head">
         <h3 className="component-heading">New {name} Posts</h3>
-        {isLoggedIn ? (
-          <GeneralLink
-            url={`/g/${name}/newpost`}
-            text="new post"
-            addClass="general-theme-link"
-          />
-        ) : null}
       </div>
       <GeneralLink
         url={`${name}/posts`}
         text="see all"
         addClass="PageContentLink"
       />
+      {isLoggedIn ? (
+        <GeneralLink
+          url={`/g/${name}/newpost`}
+          text="new post"
+          addClass="general-theme-link"
+        />
+      ) : null}
       {postsInGroup ? (
         <>
           {postsInGroup.map((post) => {

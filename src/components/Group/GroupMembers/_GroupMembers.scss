@@ -1,12 +1,18 @@
 .GroupMembers-container {
   @extend %ui-content-inner;
   padding: 0.5rem;
+
+  a {
+    margin-left: 0;
+  }
+
   .GroupMembers-list {
     list-style: none;
     padding: 0;
     .GroupMember-item {
       display: flex;
       flex-direction: row;
+      width: 10rem;
       span {
         margin-left: auto;
       }

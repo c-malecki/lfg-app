@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { LfgHeaderLink, MobileMenu } from "../../components_index";
+import { LfgHeaderLink, MobileMenu, LogInOut } from "../../components_index";
 import { UsersState, MessagesState } from "../../../contexts/context_index";
 import { HeaderActions } from "./HeaderActions/HeaderActions";
 
@@ -30,9 +30,9 @@ export const Header = (props) => {
   return (
     <div className="Header-container">
       <div className="Header-content">
-        {isLoggedIn ? (
-          <>
-            <LfgHeaderLink />
+        <LfgHeaderLink />
+        <div className="Header-content-actions">
+          {isLoggedIn ? (
             <HeaderActions
               messageCount={messageCount}
               friendRequests={friendRequests}
@@ -40,8 +40,11 @@ export const Header = (props) => {
               setOpenMobile={setOpenMobile}
               openMobile={openMobile}
             />
-          </>
-        ) : null}
+          ) : null}
+          <div className="LogOut-desktop">
+            <LogInOut />
+          </div>
+        </div>
       </div>
       {openMobile ? <MobileMenu /> : null}
     </div>

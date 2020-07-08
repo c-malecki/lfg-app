@@ -11,6 +11,10 @@
   min-height: 4rem;
 }
 
+.form-error {
+  color: $lfg-d-red;
+}
+
 .form-add-button {
   @extend %button-style;
   width: 1.5rem;
