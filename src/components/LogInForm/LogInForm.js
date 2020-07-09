@@ -5,9 +5,14 @@ import { GeneralButton } from "../components_index";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
+// redux
+import { useDispatch } from "react-redux";
+import { fetchUserForLogin } from "../../redux/actions/user-actions";
+
 export const LogInForm = () => {
   const { allUsers } = useContext(UsersState);
   const dispatch = useContext(UsersDispatch);
+  const reduxDispatch = useDispatch();
   const history = useHistory();
 
   const LoginSchema = Yup.object().shape({
@@ -51,6 +56,12 @@ export const LogInForm = () => {
         validationSchema={LoginSchema}
         onSubmit={(values) => {
           dispatch({ type: "LOGIN", userData: values });
+          reduxDispatch(
+            fetchUserForLogin({
+              username: values.user_name,
+              password: values.password,
+            })
+          );
           history.push("/");
         }}
         validateOnChange={false}

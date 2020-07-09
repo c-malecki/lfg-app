@@ -8,8 +8,13 @@ import {
   MessagesContextProvider,
   AppContextProvider,
 } from "../../contexts/context_index";
+// Redux
+import { useDispatch } from "react-redux";
+import { fetchDemoUser } from "../../redux/actions/user-actions";
 
 function App() {
+  const dispatch = useDispatch();
+  dispatch(fetchDemoUser());
   return (
     <div className="App">
       <AppContextProvider>
