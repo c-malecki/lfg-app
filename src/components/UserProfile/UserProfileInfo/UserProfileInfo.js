@@ -3,19 +3,19 @@ import { GeneralLink, GeneralButton } from "../../components_index";
 import { UsersState, UsersDispatch } from "../../../contexts/context_index";
 
 export const UserProfileInfo = (props) => {
-  const { user_name, account, profile } = props.userProfile;
+  const { username, account, profile } = props.userInfo;
   const { date_joined, first_name, last_name } = account;
-  const { profile_pic } = profile;
+  const { user_img } = profile;
   const { currentUser, isLoggedIn } = useContext(UsersState);
   const dispatch = useContext(UsersDispatch);
   const addFriendText = () => {
     if (currentUser && isLoggedIn) {
       const { friends } = currentUser;
       const mutualFriends = friends.filter(
-        (f) => f.user_name === user_name && f.pending === false
+        (f) => f.user_name === username && f.pending === false
       ).length;
       const pendingFriends = friends.filter(
-        (f) => f.user_name === user_name && f.pending === true
+        (f) => f.user_name === username && f.pending === true
       ).length;
       if (mutualFriends > 0) {
         return "Friends";
@@ -34,11 +34,11 @@ export const UserProfileInfo = (props) => {
       : false;
   return (
     <div className="UserProfileInfo-container">
-      <h2>{user_name}</h2>
-      {isLoggedIn && currentUser.user_name !== user_name ? (
+      <h2>{username}</h2>
+      {isLoggedIn && currentUser.user_name !== username ? (
         <div className="UserProfile-user-actions">
           <GeneralLink
-            url={`/messages/new/to-${user_name}`}
+            url={`/messages/new/to-${username}`}
             text="message"
             addClass="general-theme-link"
           />
@@ -50,13 +50,13 @@ export const UserProfileInfo = (props) => {
               dispatch({
                 type: "SEND_FRIEND_REQUEST",
                 from: currentUser.user_name,
-                to: user_name,
+                to: username,
               })
             }
           />
         </div>
       ) : null}
-      <img src={profile_pic} alt={user_name} />
+      <img src={user_img} alt={username} />
       <span>
         Name: {first_name} {last_name}
       </span>

@@ -1,17 +1,31 @@
-import React, { useContext, useState, useEffect } from "react";
-import { PostsStateContext } from "../../../contexts/context_index";
+import React from "react";
 import { PostPreview, GeneralLink } from "../../components_index";
 
+// redux
+import { useSelector } from "react-redux";
+
 export const UserRecentPosts = (props) => {
-  const [postsByUser, setPostsByUser] = useState(null);
-  const { posts } = useContext(PostsStateContext);
   const user = props.username;
-  useEffect(() => {
-    if (posts) {
-      const findPosts = posts.filter((p) => p.author === user);
-      setPostsByUser(findPosts);
+  const loading = useSelector((state) => state.postsReducer.loading);
+  const error = useSelector((state) => state.postsReducer.error);
+  const userPosts = useSelector((state) =>
+    state.postsReducer.posts.filter((p) => p.post_author === user)
+  );
+  const userRecentPostsContent = () => {
+    if (loading) {
+      return <div>loading...</div>;
+    } else if (!loading && error) {
+      return <div>something went wrong</div>;
+    } else {
+      return (
+        <>
+          {userPosts.map((p) => {
+            return <div key={p.post_id}>{p.post_title}</div>;
+          })}
+        </>
+      );
     }
-  }, [posts, user]);
+  };
   return (
     <div className="UserRecentPosts-container">
       <h3 className="page-heading">{user}'s Recent Posts</h3>
@@ -20,15 +34,7 @@ export const UserRecentPosts = (props) => {
         text="see all"
         addClass="PageContentLink"
       />
-      {postsByUser ? (
-        <>
-          {postsByUser.map((post) => {
-            return <PostPreview post={post} key={`post-${post.post_id}`} />;
-          })}
-        </>
-      ) : (
-        <span>...loading</span>
-      )}
+      {userRecentPostsContent()}
     </div>
   );
 };

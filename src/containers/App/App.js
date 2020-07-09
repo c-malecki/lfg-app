@@ -11,10 +11,12 @@ import {
 // Redux
 import { useDispatch } from "react-redux";
 import { fetchDemoUser } from "../../redux/actions/user-actions";
+import { fetchAllPosts } from "../../redux/actions/posts-actions";
 
 function App() {
   const dispatch = useDispatch();
   dispatch(fetchDemoUser());
+  dispatch(fetchAllPosts());
   return (
     <div className="App">
       <AppContextProvider>

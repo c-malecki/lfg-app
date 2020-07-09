@@ -9,7 +9,7 @@ export const UserBio = (props) => {
     showButton: true,
   });
   const { currentUser } = useContext(UsersState);
-  const { profile, user_name } = props.userProfile;
+  const { profile, username } = props.userInfo;
   const { bio } = profile;
   const toggleEditBio = () => {
     setEditBio({
@@ -19,13 +19,13 @@ export const UserBio = (props) => {
   };
   return (
     <div className="UserProfile-bio-container">
-      <h3>Bio:</h3>
+      <h3>Bio</h3>
 
       {editBio.editMode ? (
         <EditBioForm
           bio={bio}
           toggleEditBio={toggleEditBio}
-          user_name={user_name}
+          user_name={username}
         />
       ) : (
         <div className="UserProfile-bio">
@@ -34,7 +34,7 @@ export const UserBio = (props) => {
       )}
 
       {currentUser &&
-      currentUser.account.user_name === user_name &&
+      currentUser.user_name === username &&
       editBio.showButton ? (
         <div className="bio-toggle-container">
           <GeneralButton
