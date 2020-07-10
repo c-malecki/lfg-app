@@ -26,17 +26,14 @@ export const HeaderActions = (props) => {
           {friendRequests > 0 ? friendRequests : ""}
         </span>
       </Link>
-      <Link
-        to={`/users/${currentUser.account.user_name}`}
-        className="current-user-link"
-      >
+      <Link to={`/users/${currentUser.username}`} className="current-user-link">
         <img
-          src={currentUser.profile.profile_pic}
+          src={currentUser.profile.user_img}
           alt=""
           className="current-user-pic"
         />
         <span className="UserLink" id="usename-header-text">
-          {currentUser.account.user_name}
+          {currentUser.username}
         </span>
       </Link>
       <div className="MobileMenu-button-container">

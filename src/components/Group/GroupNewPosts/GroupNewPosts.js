@@ -1,42 +1,31 @@
-import React, { useEffect, useContext, useState } from "react";
-import { PostsStateContext, UsersState } from "../../../contexts/context_index";
+import React from "react";
 import { PostPreview, GeneralLink } from "../../components_index";
+import { useSelector } from "react-redux";
 
 export const GroupNewPosts = (props) => {
-  const [postsInGroup, setPostsInGroup] = useState(null);
-  const { posts } = useContext(PostsStateContext);
-  const { isLoggedIn } = useContext(UsersState);
-  const name = props.groupName;
-  useEffect(() => {
-    const postsForPage = posts.filter((post) => post.group === name);
-    setPostsInGroup(postsForPage);
-  }, [name, posts]);
+  const { group, posts } = props;
+  const { isLoggedIn } = useSelector((state) => state.userReducer);
+
   return (
     <div className="GroupPosts-container">
       <div className="GroupPosts-head">
-        <h3 className="component-heading">New {name} Posts</h3>
+        <h3 className="component-heading">New {group} Posts</h3>
       </div>
       <GeneralLink
-        url={`${name}/posts`}
+        url={`${group}/posts`}
         text="see all"
         addClass="PageContentLink"
       />
       {isLoggedIn ? (
         <GeneralLink
-          url={`/g/${name}/newpost`}
+          url={`/g/${group}/newpost`}
           text="new post"
           addClass="general-theme-link"
         />
       ) : null}
-      {postsInGroup ? (
-        <>
-          {postsInGroup.map((post) => {
-            return <PostPreview post={post} key={`post-${post.post_id}`} />;
-          })}
-        </>
-      ) : (
-        <span className="no-content-message">...loading</span>
-      )}
+      {posts.map((p) => {
+        return <PostPreview post={p} key={`post-${p.post_id}`} />;
+      })}
     </div>
   );
 };

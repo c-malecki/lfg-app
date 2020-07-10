@@ -1,50 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import { UsersDispatch, UsersState } from "../../contexts/context_index";
 import { GeneralButton } from "../components_index";
 import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
-
-// redux
+// import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { fetchUserForLogin } from "../../redux/actions/user-actions";
 
 export const LogInForm = () => {
-  const { allUsers } = useContext(UsersState);
-  const dispatch = useContext(UsersDispatch);
-  const reduxDispatch = useDispatch();
+  const dispatch = useDispatch();
   const history = useHistory();
-
-  const LoginSchema = Yup.object().shape({
-    user_name: Yup.string()
-      .required("Username is required.")
-      .test("valid-username", "Username or password is incorrect.", (value) => {
-        if (
-          allUsers.find(
-            (user) =>
-              user.account.user_name.toLowerCase() === value.toLowerCase()
-          )
-        ) {
-          return true;
-        } else {
-          return false;
-        }
-      }),
-    password: Yup.string()
-      .required("Password is required.")
-      .test("valid-password", "Username or password is incorrect.", (value) => {
-        if (
-          allUsers.find(
-            (user) =>
-              user.account.password.toLowerCase() === value.toLowerCase()
-          )
-        ) {
-          return true;
-        } else {
-          return false;
-        }
-      }),
-  });
 
   return (
     <div className="LogInForm-container">
@@ -53,10 +17,8 @@ export const LogInForm = () => {
           user_name: "",
           password: "",
         }}
-        validationSchema={LoginSchema}
         onSubmit={(values) => {
-          dispatch({ type: "LOGIN", userData: values });
-          reduxDispatch(
+          dispatch(
             fetchUserForLogin({
               username: values.user_name,
               password: values.password,
@@ -75,13 +37,13 @@ export const LogInForm = () => {
                 placeholder="username"
                 className="form-text"
               />
-              {errors.user_name ? <div>{errors.user_name}</div> : null}
+
               <Field
                 name="password"
                 placeholder="password"
                 className="form-text"
               />
-              {errors.password ? <div>{errors.password}</div> : null}
+
               <span>
                 <GeneralButton
                   type="submit"

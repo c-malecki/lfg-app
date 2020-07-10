@@ -1,7 +1,10 @@
-import React, { createContext, useReducer } from "react";
-
-export const AppState = createContext();
-export const AppDispatch = createContext();
+import {
+  OPEN_CURRENT_USER,
+  OPEN_MOBILE_PAGE_NAV,
+  OPEN_USER_ACTIONS,
+  OPEN_YOUR_GROUPS,
+  OPEN_YOUR_POSTS,
+} from "../action-types";
 
 const initialState = {
   openMobilePageNav: false,
@@ -11,12 +14,12 @@ const initialState = {
   openCurrentUser: false,
 };
 
-const appReducer = (state, action) => {
+export const appReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "OPEN_MOBILE_PAGE_NAV": {
+    case OPEN_MOBILE_PAGE_NAV: {
       return { ...state, openMobilePageNav: !state.openMobilePageNav };
     }
-    case "OPEN_USER_ACTIONS": {
+    case OPEN_USER_ACTIONS: {
       if (state.openUserActions === true) {
         return {
           ...state,
@@ -29,7 +32,7 @@ const appReducer = (state, action) => {
         return { ...state, openUserActions: true };
       }
     }
-    case "OPEN_YOUR_POSTS": {
+    case OPEN_YOUR_POSTS: {
       if (state.openYourGroups === true || state.openCurrentUser === true) {
         return {
           ...state,
@@ -41,7 +44,7 @@ const appReducer = (state, action) => {
         return { ...state, openYourPosts: !state.openYourPosts };
       }
     }
-    case "OPEN_YOUR_GROUPS": {
+    case OPEN_YOUR_GROUPS: {
       if (state.openYourPosts === true || state.openCurrentUser === true) {
         return {
           ...state,
@@ -53,7 +56,7 @@ const appReducer = (state, action) => {
         return { ...state, openYourGroups: !state.openYourGroups };
       }
     }
-    case "OPEN_CURRENT_USER": {
+    case OPEN_CURRENT_USER: {
       if (state.openYourPosts === true || state.openYourGroups === true) {
         return {
           ...state,
@@ -68,17 +71,7 @@ const appReducer = (state, action) => {
         };
       }
     }
-    default: {
-      throw new Error(`Unhandled action type: ${action.type}`);
-    }
+    default:
+      return state;
   }
-};
-
-export const AppContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(appReducer, initialState);
-  return (
-    <AppState.Provider value={state}>
-      <AppDispatch.Provider value={dispatch}>{children}</AppDispatch.Provider>
-    </AppState.Provider>
-  );
 };

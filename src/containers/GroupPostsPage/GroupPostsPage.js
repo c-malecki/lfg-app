@@ -1,17 +1,49 @@
-import React, { useEffect, useContext, useState } from "react";
-import { useParams } from "react-router-dom";
-import { PostsStateContext, UsersState } from "../../contexts/context_index";
+import React, { useState, useEffect } from "react";
 import { PostPreview, GeneralLink } from "../../components/components_index";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Axios from "axios";
 
 export const GroupPostsPage = (props) => {
-  const [postsInGroup, setPostsInGroup] = useState(null);
-  const { posts } = useContext(PostsStateContext);
-  const { isLoggedIn } = useContext(UsersState);
+  const [pageStatus, setPageStatus] = useState({
+    isLoading: true,
+    error: null,
+  });
+  const [postsForPage, setPostsForPage] = useState(null);
   const { group } = useParams();
+  const { isLoggedIn } = useSelector((state) => state.userReducer);
   useEffect(() => {
-    const postsForPage = posts.filter((post) => post.group === group);
-    setPostsInGroup(postsForPage);
-  }, [group, posts]);
+    Axios.get(`http://localhost:5000/api/v1/groups/${group}/posts`)
+      .then((res) => {
+        setPostsForPage(res.data);
+        setPageStatus({
+          isLoading: false,
+          error: null,
+        });
+      })
+      .catch((error) => {
+        setPageStatus({
+          isLoading: false,
+          error: error.message,
+        });
+      });
+  }, [group]);
+  const groupPostsContent = () => {
+    const { isLoading, error } = pageStatus;
+    if (isLoading) {
+      return <div>loading...</div>;
+    } else if (error) {
+      return <div>Something went wrong.</div>;
+    } else {
+      return (
+        <>
+          {postsForPage.map((p) => {
+            return <PostPreview post={p} key={`post-${p.post_id}`} />;
+          })}
+        </>
+      );
+    }
+  };
   return (
     <div className="GroupPostsPage-container">
       <div className="GroupPostsPage-content">
@@ -36,15 +68,7 @@ export const GroupPostsPage = (props) => {
             <span className="search-placeholder">search placeholder</span>
           </div>
         </div>
-        {postsInGroup ? (
-          <>
-            {postsInGroup.map((post) => {
-              return <PostPreview post={post} key={`post-${post.post_id}`} />;
-            })}
-          </>
-        ) : (
-          <span className="no-content-message">...loading</span>
-        )}
+        {groupPostsContent()}
       </div>
     </div>
   );

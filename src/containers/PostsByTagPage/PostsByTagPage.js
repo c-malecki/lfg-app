@@ -1,27 +1,54 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { PostsStateContext } from "../../contexts/context_index";
 import { PostPreview } from "../../components/components_index";
+import axios from "axios";
 
 export const PostsByTagPage = () => {
-  const { posts } = useContext(PostsStateContext);
+  const [pageStatus, setPageStatus] = useState({
+    isLoading: true,
+    error: null,
+  });
+  const [postsForPage, setPostsForPage] = useState(null);
   const { tag } = useParams();
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/api/v1/posts/tags/${tag}`)
+      .then((res) => {
+        setPostsForPage(res.data);
+        setPageStatus({
+          isLoading: false,
+          error: null,
+        });
+      })
+      .catch((error) => {
+        setPageStatus({
+          isLoading: false,
+          error: error.message,
+        });
+      });
+  }, [tag]);
+  const postsByTagContent = () => {
+    const { isLoading, error } = pageStatus;
+    if (isLoading) {
+      return <div>loading...</div>;
+    } else if (error) {
+      return <div>Something went wrong.</div>;
+    } else {
+      return (
+        <>
+          {postsForPage.map((p) => (
+            <PostPreview post={p} key={`post-${p.post_id}`} />
+          ))}
+        </>
+      );
+    }
+  };
   return (
     <div className="PostsByTagPage-container">
       <div className="PostsByTagPage-content">
         <h2 className="page-heading">{`#${tag}`}</h2>
         <span className="search-placeholder">search placeholder</span>
-        {posts && tag ? (
-          posts.map((post) => {
-            if (post.tags.includes(tag)) {
-              return <PostPreview post={post} key={`post-${post.post_id}`} />;
-            } else {
-              return null;
-            }
-          })
-        ) : (
-          <div>loading</div>
-        )}
+        {postsByTagContent()}
       </div>
     </div>
   );

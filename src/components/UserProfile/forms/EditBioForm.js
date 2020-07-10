@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { GeneralButton } from "../../components_index";
-import { UsersDispatch } from "../../../contexts/context_index";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
 export const EditBioForm = (props) => {
-  const dispatch = useContext(UsersDispatch);
   const BioSchema = Yup.object().shape({
     bio: Yup.string().max(300, "Bio cannot be more than 300 characters."),
   });
@@ -17,11 +15,6 @@ export const EditBioForm = (props) => {
         }}
         validationSchema={BioSchema}
         onSubmit={(values) => {
-          dispatch({
-            type: "UPDATE_BIO",
-            user_name: props.user_name,
-            bio: values.bio,
-          });
           props.toggleEditBio();
         }}
         validateOnChange={false}

@@ -1,13 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import {
   GeneralLink,
   GeneralButton,
   PopUpConfirm,
 } from "../../components_index";
-import {
-  UsersState,
-  PostsDispatchContext,
-} from "../../../contexts/context_index";
 
 export const Comments = (props) => {
   const [showConfirm, setShowConfirm] = useState({
@@ -26,9 +22,7 @@ export const Comments = (props) => {
       message: "",
     });
   };
-  const { comments, post_id } = props;
-  const { currentUser } = useContext(UsersState);
-  const dispatch = useContext(PostsDispatchContext);
+  const { comments, post_id, currentUser } = props;
   return (
     <div className="Comments-container">
       {showConfirm.show ? (
@@ -36,35 +30,30 @@ export const Comments = (props) => {
           message={showConfirm.message}
           cancel={() => handleClosePopup()}
           ok={() => {
-            dispatch({
-              type: showConfirm.dispatch,
-              post_id: showConfirm.post,
-              comment_id: showConfirm.comment,
-            });
+            // redux dispatch delete comment request
             handleClosePopup();
           }}
         />
       ) : null}
       <h4 className="comment-heading">Comments</h4>
-      {comments.map((comment) => {
+      {comments.map((c) => {
         return (
-          <div className="Comment-content" key={comment.comment_id}>
+          <div className="Comment-content" key={c.comment_id}>
             <span className="head-text-content">By</span>
             <GeneralLink
-              url={`/users/${comment.user_name}`}
-              text={comment.user_name}
+              url={`/users/${c.username}`}
+              text={c.username}
               addClass="UserLink"
             />
-            <span className="head-text-content">at {comment.date}</span>
-            {currentUser !== null &&
-            currentUser.account.user_name === comment.user_name ? (
+            <span className="head-text-content">at {c.date_posted}</span>
+            {currentUser !== null && currentUser.username === c.username ? (
               <GeneralButton
                 method={() =>
                   setShowConfirm({
                     show: true,
                     dispatch: "DELETE_COMMENT",
                     post: post_id,
-                    comment: comment.comment_id,
+                    comment: c.comment_id,
                     message: "Are you sure you want to delete this comment?",
                   })
                 }
@@ -74,7 +63,7 @@ export const Comments = (props) => {
             ) : (
               ""
             )}
-            <p>{comment.content}</p>
+            <p>{c.comment_content}</p>
           </div>
         );
       })}

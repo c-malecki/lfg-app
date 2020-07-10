@@ -3,13 +3,21 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
   LOGOUT_USER,
+  FETCH_WIDGET_BEGIN,
+  FETCH_WIDGET_SUCCESS,
+  FETCH_WIDGET_FAIL,
 } from "../action-types";
 
 const initialState = {
-  loggedIn: false,
+  isLoggedIn: false,
   currentUser: null,
-  loading: false,
+  isLoading: false,
   error: null,
+  widgets: {
+    isLoading: false,
+    error: null,
+    posts: null,
+  },
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -17,16 +25,17 @@ export const userReducer = (state = initialState, action) => {
     case LOGIN_USER_BEGIN: {
       return {
         ...state,
-        loading: true,
+        isLoading: true,
         error: null,
       };
     }
     case LOGIN_USER_SUCCESS: {
       const user = action.payload;
       return {
-        loggedIn: true,
+        ...state,
+        isLoggedIn: true,
         currentUser: user,
-        loading: false,
+        isLoading: false,
         error: null,
       };
     }
@@ -34,15 +43,45 @@ export const userReducer = (state = initialState, action) => {
       const { error } = action.payload;
       return {
         ...state,
-        loading: false,
+        isLoading: false,
         error: error,
       };
     }
     case LOGOUT_USER: {
       return {
         ...state,
-        loggedIn: false,
+        isLoggedIn: false,
         currentUser: action.payload,
+      };
+    }
+    case FETCH_WIDGET_BEGIN: {
+      return {
+        ...state,
+        widgets: {
+          ...state.widgets,
+          isLoading: true,
+          error: null,
+        },
+      };
+    }
+    case FETCH_WIDGET_SUCCESS: {
+      return {
+        ...state,
+        widgets: {
+          isLoading: false,
+          error: null,
+          posts: action.payload,
+        },
+      };
+    }
+    case FETCH_WIDGET_FAIL: {
+      return {
+        ...state,
+        widgets: {
+          ...state.widgets,
+          isLoading: false,
+          error: action.payload.error,
+        },
       };
     }
     default:

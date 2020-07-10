@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { GeneralLink } from "../../components_index";
-import { AppState } from "../../../contexts/context_index";
+import { useSelector } from "react-redux";
 
 export const MobilePageNav = (props) => {
-  const { openMobilePageNav } = useContext(AppState);
+  const { openMobilePageNav } = useSelector((state) => state.appReducer);
   return (
     <div
       className={`MobilePageNav-container ${

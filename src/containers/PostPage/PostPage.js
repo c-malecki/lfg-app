@@ -1,26 +1,63 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { PostsStateContext, UsersState } from "../../contexts/context_index";
 import {
   GeneralLink,
-  CommentForm,
   Comments,
   PostBody,
 } from "../../components/components_index";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 export const PostPage = (props) => {
-  const [postContent, setPostContent] = useState(null);
-  const { posts } = useContext(PostsStateContext) || null;
-  const { currentUser } = useContext(UsersState) || null;
+  const [pageStatus, setPageStatus] = useState({
+    isLoading: true,
+    error: null,
+  });
   const { id, group } = useParams();
+  const { currentUser } = useSelector((state) => state.userReducer);
+  const [postForPage, setPostForPage] = useState(null);
   useEffect(() => {
-    if (posts !== null && posts !== undefined) {
-      const postForPage = posts.find((post) => post.post_id === id);
-      setPostContent(postForPage);
+    axios
+      .get(`http://localhost:5000/api/v1/posts/ids/${id}`)
+      .then((res) => {
+        setPostForPage(res.data);
+        setPageStatus({
+          isLoading: false,
+          error: null,
+        });
+      })
+      .catch((error) => {
+        setPageStatus({
+          isLoading: false,
+          error: error.message,
+        });
+      });
+  }, [id]);
+  const postPageContent = () => {
+    const { isLoading, error } = pageStatus;
+    if (isLoading) {
+      return <div>loading...</div>;
+    } else if (error) {
+      return <div>Something went wrong.</div>;
     } else {
-      setPostContent(null);
+      return (
+        <>
+          <PostBody content={postForPage} currentUser={currentUser} />
+          <Comments
+            currentUser={currentUser}
+            comments={postForPage.comments}
+            post_id={postForPage.post_id}
+          />
+          {/* {currentUser ? (
+            <CommentForm
+              post_id={postForPage.post_id}
+              currentUser={currentUser}
+            />
+          ) : null} */}
+        </>
+      );
     }
-  }, [posts, id]);
+  };
 
   return (
     <div className="PostPage-container">
@@ -30,22 +67,7 @@ export const PostPage = (props) => {
           text={`back to ${group} posts`}
           addClass="PageContentLink"
         />
-        {postContent !== null ? (
-          <>
-            <PostBody content={postContent} />
-            <Comments
-              comments={postContent.comments}
-              post_id={postContent.post_id}
-            />
-            {currentUser !== null ? (
-              <CommentForm post_id={postContent.post_id} />
-            ) : (
-              ""
-            )}
-          </>
-        ) : (
-          <div>loading...</div>
-        )}
+        {postPageContent()}
       </div>
     </div>
   );

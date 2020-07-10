@@ -1,32 +1,38 @@
-import React, { useContext, useState, useEffect } from "react";
-import { UsersState, MessagesState } from "../../contexts/context_index";
+import React, { useState, useEffect } from "react";
 import {
   Unread,
   SentMessages,
   AllMessages,
   GeneralButton,
 } from "../../components/components_index";
+import { useSelector } from "react-redux";
+import Axios from "axios";
 
 export const MessagesPage = (props) => {
+  const [pageStatus, setPageStatus] = useState({
+    isLoading: true,
+    error: null,
+  });
   const [messageType, setMessageType] = useState(0);
   const [curMessages, setCurMessages] = useState(null);
-  const { currentUser } = useContext(UsersState);
-  const { userMessages } = useContext(MessagesState);
+  const { currentUser } = useSelector((state) => state.userReducer);
+  const { username } = currentUser;
   useEffect(() => {
-    if (currentUser && userMessages) {
-      const user = userMessages.find(
-        (user) => user.user_name === currentUser.user_name
-      );
-      const { messages } = user;
-      const sent = messages.filter((m) => m.sender === true);
-      const unread = messages.filter((m) => m.read === false);
-      setCurMessages({
-        all: messages,
-        unread,
-        sent,
+    Axios.get(`http://localhost:5000/api/v1/users/${username}/messages`)
+      .then((res) => {
+        setCurMessages(res.data);
+        setPageStatus({
+          isLoading: false,
+          error: null,
+        });
+      })
+      .catch((error) => {
+        setPageStatus({
+          isLoading: false,
+          error: error.message,
+        });
       });
-    }
-  }, [currentUser, userMessages]);
+  }, [username]);
   const toggleAll = () => {
     setMessageType(0);
   };
@@ -38,35 +44,49 @@ export const MessagesPage = (props) => {
   };
   const displayMessageType = () => {
     if (messageType === 0) {
-      return <AllMessages messages={curMessages.all} />;
+      return <AllMessages messages={curMessages} />;
     } else if (messageType === 1) {
-      return <Unread messages={curMessages.unread} />;
+      return <Unread messages={curMessages} />;
     } else if (messageType === 2) {
-      return <SentMessages messages={curMessages.sent} />;
+      return <SentMessages messages={curMessages} />;
+    }
+  };
+  const messagesPageContent = () => {
+    const { isLoading, error } = pageStatus;
+    if (isLoading) {
+      return <div>loading...</div>;
+    } else if (error) {
+      return <div>Something went wrong.</div>;
+    } else {
+      return (
+        <>
+          <div className="Messages-action-bar">
+            <GeneralButton
+              method={toggleAll}
+              text="All"
+              addClass="general-theme-button"
+            />
+            <GeneralButton
+              method={toggleUnread}
+              text="unread"
+              addClass="general-theme-button"
+            />
+            <GeneralButton
+              method={toggleSent}
+              text="sent"
+              addClass="general-theme-button"
+            />
+          </div>
+          {currentUser && curMessages ? displayMessageType() : null}
+        </>
+      );
     }
   };
   return (
     <div className="MessagesPage-container">
       <div className="MessagesPage-content">
         <h3 className="page-heading">Messages</h3>
-        <div className="Messages-action-bar">
-          <GeneralButton
-            method={toggleAll}
-            text="All"
-            addClass="general-theme-button"
-          />
-          <GeneralButton
-            method={toggleUnread}
-            text="unread"
-            addClass="general-theme-button"
-          />
-          <GeneralButton
-            method={toggleSent}
-            text="sent"
-            addClass="general-theme-button"
-          />
-        </div>
-        {currentUser && curMessages ? displayMessageType() : null}
+        {messagesPageContent()}
       </div>
     </div>
   );

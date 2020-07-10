@@ -1,15 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Route, Switch } from "react-router-dom";
 import {
   HomePage,
   UserProfilePage,
-  NewPostPage,
   LogInPage,
   PostsByTagPage,
   PostPage,
   PostDeletedPage,
   MessagesPage,
-  NewMessagePage,
   ViewMessagePage,
   GroupPage,
   GroupsListPage,
@@ -19,6 +17,7 @@ import {
   RecentPostsPage,
   UserJoinedGroupsPage,
   GroupMembersPage,
+  NewPostPage,
 } from "../containers_index";
 import {
   YourGroups,
@@ -33,12 +32,12 @@ import {
   YourPostsMobile,
   CurrentUserMobile,
 } from "../../components/components_index";
-import { UsersState, AppState } from "../../contexts/context_index";
+import { useSelector } from "react-redux";
 
 export const PageContent = (props) => {
-  const { isLoggedIn, currentUser } = useContext(UsersState);
-  const { openYourPosts, openYourGroups, openCurrentUser } = useContext(
-    AppState
+  const { isLoggedIn, currentUser } = useSelector((state) => state.userReducer);
+  const { openYourPosts, openYourGroups, openCurrentUser } = useSelector(
+    (state) => state.appReducer
   );
   return (
     <div className="Page-container">
@@ -75,11 +74,11 @@ export const PageContent = (props) => {
             <Route exact path="/login" component={LogInPage} />
             <Route exact path="/messages" component={MessagesPage} />
             <Route exact path="/messages/:id" component={ViewMessagePage} />
-            <Route
+            {/* <Route
               exact
               path="/messages/new/to-:user"
               component={NewMessagePage}
-            />
+            /> */}
 
             <Route exact path="/friends" component={FriendsPage} />
             <Route exact path="/users/:user" component={UserProfilePage} />

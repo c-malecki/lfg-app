@@ -1,18 +1,49 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { PostPreview, GeneralLink } from "../../components/components_index";
-import { PostsStateContext } from "../../contexts/context_index";
+import axios from "axios";
 
 export const PostsByUserPage = (props) => {
+  const [pageStatus, setPageStatus] = useState({
+    isLoading: true,
+    error: null,
+  });
   const [postsForPage, setPostsForPage] = useState(null);
   const { user } = useParams();
-  const { posts } = useContext(PostsStateContext);
   useEffect(() => {
-    if (posts) {
-      const getPosts = posts.filter((p) => p.author === user);
-      setPostsForPage(getPosts);
+    axios
+      .get(`http://localhost:5000/api/v1/users/${user}/posts`)
+      .then((res) => {
+        setPostsForPage(res.data);
+        setPageStatus({
+          isLoading: false,
+          error: null,
+        });
+      })
+      .catch((error) => {
+        setPageStatus({
+          isLoading: false,
+          error: error.message,
+        });
+      });
+  }, [user]);
+
+  const postsByUserContent = () => {
+    const { isLoading, error } = pageStatus;
+    if (isLoading) {
+      return <div>loading...</div>;
+    } else if (error) {
+      return <div>Something went wrong.</div>;
+    } else {
+      return (
+        <>
+          {postsForPage.map((p) => {
+            return <PostPreview post={p} key={`post-${p.post_id}`} />;
+          })}
+        </>
+      );
     }
-  }, [posts, user]);
+  };
   return (
     <div className="PostsByUserPage-container">
       <div className="PostsByUserPage-content">
@@ -22,18 +53,10 @@ export const PostsByUserPage = (props) => {
             url={`/users/${user}`}
             addClass="PageHeaderLink"
           />
-          's Posts{" "}
+          's Posts
         </h2>
         <span className="search-placeholder">search placeholder</span>
-        {postsForPage ? (
-          <>
-            {postsForPage.map((post) => {
-              return <PostPreview post={post} key={`post-${post.post_id}`} />;
-            })}
-          </>
-        ) : (
-          <span className="no-content-message">...loading</span>
-        )}
+        {postsByUserContent()}
       </div>
     </div>
   );

@@ -1,32 +1,32 @@
 // import {
-//   FETCH_POSTS_BEGIN,
-//   FETCH_POSTS_SUCCESS,
-//   FETCH_POSTS_FAIL,
+//   FETCH_GROUPS_BEGIN,
+//   FETCH_GROUPS_SUCCESS,
+//   FETCH_GROUPS_FAIL,
 // } from "../action-types";
 
 // const initialState = {
-//   posts: null,
+//   groups: null,
 //   isLoading: false,
 //   error: null,
 // };
 
-// export const postsReducer = (state = initialState, action) => {
+// export const groupsReducer = (state = initialState, action) => {
 //   switch (action.type) {
-//     case FETCH_POSTS_BEGIN: {
+//     case FETCH_GROUPS_BEGIN: {
 //       return {
 //         ...state,
 //         isLoading: true,
 //         error: null,
 //       };
 //     }
-//     case FETCH_POSTS_SUCCESS: {
+//     case FETCH_GROUPS_SUCCESS: {
 //       return {
-//         posts: action.payload,
+//         groups: action.payload,
 //         isLoading: false,
 //         error: null,
 //       };
 //     }
-//     case FETCH_POSTS_FAIL: {
+//     case FETCH_GROUPS_FAIL: {
 //       const { error } = action.payload;
 //       return {
 //         ...state,

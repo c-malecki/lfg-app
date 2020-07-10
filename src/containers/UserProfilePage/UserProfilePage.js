@@ -9,42 +9,54 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 export const UserProfilePage = (props) => {
-  const [userForPage, setUserForPage] = useState(null);
+  const [userForPage, setUserForPage] = useState({
+    user: null,
+    posts: null,
+  });
   const [pageStatus, setPageStatus] = useState({
-    loading: true,
+    isLoading: true,
     error: null,
   });
   const { user } = useParams();
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/v1/users/profile?username=${user}`)
-      .then((res) => {
-        setUserForPage(res.data);
-        setPageStatus({
-          loading: false,
-          error: null,
-        });
-      })
+      .all([
+        axios.get(`http://localhost:5000/api/v1/users/${user}`),
+        axios.get(`http://localhost:5000/api/v1/users/${user}/posts`),
+      ])
+      .then(
+        axios.spread((u, p) => {
+          setUserForPage({
+            user: u.data,
+            posts: p.data,
+          });
+          setPageStatus({
+            isLoading: false,
+            error: null,
+          });
+        })
+      )
       .catch((error) => {
         setPageStatus({
-          loading: false,
+          isLoading: false,
           error: error.message,
         });
       });
   }, [user]);
   const userProfilePageContent = () => {
-    const { loading, error } = pageStatus;
-    if (loading) {
+    const { isLoading, error } = pageStatus;
+    if (isLoading) {
       return <div>loading...</div>;
-    } else if (!loading && error) {
+    } else if (error) {
       return <div>Something went wrong</div>;
     } else {
+      const { user, posts } = userForPage;
       return (
         <>
-          <UserProfileInfo userInfo={userForPage} />
-          <UserBio userInfo={userForPage} />
-          <UserJoinedGroups userInfo={userForPage} />
-          <UserRecentPosts username={userForPage.username} />
+          <UserProfileInfo userInfo={user} />
+          <UserBio userInfo={user} />
+          <UserJoinedGroups userInfo={user} />
+          <UserRecentPosts username={user.username} posts={posts} />
         </>
       );
     }

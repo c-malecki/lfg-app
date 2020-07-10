@@ -1,6 +1,9 @@
-@import "./PostPreview/PostPreview";
-@import "./Post/Post";
-@import "./NewPost/NewPostForm";
+@import "./Post/PostPreview/PostPreview";
+@import "./Post/CommentForm/CommentForm";
+@import "./Post/Comments/Comments";
+@import "./Post/PostBody/PostBody";
+@import "./Post/NewPostForm/NewPostForm";
+
 @import "./LogInForm/LoginForm";
 
 @import "./UserProfile/UserProfileInfo/UserProfileInfo";

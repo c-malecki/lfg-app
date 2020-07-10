@@ -1,27 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import { UsersState } from "../../contexts/context_index";
-import { FriendsUserPreview } from "../../components/components_index";
+import React from "react";
 
 export const FriendsPage = (props) => {
-  const [userFriends, setUserFriends] = useState({
-    mutual: [],
-    pending: [],
-  });
-  const { allUsers, currentUser, isLoggedIn } = useContext(UsersState);
-  useEffect(() => {
-    if (currentUser) {
-      const findMutual = currentUser.friends.filter((f) => f.pending === false);
-      const findPending = currentUser.friends.filter((f) => f.pending === true);
-      setUserFriends({
-        mutual: findMutual,
-        pending: findPending,
-      });
-    }
-  }, [allUsers, currentUser]);
   return (
     <div className="FriendsPage-container">
       <div className="FriendsPage-content">
-        {isLoggedIn && currentUser ? (
+        {/* {isLoggedIn && currentUser ? (
           <>
             <h3 className="page-heading">Pending Requests</h3>
             {userFriends && currentUser ? (
@@ -64,7 +47,8 @@ export const FriendsPage = (props) => {
           <div>
             Must be logged in. (create redirect to log in or modal log in)
           </div>
-        )}
+        )} */}
+        Reworking for api usage.
       </div>
     </div>
   );

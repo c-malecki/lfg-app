@@ -1,17 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { UsersState, PostsStateContext } from "../../contexts/context_index";
-import { PostsDispatchContext } from "../../contexts/context_index";
-import { reformatDate } from "../../assets/util/reformatDate";
-import { GeneralButton, GeneralLink } from "../components_index";
+import { reformatDate } from "../../../assets/util/reformatDate";
+import { GeneralButton, GeneralLink } from "../../components_index";
 import { Formik, Form, Field, FieldArray } from "formik";
 import * as Yup from "yup";
 
 export const NewPostForm = (props) => {
-  const { tags } = useContext(PostsStateContext);
-  const { currentUser } = useContext(UsersState);
-  const dispatch = useContext(PostsDispatchContext);
   const history = useHistory();
   const { group } = useParams();
 
@@ -39,22 +34,7 @@ export const NewPostForm = (props) => {
         }}
         validationSchema={NewPostSchema}
         onSubmit={(values) => {
-          const date = reformatDate(new Date());
-          const postId = uuidv4();
-          dispatch({
-            type: "CREATE_POST",
-            post: {
-              author: currentUser.account.user_name,
-              date: date,
-              title: values.title,
-              content: values.message,
-              tags: values.tags,
-              group: group,
-              post_id: postId,
-              comments: [],
-            },
-          });
-          history.push(`/g/${group}/posts/${postId}`);
+          history.push(`g/${group}/posts`);
         }}
         validateOnChange={false}
         validateOnBlur={false}

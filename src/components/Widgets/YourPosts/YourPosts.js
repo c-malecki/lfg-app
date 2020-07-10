@@ -1,54 +1,57 @@
-import React, { useContext, useEffect, useState } from "react";
-import { UsersState, PostsStateContext } from "../../../contexts/context_index";
+import React from "react";
 import { GeneralLink } from "../../components_index";
+import { useSelector } from "react-redux";
 
 export const YourPosts = (props) => {
-  const [yourPosts, setYourPosts] = useState(null);
-  const { currentUser, isLoggedIn } = useContext(UsersState);
-  const { posts } = useContext(PostsStateContext);
-  useEffect(() => {
-    if (currentUser) {
-      const username = currentUser.user_name;
-      const postsForWidget = posts.filter((p) => p.author === username);
-      setYourPosts(postsForWidget);
-    }
-  }, [currentUser, posts]);
-  return (
-    <>
-      {isLoggedIn ? (
-        <div className="YourPosts-container">
-          {currentUser && yourPosts ? (
+  const { currentUser, isLoggedIn, isLoading, widgets } = useSelector(
+    (state) => state.userReducer
+  );
+  const yourPostsContent = () => {
+    if (!isLoggedIn && !currentUser && isLoading) {
+      return null;
+    } else if (!isLoading && currentUser) {
+      const widgetContent = () => {
+        if (widgets.isLoading) {
+          return <div>loading...</div>;
+        } else if (widgets.error) {
+          return <div>Something went wrong.</div>;
+        } else if (!widgets.isLoading) {
+          const { posts } = widgets;
+          const { username } = currentUser;
+          return (
             <>
               <h3 className="component-heading">
                 <GeneralLink
-                  url={`/users/${currentUser.user_name}/posts`}
+                  url={`/users/${username}/posts`}
                   text="Your Posts"
                   addClass="PageContentLink"
                 />
               </h3>
-              {yourPosts.map((post) => {
-                return (
-                  <div className="YourPosts-item" key={`yp-${post.post_id}`}>
-                    <GeneralLink
-                      url={`/g/${post.group}/posts/${post.post_id}`}
-                      text={post.title}
-                      addClass="PostLink"
-                    />
-                    <span className="PostPreview-comments">
-                      <GeneralLink
-                        url={`/g/${post.group}/posts/${post.post_id}`}
-                        text={`${post.comments.length} comments`}
-                      />
-                    </span>
-                  </div>
-                );
-              })}
+              {posts
+                ? posts.map((p) => {
+                    return (
+                      <div className="YourPosts-item" key={`yp-${p.post_id}`}>
+                        <GeneralLink
+                          url={`/g/${p.posted_in}/posts/${p.post_id}`}
+                          text={p.post_title}
+                          addClass="PostLink"
+                        />
+                        <span className="PostPreview-comments">
+                          <GeneralLink
+                            url={`/g/${p.posted_in}/posts/${p.post_id}`}
+                            text={`${p.comments.length} comments`}
+                          />
+                        </span>
+                      </div>
+                    );
+                  })
+                : null}
             </>
-          ) : (
-            <span className="no-content-message">...loading</span>
-          )}
-        </div>
-      ) : null}
-    </>
-  );
+          );
+        }
+      };
+      return <div className="YourPosts-container">{widgetContent()}</div>;
+    }
+  };
+  return <>{yourPostsContent()}</>;
 };

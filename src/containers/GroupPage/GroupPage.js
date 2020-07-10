@@ -1,34 +1,66 @@
-import React, { useContext, useState, useEffect } from "react";
-import { GroupsState } from "../../contexts/context_index";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
   GroupInfo,
   GroupMembers,
   GroupNewPosts,
 } from "../../components/components_index";
+import axios from "axios";
 
 export const GroupPage = (props) => {
-  const [groupForPage, setGroupForPage] = useState(null);
-  const { groups } = useContext(GroupsState);
+  const [groupForPage, setGroupForPage] = useState({
+    group: null,
+    posts: null,
+  });
+  const [pageStatus, setPageStatus] = useState({
+    isLoading: true,
+    error: null,
+  });
   const { group } = useParams();
   useEffect(() => {
-    const findGroup = groups.find((g) => g.group_name === group);
-    setGroupForPage(findGroup);
-  }, [group, groups]);
-  return (
-    <div className="GroupPage-container">
-      {groupForPage ? (
+    axios
+      .all([
+        axios.get(`http://localhost:5000/api/v1/groups/${group}`),
+        axios.get(`http://localhost:5000/api/v1/groups/${group}/posts`),
+      ])
+      .then(
+        axios.spread((g, p) => {
+          setGroupForPage({
+            group: g.data,
+            posts: p.data,
+          });
+          setPageStatus({
+            isLoading: false,
+            error: null,
+          });
+        })
+      )
+      .catch((error) => {
+        setPageStatus({
+          isLoading: false,
+          error: error.message,
+        });
+      });
+  }, [group]);
+  const groupPageContent = () => {
+    const { isLoading, error } = pageStatus;
+    const { group, posts } = groupForPage;
+    if (isLoading) {
+      return <div>loading...</div>;
+    } else if (error) {
+      return <div>Something went wrong.</div>;
+    } else {
+      return (
         <>
-          <GroupInfo data={groupForPage} />
+          <GroupInfo group={group} />
           <GroupMembers
-            members={groupForPage.group_members}
-            groupName={groupForPage.group_name}
+            members={group.group_members}
+            group={group.group_name}
           />
-          <GroupNewPosts groupName={groupForPage.group_name} />
+          <GroupNewPosts group={group.group_name} posts={posts} />
         </>
-      ) : (
-        <div>...loading</div>
-      )}
-    </div>
-  );
+      );
+    }
+  };
+  return <div className="GroupPage-container">{groupPageContent()}</div>;
 };

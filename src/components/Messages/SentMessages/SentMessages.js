@@ -2,23 +2,20 @@ import React from "react";
 import { MessagePreview } from "../MessagePreview/MessagePreview";
 
 export const SentMessages = (props) => {
+  const { messages } = props;
   return (
     <div className="SentMessages-container">
-      {props.messages.length > 0 ? (
+      {messages.length > 0 ? (
         <>
-          {props.messages.map((message) => {
+          {messages.map((message) => {
             return (
               <MessagePreview
-                to={message.to_username}
-                from={message.from_username}
-                date={message.date_sent}
-                subject={message.subject}
-                key={message.message_id}
-                id={message.message_id}
-                sender={message.sender}
-                total_replies={message.total_replies}
-                total_unread_replies={message.total_unread_replies}
-                unread_reply={message.unread_reply}
+                from={message.original_sender.username}
+                to={message.original_receiver.username}
+                date={message.date_started}
+                subject={message.message_subject}
+                key={message.message_thread_id}
+                id={message.message_thread_id}
               />
             );
           })}

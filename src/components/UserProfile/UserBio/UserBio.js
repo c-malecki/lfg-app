@@ -1,14 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { EditBioForm } from "../forms/EditBioForm";
 import { GeneralButton } from "../../components_index";
-import { UsersState } from "../../../contexts/context_index";
+import { useSelector } from "react-redux";
 
 export const UserBio = (props) => {
   const [editBio, setEditBio] = useState({
     editMode: false,
     showButton: true,
   });
-  const { currentUser } = useContext(UsersState);
+  const { currentUser } = useSelector((state) => state.userReducer);
   const { profile, username } = props.userInfo;
   const { bio } = profile;
   const toggleEditBio = () => {
@@ -34,7 +34,7 @@ export const UserBio = (props) => {
       )}
 
       {currentUser &&
-      currentUser.user_name === username &&
+      currentUser.username === username &&
       editBio.showButton ? (
         <div className="bio-toggle-container">
           <GeneralButton

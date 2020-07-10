@@ -5,21 +5,21 @@ export const MessageBody = (props) => {
   const { message } = props;
   return (
     <div className="MessageBody-container">
-      <h3>{message.subject}</h3>
-      <span className="head-text-content">
-        {message.sender === false ? "From" : "To"}
-      </span>
+      <h3>{message.message_subject}</h3>
+      <span className="head-text-content">From</span>
       <GeneralLink
-        url={`/users/${
-          message.sender === false ? message.from_username : message.to_username
-        }`}
-        text={
-          message.sender === false ? message.from_username : message.to_username
-        }
+        url={`/users/${message.original_sender.username}`}
+        text={message.original_sender.username}
         addClass="UserLink"
       />
-      <span className="head-text-content">at {message.date_sent}</span>
-      <p>{message.content}</p>
+      <span className="head-text-content">to</span>
+      <GeneralLink
+        url={`/users/${message.original_receiver.username}`}
+        text={message.original_receiver.username}
+        addClass="UserLink"
+      />
+      <span className="head-text-content">at {message.date_started}</span>
+      <p>{message.original_content}</p>
     </div>
   );
 };

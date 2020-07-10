@@ -1,27 +1,57 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { UsersState, GroupsState } from "../../contexts/context_index";
 import { GroupPreview, GeneralLink } from "../../components/components_index";
+import axios from "axios";
 
 export const UserJoinedGroupsPage = (props) => {
+  const [pageStatus, setPageStatus] = useState({
+    isLoading: true,
+    error: null,
+  });
   const [groupsForPage, setGroupsForPage] = useState(null);
-  const { allUsers } = useContext(UsersState);
-  const { groups } = useContext(GroupsState);
   const { user } = useParams();
   useEffect(() => {
-    if (allUsers) {
-      const findUser = allUsers.find((u) => u.user_name === user);
-      const userGroups = findUser.groups;
-      const groupsFiltered = groups.filter((g) => {
-        if (userGroups.includes(g.group_name)) {
-          return g;
-        } else {
-          return null;
-        }
+    axios
+      .get(`http://localhost:5000/api/v1/users/${user}/groups`)
+      .then((res) => {
+        setGroupsForPage(res.data);
+        setPageStatus({
+          isLoading: false,
+          error: null,
+        });
+      })
+      .catch((error) => {
+        setPageStatus({
+          isLoading: false,
+          error: error.message,
+        });
       });
-      setGroupsForPage(groupsFiltered);
+  }, [user]);
+  const userJoinedGroupsContent = () => {
+    const { isLoading, error } = pageStatus;
+    if (isLoading) {
+      return <div>loading...</div>;
+    } else if (error) {
+      return <div>Something went wrong.</div>;
+    } else {
+      return (
+        <>
+          {groupsForPage.map((group) => {
+            return (
+              <GroupPreview
+                group={{
+                  name: group.group_name,
+                  description: group.group_profile.description,
+                  img: group.group_profile.group_img,
+                }}
+                key={group.group_id}
+              />
+            );
+          })}
+        </>
+      );
     }
-  }, [allUsers, groups, user]);
+  };
   return (
     <div className="UserJoinedGroupsPage-container">
       <div className="UserJoinedGroupsPage-content">
@@ -34,24 +64,7 @@ export const UserJoinedGroupsPage = (props) => {
           's Groups
         </h2>
         <span className="search-placeholder">search placeholder</span>
-        {groupsForPage ? (
-          <>
-            {groupsForPage.map((group) => {
-              return (
-                <GroupPreview
-                  group={{
-                    name: group.group_name,
-                    description: group.group_description,
-                    img: group.group_img,
-                  }}
-                  key={group.group_id}
-                />
-              );
-            })}
-          </>
-        ) : (
-          <div>loading...</div>
-        )}
+        {userJoinedGroupsContent()}
       </div>
     </div>
   );

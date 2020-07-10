@@ -1,27 +1,21 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
   GeneralLink,
   PopUpConfirm,
   GeneralButton,
 } from "../../components_index";
-import {
-  UsersState,
-  PostsDispatchContext,
-} from "../../../contexts/context_index";
 
 export const PostBody = (props) => {
   const [showConfirm, setShowConfirm] = useState(false);
-  const { content } = props;
-  const { currentUser } = useContext(UsersState);
-  const dispatch = useContext(PostsDispatchContext);
+  const { content, currentUser } = props;
+
   const history = useHistory();
   return (
     <div className="PostBody-container">
       <div className="PostBody-head">
-        <h3 className="post-title-heading">{content.title}</h3>
-        {currentUser !== null &&
-        currentUser.account.user_name === content.author ? (
+        <h3 className="post-title-heading">{content.post_title}</h3>
+        {currentUser.username === content.post_author ? (
           <span>
             <GeneralButton
               text="X"
@@ -36,22 +30,19 @@ export const PostBody = (props) => {
           message="Are you sure you want to delete this post?"
           cancel={() => setShowConfirm(false)}
           ok={() => {
-            dispatch({
-              type: "DELETE_POST",
-              post_id: content.post_id,
-            });
+            // redux dispatch for delete post request
             history.push("/post-deleted");
           }}
         />
       ) : null}
       <span className="head-text-content">By</span>
       <GeneralLink
-        url={`/users/${content.author}`}
-        text={content.author}
+        url={`/users/${content.post_author}`}
+        text={content.post_author}
         addClass="UserLink"
       />
-      <span className="head-text-content">at {content.date}</span>
-      {content.tags.map((tag) => (
+      <span className="head-text-content">at {content.date_posted}</span>
+      {content.post_tags.map((tag) => (
         <GeneralLink
           url={`/posts/tags/${tag}`}
           key={`${content.title}-${tag}`}
@@ -59,7 +50,7 @@ export const PostBody = (props) => {
           addClass="PostTag-link "
         />
       ))}
-      <p>{content.content}</p>
+      <p>{content.post_content}</p>
     </div>
   );
 };

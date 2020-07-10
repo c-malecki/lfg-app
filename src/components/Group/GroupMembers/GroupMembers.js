@@ -2,8 +2,7 @@ import React from "react";
 import { GeneralLink } from "../../components_index";
 
 export const GroupMembers = (props) => {
-  const members = props.members;
-  const group = props.groupName;
+  const { members, group } = props;
   return (
     <div className="GroupMembers-container">
       <h3 className="component-heading">Members</h3>
@@ -13,16 +12,16 @@ export const GroupMembers = (props) => {
         addClass="PageContentLink"
       />
       <ul className="GroupMembers-list">
-        {members.map((member) => {
+        {members.map((m) => {
           return (
-            <li key={member.member_id}>
+            <li key={m.member_id}>
               <div className="GroupMember-item">
                 <GeneralLink
-                  url={`/users/${member.user_name}`}
-                  text={member.user_name}
+                  url={`/users/${m.username}`}
+                  text={m.username}
                   addClass="UserLink"
                 />
-                <span>{member.role}</span>
+                <span>{m.role}</span>
               </div>
             </li>
           );

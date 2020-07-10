@@ -1,35 +1,52 @@
-import React, { useContext, useEffect, useState } from "react";
-import { PostsStateContext, UsersState } from "../../contexts/context_index";
+import React, { useState, useEffect } from "react";
 import { PostPreview, GeneralButton } from "../components_index";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 export const RecentPosts = (props) => {
-  const [pagePosts, setPagePosts] = useState({
-    groupPosts: null,
-    viewAll: true,
+  const [pageStatus, setPageStatus] = useState({
+    isLoading: true,
+    error: null,
   });
-  const { posts } = useContext(PostsStateContext);
-  const { currentUser, isLoggedIn } = useContext(UsersState);
+  const [postsForPage, setPostsForPage] = useState(null);
+  const [viewAll, setViewAll] = useState(true);
+  const { currentUser } = useSelector((state) => state.userReducer);
+
   useEffect(() => {
-    if (currentUser && isLoggedIn) {
-      const groupPosts = posts.filter(
-        (p) => currentUser.groups.indexOf(p.group) > -1
-      );
-      setPagePosts((prevState) => ({
-        ...prevState,
-        groupPosts,
-      }));
-    }
-  }, [currentUser, isLoggedIn, posts]);
+    axios
+      .get("http://localhost:5000/api/v1/posts")
+      .then((res) => {
+        setPostsForPage(res.data);
+        setPageStatus({
+          isLoading: false,
+          error: null,
+        });
+      })
+      .catch((error) => {
+        setPageStatus({
+          isLoading: false,
+          error: error.message,
+        });
+      });
+  }, []);
+
   const handleToggleAll = () => {
-    setPagePosts((prevState) => ({ ...prevState, viewAll: true }));
+    setViewAll(true);
   };
   const handleToggleGroups = () => {
-    setPagePosts((prevState) => ({ ...prevState, viewAll: false }));
+    setViewAll(false);
   };
-  return (
-    <div className="RecentPosts-container">
-      <h2 className="page-heading">Recent Posts</h2>
-      {isLoggedIn && posts ? (
+  const recentPostsContent = () => {
+    const { isLoading, error } = pageStatus;
+    if (isLoading) {
+      return <div>loading...</div>;
+    } else if (error) {
+      return <div>Something went wrong.</div>;
+    } else if (currentUser && postsForPage) {
+      const groupPosts = postsForPage.filter(
+        (p) => currentUser.groups.group_name_list.indexOf(p.posted_in) > -1
+      );
+      return (
         <>
           <div className="RecentPosts-actions">
             <GeneralButton
@@ -44,29 +61,36 @@ export const RecentPosts = (props) => {
             />
             <span className="search-placeholder">search placeholder</span>
           </div>
-
-          {pagePosts.viewAll && posts ? (
+          {viewAll ? (
             <>
-              {posts.map((post) => {
-                return <PostPreview post={post} key={`post-${post.post_id}`} />;
-              })}
+              {postsForPage.map((p) => (
+                <PostPreview post={p} key={p.post_id} />
+              ))}
             </>
           ) : (
             <>
-              {pagePosts.groupPosts.map((post) => {
-                return <PostPreview post={post} key={`post-${post.post_id}`} />;
-              })}
+              {groupPosts.map((p) => (
+                <PostPreview post={p} key={p.post_id} />
+              ))}
             </>
           )}
         </>
-      ) : (
+      );
+    } else {
+      return (
         <>
           <span className="search-placeholder">search placeholder</span>
-          {posts.map((post) => {
-            return <PostPreview post={post} key={`post-${post.post_id}`} />;
-          })}
+          {postsForPage.map((p) => (
+            <PostPreview post={p} key={p.post_id} />
+          ))}
         </>
-      )}
+      );
+    }
+  };
+  return (
+    <div className="RecentPosts-container">
+      <h2 className="page-heading">Recent Posts</h2>
+      {recentPostsContent()}
     </div>
   );
 };

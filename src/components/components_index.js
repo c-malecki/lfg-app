@@ -25,16 +25,16 @@ export * from "./Widgets/YourPostsMobile/YourPostsMobile";
 export * from "./Widgets/CurrentUserMobile/CurrentUserMobile";
 
 // Components
-export * from "./NewPost/NewPostForm";
 export * from "./LogInForm/LogInForm";
-export * from "./FriendsUserPreview/FriendsUserPreview";
 export * from "./RecentPosts/RecentPosts";
+// export * from "./FriendsUserPreview/FriendsUserPreview";
 
 // Posts
-export * from "./PostPreview/PostPreview";
-export * from "./Post/CommentForm/CommentForm";
+export * from "./Post/PostPreview/PostPreview";
 export * from "./Post/Comments/Comments";
 export * from "./Post/PostBody/PostBody";
+// export * from "./Post/NewPostForm/NewPostForm";
+// export * from "./Post/CommentForm/CommentForm";
 
 // UserProfile
 export * from "./UserProfile/UserProfileInfo/UserProfileInfo";
@@ -46,10 +46,10 @@ export * from "./UserProfile/UserRecentPosts/UserRecentPosts";
 export * from "./Messages/Unread/Unread";
 export * from "./Messages/SentMessages/SentMessages";
 export * from "./Messages/MessageBody/MessageBody";
-export * from "./Messages/forms/SendMessageForm";
-export * from "./Messages/forms/ReplyToMessageForm";
 export * from "./Messages/MessageReplies/MessageReplies";
 export * from "./Messages/AllMessages/AllMessages";
+// export * from "./Messages/forms/SendMessageForm";
+// export * from "./Messages/forms/ReplyToMessageForm";
 
 // Group
 export * from "./Group/GroupInfo/GroupInfo";

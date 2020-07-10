@@ -1,16 +1,17 @@
-import React, { createContext, useReducer } from "react";
-import { sampleMessages } from "../dumbydata/sample_messages";
-
-export const MessagesState = createContext();
-export const MessagesDispatch = createContext();
+import {
+  SEND_RECEIVE_MESSAGE,
+  READ_MESSAGE,
+  REPLY_TO_MESSAGE,
+} from "../action-types";
+import { sampleMessages } from "../dumydata";
 
 const initialState = {
   userMessages: sampleMessages,
 };
 
-const messagesReducer = (state, action) => {
+export const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SEND_RECEIVE_MESSAGE": {
+    case SEND_RECEIVE_MESSAGE: {
       const { userMessages } = state;
       const fromIdx = userMessages.findIndex(
         (user) => user.user_name === action.message.from_username
@@ -47,7 +48,7 @@ const messagesReducer = (state, action) => {
       };
       return { userMessages: newUserMessages };
     }
-    case "READ_MESSAGE": {
+    case READ_MESSAGE: {
       const { userMessages } = state;
       const fromIdx = userMessages.findIndex(
         (user) => user.user_name === action.from
@@ -89,7 +90,7 @@ const messagesReducer = (state, action) => {
       };
       return { userMessages: newUserMessages };
     }
-    case "REPLY_TO_MESSAGE": {
+    case REPLY_TO_MESSAGE: {
       const { userMessages } = state;
       const fromIdx = userMessages.findIndex(
         (user) => user.user_name === action.from
@@ -132,18 +133,7 @@ const messagesReducer = (state, action) => {
       return { userMessages: newUserMessages };
     }
     default: {
-      throw new Error(`Unhandled action type: ${action.type}`);
+      return state;
     }
   }
-};
-
-export const MessagesContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(messagesReducer, initialState);
-  return (
-    <MessagesState.Provider value={state}>
-      <MessagesDispatch.Provider value={dispatch}>
-        {children}
-      </MessagesDispatch.Provider>
-    </MessagesState.Provider>
-  );
 };

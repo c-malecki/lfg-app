@@ -1,18 +1,58 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { GroupsState } from "../../contexts/context_index";
 import { GeneralLink } from "../../components/components_index";
+import Axios from "axios";
 
 export const GroupMembersPage = (props) => {
+  const [pageStatus, setPageStatus] = useState({
+    isLoading: true,
+    error: null,
+  });
   const [membersForPage, setMembersForPage] = useState(null);
-  // const { allUsers } = useContext(UsersState);
-  const { groups } = useContext(GroupsState);
   const { group } = useParams();
   useEffect(() => {
-    const findGroup = groups.find((g) => g.group_name === group);
-    const members = findGroup.group_members;
-    setMembersForPage(members);
-  }, [group, groups]);
+    Axios.get(`http://localhost:5000/api/v1/groups/${group}/members`)
+      .then((res) => {
+        setMembersForPage(res.data);
+        setPageStatus({
+          isLoading: false,
+          error: null,
+        });
+      })
+      .catch((error) => {
+        setPageStatus({
+          isLoading: false,
+          error: error.message,
+        });
+      });
+  }, [group]);
+  const groupMembersContent = () => {
+    const { isLoading, error } = pageStatus;
+    if (isLoading) {
+      return <div>loading...</div>;
+    } else if (error) {
+      return <div>Something went wrong.</div>;
+    } else {
+      return (
+        <ul className="GroupMembers-list">
+          {membersForPage.map((member) => {
+            return (
+              <li key={member.member_id}>
+                <div className="GroupMember-item">
+                  <GeneralLink
+                    url={`/users/${member.username}`}
+                    text={member.username}
+                    addClass="UserLink"
+                  />
+                  <span>{member.role}</span>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      );
+    }
+  };
   return (
     <div className="GroupMembersPage-container">
       <div className="GroupMembersPage-content">
@@ -24,26 +64,7 @@ export const GroupMembersPage = (props) => {
           />{" "}
           Members
         </h2>
-        {membersForPage ? (
-          <>
-            <ul className="GroupMembers-list">
-              {membersForPage.map((member) => {
-                return (
-                  <li key={member.member_id}>
-                    <div className="GroupMember-item">
-                      <GeneralLink
-                        url={`/users/${member.user_name}`}
-                        text={member.user_name}
-                        addClass="UserLink"
-                      />
-                      <span>{member.role}</span>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          </>
-        ) : null}
+        {groupMembersContent()}
       </div>
     </div>
   );
