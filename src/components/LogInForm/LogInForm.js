@@ -1,14 +1,13 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import { GeneralButton } from "../components_index";
 import { Formik, Form, Field } from "formik";
-// import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { fetchUserForLogin } from "../../redux/actions/user-actions";
+import { useSelector } from "react-redux";
 
 export const LogInForm = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const { error } = useSelector((state) => state.userReducer);
 
   return (
     <div className="LogInForm-container">
@@ -24,7 +23,6 @@ export const LogInForm = () => {
               password: values.password,
             })
           );
-          history.push("/");
         }}
         validateOnChange={false}
         validateOnBlur={false}
@@ -55,6 +53,7 @@ export const LogInForm = () => {
           </Form>
         )}
       </Formik>
+      {error ? <div>Username or password is incorrect.</div> : null}
     </div>
   );
 };

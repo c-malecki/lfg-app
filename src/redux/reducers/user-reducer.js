@@ -40,18 +40,22 @@ export const userReducer = (state = initialState, action) => {
       };
     }
     case LOGIN_USER_FAIL: {
-      const { error } = action.payload;
       return {
         ...state,
         isLoading: false,
-        error: error,
+        error: action.payload,
+        widgets: {
+          isLoading: false,
+          error: null,
+          posts: null,
+        },
       };
     }
     case LOGOUT_USER: {
       return {
         ...state,
         isLoggedIn: false,
-        currentUser: action.payload,
+        currentUser: null,
       };
     }
     case FETCH_WIDGET_BEGIN: {

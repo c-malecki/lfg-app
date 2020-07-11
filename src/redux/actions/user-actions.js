@@ -39,18 +39,19 @@ const fetchWidgetFail = (error) => ({
 
 export const logoutUser = () => ({
   type: LOGOUT_USER,
-  payload: null,
 });
 
 export const fetchUserForLogin = (user) => {
+  const { username, password } = user;
   return (dispatch) => {
     dispatch(fetchUserBegin());
     axios
       .get(
-        `http://localhost:5000/api/v1/login?username=${user.username}&password=${user.password}`
+        `http://localhost:5000/api/v1/login?username=${username}&password=${password}`
       )
       .then((res) => {
         dispatch(fetchUserSuccess(res.data));
+        dispatch(fetchWidgetAfterLogin(username));
       })
       .catch((error) => {
         dispatch(fetchUserFail(error.message));

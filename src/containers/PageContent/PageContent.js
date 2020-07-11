@@ -31,6 +31,7 @@ import {
   YourGroupsMobile,
   YourPostsMobile,
   CurrentUserMobile,
+  LogInRoute,
 } from "../../components/components_index";
 import { useSelector } from "react-redux";
 
@@ -71,9 +72,13 @@ export const PageContent = (props) => {
             <Route exact path="/posts/tags/:tag" component={PostsByTagPage} />
 
             <Route exact path="/post-deleted" component={PostDeletedPage} />
-            <Route exact path="/login" component={LogInPage} />
+            <LogInRoute exact path="/login" component={LogInPage} />
             <Route exact path="/messages" component={MessagesPage} />
-            <Route exact path="/messages/:id" component={ViewMessagePage} />
+            <Route
+              exact
+              path="/messages/message/:id"
+              component={ViewMessagePage}
+            />
             {/* <Route
               exact
               path="/messages/new/to-:user"

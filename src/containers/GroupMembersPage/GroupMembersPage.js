@@ -13,7 +13,7 @@ export const GroupMembersPage = (props) => {
   useEffect(() => {
     Axios.get(`http://localhost:5000/api/v1/groups/${group}/members`)
       .then((res) => {
-        setMembersForPage(res.data);
+        setMembersForPage(res.data.group_members);
         setPageStatus({
           isLoading: false,
           error: null,
