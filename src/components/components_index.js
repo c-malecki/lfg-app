@@ -48,7 +48,7 @@ export * from "./Messages/SentMessages/SentMessages";
 export * from "./Messages/MessageBody/MessageBody";
 export * from "./Messages/MessageReplies/MessageReplies";
 export * from "./Messages/AllMessages/AllMessages";
-// export * from "./Messages/forms/SendMessageForm";
+export * from "./Messages/forms/SendMessageForm";
 // export * from "./Messages/forms/ReplyToMessageForm";
 
 // Group

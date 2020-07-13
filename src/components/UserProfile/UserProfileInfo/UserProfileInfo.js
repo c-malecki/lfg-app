@@ -1,12 +1,12 @@
 import React from "react";
-// import { GeneralLink, GeneralButton } from "../../components_index";
-// import { useSelector } from "react-redux";
+import { GeneralLink } from "../../components_index";
+import { useSelector } from "react-redux";
 
 export const UserProfileInfo = (props) => {
   const { username, account, profile } = props.userInfo;
   const { date_joined, first_name, last_name } = account;
   const { user_img } = profile;
-  // const { currentUser, isLoggedIn } = useSelector((state) => state.userReducer);
+  const { currentUser, isLoggedIn } = useSelector((state) => state.userReducer);
   // const addFriendText = () => {
   //   if (currentUser && isLoggedIn) {
   //     const { friends } = currentUser;
@@ -34,21 +34,26 @@ export const UserProfileInfo = (props) => {
   return (
     <div className="UserProfileInfo-container">
       <h2>{username}</h2>
-      {/* {isLoggedIn && currentUser.user_name !== username ? (
+      {isLoggedIn && currentUser.username !== username ? (
         <div className="UserProfile-user-actions">
           <GeneralLink
-            url={`/messages/new/to-${username}`}
+            url={{
+              pathname: "/messages/new",
+              messageProps: {
+                toUser: username,
+              },
+            }}
             text="message"
             addClass="general-theme-link"
           />
-          <GeneralButton
+          {/* <GeneralButton
             disabled={friendButtonDisabled}
             addClass="general-theme-button"
             text={addFriendText()}
             method={() => null}
-          />
+          /> */}
         </div>
-      ) : null} */}
+      ) : null}
       <img src={user_img} alt={username} />
       <span>
         Name: {first_name} {last_name}

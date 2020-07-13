@@ -13,6 +13,7 @@ export const ViewMessagePage = (props) => {
   useEffect(() => {
     Axios.get(`http://localhost:5000/api/v1/messages/${id}`)
       .then((res) => {
+        debugger;
         setMessage(res.data);
         setPageStatus({
           isLoading: false,
@@ -22,7 +23,7 @@ export const ViewMessagePage = (props) => {
       .catch((error) => {
         setPageStatus({
           isLoading: false,
-          error: error.message,
+          error: error.response.data,
         });
       });
   }, [id]);
@@ -31,7 +32,7 @@ export const ViewMessagePage = (props) => {
     if (isLoading) {
       return <div>loading...</div>;
     } else if (error) {
-      return <div>Something went wrong.</div>;
+      return <div>{error}</div>;
     } else {
       return (
         <>

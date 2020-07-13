@@ -18,6 +18,7 @@ import {
   UserJoinedGroupsPage,
   GroupMembersPage,
   NewPostPage,
+  NewMessagePage,
 } from "../containers_index";
 import {
   YourGroups,
@@ -79,11 +80,7 @@ export const PageContent = (props) => {
               path="/messages/message/:id"
               component={ViewMessagePage}
             />
-            {/* <Route
-              exact
-              path="/messages/new/to-:user"
-              component={NewMessagePage}
-            /> */}
+            <Route exact path="/messages/new" component={NewMessagePage} />
 
             <Route exact path="/friends" component={FriendsPage} />
             <Route exact path="/users/:user" component={UserProfilePage} />

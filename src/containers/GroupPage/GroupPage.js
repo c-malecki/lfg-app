@@ -38,7 +38,7 @@ export const GroupPage = (props) => {
       .catch((error) => {
         setPageStatus({
           isLoading: false,
-          error: error.message,
+          error: error.response.data,
         });
       });
   }, [group]);
@@ -48,7 +48,7 @@ export const GroupPage = (props) => {
     if (isLoading) {
       return <div>loading...</div>;
     } else if (error) {
-      return <div>Something went wrong.</div>;
+      return <div>{error}</div>;
     } else {
       return (
         <>
