@@ -1,14 +1,13 @@
 import React from "react";
-import { useHistory, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { reformatDate } from "../../../assets/util/reformatDate";
 import { GeneralButton, GeneralLink } from "../../components_index";
 import { Formik, Form, Field, FieldArray } from "formik";
 import * as Yup from "yup";
+import Axios from "axios";
 
 export const NewPostForm = (props) => {
-  const history = useHistory();
-  const { group } = useParams();
+  const { post_author, post_tags, group, setPostStatus } = props;
 
   const NewPostSchema = Yup.object().shape({
     title: Yup.string()
@@ -29,12 +28,38 @@ export const NewPostForm = (props) => {
           content: "",
           tags: [],
           tag_search: "",
-          filtered_tags: tags,
-          all_tags: tags,
+          filtered_tags: post_tags,
+          all_tags: post_tags,
         }}
         validationSchema={NewPostSchema}
         onSubmit={(values) => {
-          history.push(`g/${group}/posts`);
+          const date = reformatDate(new Date());
+          const postId = uuidv4();
+          const newPost = {
+            post_id: postId,
+            post_author: post_author,
+            date_posted: date,
+            post_title: values.title,
+            post_tags: values.tags,
+            posted_in: group,
+            post_content: values.content,
+            comments: [],
+          };
+          Axios.post("http://localhost:5000/api/v1/posts", newPost)
+            .then((res) => {
+              setPostStatus({
+                success: true,
+                error: null,
+                post_id: postId,
+              });
+            })
+            .catch((error) =>
+              setPostStatus({
+                success: false,
+                error: error.message,
+                post_id: null,
+              })
+            );
         }}
         validateOnChange={false}
         validateOnBlur={false}
@@ -82,7 +107,7 @@ export const NewPostForm = (props) => {
                               values.tag_search,
                             ]);
                             setFieldValue("tag_search", "");
-                            setFieldValue("filtered_tags", [...tags]);
+                            setFieldValue("filtered_tags", [...post_tags]);
                           }}
                         >
                           +

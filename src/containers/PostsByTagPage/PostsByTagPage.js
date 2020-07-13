@@ -12,7 +12,7 @@ export const PostsByTagPage = () => {
   const { tag } = useParams();
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/v1/posts/tags/${tag}`)
+      .get(`http://localhost:5000/api/v1/posts/bytags/${tag}`)
       .then((res) => {
         setPostsForPage(res.data);
         setPageStatus({

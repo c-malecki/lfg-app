@@ -33,7 +33,7 @@ export * from "./RecentPosts/RecentPosts";
 export * from "./Post/PostPreview/PostPreview";
 export * from "./Post/Comments/Comments";
 export * from "./Post/PostBody/PostBody";
-// export * from "./Post/NewPostForm/NewPostForm";
+export * from "./Post/NewPostForm/NewPostForm";
 // export * from "./Post/CommentForm/CommentForm";
 
 // UserProfile
