@@ -5,10 +5,11 @@ import {
   PopUpConfirm,
   GeneralButton,
 } from "../../components_index";
+import Axios from "axios";
 
 export const PostBody = (props) => {
   const [showConfirm, setShowConfirm] = useState(false);
-  const { content, currentUser } = props;
+  const { content, currentUser, post_id } = props;
 
   const history = useHistory();
   return (
@@ -29,8 +30,12 @@ export const PostBody = (props) => {
         <PopUpConfirm
           message="Are you sure you want to delete this post?"
           cancel={() => setShowConfirm(false)}
-          ok={() => {
-            // redux dispatch for delete post request
+          ok={async () => {
+            await Axios.post(
+              `http://localhost:5000/api/v1/posts/ids/${post_id}/delete`
+            )
+              .then((res) => console.log(res.status))
+              .catch((error) => console.log(error.message));
             history.push("/post-deleted");
           }}
         />

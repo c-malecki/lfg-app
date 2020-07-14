@@ -6,13 +6,13 @@ export const MessageReplies = (props) => {
   return (
     <div className="MessageReplies-container">
       <GeneralLink
-        url={`/users/${reply.user_name}`}
-        text={reply.user_name}
+        url={`/users/${reply.username}`}
+        text={reply.username}
         addClass="UserLink"
       />
       <span className="head-text-content">at {reply.date_sent}</span>
 
-      <p>{reply.content}</p>
+      <p>{reply.message}</p>
     </div>
   );
 };

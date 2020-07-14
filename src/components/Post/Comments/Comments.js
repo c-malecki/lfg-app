@@ -4,20 +4,17 @@ import {
   GeneralButton,
   PopUpConfirm,
 } from "../../components_index";
+import Axios from "axios";
 
 export const Comments = (props) => {
   const [showConfirm, setShowConfirm] = useState({
     show: false,
-    dispatch: null,
-    post: null,
     comment: null,
     message: "",
   });
   const handleClosePopup = () => {
     setShowConfirm({
       show: false,
-      dispatch: null,
-      post: null,
       comment: null,
       message: "",
     });
@@ -29,8 +26,12 @@ export const Comments = (props) => {
         <PopUpConfirm
           message={showConfirm.message}
           cancel={() => handleClosePopup()}
-          ok={() => {
-            // redux dispatch delete comment request
+          ok={async () => {
+            await Axios.post(
+              `http://localhost:5000/api/v1/posts/ids/${post_id}/comments/${showConfirm.comment}/delete`
+            )
+              .then((res) => console.log("Comment deleted."))
+              .catch((error) => console.log(error.message));
             handleClosePopup();
           }}
         />
@@ -51,8 +52,6 @@ export const Comments = (props) => {
                 method={() =>
                   setShowConfirm({
                     show: true,
-                    dispatch: "DELETE_COMMENT",
-                    post: post_id,
                     comment: c.comment_id,
                     message: "Are you sure you want to delete this comment?",
                   })

@@ -1,18 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { MessagesDispatch, UsersState } from "../../../contexts/context_index";
 import { reformatDate } from "../../../assets/util/reformatDate";
 import { GeneralButton } from "../../components_index";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import Axios from "axios";
 
 export const ReplyToMessageForm = (props) => {
   const [formState, setFormState] = useState({
     openForm: false,
     isSubmitting: false,
   });
-  const { currentUser } = useContext(UsersState);
-  const dispatch = useContext(MessagesDispatch);
+  const { username, message_id } = props;
 
   const toggleForm = () => {
     const { openForm } = formState;
@@ -49,18 +48,18 @@ export const ReplyToMessageForm = (props) => {
             submitDebounce();
             const date = reformatDate(new Date());
             const replyId = uuidv4();
-            dispatch({
-              type: "REPLY_TO_MESSAGE",
-              message_id: props.message_id,
-              to: props.to,
-              from: props.from,
-              reply: {
-                user_name: currentUser.user_name,
-                date_sent: date,
-                content: values.message,
-                reply_id: replyId,
-              },
-            });
+            const newReply = {
+              username: username,
+              date_sent: date,
+              message: values.message,
+              reply_id: replyId,
+            };
+            Axios.post(
+              `http://localhost:5000/api/v1/messages/${message_id}/replies`,
+              newReply
+            )
+              .then((res) => console.log(res.data))
+              .catch((error) => console.log(error.message));
             resetForm();
           }}
           validationSchema={ReplySchema}

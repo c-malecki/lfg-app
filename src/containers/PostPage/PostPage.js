@@ -4,6 +4,7 @@ import {
   GeneralLink,
   Comments,
   PostBody,
+  CommentForm,
 } from "../../components/components_index";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -42,18 +43,22 @@ export const PostPage = (props) => {
     } else {
       return (
         <>
-          <PostBody content={postForPage} currentUser={currentUser} />
+          <PostBody
+            content={postForPage}
+            currentUser={currentUser}
+            post_id={postForPage.post_id}
+          />
           <Comments
             currentUser={currentUser}
             comments={postForPage.comments}
             post_id={postForPage.post_id}
           />
-          {/* {currentUser ? (
+          {currentUser ? (
             <CommentForm
               post_id={postForPage.post_id}
               currentUser={currentUser}
             />
-          ) : null} */}
+          ) : null}
         </>
       );
     }
