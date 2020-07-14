@@ -19,7 +19,7 @@ export const PostPage = (props) => {
   const [postForPage, setPostForPage] = useState(null);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/v1/posts/ids/${id}`)
+      .get(`${process.env.REACT_APP_API_URL}/posts/ids/${id}`)
       .then((res) => {
         setPostForPage(res.data);
         setPageStatus({

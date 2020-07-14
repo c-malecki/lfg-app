@@ -21,8 +21,8 @@ export const UserProfilePage = (props) => {
   useEffect(() => {
     axios
       .all([
-        axios.get(`http://localhost:5000/api/v1/users/${user}`),
-        axios.get(`http://localhost:5000/api/v1/users/${user}/posts`),
+        axios.get(`${process.env.REACT_APP_API_URL}/users/${user}`),
+        axios.get(`${process.env.REACT_APP_API_URL}/users/${user}/posts`),
       ])
       .then(
         axios.spread((u, p) => {
@@ -53,8 +53,8 @@ export const UserProfilePage = (props) => {
       const { user, posts } = userForPage;
       return (
         <>
-          <UserProfileInfo userInfo={user} />
-          <UserBio userInfo={user} />
+          <UserProfileInfo user={user} />
+          <UserBio username={user.username} bio={user.profile.bio} />
           <UserJoinedGroups userInfo={user} />
           <UserRecentPosts username={user.username} posts={posts} />
         </>

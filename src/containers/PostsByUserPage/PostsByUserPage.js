@@ -12,7 +12,7 @@ export const PostsByUserPage = (props) => {
   const { user } = useParams();
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/v1/users/${user}/posts`)
+      .get(`${process.env.REACT_APP_API_URL}/users/${user}/posts`)
       .then((res) => {
         setPostsForPage(res.data);
         setPageStatus({

@@ -18,7 +18,7 @@ export const MessagesPage = (props) => {
   const { currentUser } = useSelector((state) => state.userReducer);
   const { username } = currentUser;
   useEffect(() => {
-    Axios.get(`http://localhost:5000/api/v1/users/${username}/messages`)
+    Axios.get(`${process.env.REACT_APP_API_URL}/users/${username}/messages`)
       .then((res) => {
         setCurMessages(res.data);
         setPageStatus({

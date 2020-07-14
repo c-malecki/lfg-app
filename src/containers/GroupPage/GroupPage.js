@@ -20,8 +20,8 @@ export const GroupPage = (props) => {
   useEffect(() => {
     axios
       .all([
-        axios.get(`http://localhost:5000/api/v1/groups/${group}`),
-        axios.get(`http://localhost:5000/api/v1/groups/${group}/posts`),
+        axios.get(`${process.env.REACT_APP_API_URL}/groups/${group}`),
+        axios.get(`${process.env.REACT_APP_API_URL}/groups/${group}/posts`),
       ])
       .then(
         axios.spread((g, p) => {

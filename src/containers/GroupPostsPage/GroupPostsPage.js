@@ -13,7 +13,7 @@ export const GroupPostsPage = (props) => {
   const { group } = useParams();
   const { isLoggedIn } = useSelector((state) => state.userReducer);
   useEffect(() => {
-    Axios.get(`http://localhost:5000/api/v1/groups/${group}/posts`)
+    Axios.get(`${process.env.REACT_APP_API_URL}/groups/${group}/posts`)
       .then((res) => {
         setPostsForPage(res.data);
         setPageStatus({

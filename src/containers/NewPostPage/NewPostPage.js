@@ -19,7 +19,7 @@ export const NewPostPage = (props) => {
   const { group } = useParams();
   const { currentUser } = useSelector((state) => state.userReducer);
   useEffect(() => {
-    Axios.get("http://localhost:5000/api/v1/posts/tags")
+    Axios.get(`${process.env.REACT_APP_API_URL}/posts/tags`)
       .then((res) => {
         setPostTags(res.data);
         setPageStatus({

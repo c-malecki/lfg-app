@@ -47,7 +47,7 @@ export const fetchUserForLogin = (user) => {
     dispatch(fetchUserBegin());
     axios
       .get(
-        `http://localhost:5000/api/v1/login?username=${username}&password=${password}`
+        `${process.env.REACT_APP_API_URL}/login?username=${username}&password=${password}`
       )
       .then((res) => {
         dispatch(fetchUserSuccess(res.data));
@@ -64,7 +64,7 @@ export const fetchDemoUser = () => {
     dispatch(fetchUserBegin());
     axios
       .get(
-        `http://localhost:5000/api/v1/login?username=TestUser&password=password`
+        `${process.env.REACT_APP_API_URL}/login?username=TestUser&password=password`
       )
       .then((res) => {
         dispatch(fetchUserSuccess(res.data));
@@ -80,7 +80,7 @@ const fetchWidgetAfterLogin = (user) => {
   return (dispatch) => {
     dispatch(fetchWidgetBegin());
     axios
-      .get(`http://localhost:5000/api/v1/users/${user}/posts`)
+      .get(`${process.env.REACT_APP_API_URL}/users/${user}/posts`)
       .then((res) => dispatch(fetchWidgetSuccess(res.data)))
       .catch((error) => {
         dispatch(fetchWidgetFail(error));

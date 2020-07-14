@@ -18,7 +18,7 @@ export const NewMessagePage = (props) => {
   const history = useHistory();
   const { currentUser } = useSelector((state) => state.userReducer);
   useEffect(() => {
-    Axios.get("http://localhost:5000/api/v1/users/list")
+    Axios.get(`${process.env.REACT_APP_API_URL}/users/list`)
       .then((res) => {
         setUserList(res.data);
         setPageStatus({

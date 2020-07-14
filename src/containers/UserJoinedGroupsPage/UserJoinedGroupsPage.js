@@ -12,7 +12,7 @@ export const UserJoinedGroupsPage = (props) => {
   const { user } = useParams();
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/v1/users/${user}/groups`)
+      .get(`${process.env.REACT_APP_API_URL}/users/${user}/groups`)
       .then((res) => {
         setGroupsForPage(res.data);
         setPageStatus({

@@ -26,7 +26,6 @@ export * from "./Widgets/CurrentUserMobile/CurrentUserMobile";
 
 // Components
 export * from "./LogInForm/LogInForm";
-export * from "./RecentPosts/RecentPosts";
 // export * from "./FriendsUserPreview/FriendsUserPreview";
 
 // Posts

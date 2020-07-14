@@ -11,7 +11,7 @@ export const GroupMembersPage = (props) => {
   const [membersForPage, setMembersForPage] = useState(null);
   const { group } = useParams();
   useEffect(() => {
-    Axios.get(`http://localhost:5000/api/v1/groups/${group}/members`)
+    Axios.get(`${process.env.REACT_APP_API_URL}/groups/${group}/members`)
       .then((res) => {
         setMembersForPage(res.data.group_members);
         setPageStatus({

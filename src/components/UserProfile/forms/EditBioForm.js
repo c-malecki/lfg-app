@@ -2,8 +2,10 @@ import React from "react";
 import { GeneralButton } from "../../components_index";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import Axios from "axios";
 
 export const EditBioForm = (props) => {
+  const { username, bio } = props;
   const BioSchema = Yup.object().shape({
     bio: Yup.string().max(300, "Bio cannot be more than 300 characters."),
   });
@@ -11,10 +13,19 @@ export const EditBioForm = (props) => {
     <div className="EditBioForm-container">
       <Formik
         initialValues={{
-          bio: props.bio,
+          bio: bio,
         }}
         validationSchema={BioSchema}
         onSubmit={(values) => {
+          const newBio = {
+            bio: values.bio,
+          };
+          Axios.post(
+            `${process.env.REACT_APP_API_URL}/users/${username}/profile/bio`,
+            newBio
+          )
+            .then((res) => console.log(res.data))
+            .catch((error) => console.log(error.message));
           props.toggleEditBio();
         }}
         validateOnChange={false}

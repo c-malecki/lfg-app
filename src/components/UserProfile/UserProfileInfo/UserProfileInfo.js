@@ -3,9 +3,9 @@ import { GeneralLink } from "../../components_index";
 import { useSelector } from "react-redux";
 
 export const UserProfileInfo = (props) => {
-  const { username, account, profile } = props.userInfo;
-  const { date_joined, first_name, last_name } = account;
-  const { user_img } = profile;
+  const { username, account, profile } = props.user;
+  const { date_joined } = account;
+  const { user_img, first_name, last_name } = profile;
   const { currentUser, isLoggedIn } = useSelector((state) => state.userReducer);
   // const addFriendText = () => {
   //   if (currentUser && isLoggedIn) {

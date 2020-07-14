@@ -9,8 +9,7 @@ export const UserBio = (props) => {
     showButton: true,
   });
   const { currentUser } = useSelector((state) => state.userReducer);
-  const { profile, username } = props.userInfo;
-  const { bio } = profile;
+  const { bio, username } = props;
   const toggleEditBio = () => {
     setEditBio({
       editMode: !editBio.editMode,
@@ -25,7 +24,7 @@ export const UserBio = (props) => {
         <EditBioForm
           bio={bio}
           toggleEditBio={toggleEditBio}
-          user_name={username}
+          username={username}
         />
       ) : (
         <div className="UserProfile-bio">

@@ -14,7 +14,7 @@ export const ViewMessagePage = (props) => {
   const { id } = useParams();
   const { currentUser } = useSelector((state) => state.userReducer);
   useEffect(() => {
-    Axios.get(`http://localhost:5000/api/v1/messages/${id}`)
+    Axios.get(`${process.env.REACT_APP_API_URL}/messages/${id}`)
       .then((res) => {
         setMessage(res.data);
         setPageStatus({
