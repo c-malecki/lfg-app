@@ -4,6 +4,7 @@ import {
   UserJoinedGroups,
   UserBio,
   UserRecentPosts,
+  PageLoader,
 } from "../../components/components_index";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -46,7 +47,7 @@ export const UserProfilePage = (props) => {
   const userProfilePageContent = () => {
     const { isLoading, error } = pageStatus;
     if (isLoading) {
-      return <div>loading...</div>;
+      return <PageLoader />;
     } else if (error) {
       return <div>Something went wrong</div>;
     } else {

@@ -61,5 +61,7 @@ export * from "./Friends/PendingFriendPreview/PendingFriendPreview";
 export * from "./Friends/AcceptedFriendPreview/AcceptedFriendPreview";
 
 // Utility
-export * from "./Utility/LogInRoute";
-export * from "./Utility/AuthRoute";
+export * from "./Utility/Routes/LogInRoute";
+export * from "./Utility/Routes/AuthRoute";
+export * from "./Utility/PageLoader/PageLoader";
+export * from "./Utility/WidgetLoader/WidgetLoader";

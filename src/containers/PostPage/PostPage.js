@@ -5,6 +5,7 @@ import {
   Comments,
   PostBody,
   CommentForm,
+  PageLoader,
 } from "../../components/components_index";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -37,7 +38,7 @@ export const PostPage = (props) => {
   const postPageContent = () => {
     const { isLoading, error } = pageStatus;
     if (isLoading) {
-      return <div>loading...</div>;
+      return <PageLoader />;
     } else if (error) {
       return <div>Something went wrong.</div>;
     } else {

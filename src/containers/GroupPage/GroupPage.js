@@ -4,6 +4,7 @@ import {
   GroupInfo,
   GroupMembers,
   GroupNewPosts,
+  PageLoader,
 } from "../../components/components_index";
 import axios from "axios";
 
@@ -46,7 +47,7 @@ export const GroupPage = (props) => {
     const { isLoading, error } = pageStatus;
     const { group, posts } = groupForPage;
     if (isLoading) {
-      return <div>loading...</div>;
+      return <PageLoader />;
     } else if (error) {
       return <div>{error}</div>;
     } else {

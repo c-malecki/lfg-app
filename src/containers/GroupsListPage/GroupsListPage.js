@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { GroupPreview } from "../../components/components_index";
+import { GroupPreview, PageLoader } from "../../components/components_index";
 import axios from "axios";
 
 export const GroupsListPage = (props) => {
@@ -28,7 +28,7 @@ export const GroupsListPage = (props) => {
   const groupsListContent = () => {
     const { isLoading, error } = pageStatus;
     if (isLoading) {
-      return <div>loading...</div>;
+      return <PageLoader />;
     } else if (error) {
       return <div>Something went wrong.</div>;
     } else {

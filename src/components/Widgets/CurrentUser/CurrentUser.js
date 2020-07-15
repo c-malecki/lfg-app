@@ -1,7 +1,5 @@
 import React from "react";
-import { GeneralLink } from "../../components_index";
-
-// redux
+import { GeneralLink, WidgetLoader } from "../../components_index";
 import { useSelector } from "react-redux";
 
 export const CurrentUser = (props) => {
@@ -10,9 +8,7 @@ export const CurrentUser = (props) => {
   );
   const currentUserContent = () => {
     if (isLoading) {
-      return <div>loading...</div>;
-    } else if (!isLoading && !isLoggedIn && !currentUser) {
-      return <span className="not-logged-in">Currently not logged in.</span>;
+      return <WidgetLoader />;
     } else if (!isLoading && isLoggedIn && currentUser) {
       const { username, profile, friends, groups } = currentUser;
       return (
@@ -31,5 +27,11 @@ export const CurrentUser = (props) => {
       );
     }
   };
-  return <div className="CurrentUser-container">{currentUserContent()}</div>;
+  return (
+    <>
+      {currentUser && isLoggedIn ? (
+        <div className="CurrentUser-container">{currentUserContent()}</div>
+      ) : null}
+    </>
+  );
 };

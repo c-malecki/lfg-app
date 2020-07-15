@@ -3,7 +3,8 @@
   flex-direction: column;
   @extend %ui-content-inner;
   padding: 0.5rem;
-  max-height: 321px;
+  min-height: 12rem;
+  max-height: 20rem;
   overflow-y: scroll;
 
   .YourPosts-item {

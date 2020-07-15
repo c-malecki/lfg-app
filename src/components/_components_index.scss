@@ -29,17 +29,15 @@
 @import "./Group/GroupNewPosts/GroupNewPosts";
 @import "./Group/GroupPreview/GroupPreview";
 
-// Widgets
-@import "./Widgets/YourGroups/YourGroups";
-@import "./Widgets/CurrentUser/CurrentUser";
-@import "./Widgets/YourPosts/YourPosts";
-@import "./Widgets/YourGroupsMobile/YourGroupsMobile";
-@import "./Widgets/YourPostsMobile/YourPostsMobile";
-@import "./Widgets/CurrentUserMobile/CurrentUserMobile";
-
 @import "./Friends/AcceptedFriends/AcceptedFriends";
 @import "./Friends/AcceptedFriendPreview/AcceptedFriendPreview";
 @import "./Friends/PendingFriendPreview/PendingFriendPreview";
 @import "./Friends/PendingFriends/PendingFriends";
 
+// Utility
+@import "./Utility/utility_index";
+
+// Widgets
+@import "./Widgets/widgets_index";
+// UI
 @import "./UI/ui_index";

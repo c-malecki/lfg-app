@@ -1,5 +1,5 @@
 import React from "react";
-import { GeneralLink } from "../../components_index";
+import { GeneralLink, WidgetLoader } from "../../components_index";
 import { useSelector } from "react-redux";
 
 export const YourGroupsMobile = (props) => {
@@ -8,7 +8,7 @@ export const YourGroupsMobile = (props) => {
   );
   const yourGroupsContent = () => {
     if (isLoading) {
-      return <div>loading...</div>;
+      return <WidgetLoader />;
     } else if (!isLoading && !isLoggedIn && !currentUser) {
       return (
         <div className="not-logged-in">

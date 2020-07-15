@@ -1,7 +1,5 @@
 import React from "react";
-import { GeneralLink } from "../../components_index";
-
-// redux
+import { GeneralLink, WidgetLoader } from "../../components_index";
 import { useSelector } from "react-redux";
 
 export const CurrentUserMobile = (props) => {
@@ -10,7 +8,7 @@ export const CurrentUserMobile = (props) => {
   );
   const currentUserContent = () => {
     if (isLoading) {
-      return <div>loading...</div>;
+      return <WidgetLoader />;
     } else if (!isLoading && !isLoggedIn && !currentUser) {
       return <span className="not-logged-in">Currently not logged in.</span>;
     } else if (!isLoading && isLoggedIn && currentUser) {

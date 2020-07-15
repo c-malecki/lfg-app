@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { PostPreview, GeneralButton } from "../../components/components_index";
+import {
+  PostPreview,
+  GeneralButton,
+  PageLoader,
+} from "../../components/components_index";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
@@ -39,7 +43,7 @@ export const RecentPostsPage = (props) => {
   const recentPostsContent = () => {
     const { isLoading, error } = pageStatus;
     if (isLoading) {
-      return <div>loading...</div>;
+      return <PageLoader />;
     } else if (error) {
       return <div>Something went wrong.</div>;
     } else if (currentUser && postsForPage) {

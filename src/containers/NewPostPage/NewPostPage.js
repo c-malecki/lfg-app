@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NewPostForm } from "../../components/components_index";
+import { NewPostForm, PageLoader } from "../../components/components_index";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import Axios from "axios";
@@ -45,7 +45,7 @@ export const NewPostPage = (props) => {
   const newPostContent = () => {
     const { isLoading, error } = pageStatus;
     if (isLoading) {
-      return <div>loading...</div>;
+      return <PageLoader />;
     } else if (error) {
       return <div>Something went wrong.</div>;
     } else {

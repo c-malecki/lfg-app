@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { PostPreview, GeneralLink } from "../../components/components_index";
+import {
+  PostPreview,
+  GeneralLink,
+  PageLoader,
+} from "../../components/components_index";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Axios from "axios";
@@ -31,7 +35,7 @@ export const GroupPostsPage = (props) => {
   const groupPostsContent = () => {
     const { isLoading, error } = pageStatus;
     if (isLoading) {
-      return <div>loading...</div>;
+      return <PageLoader />;
     } else if (error) {
       return <div>Something went wrong.</div>;
     } else {

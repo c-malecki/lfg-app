@@ -1,5 +1,5 @@
 import React from "react";
-import { GeneralLink } from "../../components_index";
+import { GeneralLink, WidgetLoader, LogInForm } from "../../components_index";
 import { useSelector } from "react-redux";
 
 export const YourGroups = (props) => {
@@ -8,18 +8,7 @@ export const YourGroups = (props) => {
   );
   const yourGroupsContent = () => {
     if (isLoading) {
-      return <div>loading...</div>;
-    } else if (!isLoading && !isLoggedIn && !currentUser) {
-      return (
-        <div className="not-logged-in">
-          <GeneralLink
-            text="Login"
-            url="/login"
-            addClass="PostPreviewHeadLink"
-          />
-          to view your groups or register to join groups.
-        </div>
-      );
+      return <WidgetLoader />;
     } else if (!isLoading && isLoggedIn && currentUser) {
       const joinedGroups = currentUser.groups.joined;
       return (
@@ -40,8 +29,17 @@ export const YourGroups = (props) => {
   };
   return (
     <div className="YourGroups-container">
-      <h3 className="component-heading">Your Groups</h3>
-      {yourGroupsContent()}
+      {currentUser && isLoggedIn ? (
+        <div className="YourGroups-content">
+          <h3 className="component-heading">Your Groups</h3>
+          {yourGroupsContent()}
+        </div>
+      ) : (
+        <>
+          <h3 className="component-heading">Login</h3>
+          <LogInForm />
+        </>
+      )}
     </div>
   );
 };

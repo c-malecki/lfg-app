@@ -1,0 +1,38 @@
+.WidgetLoader-container {
+  margin: auto;
+  .WidgetLoader-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8rem;
+    width: 8rem;
+    background-color: $bg-off-white;
+    border: 1px solid $lfg-d-purple;
+    border-radius: 50%;
+    animation: loading 3s infinite;
+
+    img {
+      height: 80%;
+      width: 80%;
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

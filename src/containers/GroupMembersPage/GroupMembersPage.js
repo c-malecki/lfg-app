@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { GeneralLink } from "../../components/components_index";
+import { GeneralLink, PageLoader } from "../../components/components_index";
 import Axios from "axios";
 
 export const GroupMembersPage = (props) => {
@@ -29,7 +29,7 @@ export const GroupMembersPage = (props) => {
   const groupMembersContent = () => {
     const { isLoading, error } = pageStatus;
     if (isLoading) {
-      return <div>loading...</div>;
+      return <PageLoader />;
     } else if (error) {
       return <div>Something went wrong.</div>;
     } else {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { PostPreview } from "../../components/components_index";
+import { PostPreview, PageLoader } from "../../components/components_index";
 import axios from "axios";
 
 export const PostsByTagPage = () => {
@@ -30,7 +30,7 @@ export const PostsByTagPage = () => {
   const postsByTagContent = () => {
     const { isLoading, error } = pageStatus;
     if (isLoading) {
-      return <div>loading...</div>;
+      return <PageLoader />;
     } else if (error) {
       return <div>Something went wrong.</div>;
     } else {

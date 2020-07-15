@@ -3,6 +3,12 @@
   flex-direction: column;
   @extend %ui-content-inner;
   padding: 0.5rem;
-  max-height: 221px;
-  overflow-y: scroll;
+  min-height: 12rem;
+  .YourGroups-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 12rem;
+    max-height: 15rem;
+    overflow-y: scroll;
+  }
 }

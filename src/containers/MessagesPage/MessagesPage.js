@@ -4,6 +4,7 @@ import {
   SentMessages,
   AllMessages,
   GeneralButton,
+  PageLoader,
 } from "../../components/components_index";
 import { useSelector } from "react-redux";
 import Axios from "axios";
@@ -54,7 +55,7 @@ export const MessagesPage = (props) => {
   const messagesPageContent = () => {
     const { isLoading, error } = pageStatus;
     if (isLoading) {
-      return <div>loading...</div>;
+      return <PageLoader />;
     } else if (error) {
       return <div>Something went wrong.</div>;
     } else {

@@ -3,6 +3,7 @@
   flex-direction: column;
   @extend %ui-content-inner;
   padding: 0.5rem;
+  min-height: 12rem;
 
   img {
     height: 6rem;

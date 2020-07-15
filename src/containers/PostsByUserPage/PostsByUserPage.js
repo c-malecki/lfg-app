@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { PostPreview, GeneralLink } from "../../components/components_index";
+import {
+  PostPreview,
+  GeneralLink,
+  PageLoader,
+} from "../../components/components_index";
 import axios from "axios";
 
 export const PostsByUserPage = (props) => {
@@ -31,7 +35,7 @@ export const PostsByUserPage = (props) => {
   const postsByUserContent = () => {
     const { isLoading, error } = pageStatus;
     if (isLoading) {
-      return <div>loading...</div>;
+      return <PageLoader />;
     } else if (error) {
       return <div>Something went wrong.</div>;
     } else {

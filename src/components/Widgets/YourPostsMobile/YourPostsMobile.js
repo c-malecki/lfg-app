@@ -1,5 +1,5 @@
 import React from "react";
-import { GeneralLink } from "../../components_index";
+import { GeneralLink, WidgetLoader } from "../../components_index";
 import { useSelector } from "react-redux";
 
 export const YourPostsMobile = (props) => {
@@ -12,7 +12,7 @@ export const YourPostsMobile = (props) => {
     } else if (!isLoading && currentUser) {
       const widgetContent = () => {
         if (widgets.isLoading) {
-          return <div>loading...</div>;
+          return <WidgetLoader />;
         } else if (widgets.error) {
           return <div>Something went wrong.</div>;
         } else if (!widgets.isLoading) {

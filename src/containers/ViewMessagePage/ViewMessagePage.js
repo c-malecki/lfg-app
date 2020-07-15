@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { MessageBody, MessageReplies } from "../../components/components_index";
+import {
+  MessageBody,
+  MessageReplies,
+  PageLoader,
+} from "../../components/components_index";
 import Axios from "axios";
 import { ReplyToMessageForm } from "../../components/Messages/forms/ReplyToMessageForm";
 import { useSelector } from "react-redux";
@@ -32,7 +36,7 @@ export const ViewMessagePage = (props) => {
   const viewMessageContent = () => {
     const { isLoading, error } = pageStatus;
     if (isLoading) {
-      return <div>loading...</div>;
+      return <PageLoader />;
     } else if (error) {
       return <div>{error}</div>;
     } else {

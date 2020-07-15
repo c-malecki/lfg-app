@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SendMessageForm } from "../../components/components_index";
+import { SendMessageForm, PageLoader } from "../../components/components_index";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Axios from "axios";
@@ -44,7 +44,7 @@ export const NewMessagePage = (props) => {
   const newMessageContent = () => {
     const { isLoading, error } = pageStatus;
     if (isLoading) {
-      return <div>loading...</div>;
+      return <PageLoader />;
     }
     if (error) {
       return <div>Something went wrong.</div>;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   PendingFriends,
   AcceptedFriends,
+  PageLoader,
 } from "../../components/components_index";
 import { useSelector } from "react-redux";
 import Axios from "axios";
@@ -33,7 +34,7 @@ export const FriendsPage = (props) => {
   const friendsPageContent = () => {
     const { isLoading, error } = pageStatus;
     if (isLoading) {
-      return <div>loading...</div>;
+      return <PageLoader />;
     } else if (error) {
       return <div>Something went wrong.</div>;
     } else {
