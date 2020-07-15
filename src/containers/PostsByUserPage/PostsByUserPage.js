@@ -9,10 +9,10 @@ export const PostsByUserPage = (props) => {
     error: null,
   });
   const [postsForPage, setPostsForPage] = useState(null);
-  const { user } = useParams();
+  const { username } = useParams();
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/users/${user}/posts`)
+      .get(`${process.env.REACT_APP_API_URL}/users/${username}/posts`)
       .then((res) => {
         setPostsForPage(res.data);
         setPageStatus({
@@ -26,7 +26,7 @@ export const PostsByUserPage = (props) => {
           error: error.message,
         });
       });
-  }, [user]);
+  }, [username]);
 
   const postsByUserContent = () => {
     const { isLoading, error } = pageStatus;
@@ -49,8 +49,8 @@ export const PostsByUserPage = (props) => {
       <div className="PostsByUserPage-content">
         <h2 className="page-heading">
           <GeneralLink
-            text={user}
-            url={`/users/${user}`}
+            text={username}
+            url={`/users/${username}`}
             addClass="PageHeaderLink"
           />
           's Posts

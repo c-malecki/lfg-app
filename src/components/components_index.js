@@ -26,7 +26,6 @@ export * from "./Widgets/CurrentUserMobile/CurrentUserMobile";
 
 // Components
 export * from "./LogInForm/LogInForm";
-// export * from "./FriendsUserPreview/FriendsUserPreview";
 
 // Posts
 export * from "./Post/PostPreview/PostPreview";
@@ -55,6 +54,12 @@ export * from "./Group/GroupInfo/GroupInfo";
 export * from "./Group/GroupMembers/GroupMembers";
 export * from "./Group/GroupNewPosts/GroupNewPosts";
 export * from "./Group/GroupPreview/GroupPreview";
+
+// Friends
+export * from "./Friends/PendingFriends/PendingFriends";
+export * from "./Friends/AcceptedFriends/AcceptedFriends";
+export * from "./Friends/PendingFriendPreview/PendingFriendPreview";
+export * from "./Friends/AcceptedFriendPreview/AcceptedFriendPreview";
 
 // Utility
 

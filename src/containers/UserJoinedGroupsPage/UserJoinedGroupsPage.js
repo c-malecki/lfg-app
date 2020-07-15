@@ -9,10 +9,10 @@ export const UserJoinedGroupsPage = (props) => {
     error: null,
   });
   const [groupsForPage, setGroupsForPage] = useState(null);
-  const { user } = useParams();
+  const { username } = useParams();
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/users/${user}/groups`)
+      .get(`${process.env.REACT_APP_API_URL}/users/${username}/groups`)
       .then((res) => {
         setGroupsForPage(res.data);
         setPageStatus({
@@ -26,7 +26,7 @@ export const UserJoinedGroupsPage = (props) => {
           error: error.message,
         });
       });
-  }, [user]);
+  }, [username]);
   const userJoinedGroupsContent = () => {
     const { isLoading, error } = pageStatus;
     if (isLoading) {
@@ -57,8 +57,8 @@ export const UserJoinedGroupsPage = (props) => {
       <div className="UserJoinedGroupsPage-content">
         <h2 className="page-heading">
           <GeneralLink
-            url={`/users/${user}`}
-            text={user}
+            url={`/users/${username}`}
+            text={username}
             addClass="PageHeaderLink"
           />
           's Groups

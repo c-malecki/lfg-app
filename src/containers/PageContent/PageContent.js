@@ -83,15 +83,15 @@ export const PageContent = (props) => {
             <Route exact path="/messages/new" component={NewMessagePage} />
 
             <Route exact path="/friends" component={FriendsPage} />
-            <Route exact path="/users/:user" component={UserProfilePage} />
+            <Route exact path="/users/:username" component={UserProfilePage} />
             <Route
               exact
-              path="/users/:user/posts"
+              path="/users/:username/posts"
               component={PostsByUserPage}
             />
             <Route
               exact
-              path="/users/:user/groups"
+              path="/users/:username/groups"
               component={UserJoinedGroupsPage}
             />
           </Switch>

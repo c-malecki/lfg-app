@@ -1,60 +1,82 @@
-import React from "react";
-import { GeneralLink } from "../../components_index";
+import React, { useState, useEffect } from "react";
+import { GeneralLink, GeneralButton } from "../../components_index";
 import { useSelector } from "react-redux";
+import Axios from "axios";
 
 export const UserProfileInfo = (props) => {
-  const { username, account, profile } = props.user;
-  const { date_joined } = account;
-  const { user_img, first_name, last_name } = profile;
+  const [friendButton, setFriendButton] = useState({
+    text: "Add Friend",
+    disabled: false,
+  });
+  const {
+    userForPageUsername,
+    date_joined,
+    userForpageProfile,
+    user_id,
+  } = props;
+  const { user_img, first_name, last_name } = userForpageProfile;
   const { currentUser, isLoggedIn } = useSelector((state) => state.userReducer);
-  // const addFriendText = () => {
-  //   if (currentUser && isLoggedIn) {
-  //     const { friends } = currentUser;
-  //     const mutualFriends = friends.accepted.filter(
-  //       (f) => f.user_name === username && f.pending === false
-  //     ).length;
-  //     const pendingFriends = friends.pending.filter(
-  //       (f) => f.user_name === username && f.pending === true
-  //     ).length;
-  //     if (mutualFriends > 0) {
-  //       return "Friends";
-  //     } else if (pendingFriends > 0) {
-  //       return "Pending";
-  //     } else {
-  //       return "Add Friend";
-  //     }
-  //   } else {
-  //     return;
-  //   }
-  // };
-  // const friendButtonDisabled =
-  //   addFriendText() === "Friends" || addFriendText() === "Pending"
-  //     ? true
-  //     : false;
+  useEffect(() => {
+    const { friends } = currentUser;
+    const { pending, accepted } = friends;
+    const pendingList = pending.map((r) => r.sent_to.username);
+    const acceptedList = accepted.map((r) => r.sent_to.username);
+    if (acceptedList.includes(userForPageUsername)) {
+      setFriendButton({ text: "Friends", disabled: true });
+    } else if (pendingList.includes(userForPageUsername)) {
+      setFriendButton({ text: "Pending...", disabled: true });
+    } else {
+      setFriendButton({ text: "Add Friend", disabled: false });
+    }
+  }, [currentUser, userForPageUsername]);
+
+  const handleFriendButtonMethod = () => {
+    const friendRequest = {
+      sent_to: {
+        username: userForPageUsername,
+        user_id: user_id,
+        user_img: userForpageProfile.user_img,
+      },
+      sent_from: {
+        username: currentUser.username,
+        user_id: currentUser.user_id,
+        user_img: currentUser.profile.user_img,
+      },
+    };
+    Axios.post(
+      `${process.env.REACT_APP_API_URL}/users/${currentUser.username}/friends/pending/${userForPageUsername}`,
+      friendRequest
+    )
+      .then((res) => {
+        console.log(res.data);
+        setFriendButton({ text: "Pending...", disabled: true });
+      })
+      .catch((error) => console.log(error.message));
+  };
   return (
     <div className="UserProfileInfo-container">
-      <h2>{username}</h2>
-      {isLoggedIn && currentUser.username !== username ? (
+      <h2>{userForPageUsername}</h2>
+      {isLoggedIn && currentUser.username !== userForPageUsername ? (
         <div className="UserProfile-user-actions">
           <GeneralLink
             url={{
               pathname: "/messages/new",
               messageProps: {
-                toUser: username,
+                toUser: userForPageUsername,
               },
             }}
             text="message"
             addClass="general-theme-link"
           />
-          {/* <GeneralButton
-            disabled={friendButtonDisabled}
+          <GeneralButton
             addClass="general-theme-button"
-            text={addFriendText()}
-            method={() => null}
-          /> */}
+            disabled={friendButton.disabled}
+            text={friendButton.text}
+            method={() => handleFriendButtonMethod()}
+          />
         </div>
       ) : null}
-      <img src={user_img} alt={username} />
+      <img src={user_img} alt={userForPageUsername} />
       <span>
         Name: {first_name} {last_name}
       </span>

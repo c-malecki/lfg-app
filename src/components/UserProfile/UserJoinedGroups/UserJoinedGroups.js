@@ -2,13 +2,13 @@ import React from "react";
 import { GeneralLink } from "../../components_index";
 
 export const UserJoinedGroups = (props) => {
-  const { groups, username } = props.userInfo;
-  const { joined } = groups;
+  const { userForPageGroups, userForPageUsername } = props;
+  const { joined } = userForPageGroups;
   return (
     <div className="UserJoinedGroups-container">
       <h3>Groups</h3>
       <GeneralLink
-        url={`${username}/groups`}
+        url={`${userForPageUsername}/groups`}
         text="see all"
         addClass="PageContentLink"
       />
