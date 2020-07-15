@@ -1,8 +1,5 @@
-.GroupsListPage-container {
-  @extend %page-center-content;
-  .GroupsListPage-content {
-    display: flex;
-    flex-direction: column;
-    @extend %ui-content-container;
-  }
+.GroupsListPage-content {
+  display: flex;
+  flex-direction: column;
+  @extend %ui-content-container;
 }

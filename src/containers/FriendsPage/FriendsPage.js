@@ -51,9 +51,5 @@ export const FriendsPage = (props) => {
       );
     }
   };
-  return (
-    <div className="FriendsPage-container">
-      <div className="FriendsPage-content">{friendsPageContent()}</div>
-    </div>
-  );
+  return <div className="FriendsPage-content">{friendsPageContent()}</div>;
 };

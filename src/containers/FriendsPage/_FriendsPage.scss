@@ -1,8 +1,5 @@
-.FriendsPage-container {
-  @extend %page-center-content;
-  .FriendsPage-content {
-    display: flex;
-    flex-direction: column;
-    @extend %ui-content-container;
-  }
+.FriendsPage-content {
+  display: flex;
+  flex-direction: column;
+  @extend %ui-content-container;
 }

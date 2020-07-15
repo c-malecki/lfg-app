@@ -54,18 +54,16 @@ export const GroupMembersPage = (props) => {
     }
   };
   return (
-    <div className="GroupMembersPage-container">
-      <div className="GroupMembersPage-content">
-        <h2 className="page-heading">
-          <GeneralLink
-            url={`/g/${group}`}
-            text={`${group}`}
-            addClass="PageHeaderLink"
-          />{" "}
-          Members
-        </h2>
-        {groupMembersContent()}
-      </div>
+    <div className="GroupMembersPage-content">
+      <h2 className="page-heading">
+        <GeneralLink
+          url={`/g/${group}`}
+          text={`${group}`}
+          addClass="PageHeaderLink"
+        />{" "}
+        Members
+      </h2>
+      {groupMembersContent()}
     </div>
   );
 };

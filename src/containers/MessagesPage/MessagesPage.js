@@ -83,11 +83,9 @@ export const MessagesPage = (props) => {
     }
   };
   return (
-    <div className="MessagesPage-container">
-      <div className="MessagesPage-content">
-        <h3 className="page-heading">Messages</h3>
-        {messagesPageContent()}
-      </div>
+    <div className="MessagesPage-content">
+      <h3 className="page-heading">Messages</h3>
+      {messagesPageContent()}
     </div>
   );
 };

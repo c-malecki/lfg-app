@@ -1,8 +1,5 @@
-.PostsByUserPage-container {
-  @extend %page-center-content;
-  .PostsByUserPage-content {
-    display: flex;
-    flex-direction: column;
-    @extend %ui-content-container;
-  }
+.PostsByUserPage-content {
+  display: flex;
+  flex-direction: column;
+  @extend %ui-content-container;
 }

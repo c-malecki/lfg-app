@@ -76,6 +76,6 @@ export const UserProfilePage = (props) => {
     }
   };
   return (
-    <div className="UserProfilePage-container">{userProfilePageContent()}</div>
+    <div className="UserProfilePage-content">{userProfilePageContent()}</div>
   );
 };

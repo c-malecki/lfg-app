@@ -69,9 +69,5 @@ export const NewMessagePage = (props) => {
       );
     }
   };
-  return (
-    <div className="NewMessagePage-container">
-      <div className="NewMessagePage-content">{newMessageContent()}</div>
-    </div>
-  );
+  return <div className="NewMessagePage-content">{newMessageContent()}</div>;
 };

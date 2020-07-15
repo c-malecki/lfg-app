@@ -1,24 +1,21 @@
-.GroupPostsPage-container {
-  @extend %page-center-content;
-  .GroupPostsPage-content {
-    @extend %ui-content-container;
-    .GroupPostsPage-head {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+.GroupPostsPage-content {
+  @extend %ui-content-container;
+  .GroupPostsPage-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    .PageContentLink {
+      margin: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    .GroupPostsPage-actions {
       width: 100%;
-
-      .PageContentLink {
+      a {
         margin: 0.5rem;
-        font-size: 1.5rem;
-      }
-
-      .GroupPostsPage-actions {
-        width: 100%;
-        a {
-          margin: 0.5rem;
-        }
       }
     }
   }

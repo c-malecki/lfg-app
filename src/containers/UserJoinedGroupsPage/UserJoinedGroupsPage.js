@@ -53,19 +53,17 @@ export const UserJoinedGroupsPage = (props) => {
     }
   };
   return (
-    <div className="UserJoinedGroupsPage-container">
-      <div className="UserJoinedGroupsPage-content">
-        <h2 className="page-heading">
-          <GeneralLink
-            url={`/users/${username}`}
-            text={username}
-            addClass="PageHeaderLink"
-          />
-          's Groups
-        </h2>
-        <span className="search-placeholder">search placeholder</span>
-        {userJoinedGroupsContent()}
-      </div>
+    <div className="UserJoinedGroupsPage-content">
+      <h2 className="page-heading">
+        <GeneralLink
+          url={`/users/${username}`}
+          text={username}
+          addClass="PageHeaderLink"
+        />
+        's Groups
+      </h2>
+      <span className="search-placeholder">search placeholder</span>
+      {userJoinedGroupsContent()}
     </div>
   );
 };

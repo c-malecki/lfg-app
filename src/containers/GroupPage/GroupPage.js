@@ -62,5 +62,5 @@ export const GroupPage = (props) => {
       );
     }
   };
-  return <div className="GroupPage-container">{groupPageContent()}</div>;
+  return <div className="GroupPage-content">{groupPageContent()}</div>;
 };

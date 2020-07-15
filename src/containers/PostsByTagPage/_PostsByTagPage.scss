@@ -1,8 +1,5 @@
-.PostsByTagPage-container {
-  @extend %page-center-content;
-  .PostsByTagPage-content {
-    display: flex;
-    flex-direction: column;
-    @extend %ui-content-container;
-  }
+.PostsByTagPage-content {
+  display: flex;
+  flex-direction: column;
+  @extend %ui-content-container;
 }

@@ -49,9 +49,5 @@ export const ViewMessagePage = (props) => {
       );
     }
   };
-  return (
-    <div className="ViewMessagePage-container">
-      <div className="ViewMessagePage-content">{viewMessageContent()}</div>
-    </div>
-  );
+  return <div className="ViewMessagePage-content">{viewMessageContent()}</div>;
 };

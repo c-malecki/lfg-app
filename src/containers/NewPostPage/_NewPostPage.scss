@@ -1,9 +1,6 @@
-.NewPostPage-container {
-  @extend %page-center-content;
-  .NewPostPage-content {
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    @extend %ui-content-container;
-  }
+.NewPostPage-content {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  @extend %ui-content-container;
 }

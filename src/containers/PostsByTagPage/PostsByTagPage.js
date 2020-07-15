@@ -44,12 +44,10 @@ export const PostsByTagPage = () => {
     }
   };
   return (
-    <div className="PostsByTagPage-container">
-      <div className="PostsByTagPage-content">
-        <h2 className="page-heading">{`#${tag}`}</h2>
-        <span className="search-placeholder">search placeholder</span>
-        {postsByTagContent()}
-      </div>
+    <div className="PostsByTagPage-content">
+      <h2 className="page-heading">{`#${tag}`}</h2>
+      <span className="search-placeholder">search placeholder</span>
+      {postsByTagContent()}
     </div>
   );
 };

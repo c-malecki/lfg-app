@@ -1,12 +1,9 @@
-.MessagesPage-container {
-  @extend %page-center-content;
-  .MessagesPage-content {
-    display: flex;
-    flex-direction: column;
-    @extend %ui-content-container;
+.MessagesPage-content {
+  display: flex;
+  flex-direction: column;
+  @extend %ui-content-container;
 
-    .Messages-action-bar {
-      margin-left: 0.5rem;
-    }
+  .Messages-action-bar {
+    margin-left: 0.5rem;
   }
 }

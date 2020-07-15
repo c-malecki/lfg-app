@@ -45,19 +45,17 @@ export const PostsByUserPage = (props) => {
     }
   };
   return (
-    <div className="PostsByUserPage-container">
-      <div className="PostsByUserPage-content">
-        <h2 className="page-heading">
-          <GeneralLink
-            text={username}
-            url={`/users/${username}`}
-            addClass="PageHeaderLink"
-          />
-          's Posts
-        </h2>
-        <span className="search-placeholder">search placeholder</span>
-        {postsByUserContent()}
-      </div>
+    <div className="PostsByUserPage-content">
+      <h2 className="page-heading">
+        <GeneralLink
+          text={username}
+          url={`/users/${username}`}
+          addClass="PageHeaderLink"
+        />
+        's Posts
+      </h2>
+      <span className="search-placeholder">search placeholder</span>
+      {postsByUserContent()}
     </div>
   );
 };

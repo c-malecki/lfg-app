@@ -45,31 +45,29 @@ export const GroupPostsPage = (props) => {
     }
   };
   return (
-    <div className="GroupPostsPage-container">
-      <div className="GroupPostsPage-content">
-        <div className="GroupPostsPage-head">
-          <h2 className="page-heading">
-            <GeneralLink
-              url={`/g/${group}`}
-              text={`${group}`}
-              addClass="PageHeaderLink"
-            />{" "}
-            Posts
-          </h2>
+    <div className="GroupPostsPage-content">
+      <div className="GroupPostsPage-head">
+        <h2 className="page-heading">
+          <GeneralLink
+            url={`/g/${group}`}
+            text={`${group}`}
+            addClass="PageHeaderLink"
+          />{" "}
+          Posts
+        </h2>
 
-          <div className="GroupPostsPage-actions">
-            {isLoggedIn ? (
-              <GeneralLink
-                url={`/g/${group}/newpost`}
-                text="new post"
-                addClass="general-theme-link"
-              />
-            ) : null}
-            <span className="search-placeholder">search placeholder</span>
-          </div>
+        <div className="GroupPostsPage-actions">
+          {isLoggedIn ? (
+            <GeneralLink
+              url={`/g/${group}/newpost`}
+              text="new post"
+              addClass="general-theme-link"
+            />
+          ) : null}
+          <span className="search-placeholder">search placeholder</span>
         </div>
-        {groupPostsContent()}
       </div>
+      {groupPostsContent()}
     </div>
   );
 };

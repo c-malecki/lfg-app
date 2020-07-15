@@ -103,7 +103,6 @@ export const SendMessageForm = (props) => {
                 />
               </span>
             </div>
-            <pre>{JSON.stringify(values, null, 2)}</pre>
           </Form>
         )}
       </Formik>

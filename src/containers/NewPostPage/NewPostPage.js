@@ -62,9 +62,5 @@ export const NewPostPage = (props) => {
       );
     }
   };
-  return (
-    <div className="NewPostPage-container">
-      <div className="NewPostPage-content">{newPostContent()}</div>
-    </div>
-  );
+  return <div className="NewPostPage-content">{newPostContent()}</div>;
 };

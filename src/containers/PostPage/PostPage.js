@@ -65,15 +65,13 @@ export const PostPage = (props) => {
   };
 
   return (
-    <div className="PostPage-container">
-      <div className="PostPage-content">
-        <GeneralLink
-          url={`/g/${group}/posts`}
-          text={`back to ${group} posts`}
-          addClass="PageContentLink"
-        />
-        {postPageContent()}
-      </div>
+    <div className="PostPage-content">
+      <GeneralLink
+        url={`/g/${group}/posts`}
+        text={`back to ${group} posts`}
+        addClass="PageContentLink"
+      />
+      {postPageContent()}
     </div>
   );
 };

@@ -23,6 +23,9 @@
       width: 100%;
       max-width: 1000px;
       overflow-y: scroll;
+      .Page-content-inner {
+        @extend %page-center-content;
+      }
     }
     .Page-content-col3 {
       padding-top: 3rem;

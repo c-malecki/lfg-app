@@ -1,8 +1,5 @@
-.GroupMembersPage-container {
-  @extend %page-center-content;
-  .GroupMembersPage-content {
-    display: flex;
-    flex-direction: column;
-    @extend %ui-content-inner;
-  }
+.GroupMembersPage-content {
+  display: flex;
+  flex-direction: column;
+  @extend %ui-content-inner;
 }

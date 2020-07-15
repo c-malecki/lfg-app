@@ -1,15 +1,12 @@
-.HomePage-container {
-  @extend %page-center-content;
-  .HomePage-content {
-    @extend %ui-content-container;
-    .HomePage-welcome,
-    .HomePage-getting-started {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      @extend %ui-content-inner;
-      padding: 0.5rem;
-    }
+.HomePage-content {
+  @extend %ui-content-container;
+  .HomePage-welcome,
+  .HomePage-getting-started {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @extend %ui-content-inner;
+    padding: 0.5rem;
   }
 }

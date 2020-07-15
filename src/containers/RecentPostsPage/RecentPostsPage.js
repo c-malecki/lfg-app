@@ -88,11 +88,9 @@ export const RecentPostsPage = (props) => {
     }
   };
   return (
-    <div className="RecentPostsPage-container">
-      <div className="RecentPosts-container">
-        <h2 className="page-heading">Recent Posts</h2>
-        {recentPostsContent()}
-      </div>
+    <div className="RecentPostsPage-content">
+      <h2 className="page-heading">Recent Posts</h2>
+      {recentPostsContent()}
     </div>
   );
 };
