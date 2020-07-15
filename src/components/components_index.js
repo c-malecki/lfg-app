@@ -1,7 +1,6 @@
 // UI
 export * from "./UI/Header/Header";
 export * from "./UI/Footer/Footer";
-export * from "./UI/ToggleSwitch/ToggleSwitch";
 export * from "./UI/LogInOut/LogInOut";
 export * from "./UI/GeneralButton/GeneralButton";
 export * from "./UI/ButtonLink/ButtonLink";
@@ -62,5 +61,5 @@ export * from "./Friends/PendingFriendPreview/PendingFriendPreview";
 export * from "./Friends/AcceptedFriendPreview/AcceptedFriendPreview";
 
 // Utility
-
 export * from "./Utility/LogInRoute";
+export * from "./Utility/AuthRoute";

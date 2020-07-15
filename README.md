@@ -4,16 +4,21 @@ Looking For Gamers, or LFG, is a play on a common acronym that is gaming slang "
 The LFG App is a basic mock of a social media app tailored to gamers to help them find play groups  
 for games of all kinds, from niche genres and retro games to popular modern franchises.
 
-Currently, the data supplied is not thematic and on brand. It is purely for dumby data and initial prototyping purposes.
+**Todos as of 7/14/2020**
 
-The intial data and CRUD functionality is all handled within the client application for demo purposes.  
-The client side "database" is implemented via the React content API.
+- Currently, the basic data supplied is not thematic or on brand. It is purely for dumby data and initial prototyping purposes.
 
-After initial prototyping of basic features and the UI/UX, I will progressively build and implement an API and database.
+- Styling still needs an overhaul which is my next priority after having implemented an backend/API.
 
-- Styling is still being implemented as well as experimenting with mobile UI differences from desktop view.
+- Syncing the client app with the server/database still needs to be worked out so that real time changes take affect without reloading the app  
+  which may cause some data loss on the client side.
 
-**Features and Functionality as of 7/4/2020**
+- There is not a real session or any cookies. Redux is currently handling data related to the logged in user.
+
+- Lots of refactoring involving component abstraction, some component crunching for more reusable and less specific utility components, conditional renders and operations  
+  based on the logged in user, utility classes and variables for SASS/SCSS. Perhaps moving HTTP requests to Redux dispatches to clean up components.
+
+**Features and Functionality as of 7/14/2020**
 
 - By default, you are logged in as "TestUser." You can log in as any of the users seen in the app. The password for each mock account is "password."
 

@@ -33,6 +33,7 @@ import {
   YourPostsMobile,
   CurrentUserMobile,
   LogInRoute,
+  AuthRoute,
 } from "../../components/components_index";
 import { useSelector } from "react-redux";
 
@@ -60,7 +61,11 @@ export const PageContent = (props) => {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/g" component={GroupsListPage} />
             <Route exact path="/g/:group" component={GroupPage} />
-            <Route exact path="/g/:group/newpost/" component={NewPostPage} />
+            <AuthRoute
+              exact
+              path="/g/:group/newpost/"
+              component={NewPostPage}
+            />
             <Route exact path="/g/:group/posts" component={GroupPostsPage} />
             <Route exact path="/g/:group/posts/:id" component={PostPage} />
             <Route
@@ -74,15 +79,15 @@ export const PageContent = (props) => {
 
             <Route exact path="/post-deleted" component={PostDeletedPage} />
             <LogInRoute exact path="/login" component={LogInPage} />
-            <Route exact path="/messages" component={MessagesPage} />
-            <Route
+            <AuthRoute exact path="/messages" component={MessagesPage} />
+            <AuthRoute
               exact
               path="/messages/message/:id"
               component={ViewMessagePage}
             />
-            <Route exact path="/messages/new" component={NewMessagePage} />
+            <AuthRoute exact path="/messages/new" component={NewMessagePage} />
 
-            <Route exact path="/friends" component={FriendsPage} />
+            <AuthRoute exact path="/friends" component={FriendsPage} />
             <Route exact path="/users/:username" component={UserProfilePage} />
             <Route
               exact

@@ -17,16 +17,18 @@ export const UserProfileInfo = (props) => {
   const { user_img, first_name, last_name } = userForpageProfile;
   const { currentUser, isLoggedIn } = useSelector((state) => state.userReducer);
   useEffect(() => {
-    const { friends } = currentUser;
-    const { pending, accepted } = friends;
-    const pendingList = pending.map((r) => r.sent_to.username);
-    const acceptedList = accepted.map((r) => r.sent_to.username);
-    if (acceptedList.includes(userForPageUsername)) {
-      setFriendButton({ text: "Friends", disabled: true });
-    } else if (pendingList.includes(userForPageUsername)) {
-      setFriendButton({ text: "Pending...", disabled: true });
-    } else {
-      setFriendButton({ text: "Add Friend", disabled: false });
+    if (currentUser) {
+      const { friends } = currentUser;
+      const { pending, accepted } = friends;
+      const pendingList = pending.map((r) => r.sent_to.username);
+      const acceptedList = accepted.map((r) => r.sent_to.username);
+      if (acceptedList.includes(userForPageUsername)) {
+        setFriendButton({ text: "Friends", disabled: true });
+      } else if (pendingList.includes(userForPageUsername)) {
+        setFriendButton({ text: "Pending...", disabled: true });
+      } else {
+        setFriendButton({ text: "Add Friend", disabled: false });
+      }
     }
   }, [currentUser, userForPageUsername]);
 

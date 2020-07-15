@@ -12,19 +12,26 @@ export const PostBody = (props) => {
   const { content, currentUser, post_id } = props;
 
   const history = useHistory();
+  const showPostDeleteButton = () => {
+    if (currentUser && currentUser.username === content.post_author) {
+      return (
+        <span>
+          <GeneralButton
+            text="X"
+            method={() => setShowConfirm(true)}
+            addClass="form-delete-button"
+          />
+        </span>
+      );
+    } else {
+      return null;
+    }
+  };
   return (
     <div className="PostBody-container">
       <div className="PostBody-head">
         <h3 className="post-title-heading">{content.post_title}</h3>
-        {currentUser.username === content.post_author ? (
-          <span>
-            <GeneralButton
-              text="X"
-              method={() => setShowConfirm(true)}
-              addClass="form-delete-button"
-            />
-          </span>
-        ) : null}
+        {showPostDeleteButton()}
       </div>
       {showConfirm ? (
         <PopUpConfirm
