@@ -1,4 +1,4 @@
-.GroupPosts-container {
+.GroupRecentPosts-container {
   @extend %ui-content-inner;
   padding-top: 0.5rem;
 
@@ -9,7 +9,7 @@
     margin-left: 0.5rem;
   }
 
-  .GroupPosts-head {
+  .GroupRecentPosts-head {
     display: flex;
     flex-direction: row;
     align-items: center;

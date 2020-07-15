@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
   GeneralLink,
-  Comments,
+  PostComments,
   PostBody,
   CommentForm,
   PageLoader,
@@ -10,7 +10,7 @@ import {
 import axios from "axios";
 import { useSelector } from "react-redux";
 
-export const PostPage = (props) => {
+export const ViewPostPage = (props) => {
   const [pageStatus, setPageStatus] = useState({
     isLoading: true,
     error: null,
@@ -49,7 +49,7 @@ export const PostPage = (props) => {
             currentUser={currentUser}
             post_id={postForPage.post_id}
           />
-          <Comments
+          <PostComments
             currentUser={currentUser}
             comments={postForPage.comments}
             post_id={postForPage.post_id}

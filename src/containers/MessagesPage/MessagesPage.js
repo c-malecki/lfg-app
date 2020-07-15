@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-  Unread,
+  UnreadMessages,
   SentMessages,
   AllMessages,
   GeneralButton,
@@ -47,7 +47,7 @@ export const MessagesPage = (props) => {
     if (messageType === 0) {
       return <AllMessages messages={curMessages} />;
     } else if (messageType === 1) {
-      return <Unread messages={curMessages} />;
+      return <UnreadMessages messages={curMessages} />;
     } else if (messageType === 2) {
       return <SentMessages messages={curMessages} />;
     }

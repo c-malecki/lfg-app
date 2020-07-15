@@ -1,5 +1,5 @@
 .GroupMembersPage-content {
+  @extend %ui-content-inner;
   display: flex;
   flex-direction: column;
-  @extend %ui-content-inner;
 }

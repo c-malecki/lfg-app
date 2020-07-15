@@ -3,8 +3,8 @@ import { LfgMiniBanner, GeneralLink } from "../../components/components_index";
 
 export const HomePage = (props) => {
   return (
-    <div className="HomePage-content">
-      <div className="HomePage-welcome">
+    <div className="HomePage-container">
+      <div className="HomePage-welcome-content">
         <h1 className="page-heading">Welcome to</h1>
         <LfgMiniBanner />
         <h3 className="component-heading">
@@ -12,7 +12,7 @@ export const HomePage = (props) => {
         </h3>
       </div>
 
-      <div className="HomePage-getting-started">
+      <div className="HomePage-getting-started-content">
         <h2 className="component-heading">Getting Started</h2>
         <p>
           <GeneralLink url="/g" text="Groups" addClass="PostPreviewHeadLink" />

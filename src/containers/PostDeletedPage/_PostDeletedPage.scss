@@ -1,8 +1,8 @@
 .PostDeleted-content {
+  @extend %ui-content-container;
   display: flex;
   flex-direction: column;
   align-items: center;
-  @extend %ui-content-container;
   a {
     text-decoration: none;
     font-weight: bold;

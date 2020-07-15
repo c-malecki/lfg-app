@@ -2,13 +2,13 @@ import React from "react";
 import { PostPreview, GeneralLink } from "../../components_index";
 import { useSelector } from "react-redux";
 
-export const GroupNewPosts = (props) => {
+export const GroupRecentPosts = (props) => {
   const { group, posts } = props;
   const { isLoggedIn } = useSelector((state) => state.userReducer);
 
   return (
-    <div className="GroupPosts-container">
-      <div className="GroupPosts-head">
+    <div className="GroupRecentPosts-container">
+      <div className="GroupRecentPosts-head">
         <h3 className="component-heading">New {group} Posts</h3>
       </div>
       <GeneralLink

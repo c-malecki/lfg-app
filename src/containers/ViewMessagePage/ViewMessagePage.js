@@ -4,9 +4,9 @@ import {
   MessageBody,
   MessageReplies,
   PageLoader,
+  ReplyToMessageForm,
 } from "../../components/components_index";
 import Axios from "axios";
-import { ReplyToMessageForm } from "../../components/Messages/forms/ReplyToMessageForm";
 import { useSelector } from "react-redux";
 
 export const ViewMessagePage = (props) => {

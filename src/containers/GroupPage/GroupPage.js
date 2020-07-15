@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import {
   GroupInfo,
   GroupMembers,
-  GroupNewPosts,
+  GroupRecentPosts,
   PageLoader,
 } from "../../components/components_index";
 import axios from "axios";
@@ -58,7 +58,7 @@ export const GroupPage = (props) => {
             members={group.group_members}
             group={group.group_name}
           />
-          <GroupNewPosts group={group.group_name} posts={posts} />
+          <GroupRecentPosts group={group.group_name} posts={posts} />
         </>
       );
     }

@@ -1,12 +1,12 @@
-.HomePage-content {
+.HomePage-container {
   @extend %ui-content-container;
-  .HomePage-welcome,
-  .HomePage-getting-started {
+  .HomePage-welcome-content,
+  .HomePage-getting-started-content {
+    @extend %ui-content-inner;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    @extend %ui-content-inner;
     padding: 0.5rem;
   }
 }

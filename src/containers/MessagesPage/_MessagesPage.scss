@@ -1,7 +1,7 @@
 .MessagesPage-content {
+  @extend %ui-content-container;
   display: flex;
   flex-direction: column;
-  @extend %ui-content-container;
 
   .Messages-action-bar {
     margin-left: 0.5rem;

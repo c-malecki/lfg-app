@@ -1,5 +1,5 @@
 .FriendsPage-content {
+  @extend %ui-content-container;
   display: flex;
   flex-direction: column;
-  @extend %ui-content-container;
 }

@@ -3,9 +3,7 @@ export * from "./UI/Header/Header";
 export * from "./UI/Footer/Footer";
 export * from "./UI/LogInOut/LogInOut";
 export * from "./UI/GeneralButton/GeneralButton";
-export * from "./UI/ButtonLink/ButtonLink";
 export * from "./UI/PageNav/PageNav";
-export * from "./UI/MessageViewLink/MessageViewLink";
 export * from "./UI/GeneralLink/GeneralLink";
 export * from "./UI/PopUpConfirm/PopUpConfirm";
 export * from "./UI/LfgMiniBanner/LfgMiniBanner";
@@ -28,10 +26,11 @@ export * from "./LogInForm/LogInForm";
 
 // Posts
 export * from "./Post/PostPreview/PostPreview";
-export * from "./Post/Comments/Comments";
+export * from "./Post/PostComments/PostComments";
 export * from "./Post/PostBody/PostBody";
-export * from "./Post/NewPostForm/NewPostForm";
-export * from "./Post/CommentForm/CommentForm";
+export * from "./Post/forms/NewPostForm/NewPostForm";
+export * from "./Post/forms/CommentForm/CommentForm";
+export * from "./Post/Comment/Comment";
 
 // UserProfile
 export * from "./UserProfile/UserProfileInfo/UserProfileInfo";
@@ -40,18 +39,18 @@ export * from "./UserProfile/UserBio/UserBio";
 export * from "./UserProfile/UserRecentPosts/UserRecentPosts";
 
 // Messages
-export * from "./Messages/Unread/Unread";
+export * from "./Messages/UnreadMessages/UnreadMessages";
 export * from "./Messages/SentMessages/SentMessages";
 export * from "./Messages/MessageBody/MessageBody";
 export * from "./Messages/MessageReplies/MessageReplies";
 export * from "./Messages/AllMessages/AllMessages";
 export * from "./Messages/forms/SendMessageForm";
-// export * from "./Messages/forms/ReplyToMessageForm";
+export * from "./Messages/forms/ReplyToMessageForm";
 
 // Group
 export * from "./Group/GroupInfo/GroupInfo";
 export * from "./Group/GroupMembers/GroupMembers";
-export * from "./Group/GroupNewPosts/GroupNewPosts";
+export * from "./Group/GroupRecentPosts/GroupRecentPosts";
 export * from "./Group/GroupPreview/GroupPreview";
 
 // Friends

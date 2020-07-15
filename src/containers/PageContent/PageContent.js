@@ -5,7 +5,7 @@ import {
   UserProfilePage,
   LogInPage,
   PostsByTagPage,
-  PostPage,
+  ViewPostPage,
   PostDeletedPage,
   MessagesPage,
   ViewMessagePage,
@@ -68,7 +68,11 @@ export const PageContent = (props) => {
                 component={NewPostPage}
               />
               <Route exact path="/g/:group/posts" component={GroupPostsPage} />
-              <Route exact path="/g/:group/posts/:id" component={PostPage} />
+              <Route
+                exact
+                path="/g/:group/posts/:id"
+                component={ViewPostPage}
+              />
               <Route
                 exact
                 path="/g/:group/members"

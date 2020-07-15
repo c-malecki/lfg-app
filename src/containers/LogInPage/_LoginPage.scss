@@ -1,11 +1,11 @@
-.LogInPage-content {
+.LogInPage-container {
   @extend %ui-content-container;
-  .LogIn {
+  .LogInPage-content {
+    @extend %ui-content-inner;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 1rem 0;
-    @extend %ui-content-inner;
   }
 }

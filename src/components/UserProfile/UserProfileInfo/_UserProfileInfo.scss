@@ -1,8 +1,8 @@
 .UserProfileInfo-container {
+  @extend %ui-content-inner;
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
-  @extend %ui-content-inner;
   h2 {
     text-align: center;
   }
@@ -17,13 +17,3 @@
     width: 10rem;
   }
 }
-
-// @media only screen and (min-width: 0) and (max-width: 768px),
-//   only screen and (min-device-width: 0) and (max-width: 768px) {
-//   .UserProfileInfo-container {
-//     img {
-//       height: 10rem;
-//       width: 10rem;
-//     }
-//   }
-// }

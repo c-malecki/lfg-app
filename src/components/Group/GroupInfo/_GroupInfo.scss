@@ -1,8 +1,8 @@
 .GroupInfo-container {
+  @extend %ui-content-inner;
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
-  @extend %ui-content-inner;
 
   img {
     height: 15rem;

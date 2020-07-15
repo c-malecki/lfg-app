@@ -1,7 +1,7 @@
 .YourPosts-container {
+  @extend %ui-content-inner;
   display: flex;
   flex-direction: column;
-  @extend %ui-content-inner;
   padding: 0.5rem;
   min-height: 12rem;
   max-height: 20rem;

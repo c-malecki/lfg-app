@@ -1,5 +1,5 @@
 export * from "./HomePage/HomePage";
-export * from "./PostPage/PostPage";
+export * from "./ViewPostPage/ViewPostPage";
 export * from "./PostsByTagPage/PostsByTagPage";
 export * from "./PostDeletedPage/PostDeletedPage";
 export * from "./PageContent/PageContent";

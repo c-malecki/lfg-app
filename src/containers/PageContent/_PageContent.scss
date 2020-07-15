@@ -24,7 +24,11 @@
       max-width: 1000px;
       overflow-y: scroll;
       .Page-content-inner {
-        @extend %page-center-content;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding-top: 3rem;
+        margin: auto;
       }
     }
     .Page-content-col3 {
@@ -64,6 +68,9 @@
       .Page-content-col2 {
         width: 100%;
         overflow-y: scroll;
+        .Page-content-inner {
+          padding-top: 0.5rem;
+        }
       }
     }
   }

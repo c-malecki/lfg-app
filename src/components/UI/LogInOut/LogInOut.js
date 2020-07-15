@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonLink, GeneralButton } from "../../components_index";
+import { GeneralButton, GeneralLink } from "../../components_index";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../../redux/actions/user-actions";
 
@@ -21,7 +21,7 @@ export const LogInOut = (props) => {
         </span>
       ) : (
         <span>
-          <ButtonLink
+          <GeneralLink
             url="/login"
             text="log in"
             addClass="general-theme-link"

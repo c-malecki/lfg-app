@@ -1,7 +1,7 @@
 import React from "react";
 import { MessagePreview } from "../MessagePreview/MessagePreview";
 
-export const Unread = (props) => {
+export const UnreadMessages = (props) => {
   const { messages } = props;
   return (
     <div className="Unread-container">
