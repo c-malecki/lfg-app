@@ -35,14 +35,14 @@ export const ViewPostPage = (props) => {
         });
       });
   }, [id]);
-  // adds new comment after succesful post to state without reloading page
+  // adds new comment to component state after successful POST request
   const addNewComment = (comment) => {
     setPostForPage((prevState) => ({
       ...prevState,
       comments: [...prevState.comments, comment],
     }));
   };
-  // removes deleted comment from state without reloading page
+  // removes deleted comment from component state after successful POST request
   const deleteComment = (deleteId) => {
     const { comments } = postForPage;
     const newComments = comments.filter((c) => c.comment_id !== deleteId);

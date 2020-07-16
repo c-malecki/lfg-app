@@ -11,7 +11,7 @@ export const ReplyToMessageForm = (props) => {
     openForm: false,
     isSubmitting: false,
   });
-  const { username, message_id } = props;
+  const { username, message_id, addNewReply } = props;
 
   const toggleForm = () => {
     const { openForm } = formState;
@@ -58,7 +58,10 @@ export const ReplyToMessageForm = (props) => {
               `${process.env.REACT_APP_API_URL}/messages/${message_id}/replies`,
               newReply
             )
-              .then((res) => console.log(res.data))
+              .then((res) => {
+                console.log(res.data);
+                addNewReply(newReply);
+              })
               .catch((error) => console.log(error.message));
             resetForm();
           }}

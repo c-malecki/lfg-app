@@ -4,12 +4,15 @@
   flex-direction: row;
   align-items: center;
 
-  img {
+  .GroupPreview-img {
     height: 6rem;
     width: 6rem;
     margin-right: 1rem;
+    img {
+      height: 100%;
+      width: 100%;
+    }
   }
-
   .GroupPreview-content {
     display: flex;
     flex-direction: column;

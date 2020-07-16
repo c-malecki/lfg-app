@@ -6,7 +6,9 @@ export const GroupPreview = (props) => {
   const { name, description, img } = props.group;
   return (
     <div className="GroupPreview-container">
-      <img src={img} alt={name} />
+      <div className="GroupPreview-img">
+        <img src={img} alt={name} />
+      </div>
       <div className="GroupPreview-content">
         <GeneralLink url={`/g/${name}`} text={name} addClass="GroupsLink" />
         <span>

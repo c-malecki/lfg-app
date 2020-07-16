@@ -33,6 +33,14 @@ export const ViewMessagePage = (props) => {
         });
       });
   }, [id]);
+  // add new reply to component state after successful POST request
+  const addNewReply = (newReply) => {
+    const { replies } = message;
+    setMessage((prevState) => ({
+      ...prevState,
+      replies: [...replies, newReply],
+    }));
+  };
   const viewMessageContent = () => {
     const { isLoading, error } = pageStatus;
     if (isLoading) {
@@ -48,7 +56,11 @@ export const ViewMessagePage = (props) => {
                 return <MessageReplies reply={r} key={r.reply_id} />;
               })
             : null}
-          <ReplyToMessageForm username={currentUser.username} message_id={id} />
+          <ReplyToMessageForm
+            username={currentUser.username}
+            message_id={id}
+            addNewReply={addNewReply}
+          />
         </>
       );
     }
