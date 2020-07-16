@@ -1,3 +1,29 @@
-.GroupPage-content {
+.GroupPage-container {
   @extend %ui-content-container;
+  .GroupPage-content {
+    display: flex;
+    flex-direction: row;
+    .Group-content-left {
+      width: 50%;
+    }
+    .Group-content-right {
+      width: 50%;
+    }
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 1200px),
+  only screen and (min-device-width: 0px) and (max-width: 1200px) {
+  .GroupPage-container {
+    .GroupPage-content {
+      display: flex;
+      flex-direction: column;
+      .Group-content-left {
+        width: 100%;
+      }
+      .Group-content-right {
+        width: 100%;
+      }
+    }
+  }
 }

@@ -2,14 +2,4 @@
   @extend %ui-content-container;
   display: flex;
   flex-direction: column;
-
-  .RecentPosts-actions {
-    margin-left: 0.5rem;
-    button {
-      margin: 0;
-    }
-    button:nth-of-type(1) {
-      margin-right: 0.5rem;
-    }
-  }
 }

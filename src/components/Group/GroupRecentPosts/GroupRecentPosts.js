@@ -8,14 +8,10 @@ export const GroupRecentPosts = (props) => {
 
   return (
     <div className="GroupRecentPosts-container">
-      <div className="GroupRecentPosts-head">
-        <h3 className="component-heading">New {group} Posts</h3>
+      <div className="component-head">
+        <h3>Posts</h3>
+        <GeneralLink url={`${group}/posts`} text="See All" />
       </div>
-      <GeneralLink
-        url={`${group}/posts`}
-        text="see all"
-        addClass="PageContentLink"
-      />
       {isLoggedIn ? (
         <GeneralLink
           url={`/g/${group}/newpost`}

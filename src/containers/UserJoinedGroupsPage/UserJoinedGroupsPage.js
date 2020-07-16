@@ -41,7 +41,9 @@ export const UserJoinedGroupsPage = (props) => {
           />
           's Groups
         </h2>
-        <span className="search-placeholder">search placeholder</span>
+        <div className="page-actions">
+          <span className="search-placeholder">search placeholder</span>
+        </div>
         {pageData.map((group) => {
           return (
             <GroupPreview

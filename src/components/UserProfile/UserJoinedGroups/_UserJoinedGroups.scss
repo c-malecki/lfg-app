@@ -1,13 +1,10 @@
 .UserJoinedGroups-container {
-  @extend %ui-content-inner;
-  h3 {
-    text-align: center;
-  }
-  .UserJoinedGroups-content {
+  padding: 0.5rem;
+
+  .UserJoinedGroups-list {
     @extend %ui-content-inner;
-    .UserJoinedGroups-list {
-      list-style: none;
-      padding: 0 0.5rem;
-    }
+    padding: 0.5rem;
+    margin: 0;
+    list-style: none;
   }
 }

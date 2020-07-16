@@ -8,10 +8,23 @@
     height: 6rem;
     width: 6rem;
     margin-right: 1rem;
+    margin-left: 0.5rem;
   }
 
   .GroupPreview-content {
     display: flex;
     flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 0) and (max-width: 768px),
+  only screen and (min-device-width: 0) and (max-width: 768px) {
+  .GroupPreview-container {
+    img {
+      height: 4rem;
+      width: 4rem;
+      margin-right: 0.5rem;
+      margin-left: 0.3rem;
+    }
   }
 }

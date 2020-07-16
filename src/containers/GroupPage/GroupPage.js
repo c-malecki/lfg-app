@@ -43,15 +43,22 @@ export const GroupPage = (props) => {
   const content = () => {
     const { group, posts } = pageStatus.pageData;
     return (
-      <>
-        <GroupInfo group={group} />
-        <GroupMembers members={group.group_members} group={group.group_name} />
-        <GroupRecentPosts group={group.group_name} posts={posts} />
-      </>
+      <div className="GroupPage-content">
+        <div className="Group-content-left">
+          <GroupInfo group={group} />
+          <GroupMembers
+            members={group.group_members}
+            group={group.group_name}
+          />
+        </div>
+        <div className="Group-content-right">
+          <GroupRecentPosts group={group.group_name} posts={posts} />
+        </div>
+      </div>
     );
   };
   return (
-    <div className="GroupPage-content">
+    <div className="GroupPage-container">
       {utilPageContent(pageStatus, content)}
     </div>
   );

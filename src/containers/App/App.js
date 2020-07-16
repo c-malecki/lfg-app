@@ -1,7 +1,6 @@
 import React from "react";
 import { Header } from "../../components/components_index";
 import { PageContent } from "../containers_index";
-// Redux
 import { useDispatch } from "react-redux";
 import { fetchDemoUser } from "../../redux/actions/user-actions";
 

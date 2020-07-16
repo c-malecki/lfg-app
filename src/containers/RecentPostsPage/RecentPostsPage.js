@@ -50,7 +50,7 @@ export const RecentPostsPage = (props) => {
       return (
         <>
           <h2 className="page-heading">Recent Posts</h2>
-          <div className="RecentPosts-actions">
+          <div className="page-actions">
             <GeneralButton
               text="all"
               addClass="general-theme-button"

@@ -1,5 +1,11 @@
 .GroupMembersPage-content {
-  @extend %ui-content-inner;
+  @extend %ui-content-container;
   display: flex;
   flex-direction: column;
+
+  .GroupMembers-list {
+    list-style: none;
+    @extend %ui-content-inner;
+    padding: 0.5rem;
+  }
 }

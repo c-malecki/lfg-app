@@ -1,24 +1,11 @@
 .PageNav-container {
-  position: fixed;
   display: flex;
   flex-direction: row;
-  height: 2rem;
-  width: 100%;
-  max-width: 1500px;
-  padding: 0.5rem 0;
   align-items: center;
   margin: auto;
-  background-color: $lfg-l-blue;
 
   span {
     margin: auto;
-  }
-}
-
-@media only screen and (min-width: 0px) and (max-width: 1200px),
-  only screen and (min-device-width: 0px) and (max-width: 1200px) {
-  .PageNav-container {
-    width: 100%;
   }
 }
 

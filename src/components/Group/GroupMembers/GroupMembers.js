@@ -5,12 +5,10 @@ export const GroupMembers = (props) => {
   const { members, group } = props;
   return (
     <div className="GroupMembers-container">
-      <h3 className="component-heading">Members</h3>
-      <GeneralLink
-        url={`/g/${group}/members`}
-        text="see all"
-        addClass="PageContentLink"
-      />
+      <div className="component-head">
+        <h3>Members</h3>
+        <GeneralLink url={`/g/${group}/members`} text="See All" />
+      </div>
       <ul className="GroupMembers-list">
         {members.map((m) => {
           return (

@@ -22,37 +22,27 @@ import {
 } from "../containers_index";
 import {
   YourGroups,
-  PageNav,
   CurrentUser,
   YourPosts,
-  MobilePageNav,
-  MobileArrowButton1,
-  MobileArrowButton2,
-  MobileUserActions,
-  YourGroupsMobile,
-  YourPostsMobile,
-  CurrentUserMobile,
+  // YourGroupsMobile,
+  // YourPostsMobile,
+  // CurrentUserMobile,
   LogInRoute,
   AuthRoute,
 } from "../../components/components_index";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 export const PageContent = (props) => {
-  const { isLoggedIn, currentUser } = useSelector((state) => state.userReducer);
-  const { openYourPosts, openYourGroups, openCurrentUser } = useSelector(
-    (state) => state.appReducer
-  );
+  // const { isLoggedIn, currentUser } = useSelector((state) => state.userReducer);
+  // const { openYourPosts, openYourGroups, openCurrentUser } = useSelector(
+  //   (state) => state.appReducer
+  // );
   return (
     <div className="Page-container">
       <div className="Page-content">
-        <PageNav />
-        <MobilePageNav />
-        <MobileArrowButton1 />
-        <MobileUserActions />
-        {isLoggedIn && currentUser ? <MobileArrowButton2 /> : null}
-        {openYourPosts ? <YourPostsMobile /> : null}
+        {/* {openYourPosts ? <YourPostsMobile /> : null}
         {openYourGroups ? <YourGroupsMobile /> : null}
-        {openCurrentUser ? <CurrentUserMobile /> : null}
+        {openCurrentUser ? <CurrentUserMobile /> : null} */}
         <div className="Page-content-col1">
           <Route path="/" component={CurrentUser} />
         </div>

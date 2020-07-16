@@ -32,7 +32,10 @@ export const GroupsListPage = (props) => {
     return (
       <>
         <h2 className="page-heading">Groups</h2>
-        <span className="search-placeholder">search placeholder</span>
+        <div className="page-actions">
+          <span className="search-placeholder">search placeholder</span>
+        </div>
+
         {pageData.map((g) => {
           return (
             <GroupPreview

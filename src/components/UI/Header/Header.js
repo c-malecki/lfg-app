@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { LfgHeaderLink, MobileMenu, LogInOut } from "../../components_index";
+import {
+  LfgHeaderLink,
+  MobileMenu,
+  LogInOut,
+  PageNav,
+} from "../../components_index";
 import { HeaderActions } from "./HeaderActions/HeaderActions";
 import { useSelector } from "react-redux";
 
@@ -10,6 +15,7 @@ export const Header = (props) => {
     <div className="Header-container">
       <div className="Header-content">
         <LfgHeaderLink />
+        <PageNav />
         <div className="Header-content-actions">
           {isLoggedIn ? (
             <HeaderActions

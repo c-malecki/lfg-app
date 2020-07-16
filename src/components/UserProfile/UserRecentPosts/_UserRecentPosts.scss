@@ -1,6 +1,9 @@
 .UserRecentPosts-container {
-  @extend %ui-content-inner;
-  padding-top: 0.5rem;
-  max-height: 650px;
+  padding: 0.5rem;
+  max-height: 850px;
   overflow-y: scroll;
+
+  .PostPreview-container {
+    margin: 0.5rem 0;
+  }
 }

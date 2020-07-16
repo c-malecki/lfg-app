@@ -7,13 +7,13 @@ export const HomePage = (props) => {
       <div className="HomePage-welcome-content">
         <h1 className="page-heading">Welcome to</h1>
         <LfgMiniBanner />
-        <h3 className="component-heading">
+        <h3>
           LFG is a social media site for connecting gamers to play groups.
         </h3>
       </div>
 
       <div className="HomePage-getting-started-content">
-        <h2 className="component-heading">Getting Started</h2>
+        <h2>Getting Started</h2>
         <p>
           <GeneralLink url="/g" text="Groups" addClass="PostPreviewHeadLink" />
           are the life blood of LFG. Groups are centered around a specific

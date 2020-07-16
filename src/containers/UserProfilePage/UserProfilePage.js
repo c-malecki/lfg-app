@@ -47,30 +47,34 @@ export const UserProfilePage = (props) => {
     const { pageData } = pageStatus;
     const { userData, userPostData } = pageData;
     return (
-      <>
-        <UserProfileInfo
-          userForPageUsername={userData.username}
-          userForpageProfile={userData.profile}
-          date_joined={userData.account.date_joined}
-          user_id={userData.user_id}
-        />
-        <UserBio
-          userForPageUsername={userData.username}
-          bio={userData.profile.bio}
-        />
-        <UserJoinedGroups
-          userForPageUsername={userData.username}
-          userForPageGroups={userData.groups}
-        />
-        <UserRecentPosts
-          userForPageUsername={userData.username}
-          userForPagePosts={userPostData}
-        />
-      </>
+      <div className="UserProfilePage-content">
+        <div className="UserProfile-content-left">
+          <UserProfileInfo
+            userForPageUsername={userData.username}
+            userForpageProfile={userData.profile}
+            date_joined={userData.account.date_joined}
+            user_id={userData.user_id}
+          />
+          <UserBio
+            userForPageUsername={userData.username}
+            bio={userData.profile.bio}
+          />
+          <UserJoinedGroups
+            userForPageUsername={userData.username}
+            userForPageGroups={userData.groups}
+          />
+        </div>
+        <div className="UserProfile-content-right">
+          <UserRecentPosts
+            userForPageUsername={userData.username}
+            userForPagePosts={userPostData}
+          />
+        </div>
+      </div>
     );
   };
   return (
-    <div className="UserProfilePage-content">
+    <div className="UserProfilePage-container">
       {utilPageContent(pageStatus, content)}
     </div>
   );

@@ -2,6 +2,11 @@
   text-decoration: none;
 }
 
+.component-head-link {
+  display: inline-block;
+  padding: 0.2rem 0.1rem;
+}
+
 .GroupsLink {
   font-size: 1.2rem;
   font-weight: bold;
@@ -82,12 +87,11 @@
   color: white;
   border-radius: 0.5rem;
   padding: 0.4rem 0.6rem;
-  font-family: "PS2P";
 }
 
 @media (hover: hover) {
   .PageNavLink:hover {
-    background-color: $lfg-d-blue;
+    background-color: $link-hover-dark;
   }
 }
 

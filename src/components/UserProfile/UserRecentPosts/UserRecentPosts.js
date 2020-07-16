@@ -5,12 +5,11 @@ export const UserRecentPosts = (props) => {
   const { userForPageUsername, userForPagePosts } = props;
   return (
     <div className="UserRecentPosts-container">
-      <h3 className="page-heading">{userForPageUsername}'s Recent Posts</h3>
-      <GeneralLink
-        url={`${userForPageUsername}/posts`}
-        text="see all"
-        addClass="PageContentLink"
-      />
+      <div className="component-head">
+        <h3>Posts</h3>
+        <GeneralLink url={`${userForPageUsername}/posts`} text="See All" />
+      </div>
+
       {userForPagePosts.map((p) => {
         return <PostPreview post={p} key={p.post_id} />;
       })}

@@ -9,11 +9,11 @@ export const GroupPreview = (props) => {
       <img src={img} alt={name} />
       <div className="GroupPreview-content">
         <GeneralLink url={`/g/${name}`} text={name} addClass="GroupsLink" />
-        <span>
+        <p>
           {description.length > 70
             ? `${utilGroupDescriptionPreview(description)}...`
             : description}
-        </span>
+        </p>
       </div>
     </div>
   );

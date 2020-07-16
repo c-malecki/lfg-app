@@ -1,3 +1,29 @@
-.UserProfilePage-content {
+.UserProfilePage-container {
   @extend %ui-content-container;
+  .UserProfilePage-content {
+    display: flex;
+    flex-direction: row;
+    .UserProfile-content-left {
+      width: 50%;
+    }
+    .UserProfile-content-right {
+      width: 50%;
+    }
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 1200px),
+  only screen and (min-device-width: 0px) and (max-width: 1200px) {
+  .UserProfilePage-container {
+    .UserProfilePage-content {
+      display: flex;
+      flex-direction: column;
+      .UserProfile-content-left {
+        width: 100%;
+      }
+      .UserProfile-content-right {
+        width: 100%;
+      }
+    }
+  }
 }

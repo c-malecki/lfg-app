@@ -1,6 +1,18 @@
 .HomePage-container {
   @extend %ui-content-container;
-  .HomePage-welcome-content,
+
+  .HomePage-welcome-content {
+    @extend %ui-content-inner;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    color: white;
+  }
+
   .HomePage-getting-started-content {
     @extend %ui-content-inner;
     display: flex;

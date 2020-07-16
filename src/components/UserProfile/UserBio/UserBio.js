@@ -18,7 +18,9 @@ export const UserBio = (props) => {
   };
   return (
     <div className="UserProfile-bio-container">
-      <h3>Bio</h3>
+      <div className="component-head">
+        <h3>Bio</h3>
+      </div>
 
       {editBio.editMode ? (
         <EditBioForm
@@ -35,13 +37,13 @@ export const UserBio = (props) => {
       {currentUser &&
       currentUser.username === userForPageUsername &&
       editBio.showButton ? (
-        <div className="bio-toggle-container">
+        <span>
           <GeneralButton
             method={toggleEditBio}
             text="edit"
             addClass="general-theme-button"
           />
-        </div>
+        </span>
       ) : null}
     </div>
   );

@@ -1,19 +1,9 @@
 .GroupRecentPosts-container {
-  @extend %ui-content-inner;
-  padding-top: 0.5rem;
-
-  max-height: 650px;
+  padding: 0.5rem;
+  max-height: 850px;
   overflow-y: scroll;
 
-  .general-theme-link {
-    margin-left: 0.5rem;
-  }
-
-  .GroupRecentPosts-head {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  .PostPreview-container {
+    margin: 0.5rem 0;
   }
 }

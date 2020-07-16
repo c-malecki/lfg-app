@@ -1,20 +1,12 @@
 .UserProfile-bio-container {
-  @extend %ui-content-inner;
   display: flex;
   flex-direction: column;
-  padding-bottom: 0.5rem;
-  h3 {
-    margin-left: 0.5rem;
-  }
-  .UserProfile-bio {
-    border: 1px solid $lfg-l-gray;
-    min-height: 5rem;
-    margin: 0 0.5rem;
-    padding: 0.3rem;
-    border-radius: 0.3rem;
-  }
+  padding: 0.5rem;
 
-  .bio-toggle-container {
-    margin-left: 0.5rem;
+  .UserProfile-bio {
+    @extend %ui-content-inner;
+    min-height: 5rem;
+    padding: 0.3rem;
+    margin: 0;
   }
 }

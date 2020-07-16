@@ -1,12 +1,11 @@
 .EditBioForm-container {
-  margin: auto 0.5rem;
-
   .EditBioForm-content {
     display: flex;
     flex-direction: column;
     textarea {
       min-height: 5rem;
       width: 100%;
+      padding: 0.3rem;
     }
   }
 }

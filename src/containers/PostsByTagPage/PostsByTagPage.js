@@ -34,7 +34,9 @@ export const PostsByTagPage = () => {
     return (
       <>
         <h2 className="page-heading">{`#${tag}`}</h2>
-        <span className="search-placeholder">search placeholder</span>
+        <div className="page-actions">
+          <span className="search-placeholder">search placeholder</span>
+        </div>
         {pageData.map((p) => (
           <PostPreview post={p} key={`post-${p.post_id}`} />
         ))}

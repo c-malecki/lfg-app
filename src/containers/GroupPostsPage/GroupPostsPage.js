@@ -34,27 +34,26 @@ export const GroupPostsPage = (props) => {
     const { pageData } = pageStatus;
     return (
       <>
-        <div className="GroupPostsPage-head">
-          <h2 className="page-heading">
-            <GeneralLink
-              url={`/g/${group}`}
-              text={`${group}`}
-              addClass="PageHeaderLink"
-            />{" "}
-            Posts
-          </h2>
+        <h2 className="page-heading">
+          <GeneralLink
+            url={`/g/${group}`}
+            text={`${group}`}
+            addClass="PageHeaderLink"
+          />{" "}
+          Posts
+        </h2>
 
-          <div className="GroupPostsPage-actions">
-            {isLoggedIn ? (
-              <GeneralLink
-                url={`/g/${group}/newpost`}
-                text="new post"
-                addClass="general-theme-link"
-              />
-            ) : null}
-            <span className="search-placeholder">search placeholder</span>
-          </div>
+        <div className="page-actions">
+          {isLoggedIn ? (
+            <GeneralLink
+              url={`/g/${group}/newpost`}
+              text="new post"
+              addClass="general-theme-link"
+            />
+          ) : null}
+          <span className="search-placeholder">search placeholder</span>
         </div>
+
         {pageData.map((p) => {
           return <PostPreview post={p} key={`post-${p.post_id}`} />;
         })}

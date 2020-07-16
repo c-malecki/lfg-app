@@ -3,7 +3,7 @@
   max-width: 1500px;
   height: 100%;
   margin: auto;
-  padding-top: 3rem;
+  padding-top: 3.5rem;
   overflow-y: hidden;
 
   .Page-content {
@@ -15,7 +15,6 @@
     background: $bg-black;
 
     .Page-content-col1 {
-      padding-top: 3rem;
       width: 100%;
       max-width: 250px;
     }
@@ -27,12 +26,11 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        padding-top: 3rem;
+
         margin: auto;
       }
     }
     .Page-content-col3 {
-      padding-top: 3rem;
       width: 100%;
       max-width: 250px;
     }
