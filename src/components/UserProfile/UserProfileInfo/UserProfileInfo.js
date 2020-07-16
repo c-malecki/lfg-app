@@ -17,6 +17,10 @@ export const UserProfileInfo = (props) => {
   const { user_img, first_name, last_name } = userForpageProfile;
   const { currentUser, isLoggedIn } = useSelector((state) => state.userReducer);
   useEffect(() => {
+    // if there is a current user, determines the Friends button text and whether it is disabled or not.
+    // If the current user is not friends with the profile user, button is not disabled and the text is "Add Friend"
+    // If the current user has already sent a request or is friends with the profile user, the button is disabled
+    // and displays either "Pending..." or "Friends"
     if (currentUser) {
       const { friends } = currentUser;
       const { pending, accepted } = friends;

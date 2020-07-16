@@ -10,6 +10,7 @@ export const AcceptedFriendPreview = (props) => {
   const [requestStatus, setRequestStatus] = useState(false);
   const { request, removeMethod } = props;
   const { user_img, username } = request;
+  // Sends POST request to remove friend, closes the pop up, and changes UI to reflect user being removed.
   const handleRemove = () => {
     removeMethod();
     setShowConfirm(false);

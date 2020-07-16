@@ -20,6 +20,7 @@ export const PendingFriendPreview = (props) => {
     sent_from,
   } = props;
   const { user_img, username } = request;
+  // Sends POST request to cancel or deny friend request, closes the pop up, and changes UI to reflect request being canceled or denied.
   const handleCancelDeny = () => {
     cancelDenyMethod();
     setShowConfirm(false);
@@ -28,6 +29,7 @@ export const PendingFriendPreview = (props) => {
       accepted: false,
     });
   };
+  // Sends POST request to accept friend request, closes the pop up, and changes UI to reflect friend request being accepted.
   const handleAccept = () => {
     acceptMethod();
     setRequestStatus({
