@@ -35,6 +35,22 @@ export const ViewPostPage = (props) => {
         });
       });
   }, [id]);
+  // adds new comment after succesful post to state without reloading page
+  const addNewComment = (comment) => {
+    setPostForPage((prevState) => ({
+      ...prevState,
+      comments: [...prevState.comments, comment],
+    }));
+  };
+  // removes deleted comment from state without reloading page
+  const deleteComment = (deleteId) => {
+    const { comments } = postForPage;
+    const newComments = comments.filter((c) => c.comment_id !== deleteId);
+    setPostForPage((prevState) => ({
+      ...prevState,
+      comments: newComments,
+    }));
+  };
   const postPageContent = () => {
     const { isLoading, error } = pageStatus;
     if (isLoading) {
@@ -53,11 +69,13 @@ export const ViewPostPage = (props) => {
             currentUser={currentUser}
             comments={postForPage.comments}
             post_id={postForPage.post_id}
+            deleteComment={deleteComment}
           />
           {currentUser ? (
             <CommentForm
               post_id={postForPage.post_id}
               currentUser={currentUser}
+              addNewComment={addNewComment}
             />
           ) : null}
         </>

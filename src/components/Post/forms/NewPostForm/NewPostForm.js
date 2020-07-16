@@ -45,7 +45,7 @@ export const NewPostForm = (props) => {
             post_content: values.content,
             comments: [],
           };
-          Axios.post("http://localhost:5000/api/v1/posts", newPost)
+          Axios.post(`${process.env.REACT_APP_API_URL}/posts`, newPost)
             .then((res) => {
               setPostStatus({
                 success: true,

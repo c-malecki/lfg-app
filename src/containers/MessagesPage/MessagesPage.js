@@ -14,8 +14,8 @@ export const MessagesPage = (props) => {
     isLoading: true,
     error: null,
   });
-  const [messageType, setMessageType] = useState(0);
   const [curMessages, setCurMessages] = useState(null);
+  const [messageType, setMessageType] = useState(0);
   const { currentUser } = useSelector((state) => state.userReducer);
   const { username } = currentUser;
   useEffect(() => {

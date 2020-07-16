@@ -15,7 +15,7 @@ export const PostComments = (props) => {
       message: "",
     });
   };
-  const { comments, post_id, currentUser } = props;
+  const { comments, post_id, currentUser, deleteComment } = props;
   return (
     <div className="PostComments-container">
       {showConfirm.show ? (
@@ -24,9 +24,12 @@ export const PostComments = (props) => {
           cancel={() => handleClosePopup()}
           ok={() => {
             Axios.post(
-              `http://localhost:5000/api/v1/posts/ids/${post_id}/comments/${showConfirm.comment}/delete`
+              `${process.env.REACT_APP_API_URL}/posts/ids/${post_id}/comments/${showConfirm.comment}/delete`
             )
-              .then((res) => console.log("Comment deleted."))
+              .then((res) => {
+                console.log("Comment deleted.");
+                deleteComment(showConfirm.comment);
+              })
               .catch((error) => console.log(error.message));
             handleClosePopup();
           }}

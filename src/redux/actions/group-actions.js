@@ -23,7 +23,7 @@
 //   return (dispatch) => {
 //     dispatch(fetchGroupsBegin());
 //     axios
-//       .get(`http://localhost:5000/api/v1/groups`)
+//       .get(`${process.env.REACT_APP_API_URL}/groups`)
 //       .then((res) => {
 //         dispatch(fetchGroupsSuccess(res.data));
 //       })

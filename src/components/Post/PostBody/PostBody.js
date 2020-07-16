@@ -39,7 +39,7 @@ export const PostBody = (props) => {
           cancel={() => setShowConfirm(false)}
           ok={async () => {
             await Axios.post(
-              `http://localhost:5000/api/v1/posts/ids/${post_id}/delete`
+              `${process.env.REACT_APP_API_URL}/posts/ids/${post_id}/delete`
             )
               .then((res) => console.log(res.status))
               .catch((error) => console.log(error.message));

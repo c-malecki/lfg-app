@@ -48,7 +48,7 @@ export const SendMessageForm = (props) => {
             original_content: values.message,
             replies: [],
           };
-          Axios.post("http://localhost:5000/api/v1/messages", newMessage)
+          Axios.post(`${process.env.REACT_APP_API_URL}/messages`, newMessage)
             .then((res) => {
               setMessageStatus({
                 success: true,

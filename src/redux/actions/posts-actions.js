@@ -23,7 +23,7 @@
 //   return (dispatch) => {
 //     dispatch(fetchPostsBegin());
 //     axios
-//       .get(`http://localhost:5000/api/v1/posts`)
+//       .get(`${process.env.REACT_APP_API_URL}/posts`)
 //       .then((res) => {
 //         dispatch(fetchPostsSuccess(res.data));
 //       })

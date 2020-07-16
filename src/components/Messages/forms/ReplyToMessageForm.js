@@ -55,7 +55,7 @@ export const ReplyToMessageForm = (props) => {
               reply_id: replyId,
             };
             Axios.post(
-              `http://localhost:5000/api/v1/messages/${message_id}/replies`,
+              `${process.env.REACT_APP_API_URL}/messages/${message_id}/replies`,
               newReply
             )
               .then((res) => console.log(res.data))

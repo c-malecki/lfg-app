@@ -11,7 +11,7 @@ export const CommentForm = (props) => {
     isSubmitting: false,
     openForm: false,
   });
-  const { currentUser, post_id } = props;
+  const { currentUser, post_id, addNewComment } = props;
 
   const toggleForm = () => {
     const { openForm } = formState;
@@ -55,10 +55,13 @@ export const CommentForm = (props) => {
               comment_content: values.content,
             };
             Axios.post(
-              `http://localhost:5000/api/v1/posts/ids/${post_id}/comments`,
+              `${process.env.REACT_APP_API_URL}/posts/ids/${post_id}/comments`,
               newComment
             )
-              .then((res) => console.log(res.data))
+              .then((res) => {
+                console.log(res.data);
+                addNewComment(newComment);
+              })
               .catch((error) => console.log(error));
             resetForm();
             toggleForm();
