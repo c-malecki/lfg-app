@@ -1,39 +1,44 @@
 import React, { useState, useEffect } from "react";
-import { NewPostForm, PageLoader } from "../../components/components_index";
+import { NewPostForm } from "../../components/components_index";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import Axios from "axios";
+import { utilPageContent } from "../../assets/util/utilPageContent";
 
 export const NewPostPage = (props) => {
+  // Page state
   const [pageStatus, setPageStatus] = useState({
     isLoading: true,
     error: null,
+    pageData: null,
   });
+  // New post state
   const [postStatus, setPostStatus] = useState({
     success: false,
     error: null,
     post_id: null,
   });
-  const [postTags, setPostTags] = useState(null);
   const history = useHistory();
   const { group } = useParams();
   const { currentUser } = useSelector((state) => state.userReducer);
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_URL}/posts/tags`)
       .then((res) => {
-        setPostTags(res.data);
         setPageStatus({
           isLoading: false,
           error: null,
+          pageData: res.data,
         });
       })
       .catch((error) => {
         setPageStatus({
           isLoading: false,
           error: error.message,
+          pageData: null,
         });
       });
   }, []);
+  // If the post POST request is successful, go to the post
   const postSuccess = () => {
     const { success, error, post_id } = postStatus;
     if (success) {
@@ -42,25 +47,24 @@ export const NewPostPage = (props) => {
       return;
     }
   };
-  const newPostContent = () => {
-    const { isLoading, error } = pageStatus;
-    if (isLoading) {
-      return <PageLoader />;
-    } else if (error) {
-      return <div>Something went wrong.</div>;
-    } else {
-      return (
-        <>
-          <NewPostForm
-            post_tags={postTags}
-            post_author={currentUser.username}
-            group={group}
-            setPostStatus={setPostStatus}
-          />
-          {postSuccess()}
-        </>
-      );
-    }
+  const content = () => {
+    const { pageData } = pageStatus;
+    return (
+      <>
+        <NewPostForm
+          post_tags={pageData}
+          post_author={currentUser.username}
+          group={group}
+          setPostStatus={setPostStatus}
+        />
+        {postSuccess()}
+      </>
+    );
   };
-  return <div className="NewPostPage-content">{newPostContent()}</div>;
+
+  return (
+    <div className="NewPostPage-content">
+      {utilPageContent(pageStatus, content)}
+    </div>
+  );
 };

@@ -4,35 +4,31 @@ import {
   GroupInfo,
   GroupMembers,
   GroupRecentPosts,
-  PageLoader,
 } from "../../components/components_index";
-import axios from "axios";
+import Axios from "axios";
+import { utilPageContent } from "../../assets/util/utilPageContent";
 
 export const GroupPage = (props) => {
-  const [groupForPage, setGroupForPage] = useState({
-    group: null,
-    posts: null,
-  });
   const [pageStatus, setPageStatus] = useState({
     isLoading: true,
     error: null,
+    pageData: null,
   });
   const { group } = useParams();
   useEffect(() => {
-    axios
-      .all([
-        axios.get(`${process.env.REACT_APP_API_URL}/groups/${group}`),
-        axios.get(`${process.env.REACT_APP_API_URL}/groups/${group}/posts`),
-      ])
+    Axios.all([
+      Axios.get(`${process.env.REACT_APP_API_URL}/groups/${group}`),
+      Axios.get(`${process.env.REACT_APP_API_URL}/groups/${group}/posts`),
+    ])
       .then(
-        axios.spread((g, p) => {
-          setGroupForPage({
-            group: g.data,
-            posts: p.data,
-          });
+        Axios.spread((g, p) => {
           setPageStatus({
             isLoading: false,
             error: null,
+            pageData: {
+              group: g.data,
+              posts: p.data,
+            },
           });
         })
       )
@@ -40,28 +36,23 @@ export const GroupPage = (props) => {
         setPageStatus({
           isLoading: false,
           error: error.response.data,
+          pageData: null,
         });
       });
   }, [group]);
-  const groupPageContent = () => {
-    const { isLoading, error } = pageStatus;
-    const { group, posts } = groupForPage;
-    if (isLoading) {
-      return <PageLoader />;
-    } else if (error) {
-      return <div>{error}</div>;
-    } else {
-      return (
-        <>
-          <GroupInfo group={group} />
-          <GroupMembers
-            members={group.group_members}
-            group={group.group_name}
-          />
-          <GroupRecentPosts group={group.group_name} posts={posts} />
-        </>
-      );
-    }
+  const content = () => {
+    const { group, posts } = pageStatus.pageData;
+    return (
+      <>
+        <GroupInfo group={group} />
+        <GroupMembers members={group.group_members} group={group.group_name} />
+        <GroupRecentPosts group={group.group_name} posts={posts} />
+      </>
+    );
   };
-  return <div className="GroupPage-content">{groupPageContent()}</div>;
+  return (
+    <div className="GroupPage-content">
+      {utilPageContent(pageStatus, content)}
+    </div>
+  );
 };

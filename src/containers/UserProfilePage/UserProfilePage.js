@@ -4,19 +4,17 @@ import {
   UserJoinedGroups,
   UserBio,
   UserRecentPosts,
-  PageLoader,
 } from "../../components/components_index";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { utilPageContent } from "../../assets/util/utilPageContent";
 
 export const UserProfilePage = (props) => {
-  const [userForPage, setUserForPage] = useState({
-    userForPageData: null,
-    userForPagePosts: null,
-  });
+  // Page state
   const [pageStatus, setPageStatus] = useState({
     isLoading: true,
     error: null,
+    pageData: null,
   });
   const { username } = useParams();
   useEffect(() => {
@@ -27,13 +25,13 @@ export const UserProfilePage = (props) => {
       ])
       .then(
         axios.spread((u, p) => {
-          setUserForPage({
-            userForPageData: u.data,
-            userForPagePosts: p.data,
-          });
           setPageStatus({
             isLoading: false,
             error: null,
+            pageData: {
+              userData: u.data,
+              userPostData: p.data,
+            },
           });
         })
       )
@@ -41,42 +39,39 @@ export const UserProfilePage = (props) => {
         setPageStatus({
           isLoading: false,
           error: error.message,
+          pageData: null,
         });
       });
   }, [username]);
-  const userProfilePageContent = () => {
-    const { isLoading, error } = pageStatus;
-    if (isLoading) {
-      return <PageLoader />;
-    } else if (error) {
-      return <div>Something went wrong</div>;
-    } else {
-      const { userForPageData, userForPagePosts } = userForPage;
-      return (
-        <>
-          <UserProfileInfo
-            userForPageUsername={userForPageData.username}
-            userForpageProfile={userForPageData.profile}
-            date_joined={userForPageData.account.date_joined}
-            user_id={userForPageData.user_id}
-          />
-          <UserBio
-            userForPageUsername={userForPageData.username}
-            bio={userForPageData.profile.bio}
-          />
-          <UserJoinedGroups
-            userForPageUsername={userForPageData.username}
-            userForPageGroups={userForPageData.groups}
-          />
-          <UserRecentPosts
-            userForPageUsername={userForPageData.username}
-            userForPagePosts={userForPagePosts}
-          />
-        </>
-      );
-    }
+  const content = () => {
+    const { pageData } = pageStatus;
+    const { userData, userPostData } = pageData;
+    return (
+      <>
+        <UserProfileInfo
+          userForPageUsername={userData.username}
+          userForpageProfile={userData.profile}
+          date_joined={userData.account.date_joined}
+          user_id={userData.user_id}
+        />
+        <UserBio
+          userForPageUsername={userData.username}
+          bio={userData.profile.bio}
+        />
+        <UserJoinedGroups
+          userForPageUsername={userData.username}
+          userForPageGroups={userData.groups}
+        />
+        <UserRecentPosts
+          userForPageUsername={userData.username}
+          userForPagePosts={userPostData}
+        />
+      </>
+    );
   };
   return (
-    <div className="UserProfilePage-content">{userProfilePageContent()}</div>
+    <div className="UserProfilePage-content">
+      {utilPageContent(pageStatus, content)}
+    </div>
   );
 };

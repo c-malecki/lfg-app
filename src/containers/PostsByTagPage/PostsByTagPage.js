@@ -1,53 +1,49 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { PostPreview, PageLoader } from "../../components/components_index";
-import axios from "axios";
+import { PostPreview } from "../../components/components_index";
+import Axios from "axios";
+import { utilPageContent } from "../../assets/util/utilPageContent";
 
 export const PostsByTagPage = () => {
+  // Page state
   const [pageStatus, setPageStatus] = useState({
     isLoading: true,
     error: null,
+    pageData: null,
   });
-  const [postsForPage, setPostsForPage] = useState(null);
   const { tag } = useParams();
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/posts/bytags/${tag}`)
+    Axios.get(`${process.env.REACT_APP_API_URL}/posts/bytags/${tag}`)
       .then((res) => {
-        setPostsForPage(res.data);
         setPageStatus({
           isLoading: false,
           error: null,
+          pageData: res.data,
         });
       })
       .catch((error) => {
         setPageStatus({
           isLoading: false,
           error: error.message,
+          pageData: null,
         });
       });
   }, [tag]);
-  const postsByTagContent = () => {
-    const { isLoading, error } = pageStatus;
-    if (isLoading) {
-      return <PageLoader />;
-    } else if (error) {
-      return <div>Something went wrong.</div>;
-    } else {
-      return (
-        <>
-          {postsForPage.map((p) => (
-            <PostPreview post={p} key={`post-${p.post_id}`} />
-          ))}
-        </>
-      );
-    }
+  const content = () => {
+    const { pageData } = pageStatus;
+    return (
+      <>
+        <h2 className="page-heading">{`#${tag}`}</h2>
+        <span className="search-placeholder">search placeholder</span>
+        {pageData.map((p) => (
+          <PostPreview post={p} key={`post-${p.post_id}`} />
+        ))}
+      </>
+    );
   };
   return (
     <div className="PostsByTagPage-content">
-      <h2 className="page-heading">{`#${tag}`}</h2>
-      <span className="search-placeholder">search placeholder</span>
-      {postsByTagContent()}
+      {utilPageContent(pageStatus, content)}
     </div>
   );
 };

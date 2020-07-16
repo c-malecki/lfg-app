@@ -9,7 +9,7 @@ import Axios from "axios";
 
 export const PostBody = (props) => {
   const [showConfirm, setShowConfirm] = useState(false);
-  const { content, currentUser, post_id } = props;
+  const { content, currentUser, post_id, group } = props;
 
   const history = useHistory();
   const showPostDeleteButton = () => {
@@ -37,13 +37,18 @@ export const PostBody = (props) => {
         <PopUpConfirm
           message="Are you sure you want to delete this post?"
           cancel={() => setShowConfirm(false)}
-          ok={async () => {
-            await Axios.post(
+          ok={() => {
+            Axios.post(
               `${process.env.REACT_APP_API_URL}/posts/ids/${post_id}/delete`
             )
               .then((res) => console.log(res.status))
               .catch((error) => console.log(error.message));
-            history.push("/post-deleted");
+            history.push({
+              pathname: "/post-deleted",
+              state: {
+                group: group,
+              },
+            });
           }}
         />
       ) : null}

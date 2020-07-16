@@ -4,36 +4,41 @@ import {
   SentMessages,
   AllMessages,
   GeneralButton,
-  PageLoader,
 } from "../../components/components_index";
 import { useSelector } from "react-redux";
 import Axios from "axios";
+import { utilPageContent } from "../../assets/util/utilPageContent";
 
 export const MessagesPage = (props) => {
+  // Page state
   const [pageStatus, setPageStatus] = useState({
     isLoading: true,
     error: null,
+    pageData: null,
   });
-  const [curMessages, setCurMessages] = useState(null);
+  // Controls which messages are shown (still need to refactor to differentiate + add "read" property to message objects in DB)
   const [messageType, setMessageType] = useState(0);
   const { currentUser } = useSelector((state) => state.userReducer);
   const { username } = currentUser;
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_URL}/users/${username}/messages`)
       .then((res) => {
-        setCurMessages(res.data);
         setPageStatus({
           isLoading: false,
           error: null,
+          pageData: res.data,
         });
       })
       .catch((error) => {
         setPageStatus({
           isLoading: false,
           error: error.message,
+          pageData: null,
         });
       });
   }, [username]);
+  // changes whether All, Unread, or Sent messages are shown. Needs to be refactored/maybe use sub routing
+  // so that the URL is /messages/#all or /messages/#unread, etc...
   const toggleAll = () => {
     setMessageType(0);
   };
@@ -43,50 +48,44 @@ export const MessagesPage = (props) => {
   const toggleSent = () => {
     setMessageType(2);
   };
-  const displayMessageType = () => {
-    if (messageType === 0) {
-      return <AllMessages messages={curMessages} />;
-    } else if (messageType === 1) {
-      return <UnreadMessages messages={curMessages} />;
-    } else if (messageType === 2) {
-      return <SentMessages messages={curMessages} />;
-    }
-  };
-  const messagesPageContent = () => {
-    const { isLoading, error } = pageStatus;
-    if (isLoading) {
-      return <PageLoader />;
-    } else if (error) {
-      return <div>Something went wrong.</div>;
-    } else {
-      return (
-        <>
-          <div className="Messages-action-bar">
-            <GeneralButton
-              method={toggleAll}
-              text="All"
-              addClass="general-theme-button"
-            />
-            <GeneralButton
-              method={toggleUnread}
-              text="unread"
-              addClass="general-theme-button"
-            />
-            <GeneralButton
-              method={toggleSent}
-              text="sent"
-              addClass="general-theme-button"
-            />
-          </div>
-          {currentUser && curMessages ? displayMessageType() : null}
-        </>
-      );
-    }
+  const content = () => {
+    const { pageData } = pageStatus;
+    const displayMessageType = () => {
+      if (messageType === 0) {
+        return <AllMessages messages={pageData} />;
+      } else if (messageType === 1) {
+        return <UnreadMessages messages={pageData} />;
+      } else if (messageType === 2) {
+        return <SentMessages messages={pageData} />;
+      }
+    };
+    return (
+      <>
+        <h3 className="page-heading">Messages</h3>
+        <div className="Messages-action-bar">
+          <GeneralButton
+            method={toggleAll}
+            text="All"
+            addClass="general-theme-button"
+          />
+          <GeneralButton
+            method={toggleUnread}
+            text="unread"
+            addClass="general-theme-button"
+          />
+          <GeneralButton
+            method={toggleSent}
+            text="sent"
+            addClass="general-theme-button"
+          />
+        </div>
+        {currentUser && pageData ? displayMessageType() : null}
+      </>
+    );
   };
   return (
     <div className="MessagesPage-content">
-      <h3 className="page-heading">Messages</h3>
-      {messagesPageContent()}
+      {utilPageContent(pageStatus, content)}
     </div>
   );
 };

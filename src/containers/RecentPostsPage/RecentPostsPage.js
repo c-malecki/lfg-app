@@ -1,57 +1,55 @@
 import React, { useState, useEffect } from "react";
-import {
-  PostPreview,
-  GeneralButton,
-  PageLoader,
-} from "../../components/components_index";
+import { PostPreview, GeneralButton } from "../../components/components_index";
 import { useSelector } from "react-redux";
-import axios from "axios";
+import Axios from "axios";
+import { utilPageContent } from "../../assets/util/utilPageContent";
 
 export const RecentPostsPage = (props) => {
+  // Page state
   const [pageStatus, setPageStatus] = useState({
     isLoading: true,
     error: null,
+    pageData: null,
   });
-  const [postsForPage, setPostsForPage] = useState(null);
+  // Posts state
   const [viewAll, setViewAll] = useState(true);
   const { currentUser } = useSelector((state) => state.userReducer);
-
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/posts`)
+    Axios.get(`${process.env.REACT_APP_API_URL}/posts`)
       .then((res) => {
-        setPostsForPage(res.data);
         setPageStatus({
           isLoading: false,
           error: null,
+          pageData: res.data,
         });
       })
       .catch((error) => {
         setPageStatus({
           isLoading: false,
           error: error.message,
+          pageData: null,
         });
       });
   }, []);
 
+  // Changes posts to display all posts
   const handleToggleAll = () => {
     setViewAll(true);
   };
+  // Changes posts to display only joined groups posts
   const handleToggleGroups = () => {
     setViewAll(false);
   };
-  const recentPostsContent = () => {
-    const { isLoading, error } = pageStatus;
-    if (isLoading) {
-      return <PageLoader />;
-    } else if (error) {
-      return <div>Something went wrong.</div>;
-    } else if (currentUser && postsForPage) {
-      const groupPosts = postsForPage.filter(
+  const content = () => {
+    const { pageData } = pageStatus;
+    // if a user is logged in, show filter options between all posts or posts from joined groups
+    if (currentUser && pageData) {
+      const groupPosts = pageData.filter(
         (p) => currentUser.groups.group_name_list.indexOf(p.posted_in) > -1
       );
       return (
         <>
+          <h2 className="page-heading">Recent Posts</h2>
           <div className="RecentPosts-actions">
             <GeneralButton
               text="all"
@@ -67,7 +65,7 @@ export const RecentPostsPage = (props) => {
           </div>
           {viewAll ? (
             <>
-              {postsForPage.map((p) => (
+              {pageData.map((p) => (
                 <PostPreview post={p} key={p.post_id} />
               ))}
             </>
@@ -81,20 +79,22 @@ export const RecentPostsPage = (props) => {
         </>
       );
     } else {
+      // if no user is logged in, just show all posts with no filter options
       return (
         <>
+          <h2 className="page-heading">Recent Posts</h2>
           <span className="search-placeholder">search placeholder</span>
-          {postsForPage.map((p) => (
+          {pageData.map((p) => (
             <PostPreview post={p} key={p.post_id} />
           ))}
         </>
       );
     }
   };
+
   return (
     <div className="RecentPostsPage-content">
-      <h2 className="page-heading">Recent Posts</h2>
-      {recentPostsContent()}
+      {utilPageContent(pageStatus, content)}
     </div>
   );
 };

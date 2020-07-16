@@ -1,60 +1,56 @@
 import React, { useState, useEffect } from "react";
-import { GroupPreview, PageLoader } from "../../components/components_index";
+import { GroupPreview } from "../../components/components_index";
 import axios from "axios";
+import { utilPageContent } from "../../assets/util/utilPageContent";
 
 export const GroupsListPage = (props) => {
   const [pageStatus, setPageStatus] = useState({
     isLoading: true,
     error: null,
+    pageData: null,
   });
-  const [groupsForPage, setGroupsForPage] = useState(null);
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/groups`)
       .then((res) => {
-        setGroupsForPage(res.data);
         setPageStatus({
           isLoading: false,
           error: null,
+          pageData: res.data,
         });
       })
       .catch((error) => {
         setPageStatus({
           isLoading: false,
           error: error.message,
+          pageData: null,
         });
       });
   }, []);
-  const groupsListContent = () => {
-    const { isLoading, error } = pageStatus;
-    if (isLoading) {
-      return <PageLoader />;
-    } else if (error) {
-      return <div>Something went wrong.</div>;
-    } else {
-      return (
-        <>
-          {groupsForPage.map((g) => {
-            return (
-              <GroupPreview
-                group={{
-                  name: g.group_name,
-                  description: g.group_profile.description,
-                  img: g.group_profile.group_img,
-                }}
-                key={g.group_id}
-              />
-            );
-          })}
-        </>
-      );
-    }
+  const content = () => {
+    const { pageData } = pageStatus;
+    return (
+      <>
+        <h2 className="page-heading">Groups</h2>
+        <span className="search-placeholder">search placeholder</span>
+        {pageData.map((g) => {
+          return (
+            <GroupPreview
+              group={{
+                name: g.group_name,
+                description: g.group_profile.description,
+                img: g.group_profile.group_img,
+              }}
+              key={g.group_id}
+            />
+          );
+        })}
+      </>
+    );
   };
   return (
     <div className="GroupsListPage-content">
-      <h2 className="page-heading">Groups</h2>
-      <span className="search-placeholder">search placeholder</span>
-      {groupsListContent()}
+      {utilPageContent(pageStatus, content)}
     </div>
   );
 };
