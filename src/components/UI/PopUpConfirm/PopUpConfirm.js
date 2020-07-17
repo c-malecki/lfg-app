@@ -16,7 +16,7 @@ export const PopUpConfirm = (props) => {
           <GeneralButton
             text="ok"
             method={props.ok}
-            addClass="general-theme-button"
+            addClass={`${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`}
           />
           <GeneralButton
             text="cancel"

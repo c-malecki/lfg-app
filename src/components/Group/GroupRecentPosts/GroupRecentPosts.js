@@ -20,7 +20,7 @@ export const GroupRecentPosts = (props) => {
         <GeneralLink
           url={`/g/${group}/newpost`}
           text="new post"
-          addClass="general-theme-link"
+          addClass={`${isDarkTheme ? "ui-link-dark " : "ui-link-light"}`}
         />
       ) : null}
       {posts.map((p) => {

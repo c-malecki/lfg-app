@@ -46,7 +46,7 @@ export const PendingFriendPreview = (props) => {
         <GeneralButton
           text="accept"
           method={() => handleAccept()}
-          addClass="general-theme-button"
+          addClass={`${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`}
         />
       );
     } else {

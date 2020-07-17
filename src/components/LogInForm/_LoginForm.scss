@@ -4,5 +4,15 @@
   .LogInForm-content {
     display: flex;
     flex-direction: column;
+
+    .textinput-dark {
+      background-color: $bg-content-light;
+      color: $text-black;
+    }
+
+    .textinput-light {
+      background-color: white;
+      color: $text-black;
+    }
   }
 }

@@ -14,6 +14,7 @@ export const RecentPostsPage = (props) => {
   // Posts state
   const [viewAll, setViewAll] = useState(true);
   const { currentUser } = useSelector((state) => state.userReducer);
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_URL}/posts`)
       .then((res) => {
@@ -49,19 +50,31 @@ export const RecentPostsPage = (props) => {
       );
       return (
         <>
-          <h2 className="page-heading">Recent Posts</h2>
+          <h2
+            className={`${
+              isDarkTheme ? "page-heading-dark" : "page-heading-light"
+            }`}
+          >
+            Recent Posts
+          </h2>
           <div className="page-actions">
             <GeneralButton
               text="all"
-              addClass="general-theme-button"
+              addClass={`${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`}
               method={() => handleToggleAll()}
             />
             <GeneralButton
               text="groups"
-              addClass="general-theme-button"
+              addClass={`${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`}
               method={() => handleToggleGroups()}
             />
-            <span className="search-placeholder">search placeholder</span>
+            <span
+              className={`search-placeholder ${
+                isDarkTheme ? "textinput-dark" : "textinput-light"
+              }`}
+            >
+              search placeholder
+            </span>
           </div>
           {viewAll ? (
             <>
@@ -82,8 +95,23 @@ export const RecentPostsPage = (props) => {
       // if no user is logged in, just show all posts with no filter options
       return (
         <>
-          <h2 className="page-heading">Recent Posts</h2>
-          <span className="search-placeholder">search placeholder</span>
+          <h2
+            className={`${
+              isDarkTheme ? "page-heading-dark" : "page-heading-light"
+            }`}
+          >
+            Recent Posts
+          </h2>
+          <div className="page-actions">
+            <span
+              className={`search-placeholder ${
+                isDarkTheme ? "textinput-dark" : "textinput-light"
+              }`}
+            >
+              search placeholder
+            </span>
+          </div>
+
           {pageData.map((p) => (
             <PostPreview post={p} key={p.post_id} />
           ))}

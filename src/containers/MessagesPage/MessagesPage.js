@@ -19,6 +19,7 @@ export const MessagesPage = (props) => {
   // Controls which messages are shown (still need to refactor to differentiate + add "read" property to message objects in DB)
   const [messageType, setMessageType] = useState(0);
   const { currentUser } = useSelector((state) => state.userReducer);
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   const { username } = currentUser;
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_URL}/users/${username}/messages`)
@@ -61,22 +62,28 @@ export const MessagesPage = (props) => {
     };
     return (
       <>
-        <h3 className="page-heading">Messages</h3>
+        <h2
+          className={`${
+            isDarkTheme ? "page-heading-dark" : "page-heading-light"
+          }`}
+        >
+          Messages
+        </h2>
         <div className="page-actions">
           <GeneralButton
             method={toggleAll}
             text="All"
-            addClass="general-theme-button"
+            addClass={`${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`}
           />
           <GeneralButton
             method={toggleUnread}
             text="unread"
-            addClass="general-theme-button"
+            addClass={`${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`}
           />
           <GeneralButton
             method={toggleSent}
             text="sent"
-            addClass="general-theme-button"
+            addClass={`${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`}
           />
         </div>
         {currentUser && pageData ? displayMessageType() : null}

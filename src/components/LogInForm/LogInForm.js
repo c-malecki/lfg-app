@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 export const LogInForm = () => {
   const dispatch = useDispatch();
   const { error } = useSelector((state) => state.userReducer);
-
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   return (
     <div className="LogInForm-container">
       <Formik
@@ -33,19 +33,25 @@ export const LogInForm = () => {
               <Field
                 name="user_name"
                 placeholder="username"
-                className="form-text"
+                className={`${
+                  isDarkTheme ? "textinput-dark" : "textinput-light"
+                }`}
               />
 
               <Field
                 name="password"
                 placeholder="password"
-                className="form-text"
+                className={`${
+                  isDarkTheme ? "textinput-dark" : "textinput-light"
+                }`}
               />
 
               <span>
                 <GeneralButton
                   type="submit"
-                  addClass="general-theme-button"
+                  addClass={`${
+                    isDarkTheme ? "ui-button-dark" : "ui-button-light"
+                  }`}
                   text="log in"
                 />
               </span>

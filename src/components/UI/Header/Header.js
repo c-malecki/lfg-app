@@ -11,8 +11,13 @@ import { useSelector } from "react-redux";
 export const Header = (props) => {
   const [openMobile, setOpenMobile] = useState(false);
   const { currentUser, isLoggedIn } = useSelector((state) => state.userReducer);
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   return (
-    <div className="Header-container">
+    <div
+      className={`Header-container ${
+        isDarkTheme ? "header-dark" : "header-light"
+      }`}
+    >
       <div className="Header-content">
         <LfgHeaderLink />
         <PageNav />

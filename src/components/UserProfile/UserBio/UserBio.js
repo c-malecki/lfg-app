@@ -50,7 +50,7 @@ export const UserBio = (props) => {
           <GeneralButton
             method={toggleEditBio}
             text="edit"
-            addClass="general-theme-button"
+            addClass={`${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`}
           />
         </span>
       ) : null}

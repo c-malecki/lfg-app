@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { GroupPreview, GeneralLink } from "../../components/components_index";
 import Axios from "axios";
 import { utilPageContent } from "../../assets/util/utilPageContent";
+import { useSelector } from "react-redux";
 
 export const UserJoinedGroupsPage = (props) => {
   // Page state
@@ -12,6 +13,7 @@ export const UserJoinedGroupsPage = (props) => {
     pageData: null,
   });
   const { username } = useParams();
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_URL}/users/${username}/groups`)
       .then((res) => {
@@ -33,16 +35,25 @@ export const UserJoinedGroupsPage = (props) => {
     const { pageData } = pageStatus;
     return (
       <>
-        <h2 className="page-heading">
+        <h2
+          className={`${
+            isDarkTheme ? "page-heading-dark" : "page-heading-light"
+          }`}
+        >
           <GeneralLink
             url={`/users/${username}`}
             text={username}
             addClass="PageHeaderLink"
           />
-          's Groups
         </h2>
         <div className="page-actions">
-          <span className="search-placeholder">search placeholder</span>
+          <span
+            className={`search-placeholder ${
+              isDarkTheme ? "textinput-dark" : "textinput-light"
+            }`}
+          >
+            search placeholder
+          </span>
         </div>
         {pageData.map((group) => {
           return (

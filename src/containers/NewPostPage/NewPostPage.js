@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NewPostForm } from "../../components/components_index";
+import { NewPostForm, GeneralLink } from "../../components/components_index";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import Axios from "axios";
@@ -21,6 +21,7 @@ export const NewPostPage = (props) => {
   const history = useHistory();
   const { group } = useParams();
   const { currentUser } = useSelector((state) => state.userReducer);
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_URL}/posts/tags`)
       .then((res) => {
@@ -51,6 +52,18 @@ export const NewPostPage = (props) => {
     const { pageData } = pageStatus;
     return (
       <>
+        <h2
+          className={`${
+            isDarkTheme ? "page-heading-dark" : "page-heading-light"
+          }`}
+        >
+          New Post In{" "}
+          <GeneralLink
+            url={`/g/${group}`}
+            text={`g/${group}`}
+            addClass="PageHeaderLink"
+          />
+        </h2>
         <NewPostForm
           post_tags={pageData}
           post_author={currentUser.username}

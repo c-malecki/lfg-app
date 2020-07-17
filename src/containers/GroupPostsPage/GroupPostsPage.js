@@ -13,6 +13,7 @@ export const GroupPostsPage = (props) => {
   });
   const { group } = useParams();
   const { isLoggedIn } = useSelector((state) => state.userReducer);
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_URL}/groups/${group}/posts`)
       .then((res) => {
@@ -34,13 +35,16 @@ export const GroupPostsPage = (props) => {
     const { pageData } = pageStatus;
     return (
       <>
-        <h2 className="page-heading">
+        <h2
+          className={`${
+            isDarkTheme ? "page-heading-dark" : "page-heading-light"
+          }`}
+        >
           <GeneralLink
             url={`/g/${group}`}
             text={`${group}`}
             addClass="PageHeaderLink"
-          />{" "}
-          Posts
+          />
         </h2>
 
         <div className="page-actions">
@@ -48,10 +52,16 @@ export const GroupPostsPage = (props) => {
             <GeneralLink
               url={`/g/${group}/newpost`}
               text="new post"
-              addClass="general-theme-link"
+              addClass={`${isDarkTheme ? "ui-link-dark " : "ui-link-light"}`}
             />
           ) : null}
-          <span className="search-placeholder">search placeholder</span>
+          <span
+            className={`search-placeholder ${
+              isDarkTheme ? "textinput-dark" : "textinput-light"
+            }`}
+          >
+            search placeholder
+          </span>
         </div>
 
         {pageData.map((p) => {

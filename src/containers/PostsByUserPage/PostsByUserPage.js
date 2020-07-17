@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { PostPreview, GeneralLink } from "../../components/components_index";
 import axios from "axios";
 import { utilPageContent } from "../../assets/util/utilPageContent";
+import { useSelector } from "react-redux";
 
 export const PostsByUserPage = (props) => {
   // Page state
@@ -12,6 +13,7 @@ export const PostsByUserPage = (props) => {
     pageData: null,
   });
   const { username } = useParams();
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/users/${username}/posts`)
@@ -34,16 +36,25 @@ export const PostsByUserPage = (props) => {
     const { pageData } = pageStatus;
     return (
       <>
-        <h2 className="page-heading">
+        <h2
+          className={`${
+            isDarkTheme ? "page-heading-dark" : "page-heading-light"
+          }`}
+        >
           <GeneralLink
             text={username}
             url={`/users/${username}`}
             addClass="PageHeaderLink"
           />
-          's Posts
         </h2>
         <div className="page-actions">
-          <span className="search-placeholder">search placeholder</span>
+          <span
+            className={`search-placeholder ${
+              isDarkTheme ? "textinput-dark" : "textinput-light"
+            }`}
+          >
+            search placeholder
+          </span>
         </div>
         {pageData.map((p) => {
           return <PostPreview post={p} key={`post-${p.post_id}`} />;

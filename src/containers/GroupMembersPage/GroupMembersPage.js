@@ -36,13 +36,16 @@ export const GroupMembersPage = (props) => {
     const { pageData } = pageStatus;
     return (
       <>
-        <h2 className="page-heading">
+        <h2
+          className={`${
+            isDarkTheme ? "page-heading-dark" : "page-heading-light"
+          }`}
+        >
           <GeneralLink
             url={`/g/${group}`}
             text={`${group}`}
             addClass="PageHeaderLink"
           />{" "}
-          Members
         </h2>
         <ul
           className={`GroupMembers-list ${

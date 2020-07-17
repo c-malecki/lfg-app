@@ -1,12 +1,12 @@
 .Page-wrapper {
+  position: relative;
   height: 100%;
+  padding-top: 50px;
   .Page-container {
     width: 100%;
     max-width: 1500px;
     height: 100%;
     margin: auto;
-    padding-top: 3rem;
-    overflow-y: hidden;
 
     .Page-content {
       display: flex;

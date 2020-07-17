@@ -77,10 +77,10 @@ export const UserProfileInfo = (props) => {
               },
             }}
             text="message"
-            addClass="general-theme-link"
+            addClass={`${isDarkTheme ? "ui-link-dark " : "ui-link-light"}`}
           />
           <GeneralButton
-            addClass="general-theme-button"
+            addClass={`${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`}
             disabled={friendButton.disabled}
             text={friendButton.text}
             method={() => handleFriendButtonMethod()}

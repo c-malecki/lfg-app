@@ -25,7 +25,7 @@
     }
   }
 
-  .current-user-link {
+  %current-user-link {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -42,12 +42,27 @@
     }
     span {
       font-weight: bold;
+    }
+  }
+
+  .current-user-dark {
+    @extend %current-user-link;
+    span {
       color: $text-white;
     }
   }
+  .current-user-light {
+    @extend %current-user-link;
+    span {
+      color: $text-black;
+    }
+  }
   @media (hover: hover) {
-    .current-user-link:hover {
+    .current-user-dark:hover {
       background-color: $lfg-l-gray;
+    }
+    .current-user-light:hover {
+      background-color: $bg-hover-light;
     }
   }
 

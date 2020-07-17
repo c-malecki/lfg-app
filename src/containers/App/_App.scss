@@ -1,9 +1,6 @@
 html,
 body,
-#root {
+#root,
+#root > .App {
   height: 100%;
-
-  .App {
-    height: 100%;
-  }
 }

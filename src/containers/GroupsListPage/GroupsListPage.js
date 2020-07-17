@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { GroupPreview } from "../../components/components_index";
 import axios from "axios";
 import { utilPageContent } from "../../assets/util/utilPageContent";
+import { useSelector } from "react-redux";
 
 export const GroupsListPage = (props) => {
   const [pageStatus, setPageStatus] = useState({
@@ -9,6 +10,7 @@ export const GroupsListPage = (props) => {
     error: null,
     pageData: null,
   });
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/groups`)
@@ -31,9 +33,21 @@ export const GroupsListPage = (props) => {
     const { pageData } = pageStatus;
     return (
       <>
-        <h2 className="page-heading">Groups</h2>
+        <h2
+          className={`${
+            isDarkTheme ? "page-heading-dark" : "page-heading-light"
+          }`}
+        >
+          Groups
+        </h2>
         <div className="page-actions">
-          <span className="search-placeholder">search placeholder</span>
+          <span
+            className={`search-placeholder ${
+              isDarkTheme ? "textinput-dark" : "textinput-light"
+            }`}
+          >
+            search placeholder
+          </span>
         </div>
 
         {pageData.map((g) => {

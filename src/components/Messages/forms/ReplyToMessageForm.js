@@ -5,6 +5,7 @@ import { GeneralButton } from "../../components_index";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import Axios from "axios";
+import { useSelector } from "react-redux";
 
 export const ReplyToMessageForm = (props) => {
   const [formState, setFormState] = useState({
@@ -12,6 +13,7 @@ export const ReplyToMessageForm = (props) => {
     isSubmitting: false,
   });
   const { username, message_id, addNewReply } = props;
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
 
   const toggleForm = () => {
     const { openForm } = formState;
@@ -33,7 +35,11 @@ export const ReplyToMessageForm = (props) => {
       <GeneralButton
         method={toggleForm}
         text="reply"
-        addClass={formState.openForm ? "hide" : "general-theme-button"}
+        addClass={
+          formState.openForm
+            ? "hide"
+            : `${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`
+        }
       />
       <div
         className={`ReplyToMessage-inner-container ${
@@ -71,12 +77,20 @@ export const ReplyToMessageForm = (props) => {
         >
           {({ errors }) => (
             <Form>
-              <Field name="message" as="textarea" className="form-textarea" />
+              <Field
+                name="message"
+                as="textarea"
+                className={`${
+                  isDarkTheme ? "textarea-dark" : "textarea-light"
+                }`}
+              />
               {errors.message ? <div>{errors.message}</div> : null}
               <div className="ReplyToMessage-submit-container">
                 <GeneralButton
                   type="submit"
-                  addClass="general-theme-button"
+                  addClass={`${
+                    isDarkTheme ? "ui-button-dark" : "ui-button-light"
+                  }`}
                   text="send"
                   disabled={formState.isSubmitting}
                 />

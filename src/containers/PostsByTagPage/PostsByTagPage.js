@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { PostPreview } from "../../components/components_index";
 import Axios from "axios";
 import { utilPageContent } from "../../assets/util/utilPageContent";
+import { useSelector } from "react-redux";
 
 export const PostsByTagPage = () => {
   // Page state
@@ -12,6 +13,7 @@ export const PostsByTagPage = () => {
     pageData: null,
   });
   const { tag } = useParams();
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_URL}/posts/bytags/${tag}`)
       .then((res) => {
@@ -33,9 +35,19 @@ export const PostsByTagPage = () => {
     const { pageData } = pageStatus;
     return (
       <>
-        <h2 className="page-heading">{`#${tag}`}</h2>
+        <h2
+          className={`${
+            isDarkTheme ? "page-heading-dark" : "page-heading-light"
+          }`}
+        >{`#${tag}`}</h2>
         <div className="page-actions">
-          <span className="search-placeholder">search placeholder</span>
+          <span
+            className={`search-placeholder ${
+              isDarkTheme ? "textinput-dark" : "textinput-light"
+            }`}
+          >
+            search placeholder
+          </span>
         </div>
         {pageData.map((p) => (
           <PostPreview post={p} key={`post-${p.post_id}`} />

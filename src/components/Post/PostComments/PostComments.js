@@ -35,7 +35,7 @@ export const PostComments = (props) => {
           }}
         />
       ) : null}
-      <h4 className="PostComments-heading">Comments</h4>
+
       {comments.map((c) => {
         return (
           <Comment

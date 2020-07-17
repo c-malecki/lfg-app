@@ -5,6 +5,7 @@ import { logoutUser } from "../../../redux/actions/user-actions";
 
 export const LogInOut = (props) => {
   const { isLoggedIn } = useSelector((state) => state.userReducer);
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   const dispatch = useDispatch();
   const handleLogOut = () => {
     dispatch(logoutUser());
@@ -16,7 +17,7 @@ export const LogInOut = (props) => {
           <GeneralButton
             method={handleLogOut}
             text="log out"
-            addClass="general-theme-button"
+            addClass={`${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`}
           />
         </span>
       ) : (
@@ -24,7 +25,7 @@ export const LogInOut = (props) => {
           <GeneralLink
             url="/login"
             text="log in"
-            addClass="general-theme-link"
+            addClass={`${isDarkTheme ? "ui-link-dark " : "ui-link-light"}`}
           />
         </span>
       )}

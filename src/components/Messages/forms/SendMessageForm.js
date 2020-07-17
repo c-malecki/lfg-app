@@ -6,6 +6,7 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import Axios from "axios";
 import Select from "react-select";
+import { useSelector } from "react-redux";
 
 export const SendMessageForm = (props) => {
   const MessageSchema = Yup.object().shape({
@@ -14,6 +15,7 @@ export const SendMessageForm = (props) => {
     toUser: Yup.string().required("You much select a recipient."),
   });
   const { from, to, setMessageStatus, userList } = props;
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   const userOptions = userList
     .map((u) => {
       return { value: u.username, label: u.username };
@@ -85,20 +87,26 @@ export const SendMessageForm = (props) => {
               <Field
                 name="subject"
                 placeholder="subject"
-                className="form-text"
+                className={`${
+                  isDarkTheme ? "textinput-dark" : "textinput-light"
+                }`}
               />
               {errors.subject ? <div>{errors.subject}</div> : null}
               <Field
                 name="message"
                 as="textarea"
                 placeholder="message..."
-                className="form-textarea"
+                className={`${
+                  isDarkTheme ? "textarea-dark" : "textarea-light"
+                }`}
               />
               {errors.message ? <div>{errors.message}</div> : null}
               <span>
                 <GeneralButton
                   type="submit"
-                  addClass="general-theme-button"
+                  addClass={`${
+                    isDarkTheme ? "ui-button-dark" : "ui-button-light"
+                  }`}
                   text="send"
                 />
               </span>

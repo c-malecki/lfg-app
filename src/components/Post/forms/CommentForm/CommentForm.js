@@ -5,6 +5,7 @@ import { GeneralButton } from "../../../components_index";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import Axios from "axios";
+import { useSelector } from "react-redux";
 
 export const CommentForm = (props) => {
   const [formState, setFormState] = useState({
@@ -12,7 +13,7 @@ export const CommentForm = (props) => {
     openForm: false,
   });
   const { currentUser, post_id, addNewComment } = props;
-
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   const toggleForm = () => {
     const { openForm } = formState;
     setFormState((prevState) => ({ ...prevState, openForm: !openForm }));
@@ -33,7 +34,11 @@ export const CommentForm = (props) => {
       <GeneralButton
         method={toggleForm}
         text="comment"
-        addClass={formState.openForm ? "hide" : "general-theme-button"}
+        addClass={
+          formState.openForm
+            ? "hide"
+            : `${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`
+        }
       />
       <div
         className={`CommentForm-inner-container ${
@@ -72,12 +77,20 @@ export const CommentForm = (props) => {
         >
           {({ errors }) => (
             <Form>
-              <Field name="content" as="textarea" className="form-textarea" />
+              <Field
+                name="content"
+                as="textarea"
+                className={`${
+                  isDarkTheme ? "textarea-dark" : "textarea-light"
+                }`}
+              />
               {errors.content ? <div>{errors.content}</div> : null}
               <div className="CommentForm-submit-container">
                 <GeneralButton
                   type="submit"
-                  addClass="general-theme-button"
+                  addClass={`${
+                    isDarkTheme ? "ui-button-dark" : "ui-button-light"
+                  }`}
                   text="comment"
                   disabled={formState.isSubmitting}
                 />

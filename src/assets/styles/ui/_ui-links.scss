@@ -21,11 +21,33 @@
   cursor: pointer;
 }
 
+%general-theme-link {
+  border: none;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  font-weight: bold;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.ui-link-dark {
+  @extend %general-theme-link;
+  background-color: $lfg-l-blue;
+  color: $text-white;
+}
+
+.ui-link-light {
+  @extend %general-theme-link;
+  background-color: $lfg-l-blue;
+  color: $text-white;
+}
+
 %text-link-s {
   font-size: 0.9rem;
   margin-right: 0.2rem;
   font-weight: 500;
-  color: $text-white;
 }
 
 .text-link-s-light {
@@ -78,8 +100,36 @@
 }
 
 @media (hover: hover) {
-  .nav-lnik:hover {
+  .nav-link:hover {
     background-color: $lfg-l-gray;
+  }
+}
+
+%nav-link {
+  display: inline-block;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 0.5rem;
+  border-radius: 0.2rem;
+  padding: 0.4rem 0.6rem;
+}
+
+.nav-link-dark {
+  @extend %nav-link;
+  color: $text-white;
+}
+
+.nav-link-light {
+  @extend %nav-link;
+  color: $text-black;
+}
+
+@media (hover: hover) {
+  .nav-link-dark:hover {
+    background-color: $lfg-l-gray;
+  }
+  .nav-link-light:hover {
+    background-color: $bg-hover-light;
   }
 }
 

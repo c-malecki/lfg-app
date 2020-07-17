@@ -1,14 +1,15 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { reformatDate } from "../../../../assets/util/reformatDate";
-import { GeneralButton, GeneralLink } from "../../../components_index";
+import { GeneralButton } from "../../../components_index";
 import { Formik, Form, Field, FieldArray } from "formik";
 import * as Yup from "yup";
 import Axios from "axios";
+import { useSelector } from "react-redux";
 
 export const NewPostForm = (props) => {
   const { post_author, post_tags, group, setPostStatus } = props;
-
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   const NewPostSchema = Yup.object().shape({
     title: Yup.string()
       .max(100, "Post title cannot be more than 100 characters.")
@@ -18,10 +19,6 @@ export const NewPostForm = (props) => {
 
   return (
     <div className="PostForm-container">
-      <h2>
-        New Post in{" "}
-        <GeneralLink url={`/g/${group}/posts`} text={`g/${group}`} />
-      </h2>
       <Formik
         initialValues={{
           title: "",
@@ -69,14 +66,18 @@ export const NewPostForm = (props) => {
             <div className="PostForm-content">
               <Field
                 name="title"
-                className="form-text"
+                className={`${
+                  isDarkTheme ? "textinput-dark" : "textinput-light"
+                }`}
                 placeholder="Title the post..."
                 id="PostForm-title"
               />
               {errors.title ? <div>{errors.title}</div> : null}
               <Field
                 name="tag_search"
-                className="form-text"
+                className={`${
+                  isDarkTheme ? "textinput-dark" : "textinput-light"
+                }`}
                 placeholder="Search for or add tags..."
                 id="PostForm-tag-search"
                 onChange={(e) => {
@@ -96,7 +97,11 @@ export const NewPostForm = (props) => {
                 render={(arrayHelpers) => (
                   <ul className="filtered-tags-list">
                     {values.tag_search === "" ? null : (
-                      <li>
+                      <li
+                        className={`${
+                          isDarkTheme ? "tags-li-dark" : "tags-li-light"
+                        }`}
+                      >
                         <span>{values.tag_search}</span>
                         <GeneralButton
                           addClass="form-add-button"
@@ -120,7 +125,12 @@ export const NewPostForm = (props) => {
                             return null;
                           } else {
                             return (
-                              <li key={i}>
+                              <li
+                                className={`${
+                                  isDarkTheme ? "tags-li-dark" : "tags-li-light"
+                                }`}
+                                key={`add-${t}`}
+                              >
                                 <span>{t}</span>
 
                                 <GeneralButton
@@ -142,13 +152,15 @@ export const NewPostForm = (props) => {
                 name="tags"
                 render={(arrayHelpers) => (
                   <ul className="added-tags-list">
-                    {values.tags.length > 0 ? (
-                      <div id="PostForm-tags-for-post">Tags for post</div>
-                    ) : null}
                     {values.tags.length > 0
                       ? values.tags.map((t, i) => {
                           return (
-                            <li key={i}>
+                            <li
+                              className={`${
+                                isDarkTheme ? "tags-li-dark" : "tags-li-light"
+                              }`}
+                              key={`remove-${t}`}
+                            >
                               <span>{t}</span>
 
                               <GeneralButton
@@ -169,14 +181,18 @@ export const NewPostForm = (props) => {
               <Field
                 name="content"
                 as="textarea"
-                className="form-textarea"
+                className={`${
+                  isDarkTheme ? "textarea-dark" : "textarea-light"
+                }`}
                 placeholder="Write a post..."
               />
               {errors.content ? <div>{errors.content}</div> : null}
               <span>
                 <GeneralButton
                   type="submit"
-                  addClass="general-theme-button"
+                  addClass={`${
+                    isDarkTheme ? "ui-button-dark" : "ui-button-light"
+                  }`}
                   text="post"
                 />
               </span>

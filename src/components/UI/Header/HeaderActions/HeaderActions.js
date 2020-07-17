@@ -4,7 +4,7 @@ import mail from "../../../../assets/images/mailicon2.svg";
 import allies from "../../../../assets/images/alliesicon.svg";
 import menubars from "../../../../assets/images/menubars.svg";
 import { useDispatch } from "react-redux";
-
+import { useSelector } from "react-redux";
 export const HeaderActions = (props) => {
   const {
     messageCount,
@@ -14,6 +14,7 @@ export const HeaderActions = (props) => {
     openMobile,
   } = props;
   const dispatch = useDispatch();
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   return (
     <div className="HeaderActions-container">
       <Link to="/messages" className="header-link">
@@ -28,7 +29,12 @@ export const HeaderActions = (props) => {
           {friendRequests > 0 ? friendRequests : ""}
         </span>
       </Link>
-      <Link to={`/users/${currentUser.username}`} className="current-user-link">
+      <Link
+        to={`/users/${currentUser.username}`}
+        className={`${
+          isDarkTheme ? "current-user-dark" : "current-user-light"
+        }`}
+      >
         <img
           src={currentUser.profile.user_img}
           alt=""
