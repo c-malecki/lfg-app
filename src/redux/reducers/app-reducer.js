@@ -4,6 +4,7 @@ import {
   OPEN_USER_ACTIONS,
   OPEN_YOUR_GROUPS,
   OPEN_YOUR_POSTS,
+  TOGGLE_THEME,
 } from "../action-types";
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   openYourPosts: false,
   openYourGroups: false,
   openCurrentUser: false,
+  isDarkTheme: true,
 };
 
 export const appReducer = (state = initialState, action) => {
@@ -70,6 +72,12 @@ export const appReducer = (state = initialState, action) => {
           openCurrentUser: !state.openCurrentUser,
         };
       }
+    }
+    case TOGGLE_THEME: {
+      return {
+        ...state,
+        isDarkTheme: !state.isDarkTheme,
+      };
     }
     default:
       return state;

@@ -5,10 +5,14 @@ import { useSelector } from "react-redux";
 export const GroupRecentPosts = (props) => {
   const { group, posts } = props;
   const { isLoggedIn } = useSelector((state) => state.userReducer);
-
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   return (
     <div className="GroupRecentPosts-container">
-      <div className="component-head">
+      <div
+        className={`${
+          isDarkTheme ? "component-head-dark" : "component-head-light"
+        }`}
+      >
         <h3>Posts</h3>
         <GeneralLink url={`${group}/posts`} text="See All" />
       </div>

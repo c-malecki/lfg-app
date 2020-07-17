@@ -9,6 +9,7 @@ export const UserBio = (props) => {
     showButton: true,
   });
   const { currentUser } = useSelector((state) => state.userReducer);
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   const { bio, userForPageUsername } = props;
   const toggleEditBio = () => {
     setEditBio({
@@ -18,7 +19,11 @@ export const UserBio = (props) => {
   };
   return (
     <div className="UserProfile-bio-container">
-      <div className="component-head">
+      <div
+        className={`${
+          isDarkTheme ? "component-head-dark" : "component-head-light"
+        }`}
+      >
         <h3>Bio</h3>
       </div>
 
@@ -29,7 +34,11 @@ export const UserBio = (props) => {
           username={userForPageUsername}
         />
       ) : (
-        <div className="UserProfile-bio">
+        <div
+          className={`UserProfile-bio ${
+            isDarkTheme ? "ui-content-dark" : "ui-content-light"
+          }`}
+        >
           <span>{bio}</span>
         </div>
       )}

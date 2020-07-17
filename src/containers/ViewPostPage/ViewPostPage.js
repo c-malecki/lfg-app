@@ -61,7 +61,7 @@ export const ViewPostPage = (props) => {
         <GeneralLink
           url={`/g/${group}/posts`}
           text={`back to ${group} posts`}
-          addClass="PageContentLink"
+          addClass="large-link"
         />
         <PostBody
           content={pageData}

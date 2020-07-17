@@ -2,34 +2,10 @@
   text-decoration: none;
 }
 
-.component-head-link {
-  display: inline-block;
-  padding: 0.2rem 0.1rem;
-}
-
-.GroupsLink {
+.large-link {
   font-size: 1.2rem;
   font-weight: bold;
-  color: $lfg-d-purple;
-}
-
-.PageContentLink {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: $lfg-d-purple;
-  margin-left: 0.5rem;
-}
-
-.PageHeaderLink {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: $lfg-d-purple;
-}
-
-.MessageUserLink {
-  display: inline-block;
-  text-transform: uppercase;
-  font-weight: bold;
+  color: $link-text;
 }
 
 .general-theme-link {
@@ -38,76 +14,78 @@
   padding: 0.2rem;
   background-color: $lfg-l-blue;
   font-weight: bold;
-  color: white;
+  color: $text-white;
   margin: 0.5rem 0.5rem 0.5rem 0;
   text-transform: uppercase;
   font-size: 0.9rem;
   cursor: pointer;
 }
 
-.PostLink {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: $lfg-d-purple;
+%text-link-s {
+  font-size: 0.9rem;
+  margin-right: 0.2rem;
+  font-weight: 500;
+  color: $text-white;
 }
 
-.PostPreviewText {
+.text-link-s-light {
+  @extend %text-link-s;
+  color: $text-black;
+}
+
+.text-link-s-dark {
+  @extend %text-link-s;
+  color: $text-white;
+}
+
+.in-text-link {
+  font-weight: bold;
+  margin-right: 0.2rem;
+  color: $link-text;
+}
+
+%comments-tags {
   font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.comments-tags-light {
+  @extend %comments-tags;
   color: $lfg-d-gray;
 }
 
-.PostPreviewHeadLink {
-  font-weight: bold;
-  margin-right: 0.2rem;
-  color: $lfg-d-purple;
-}
-
-.PostPreviewBodyLink {
-  font-size: 0.9rem;
-  font-weight: 500;
+.comments-tags-dark {
+  @extend %comments-tags;
   color: $lfg-l-gray;
 }
 
-.PostTag-link {
-  font-size: 0.9rem;
+.widget-header {
+  text-align: center;
+  font-size: 1.2rem;
   font-weight: bold;
-  margin-right: 0.2rem;
+  color: $link-text;
 }
 
-.UserLink {
-  font-weight: bold;
-  margin-right: 0.2rem;
-}
-
-.PageNavLink {
+// header and mobile nav
+.nav-link {
   display: inline-block;
   font-weight: bold;
   text-transform: uppercase;
-  margin-right: 1rem;
-  color: white;
-  border-radius: 0.5rem;
+  margin-right: 0.5rem;
+  color: $text-white;
+  border-radius: 0.2rem;
   padding: 0.4rem 0.6rem;
 }
 
 @media (hover: hover) {
-  .PageNavLink:hover {
-    background-color: $link-hover-dark;
+  .nav-lnik:hover {
+    background-color: $lfg-l-gray;
   }
 }
 
 @media only screen and (min-width: 0) and (max-width: 768px),
   only screen and (min-device-width: 0) and (max-width: 768px) {
-  .PostLink,
-  .GroupsLink {
+  .large-link {
     font-size: 1rem;
-  }
-
-  .PostHeadLink {
-    font-size: 0.9rem;
-  }
-
-  .PageNavLink {
-    font-size: 0.9rem;
-    margin-right: 0.5rem;
   }
 }

@@ -14,6 +14,7 @@ export const FriendsPage = (props) => {
     error: null,
     pageData: null,
   });
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   const { currentUser } = useSelector((state) => state.userReducer);
   const { username } = currentUser;
   // GET page data and set page status
@@ -47,7 +48,11 @@ export const FriendsPage = (props) => {
     );
   };
   return (
-    <div className="FriendsPage-content">
+    <div
+      className={`FriendsPage-content ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       {utilPageContent(pageStatus, content)}
     </div>
   );

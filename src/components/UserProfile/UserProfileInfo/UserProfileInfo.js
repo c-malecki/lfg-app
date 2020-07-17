@@ -16,6 +16,7 @@ export const UserProfileInfo = (props) => {
   } = props;
   const { user_img, first_name, last_name } = userForpageProfile;
   const { currentUser, isLoggedIn } = useSelector((state) => state.userReducer);
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   useEffect(() => {
     // if there is a current user, determines the Friends button text and whether it is disabled or not.
     // If the current user is not friends with the profile user, button is not disabled and the text is "Add Friend"
@@ -60,7 +61,11 @@ export const UserProfileInfo = (props) => {
       .catch((error) => console.log(error.message));
   };
   return (
-    <div className="UserProfileInfo-container">
+    <div
+      className={`UserProfileInfo-container ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       <h2>{userForPageUsername}</h2>
       {isLoggedIn && currentUser.username !== userForPageUsername ? (
         <div className="UserProfile-user-actions">

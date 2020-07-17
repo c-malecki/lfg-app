@@ -6,11 +6,12 @@ import {
   GeneralButton,
 } from "../../components_index";
 import Axios from "axios";
+import { useSelector } from "react-redux";
 
 export const PostBody = (props) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const { content, currentUser, post_id, group } = props;
-
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   const history = useHistory();
   const showPostDeleteButton = () => {
     if (currentUser && currentUser.username === content.post_author) {
@@ -28,7 +29,11 @@ export const PostBody = (props) => {
     }
   };
   return (
-    <div className="PostBody-container">
+    <div
+      className={`PostBody-container ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       <div className="PostBody-head">
         <h3 className="post-title-heading">{content.post_title}</h3>
         {showPostDeleteButton()}
@@ -56,7 +61,7 @@ export const PostBody = (props) => {
       <GeneralLink
         url={`/users/${content.post_author}`}
         text={content.post_author}
-        addClass="UserLink"
+        addClass="in-text-link"
       />
       <span className="head-text-content">at {content.date_posted}</span>
       {content.post_tags.map((tag) => (
@@ -64,7 +69,9 @@ export const PostBody = (props) => {
           url={`/posts/tags/${tag}`}
           key={`${content.title}-${tag}`}
           text={`#${tag}`}
-          addClass="PostTag-link "
+          addClass={`${
+            isDarkTheme ? "comments-tags-dark" : "comments-tags-light"
+          }`}
         />
       ))}
       <p>{content.post_content}</p>

@@ -1,16 +1,33 @@
+.bg-dark-theme {
+  background-color: $bg-dark;
+}
+
+.bg-light-theme {
+  background-color: $bg-light;
+}
+
 %ui-content-container {
   border-radius: 0.3rem;
   margin: 0.5rem;
-  background-color: $bg-black;
   overflow: hidden;
 }
 
 %ui-content-inner {
   border-radius: 0.3rem;
   margin: 0.5rem;
-  background-color: $bg-off-white;
-  border: 1px solid $lfg-l-gray;
   overflow: hidden;
+}
+
+.ui-content-dark {
+  @extend %ui-content-container;
+  background-color: $bg-content-dark;
+  color: $text-white;
+}
+
+.ui-content-light {
+  @extend %ui-content-container;
+  background-color: $bg-content-light;
+  color: $text-black;
 }
 
 .head-text-content {
@@ -26,6 +43,12 @@
   color: white;
   margin-left: 0.5rem;
   margin-block-start: 0.5rem;
+
+  a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $link-text;
+  }
 }
 
 .page-actions {
@@ -34,21 +57,21 @@
 }
 
 .search-placeholder {
-  border: 1px solid $lfg-l-gray;
   width: 10rem;
   padding: 0.2rem 0.4rem;
   border-radius: 0.3rem;
-  background-color: $bg-off-white;
+  background-color: $bg-ui-dark;
+  color: $text-black;
 }
 
-.component-head {
+%component-head {
   display: flex;
   flex-direction: row;
 
   h3 {
     margin-block-start: 0;
     margin-block-end: 0;
-    color: white;
+    color: $text-white;
   }
   a {
     margin-left: auto;
@@ -58,12 +81,35 @@
     border-radius: 0.2rem;
     color: $link-text;
   }
-
+}
+.component-head-light {
+  @extend %component-head;
+  h3 {
+    color: $text-black;
+  }
   @media (hover: hover) {
     a:hover {
-      background-color: $link-hover-dark;
+      background-color: $bg-ui-light;
     }
   }
+}
+
+.component-head-dark {
+  @extend %component-head;
+  h3 {
+    color: $text-white;
+  }
+  @media (hover: hover) {
+    a:hover {
+      background-color: $lfg-d-gray;
+    }
+  }
+}
+
+.widget-heading {
+  text-align: center;
+  margin-block-end: 0.5em;
+  margin-block-start: 0.5rem;
 }
 
 // Only in AllMessages, UnreadMessages, SentMessages which will be reworked
@@ -75,12 +121,4 @@
 // only in CurrentUserMobile and YourGroupsMobile which widgets will be reworked
 .not-logged-in {
   text-align: center;
-}
-
-// only used in widgets which will get reworked
-.component-heading {
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  margin-block-end: 0.5em;
-  margin-block-start: 0.5rem;
 }

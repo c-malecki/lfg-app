@@ -26,7 +26,7 @@ export const AcceptedFriendPreview = (props) => {
           <GeneralLink
             text={username}
             url={`/users/${username}`}
-            addClass="UserLink"
+            addClass="in-text-link"
           />
           <GeneralButton
             text="remove"

@@ -1,8 +1,12 @@
 .GroupInfo-container {
-  @extend %ui-content-inner;
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
+
+  h3 {
+    margin-block-start: 0.5rem;
+    margin-block-end: 0.5rem;
+  }
 
   img {
     margin: auto;

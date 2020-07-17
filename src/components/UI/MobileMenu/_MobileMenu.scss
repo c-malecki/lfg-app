@@ -11,10 +11,10 @@
   .MobileMenu-content {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    padding-top: 2rem;
 
     a {
-      margin: auto;
+      margin: 1rem auto;
     }
 
     span {

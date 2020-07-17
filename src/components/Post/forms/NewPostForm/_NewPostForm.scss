@@ -24,13 +24,13 @@
 
       li {
         display: inline-block;
-        border: 1px solid $lfg-l-gray;
         border-radius: 0.3rem;
         padding-left: 0.3rem;
-        background-color: $bg-off-white;
+        background-color: $bg-ui-dark;
         font-size: 0.9rem;
         margin-right: 0.3rem;
         margin-bottom: 0.3rem;
+        color: $text-white;
       }
     }
   }

@@ -1,13 +1,23 @@
 // html, body, #root backgound colors
-$bg-black: rgb(25, 25, 25);
-// pageContent background color
-// $bg-off-white: rgb(240, 240, 240);
+$bg-dark: rgb(30, 30, 30);
+$bg-light: rgb(240, 240, 240);
+
+// dark theme
+$text-white: rgb(250, 250, 250);
+$bg-content-dark: rgb(60, 60, 60);
+$bg-ui-dark: rgb(160, 160, 160);
+
+// light theme
+$text-black: rgb(30, 30, 30);
+$bg-content-light: rgb(250, 250, 250);
+$bg-ui-light: rgb(200, 200, 200);
+
+// general ui
+$link-text: rgb(49, 121, 255);
 $bg-l-gray: rgb(215, 215, 215);
 $bg-d-gray: rgb(100, 100, 100);
-// header
-$bg-off-white: rgb(250, 250, 250);
 
-// theme colors
+// brand colors
 $lfg-l-blue: #71aada;
 $lfg-d-blue: #6091ba;
 $lfg-l-red: #d87870;
@@ -16,8 +26,4 @@ $lfg-l-purple: #963e93;
 $lfg-d-purple: #542352;
 $lfg-l-gray: #8c8686;
 $lfg-d-gray: #645f5f;
-
-$ui-green: #64e770;
-
-$link-text: rgb(49, 121, 255);
-$link-hover-dark: rgb(150, 150, 150);
+$lfg-green: #64e770;

@@ -14,9 +14,6 @@ export * from "./UI/MobileMenu/MobileMenu";
 export * from "./Widgets/CurrentUser/CurrentUser";
 export * from "./Widgets/YourGroups/YourGroups";
 export * from "./Widgets/YourPosts/YourPosts";
-export * from "./Widgets/YourGroupsMobile/YourGroupsMobile";
-export * from "./Widgets/YourPostsMobile/YourPostsMobile";
-export * from "./Widgets/CurrentUserMobile/CurrentUserMobile";
 
 // Components
 export * from "./LogInForm/LogInForm";

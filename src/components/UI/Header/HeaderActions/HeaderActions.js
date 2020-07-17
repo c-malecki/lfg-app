@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import mail from "../../../../assets/images/mailicon2.svg";
 import allies from "../../../../assets/images/alliesicon.svg";
 import menubars from "../../../../assets/images/menubars.svg";
+import { useDispatch } from "react-redux";
 
 export const HeaderActions = (props) => {
   const {
@@ -12,6 +13,7 @@ export const HeaderActions = (props) => {
     setOpenMobile,
     openMobile,
   } = props;
+  const dispatch = useDispatch();
   return (
     <div className="HeaderActions-container">
       <Link to="/messages" className="header-link">
@@ -32,10 +34,13 @@ export const HeaderActions = (props) => {
           alt=""
           className="current-user-pic"
         />
-        <span className="UserLink" id="usename-header-text">
-          {currentUser.username}
-        </span>
+        <span id="usename-header-text">{currentUser.username}</span>
       </Link>
+      <div>
+        <button onClick={() => dispatch({ type: "TOGGLE_THEME" })}>
+          theme
+        </button>
+      </div>
       <div className="MobileMenu-button-container">
         <button
           className="Mobile-Menu-Button"

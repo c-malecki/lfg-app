@@ -6,6 +6,7 @@ export const YourPosts = (props) => {
   const { currentUser, isLoggedIn, isLoading, widgets } = useSelector(
     (state) => state.userReducer
   );
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   const widgetContent = () => {
     if (widgets.isLoading) {
       return <WidgetLoader />;
@@ -16,13 +17,11 @@ export const YourPosts = (props) => {
       const { username } = currentUser;
       return (
         <>
-          <h3 className="component-heading">
-            <GeneralLink
-              url={`/users/${username}/posts`}
-              text="Your Posts"
-              addClass="PageContentLink"
-            />
-          </h3>
+          <GeneralLink
+            url={`/users/${username}/posts`}
+            text="Your Posts"
+            addClass="widget-header"
+          />
           {posts
             ? posts.map((p) => {
                 return (
@@ -30,12 +29,17 @@ export const YourPosts = (props) => {
                     <GeneralLink
                       url={`/g/${p.posted_in}/posts/${p.post_id}`}
                       text={p.post_title}
-                      addClass="PostLink"
+                      addClass="large-link"
                     />
                     <span className="PostPreview-comments">
                       <GeneralLink
                         url={`/g/${p.posted_in}/posts/${p.post_id}`}
                         text={`${p.comments.length} comments`}
+                        addClass={`${
+                          isDarkTheme
+                            ? "comments-tags-dark"
+                            : "comments-tags-light"
+                        }`}
                       />
                     </span>
                   </div>
@@ -49,7 +53,13 @@ export const YourPosts = (props) => {
   return (
     <>
       {!isLoading && currentUser && isLoggedIn ? (
-        <div className="YourPosts-container">{widgetContent()}</div>
+        <div
+          className={`YourPosts-container ${
+            isDarkTheme ? "ui-content-dark" : "ui-content-light"
+          }`}
+        >
+          {widgetContent()}
+        </div>
       ) : null}
     </>
   );

@@ -4,6 +4,7 @@ import {
   OPEN_USER_ACTIONS,
   OPEN_YOUR_GROUPS,
   OPEN_YOUR_POSTS,
+  TOGGLE_THEME,
 } from "../action-types";
 
 export const openMobilePageNav = () => ({
@@ -24,4 +25,8 @@ export const openYourGroups = () => ({
 
 export const openYourPosts = () => ({
   type: OPEN_YOUR_POSTS,
+});
+
+export const toggleTheme = () => ({
+  type: TOGGLE_THEME,
 });

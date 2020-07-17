@@ -5,9 +5,9 @@ export const PageNav = (props) => {
   return (
     <div className="PageNav-container">
       <span>
-        <GeneralLink url="/" text="home" addClass="PageNavLink" />
-        <GeneralLink url="/g" text="groups" addClass="PageNavLink" />
-        <GeneralLink url="/posts" text="posts" addClass="PageNavLink" />
+        <GeneralLink url="/" text="home" addClass="nav-link" />
+        <GeneralLink url="/g" text="groups" addClass="nav-link" />
+        <GeneralLink url="/posts" text="posts" addClass="nav-link" />
       </span>
     </div>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { GeneralButton, GeneralLink } from "../../components_index";
+import { useSelector } from "react-redux";
 
 export const Comment = (props) => {
   const {
@@ -10,13 +11,18 @@ export const Comment = (props) => {
     comment_id,
     comment_content,
   } = props;
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   return (
-    <div className="Comment-container">
+    <div
+      className={`Comment-container ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       <span className="head-text-content">By</span>
       <GeneralLink
         url={`/users/${username}`}
         text={username}
-        addClass="UserLink"
+        addClass="in-text-link"
       />
       <span className="head-text-content">at {date_posted}</span>
       {currentUser !== null && currentUser.username === username ? (

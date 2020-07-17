@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { GeneralLink } from "../../components/components_index";
 import Axios from "axios";
 import { utilPageContent } from "../../assets/util/utilPageContent";
+import { useSelector } from "react-redux";
 
 export const GroupMembersPage = (props) => {
   // Page state
@@ -12,6 +13,7 @@ export const GroupMembersPage = (props) => {
     pageData: null,
   });
   const { group } = useParams();
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   // GET page data and set page status
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_URL}/groups/${group}/members`)
@@ -42,7 +44,11 @@ export const GroupMembersPage = (props) => {
           />{" "}
           Members
         </h2>
-        <ul className="GroupMembers-list">
+        <ul
+          className={`GroupMembers-list ${
+            isDarkTheme ? "ui-content-dark" : "ui-content-light"
+          }`}
+        >
           {pageData.map((m) => {
             return (
               <li key={m.member_id}>
@@ -50,7 +56,7 @@ export const GroupMembersPage = (props) => {
                   <GeneralLink
                     url={`/users/${m.username}`}
                     text={m.username}
-                    addClass="UserLink"
+                    addClass="in-text-link"
                   />
                   <span>{m.role}</span>
                 </div>

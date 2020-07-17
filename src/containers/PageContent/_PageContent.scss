@@ -1,38 +1,46 @@
-.Page-container {
-  width: 100%;
-  max-width: 1500px;
+.Page-wrapper {
   height: 100%;
-  margin: auto;
-  padding-top: 3.5rem;
-  overflow-y: hidden;
-
-  .Page-content {
-    display: flex;
-    flex-direction: row;
+  .Page-container {
     width: 100%;
+    max-width: 1500px;
     height: 100%;
     margin: auto;
-    background: $bg-black;
+    padding-top: 3rem;
+    overflow-y: hidden;
 
-    .Page-content-col1 {
+    .Page-content {
+      display: flex;
+      flex-direction: row;
       width: 100%;
-      max-width: 250px;
-    }
-    .Page-content-col2 {
-      width: 100%;
-      max-width: 1000px;
-      overflow-y: scroll;
-      .Page-content-inner {
-        display: flex;
-        flex-direction: column;
+      height: 100%;
+      margin: auto;
+
+      .Page-content-col1 {
         width: 100%;
-
-        margin: auto;
+        max-width: 250px;
+        padding-top: 0.5rem;
       }
-    }
-    .Page-content-col3 {
-      width: 100%;
-      max-width: 250px;
+      .Page-content-col2 {
+        width: 100%;
+        max-width: 1000px;
+        overflow-y: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+        .Page-content-inner {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          margin: auto;
+        }
+      }
+      .Page-content-col2::-webkit-scrollbar {
+        width: 0px;
+      }
+      .Page-content-col3 {
+        width: 100%;
+        max-width: 250px;
+        padding-top: 0.5rem;
+      }
     }
   }
 }
@@ -40,14 +48,9 @@
 @media only screen and (min-width: 0px) and (max-width: 1200px),
   only screen and (min-device-width: 0px) and (max-width: 1200px) {
   .Page-container {
-    width: 100%;
     .Page-content {
       .Page-content-col1 {
         display: none;
-      }
-      .Page-content-col2 {
-        width: 100%;
-        overflow-y: scroll;
       }
     }
   }
@@ -62,13 +65,6 @@
       .Page-content-col1,
       .Page-content-col3 {
         display: none;
-      }
-      .Page-content-col2 {
-        width: 100%;
-        overflow-y: scroll;
-        .Page-content-inner {
-          padding-top: 0.5rem;
-        }
       }
     }
   }

@@ -4,6 +4,7 @@ import {
   GeneralButton,
   PopUpConfirm,
 } from "../../components_index";
+import { useSelector } from "react-redux";
 
 export const PendingFriendPreview = (props) => {
   const [showConfirm, setShowConfirm] = useState(false);
@@ -19,6 +20,7 @@ export const PendingFriendPreview = (props) => {
     currentUsername,
     sent_from,
   } = props;
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   const { user_img, username } = request;
   // Sends POST request to cancel or deny friend request, closes the pop up, and changes UI to reflect request being canceled or denied.
   const handleCancelDeny = () => {
@@ -63,7 +65,7 @@ export const PendingFriendPreview = (props) => {
           <GeneralLink
             text={username}
             url={`/users/${username}`}
-            addClass="UserLink"
+            addClass="in-text-link"
           />
           <GeneralButton
             text={buttonText}
@@ -84,7 +86,11 @@ export const PendingFriendPreview = (props) => {
           ok={handleCancelDeny}
         />
       ) : null}
-      <div className="FriendPreview-container">{friendPreviewContent()}</div>
+      <div
+        className={`${isDarkTheme ? "ui-content-dark" : "ui-content-light"}`}
+      >
+        {friendPreviewContent()}
+      </div>
     </>
   );
 };

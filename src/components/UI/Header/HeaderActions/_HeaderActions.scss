@@ -32,12 +32,22 @@
     align-items: center;
     text-decoration: none;
     margin-right: 1rem;
+    border-radius: 0.2rem;
     .current-user-pic {
       height: 2rem;
       width: 2rem;
       overflow: hidden;
       border-radius: 50%;
       margin-right: 0.2rem;
+    }
+    span {
+      font-weight: bold;
+      color: $text-white;
+    }
+  }
+  @media (hover: hover) {
+    .current-user-link:hover {
+      background-color: $lfg-l-gray;
     }
   }
 

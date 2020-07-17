@@ -1,12 +1,12 @@
 .PopUpConfirm-container {
   position: absolute;
-  @extend %ui-content-inner;
   padding: 0.5rem;
   left: 0;
   right: 0;
   margin: auto;
   width: 12rem;
   height: 8rem;
+  border: 1px solid $lfg-l-gray;
 
   .PopUpConfirm-content {
     display: flex;
