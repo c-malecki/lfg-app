@@ -1,5 +1,6 @@
 .LogInPage-container {
   @extend %ui-content-container;
+  width: 100%;
   .LogInPage-content {
     display: flex;
     flex-direction: column;

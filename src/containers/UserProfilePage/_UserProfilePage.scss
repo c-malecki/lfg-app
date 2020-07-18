@@ -1,5 +1,6 @@
 .UserProfilePage-container {
   @extend %ui-content-container;
+  width: 100%;
   .UserProfilePage-content {
     display: flex;
     flex-direction: row;

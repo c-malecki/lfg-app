@@ -1,56 +1,52 @@
 .Page-wrapper {
   position: relative;
-  height: 100%;
+  min-height: 100vh;
   padding-top: 50px;
   .Page-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
     width: 100%;
-    max-width: 1500px;
     height: 100%;
     margin: auto;
 
-    .Page-content {
+    .Page-content-col1 {
+      position: fixed;
+      left: 0;
+      width: 20%;
+      max-width: 250px;
+      padding-top: 0.5rem;
+    }
+    .Page-content-col2 {
+      position: relative;
       display: flex;
-      flex-direction: row;
-      width: 100%;
-      height: 100%;
-      margin: auto;
-
-      .Page-content-col1 {
-        width: 100%;
-        max-width: 250px;
-        padding-top: 0.5rem;
-      }
-      .Page-content-col2 {
-        width: 100%;
-        max-width: 1000px;
-        overflow-y: scroll;
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* Internet Explorer 10+ */
-        .Page-content-inner {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          margin: auto;
-        }
-      }
-      .Page-content-col2::-webkit-scrollbar {
-        width: 0px;
-      }
-      .Page-content-col3 {
-        width: 100%;
-        max-width: 250px;
-        padding-top: 0.5rem;
-      }
+      width: 60%;
+      margin: 0 auto;
+    }
+    .Page-content-col3 {
+      position: fixed;
+      right: 0;
+      width: 20%;
+      max-width: 250px;
+      padding-top: 0.5rem;
     }
   }
 }
 
 @media only screen and (min-width: 0px) and (max-width: 1200px),
   only screen and (min-device-width: 0px) and (max-width: 1200px) {
-  .Page-container {
-    .Page-content {
+  .Page-wrapper {
+    .Page-container {
       .Page-content-col1 {
         display: none;
+      }
+      .Page-content-col2 {
+        width: 70%;
+        margin: 0 auto auto 0;
+      }
+      .Page-content-col3 {
+        width: 30%;
+        flex-basis: 250px;
       }
     }
   }
@@ -58,13 +54,17 @@
 
 @media only screen and (min-width: 0px) and (max-width: 768px),
   only screen and (min-device-width: 0px) and (max-width: 768px) {
-  .Page-container {
-    padding: 0;
-    .Page-content {
-      position: relative;
+  .Page-wrapper {
+    padding-top: 0;
+    .Page-container {
+      padding: 0;
+
       .Page-content-col1,
       .Page-content-col3 {
         display: none;
+      }
+      .Page-content-col2 {
+        width: 100%;
       }
     }
   }

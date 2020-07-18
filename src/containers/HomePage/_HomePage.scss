@@ -1,5 +1,8 @@
 .HomePage-container {
   @extend %ui-content-container;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   h1 {
     text-align: center;
   }

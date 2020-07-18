@@ -18,6 +18,7 @@ export const ViewPostPage = (props) => {
   });
   const { id, group } = useParams();
   const { currentUser } = useSelector((state) => state.userReducer);
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_URL}/posts/ids/${id}`)
       .then((res) => {
@@ -58,11 +59,17 @@ export const ViewPostPage = (props) => {
     };
     return (
       <>
-        <GeneralLink
-          url={`/g/${group}/posts`}
-          text={`back to ${group} posts`}
-          addClass="large-link"
-        />
+        <h2
+          className={`${
+            isDarkTheme ? "page-heading-dark" : "page-heading-light"
+          }`}
+        >
+          <GeneralLink
+            url={`/g/${group}/posts`}
+            text={`Back to ${group} posts`}
+            addClass="large-link"
+          />
+        </h2>
         <PostBody
           content={pageData}
           currentUser={currentUser}
@@ -86,7 +93,7 @@ export const ViewPostPage = (props) => {
     );
   };
   return (
-    <div className="PostPage-content">
+    <div className="ViewPostPage-content">
       {utilPageContent(pageStatus, content)}
     </div>
   );

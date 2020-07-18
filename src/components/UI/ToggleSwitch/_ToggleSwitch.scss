@@ -1,0 +1,79 @@
+.ToggleSwitch-container {
+  width: 2rem;
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    height: 1rem;
+    width: 100%;
+    cursor: pointer;
+    border: 2px solid $lfg-l-gray;
+    border-radius: 0.2rem;
+
+    &:focus,
+    &:hover {
+      outline: none;
+      background: $bg-light;
+    }
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 1.5rem;
+    width: 1rem;
+    border-radius: 0.2rem;
+    background: $bg-content-dark;
+    border: 2px solid $lfg-d-gray;
+    cursor: pointer;
+    margin-top: 0px;
+  }
+}
+
+%toggle-switch {
+  width: 2rem;
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    height: 1rem;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 0.2rem;
+
+    &:focus,
+    &:hover {
+      outline: none;
+    }
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 1.5rem;
+    width: 1rem;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    margin-top: 0px;
+  }
+}
+
+.toggle-dark {
+  @extend %toggle-switch;
+  input[type="range"] {
+    background: $bg-light;
+    border: 2px solid $lfg-l-gray;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    background: $bg-content-dark;
+    border: 2px solid $lfg-d-gray;
+  }
+}
+
+.toggle-light {
+  @extend %toggle-switch;
+  input[type="range"] {
+    background: $bg-content-dark;
+    border: 2px solid $lfg-l-gray;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    background: $bg-hover-light;
+    border: 2px solid $lfg-d-gray;
+  }
+}

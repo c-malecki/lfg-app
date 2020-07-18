@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ToggleSwitch } from "../../../components_index";
 import mail from "../../../../assets/images/mailicon2.svg";
 import allies from "../../../../assets/images/alliesicon.svg";
 import menubars from "../../../../assets/images/menubars.svg";
@@ -43,9 +44,11 @@ export const HeaderActions = (props) => {
         <span id="usename-header-text">{currentUser.username}</span>
       </Link>
       <div>
-        <button onClick={() => dispatch({ type: "TOGGLE_THEME" })}>
-          theme
-        </button>
+        <ToggleSwitch
+          method={() => dispatch({ type: "TOGGLE_THEME" })}
+          boolean={isDarkTheme}
+          addClass={`${isDarkTheme ? "toggle-dark" : "toggle-light"}`}
+        />
       </div>
       <div className="MobileMenu-button-container">
         <button

@@ -74,13 +74,15 @@
 @media only screen and (min-width: 0) and (max-width: 768px),
   only screen and (min-device-width: 0) and (max-width: 768px) {
   .HeaderActions-container {
-    .current-user-link {
+    .current-user-dark,
+    .current-user-light {
       #usename-header-text {
         display: none;
       }
     }
     .MobileMenu-button-container {
       display: block;
+      margin-left: 1rem;
       .Mobile-Menu-Button {
         border: 1px solid $lfg-d-gray;
         background-color: $lfg-l-gray;

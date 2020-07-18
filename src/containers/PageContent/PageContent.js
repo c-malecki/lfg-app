@@ -42,81 +42,57 @@ export const PageContent = (props) => {
       }`}
     >
       <div className="Page-container">
-        <div className="Page-content">
-          <div className="Page-content-col1">
-            <Route path="/" component={CurrentUser} />
-          </div>
-          <div className="Page-content-col2">
-            <div className="Page-content-inner">
-              <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route exact path="/g" component={GroupsListPage} />
-                <Route exact path="/g/:group" component={GroupPage} />
-                <AuthRoute
-                  exact
-                  path="/g/:group/newpost/"
-                  component={NewPostPage}
-                />
-                <Route
-                  exact
-                  path="/g/:group/posts"
-                  component={GroupPostsPage}
-                />
-                <Route
-                  exact
-                  path="/g/:group/posts/:id"
-                  component={ViewPostPage}
-                />
-                <Route
-                  exact
-                  path="/g/:group/members"
-                  component={GroupMembersPage}
-                />
+        <div className="Page-content-col1">
+          <Route path="/" component={CurrentUser} />
+        </div>
+        <div className="Page-content-col2">
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/g" component={GroupsListPage} />
+            <Route exact path="/g/:group" component={GroupPage} />
+            <AuthRoute
+              exact
+              path="/g/:group/newpost/"
+              component={NewPostPage}
+            />
+            <Route exact path="/g/:group/posts" component={GroupPostsPage} />
+            <Route exact path="/g/:group/posts/:id" component={ViewPostPage} />
+            <Route
+              exact
+              path="/g/:group/members"
+              component={GroupMembersPage}
+            />
 
-                <Route exact path="/posts" component={RecentPostsPage} />
-                <Route
-                  exact
-                  path="/posts/tags/:tag"
-                  component={PostsByTagPage}
-                />
+            <Route exact path="/posts" component={RecentPostsPage} />
+            <Route exact path="/posts/tags/:tag" component={PostsByTagPage} />
 
-                <Route exact path="/post-deleted" component={PostDeletedPage} />
-                <LogInRoute exact path="/login" component={LogInPage} />
-                <AuthRoute exact path="/messages" component={MessagesPage} />
-                <AuthRoute
-                  exact
-                  path="/messages/message/:id"
-                  component={ViewMessagePage}
-                />
-                <AuthRoute
-                  exact
-                  path="/messages/new"
-                  component={NewMessagePage}
-                />
+            <Route exact path="/post-deleted" component={PostDeletedPage} />
+            <LogInRoute exact path="/login" component={LogInPage} />
+            <AuthRoute exact path="/messages" component={MessagesPage} />
+            <AuthRoute
+              exact
+              path="/messages/message/:id"
+              component={ViewMessagePage}
+            />
+            <AuthRoute exact path="/messages/new" component={NewMessagePage} />
 
-                <AuthRoute exact path="/friends" component={FriendsPage} />
-                <Route
-                  exact
-                  path="/users/:username"
-                  component={UserProfilePage}
-                />
-                <Route
-                  exact
-                  path="/users/:username/posts"
-                  component={PostsByUserPage}
-                />
-                <Route
-                  exact
-                  path="/users/:username/groups"
-                  component={UserJoinedGroupsPage}
-                />
-              </Switch>
-            </div>
-          </div>
-          <div className="Page-content-col3">
-            <Route path="/" component={YourGroups} />
-            <Route path="/" component={YourPosts} />
-          </div>
+            <AuthRoute exact path="/friends" component={FriendsPage} />
+            <Route exact path="/users/:username" component={UserProfilePage} />
+            <Route
+              exact
+              path="/users/:username/posts"
+              component={PostsByUserPage}
+            />
+            <Route
+              exact
+              path="/users/:username/groups"
+              component={UserJoinedGroupsPage}
+            />
+          </Switch>
+        </div>
+        <div className="Page-content-col3">
+          <Route path="/" component={YourGroups} />
+          <Route path="/" component={YourPosts} />
         </div>
       </div>
     </div>

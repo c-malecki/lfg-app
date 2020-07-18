@@ -1,15 +1,14 @@
 .UserRecentPosts-container {
   padding: 0.5rem;
-  max-height: 850px;
-  overflow-y: scroll;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
 
   .PostPreview-container {
     margin: 0.5rem 0;
   }
 }
 
-.UserRecentPosts-container::-webkit-scrollbar {
-  width: 0px;
+@media only screen and (min-width: 0px) and (max-width: 768px),
+  only screen and (min-device-width: 0px) and (max-width: 768px) {
+  .UserRecentPosts-container {
+    margin: 0;
+  }
 }
