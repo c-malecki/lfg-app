@@ -1,5 +1,4 @@
 // UI
-export * from "./UI/Header/Header";
 export * from "./UI/Footer/Footer";
 export * from "./UI/LogInOut/LogInOut";
 export * from "./UI/GeneralButton/GeneralButton";
@@ -8,7 +7,8 @@ export * from "./UI/GeneralLink/GeneralLink";
 export * from "./UI/PopUpConfirm/PopUpConfirm";
 export * from "./UI/LfgMiniBanner/LfgMiniBanner";
 export * from "./UI/LfgHeaderLink/LfgHeaderLink";
-export * from "./UI/MobileMenu/MobileMenu";
+export * from "./UI/Header/Header";
+export * from "./UI/Header/MobileMenu/MobileMenu";
 export * from "./UI/ToggleSwitch/ToggleSwitch";
 
 // Widgets

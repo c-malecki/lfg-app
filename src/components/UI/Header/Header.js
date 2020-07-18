@@ -10,7 +10,6 @@ import { useSelector } from "react-redux";
 
 export const Header = (props) => {
   const [openMobile, setOpenMobile] = useState(false);
-  const { currentUser, isLoggedIn } = useSelector((state) => state.userReducer);
   const { isDarkTheme } = useSelector((state) => state.appReducer);
   return (
     <div
@@ -22,16 +21,11 @@ export const Header = (props) => {
         <LfgHeaderLink />
         <PageNav />
         <div className="Header-content-actions">
-          {isLoggedIn ? (
-            <HeaderActions
-              messageCount={0}
-              friendRequests={0}
-              currentUser={currentUser}
-              setOpenMobile={setOpenMobile}
-              openMobile={openMobile}
-            />
-          ) : null}
-          <div className="LogOut-desktop">
+          <HeaderActions
+            setOpenMobile={setOpenMobile}
+            openMobile={openMobile}
+          />
+          <div className="header-desktop">
             <LogInOut />
           </div>
         </div>

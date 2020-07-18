@@ -74,6 +74,9 @@
 @media only screen and (min-width: 0) and (max-width: 768px),
   only screen and (min-device-width: 0) and (max-width: 768px) {
   .HeaderActions-container {
+    .header-desktop {
+      display: none;
+    }
     .current-user-dark,
     .current-user-light {
       #usename-header-text {
@@ -90,7 +93,6 @@
         width: 2rem;
         border-radius: 0.3rem;
         margin-right: 0.5rem;
-        margin-left: 0.5rem;
 
         img {
           width: 100%;
