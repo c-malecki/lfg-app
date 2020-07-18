@@ -4,6 +4,7 @@ import {
   MessageBody,
   MessageReplies,
   ReplyToMessageForm,
+  GeneralLink,
 } from "../../components/components_index";
 import Axios from "axios";
 import { useSelector } from "react-redux";
@@ -18,6 +19,7 @@ export const ViewMessagePage = (props) => {
   });
   const { id } = useParams();
   const { currentUser } = useSelector((state) => state.userReducer);
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_URL}/messages/${id}`)
       .then((res) => {
@@ -67,6 +69,17 @@ export const ViewMessagePage = (props) => {
 
   return (
     <div className="ViewMessagePage-content">
+      <h2
+        className={`${
+          isDarkTheme ? "page-heading-dark" : "page-heading-light"
+        }`}
+      >
+        <GeneralLink
+          url={`/messages`}
+          text={`Back to Messages`}
+          addClass="large-link"
+        />
+      </h2>
       {utilPageContent(pageStatus, content)}
     </div>
   );

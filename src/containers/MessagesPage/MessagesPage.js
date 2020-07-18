@@ -60,39 +60,36 @@ export const MessagesPage = (props) => {
         return <SentMessages messages={pageData} />;
       }
     };
-    return (
-      <>
-        <h2
-          className={`${
-            isDarkTheme ? "page-heading-dark" : "page-heading-light"
-          }`}
-        >
-          Messages
-        </h2>
-        <div className="page-actions">
-          <GeneralButton
-            method={toggleAll}
-            text="All"
-            addClass={`${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`}
-          />
-          <GeneralButton
-            method={toggleUnread}
-            text="unread"
-            addClass={`${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`}
-          />
-          <GeneralButton
-            method={toggleSent}
-            text="sent"
-            addClass={`${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`}
-          />
-        </div>
-        {currentUser && pageData ? displayMessageType() : null}
-      </>
-    );
+    return <>{currentUser && pageData ? displayMessageType() : null}</>;
   };
+  const noContentMessage = "No messages.";
   return (
     <div className="MessagesPage-content">
-      {utilPageContent(pageStatus, content)}
+      <h2
+        className={`${
+          isDarkTheme ? "page-heading-dark" : "page-heading-light"
+        }`}
+      >
+        Messages
+      </h2>
+      <div className="page-actions">
+        <GeneralButton
+          method={toggleAll}
+          text="All"
+          addClass={`${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`}
+        />
+        <GeneralButton
+          method={toggleUnread}
+          text="unread"
+          addClass={`${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`}
+        />
+        <GeneralButton
+          method={toggleSent}
+          text="sent"
+          addClass={`${isDarkTheme ? "ui-button-dark" : "ui-button-light"}`}
+        />
+      </div>
+      {utilPageContent(pageStatus, content, noContentMessage)}
     </div>
   );
 };

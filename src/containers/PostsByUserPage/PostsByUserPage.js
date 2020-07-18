@@ -36,17 +36,6 @@ export const PostsByUserPage = (props) => {
     const { pageData } = pageStatus;
     return (
       <>
-        <h2
-          className={`${
-            isDarkTheme ? "page-heading-dark" : "page-heading-light"
-          }`}
-        >
-          <GeneralLink
-            text={username}
-            url={`/users/${username}`}
-            addClass="PageHeaderLink"
-          />
-        </h2>
         <div className="page-actions">
           <span
             className={`search-placeholder ${
@@ -62,9 +51,23 @@ export const PostsByUserPage = (props) => {
       </>
     );
   };
+  const noContentMessage = `No posts by ${username} found.`;
+
   return (
     <div className="PostsByUserPage-content">
-      {utilPageContent(pageStatus, content)}
+      <h2
+        className={`${
+          isDarkTheme ? "page-heading-dark" : "page-heading-light"
+        }`}
+      >
+        <GeneralLink
+          text={username}
+          url={`/users/${username}`}
+          addClass="PageHeaderLink"
+        />
+      </h2>
+
+      {utilPageContent(pageStatus, content, noContentMessage)}
     </div>
   );
 };

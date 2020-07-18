@@ -31,48 +31,51 @@ export const GroupPostsPage = (props) => {
         });
       });
   }, [group]);
+
   const content = () => {
     const { pageData } = pageStatus;
     return (
       <>
-        <h2
-          className={`${
-            isDarkTheme ? "page-heading-dark" : "page-heading-light"
-          }`}
-        >
-          <GeneralLink
-            url={`/g/${group}`}
-            text={`${group}`}
-            addClass="PageHeaderLink"
-          />
-        </h2>
-
-        <div className="page-actions">
-          {isLoggedIn ? (
-            <GeneralLink
-              url={`/g/${group}/newpost`}
-              text="new post"
-              addClass={`${isDarkTheme ? "ui-link-dark " : "ui-link-light"}`}
-            />
-          ) : null}
-          <span
-            className={`search-placeholder ${
-              isDarkTheme ? "textinput-dark" : "textinput-light"
-            }`}
-          >
-            search placeholder
-          </span>
-        </div>
-
         {pageData.map((p) => {
           return <PostPreview post={p} key={`post-${p.post_id}`} />;
         })}
       </>
     );
   };
+
+  const noContentMessage = `No posts in ${group} found.`;
+
   return (
     <div className="GroupPostsPage-content">
-      {utilPageContent(pageStatus, content)}
+      <h2
+        className={`${
+          isDarkTheme ? "page-heading-dark" : "page-heading-light"
+        }`}
+      >
+        <GeneralLink
+          url={`/g/${group}`}
+          text={`${group}`}
+          addClass="PageHeaderLink"
+        />
+      </h2>
+
+      <div className="page-actions">
+        {isLoggedIn ? (
+          <GeneralLink
+            url={`/g/${group}/newpost`}
+            text="new post"
+            addClass={`${isDarkTheme ? "ui-link-dark " : "ui-link-light"}`}
+          />
+        ) : null}
+        <span
+          className={`search-placeholder ${
+            isDarkTheme ? "textinput-dark" : "textinput-light"
+          }`}
+        >
+          search placeholder
+        </span>
+      </div>
+      {utilPageContent(pageStatus, content, noContentMessage)}
     </div>
   );
 };

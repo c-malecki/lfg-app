@@ -38,7 +38,7 @@ export const UserProfilePage = (props) => {
       .catch((error) => {
         setPageStatus({
           isLoading: false,
-          error: error.message,
+          error: error.response.data,
           pageData: null,
         });
       });
@@ -73,9 +73,10 @@ export const UserProfilePage = (props) => {
       </div>
     );
   };
+  const noContentMessage = `${username} not found.`;
   return (
     <div className="UserProfilePage-container">
-      {utilPageContent(pageStatus, content)}
+      {utilPageContent(pageStatus, content, noContentMessage)}
     </div>
   );
 };

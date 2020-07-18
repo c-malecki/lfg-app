@@ -35,26 +35,6 @@ export const UserJoinedGroupsPage = (props) => {
     const { pageData } = pageStatus;
     return (
       <>
-        <h2
-          className={`${
-            isDarkTheme ? "page-heading-dark" : "page-heading-light"
-          }`}
-        >
-          <GeneralLink
-            url={`/users/${username}`}
-            text={username}
-            addClass="PageHeaderLink"
-          />
-        </h2>
-        <div className="page-actions">
-          <span
-            className={`search-placeholder ${
-              isDarkTheme ? "textinput-dark" : "textinput-light"
-            }`}
-          >
-            search placeholder
-          </span>
-        </div>
         {pageData.map((group) => {
           return (
             <GroupPreview
@@ -70,10 +50,30 @@ export const UserJoinedGroupsPage = (props) => {
       </>
     );
   };
-
+  const noContentMessage = `${username} hasn't joined any groups yet.`;
   return (
     <div className="UserJoinedGroupsPage-content">
-      {utilPageContent(pageStatus, content)}
+      <h2
+        className={`${
+          isDarkTheme ? "page-heading-dark" : "page-heading-light"
+        }`}
+      >
+        <GeneralLink
+          url={`/users/${username}`}
+          text={username}
+          addClass="PageHeaderLink"
+        />
+      </h2>
+      <div className="page-actions">
+        <span
+          className={`search-placeholder ${
+            isDarkTheme ? "textinput-dark" : "textinput-light"
+          }`}
+        >
+          search placeholder
+        </span>
+      </div>
+      {utilPageContent(pageStatus, content, noContentMessage)}
     </div>
   );
 };

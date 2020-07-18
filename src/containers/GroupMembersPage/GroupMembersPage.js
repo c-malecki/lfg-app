@@ -27,7 +27,7 @@ export const GroupMembersPage = (props) => {
       .catch((error) => {
         setPageStatus({
           isLoading: false,
-          error: error.message,
+          error: error.response.data,
           pageData: null,
         });
       });
@@ -36,17 +36,6 @@ export const GroupMembersPage = (props) => {
     const { pageData } = pageStatus;
     return (
       <>
-        <h2
-          className={`${
-            isDarkTheme ? "page-heading-dark" : "page-heading-light"
-          }`}
-        >
-          <GeneralLink
-            url={`/g/${group}`}
-            text={`${group}`}
-            addClass="PageHeaderLink"
-          />{" "}
-        </h2>
         <ul
           className={`GroupMembers-list ${
             isDarkTheme ? "ui-content-dark" : "ui-content-light"
@@ -70,9 +59,21 @@ export const GroupMembersPage = (props) => {
       </>
     );
   };
+  const noContentMessage = `${group} doesn't have any members.`;
   return (
     <div className="GroupMembersPage-content">
-      {utilPageContent(pageStatus, content)}
+      <h2
+        className={`${
+          isDarkTheme ? "page-heading-dark" : "page-heading-light"
+        }`}
+      >
+        <GeneralLink
+          url={`/g/${group}`}
+          text={`${group}`}
+          addClass="PageHeaderLink"
+        />{" "}
+      </h2>
+      {utilPageContent(pageStatus, content, noContentMessage)}
     </div>
   );
 };

@@ -24,7 +24,7 @@ export const GroupsListPage = (props) => {
       .catch((error) => {
         setPageStatus({
           isLoading: false,
-          error: error.message,
+          error: error.response.data,
           pageData: null,
         });
       });

@@ -31,7 +31,7 @@ export const ViewPostPage = (props) => {
       .catch((error) => {
         setPageStatus({
           isLoading: false,
-          error: error.message,
+          error: error.response.data,
           pageData: null,
         });
       });
@@ -59,17 +59,6 @@ export const ViewPostPage = (props) => {
     };
     return (
       <>
-        <h2
-          className={`${
-            isDarkTheme ? "page-heading-dark" : "page-heading-light"
-          }`}
-        >
-          <GeneralLink
-            url={`/g/${group}/posts`}
-            text={`Back to ${group} posts`}
-            addClass="large-link"
-          />
-        </h2>
         <PostBody
           content={pageData}
           currentUser={currentUser}
@@ -92,9 +81,22 @@ export const ViewPostPage = (props) => {
       </>
     );
   };
+  // just a fail safe. should return a 404 error that has the same message in the response.data
+  const noContentMessage = "Uh oh. It appears this post doesn't exist.";
   return (
     <div className="ViewPostPage-content">
-      {utilPageContent(pageStatus, content)}
+      <h2
+        className={`${
+          isDarkTheme ? "page-heading-dark" : "page-heading-light"
+        }`}
+      >
+        <GeneralLink
+          url={`/g/${group}/posts`}
+          text={`Back to ${group} posts`}
+          addClass="large-link"
+        />
+      </h2>
+      {utilPageContent(pageStatus, content, noContentMessage)}
     </div>
   );
 };

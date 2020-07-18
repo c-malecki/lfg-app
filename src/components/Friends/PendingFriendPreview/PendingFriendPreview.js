@@ -40,7 +40,6 @@ export const PendingFriendPreview = (props) => {
     });
   };
   const showAcceptButton = () => {
-    console.log(request);
     if (sent_from !== currentUsername) {
       return (
         <GeneralButton

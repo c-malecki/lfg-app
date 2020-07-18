@@ -4,6 +4,12 @@
   .PostPreview-container {
     margin: 0.5rem 0;
   }
+
+  .noContent-container {
+    .noContent-content {
+      margin: 0.5rem 0;
+    }
+  }
 }
 
 @media only screen and (min-width: 0px) and (max-width: 768px),

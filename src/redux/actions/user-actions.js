@@ -54,7 +54,7 @@ export const fetchUserForLogin = (user) => {
         dispatch(fetchWidgetAfterLogin(username));
       })
       .catch((error) => {
-        dispatch(fetchUserFail(error.message));
+        dispatch(fetchUserFail(error.response.data));
       });
   };
 };
@@ -71,7 +71,7 @@ export const fetchDemoUser = () => {
         dispatch(fetchWidgetAfterLogin("TestUser"));
       })
       .catch((error) => {
-        dispatch(fetchUserFail(error.message));
+        dispatch(fetchUserFail(error.response.data));
       });
   };
 };

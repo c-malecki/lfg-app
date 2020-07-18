@@ -1,7 +1,7 @@
-.Error-container {
+.noContent-container {
   @extend %ui-content-container;
   margin: 0;
-  .Error-content {
+  .noContent-content {
     padding: 0.3rem;
   }
 }

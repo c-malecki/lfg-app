@@ -15,7 +15,7 @@ export const PostsByTagPage = () => {
   const { tag } = useParams();
   const { isDarkTheme } = useSelector((state) => state.appReducer);
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_API_URL}/posts/bytags/${tag}`)
+    Axios.get(`${process.env.REACT_APP_API_URL}/posts/tags/${tag}`)
       .then((res) => {
         setPageStatus({
           isLoading: false,
@@ -35,29 +35,30 @@ export const PostsByTagPage = () => {
     const { pageData } = pageStatus;
     return (
       <>
-        <h2
-          className={`${
-            isDarkTheme ? "page-heading-dark" : "page-heading-light"
-          }`}
-        >{`#${tag}`}</h2>
-        <div className="page-actions">
-          <span
-            className={`search-placeholder ${
-              isDarkTheme ? "textinput-dark" : "textinput-light"
-            }`}
-          >
-            search placeholder
-          </span>
-        </div>
         {pageData.map((p) => (
           <PostPreview post={p} key={`post-${p.post_id}`} />
         ))}
       </>
     );
   };
+  const noContentMessage = `There are no posts with the tag #${tag}.`;
   return (
     <div className="PostsByTagPage-content">
-      {utilPageContent(pageStatus, content)}
+      <h2
+        className={`${
+          isDarkTheme ? "page-heading-dark" : "page-heading-light"
+        }`}
+      >{`#${tag}`}</h2>
+      <div className="page-actions">
+        <span
+          className={`search-placeholder ${
+            isDarkTheme ? "textinput-dark" : "textinput-light"
+          }`}
+        >
+          search placeholder
+        </span>
+      </div>
+      {utilPageContent(pageStatus, content, noContentMessage)}
     </div>
   );
 };

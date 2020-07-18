@@ -1,11 +1,36 @@
 import React from "react";
 import { GeneralLink } from "../../components_index";
 import { useSelector } from "react-redux";
+import { utilComponentContent } from "../../../assets/util/utilComponentContent";
 
 export const UserJoinedGroups = (props) => {
   const { userForPageGroups, userForPageUsername } = props;
   const { joined } = userForPageGroups;
   const { isDarkTheme } = useSelector((state) => state.appReducer);
+  const content = () => {
+    return (
+      <>
+        <ul
+          className={`UserJoinedGroups-list ${
+            isDarkTheme ? "ui-content-dark" : "ui-content-light"
+          }`}
+        >
+          {joined.map((g) => {
+            return (
+              <li key={g.group_id}>
+                <GeneralLink
+                  url={`/g/${g.group_name}`}
+                  text={g.group_name}
+                  addClass="in-text-link"
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </>
+    );
+  };
+  const noContentMessage = `${userForPageUsername} hasn't joined any groups yet.`;
   return (
     <div className="UserJoinedGroups-container">
       <div
@@ -17,23 +42,7 @@ export const UserJoinedGroups = (props) => {
         <GeneralLink url={`${userForPageUsername}/groups`} text="See All" />
       </div>
 
-      <ul
-        className={`UserJoinedGroups-list ${
-          isDarkTheme ? "ui-content-dark" : "ui-content-light"
-        }`}
-      >
-        {joined.map((g) => {
-          return (
-            <li key={g.group_id}>
-              <GeneralLink
-                url={`/g/${g.group_name}`}
-                text={g.group_name}
-                addClass="in-text-link"
-              />
-            </li>
-          );
-        })}
-      </ul>
+      {utilComponentContent(joined, content, noContentMessage)}
     </div>
   );
 };
