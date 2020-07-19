@@ -86,6 +86,7 @@
   font-size: 1.2rem;
   font-weight: bold;
   color: $link-text;
+  margin: 0.5rem auto;
 }
 
 // header and mobile nav
@@ -129,7 +130,7 @@
     background-color: $lfg-l-gray;
   }
   .nav-link-light:hover {
-    background-color: $bg-hover-light;
+    background-color: $bg-content-light;
   }
 }
 

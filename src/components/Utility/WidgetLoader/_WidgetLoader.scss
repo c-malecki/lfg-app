@@ -1,14 +1,14 @@
 .WidgetLoader-container {
   margin: auto;
-  .WidgetLoader-content {
+
+  %WidgetLoader {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 8rem;
     width: 8rem;
-    background-color: $bg-ui-dark;
-    border: 1px solid $lfg-d-gray;
+
     border-radius: 50%;
     animation: loading 3s infinite;
 
@@ -16,6 +16,18 @@
       height: 80%;
       width: 80%;
     }
+  }
+
+  .WidgetLoader-dark {
+    @extend %WidgetLoader;
+    background-color: $bg-content-inner-dark;
+    border: 3px solid $lfg-l-gray;
+  }
+
+  .WidgetLoader-light {
+    @extend %WidgetLoader;
+    background-color: $bg-content-inner-light;
+    border: 3px solid rgb(215, 215, 215);
   }
 }
 

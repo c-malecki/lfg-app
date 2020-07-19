@@ -16,12 +16,18 @@ export const YourGroups = (props) => {
         <>
           {joinedGroups.map((g) => {
             return (
-              <GeneralLink
-                url={`/g/${g.group_name}`}
-                text={g.group_name}
-                addClass="large-link"
+              <div
+                className={`${
+                  isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
+                }`}
                 key={g.group_id}
-              />
+              >
+                <GeneralLink
+                  url={`/g/${g.group_name}`}
+                  text={g.group_name}
+                  addClass="large-link"
+                />
+              </div>
             );
           })}
         </>
@@ -35,14 +41,14 @@ export const YourGroups = (props) => {
       }`}
     >
       {currentUser && isLoggedIn ? (
-        <div className="YourGroups-content">
+        <>
           <GeneralLink
             text="Your Groups"
             url={`/users/${currentUser.username}/groups`}
             addClass="widget-header"
           />
-          {yourGroupsContent()}
-        </div>
+          <div className="YourGroups-content">{yourGroupsContent()}</div>
+        </>
       ) : (
         <>
           <h3>Login</h3>

@@ -13,16 +13,15 @@ export const CurrentUser = (props) => {
     } else if (!isLoading && isLoggedIn && currentUser) {
       const { username, profile, friends, groups } = currentUser;
       return (
-        <>
-          <GeneralLink
-            url={`/users/${username}`}
-            text={`${username}`}
-            addClass="widget-header"
-          />
+        <div
+          className={`CurrentUser-content ${
+            isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
+          }`}
+        >
           <img src={profile.user_img} alt={username} />
           <span>Friends: {friends.accepted.length}</span>
           <span>Groups: {groups.joined.length}</span>
-        </>
+        </div>
       );
     }
   };
@@ -34,6 +33,11 @@ export const CurrentUser = (props) => {
             isDarkTheme ? "ui-content-dark" : "ui-content-light"
           }`}
         >
+          <GeneralLink
+            url={`/users/${currentUser.username}`}
+            text={`${currentUser.username}`}
+            addClass="widget-header"
+          />
           {currentUserContent()}
         </div>
       ) : null}

@@ -107,7 +107,7 @@ export const PendingFriendPreview = (props) => {
       ) : null}
       <div
         className={`FriendPreview-container ${
-          isDarkTheme ? "ui-content-dark" : "ui-content-light"
+          isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
         }`}
       >
         {friendPreviewContent()}

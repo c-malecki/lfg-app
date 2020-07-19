@@ -1,6 +1,4 @@
-.NewMessagePage-content {
-  @extend %ui-content-container;
-  padding: 0.5rem;
+.NewMessagePage-container {
   display: flex;
   flex-direction: column;
   width: 100%;

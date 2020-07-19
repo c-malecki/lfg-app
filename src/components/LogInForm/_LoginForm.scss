@@ -4,6 +4,7 @@
   .LogInForm-content {
     display: flex;
     flex-direction: column;
+    padding: 0.5rem;
 
     .textinput-dark {
       background-color: $bg-content-light;

@@ -9,7 +9,7 @@ export const PostPreview = (props) => {
   return (
     <div
       className={`PostPreview-container ${
-        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+        isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
       }`}
     >
       <div className="PostPreview-head">

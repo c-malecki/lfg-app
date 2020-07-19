@@ -43,7 +43,11 @@ export const PostsByTagPage = () => {
   };
   const noContentMessage = `There are no posts with the tag #${tag}.`;
   return (
-    <div className="PostsByTagPage-content">
+    <div
+      className={`PostsByTagPage-container ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       <h2
         className={`${
           isDarkTheme ? "page-heading-dark" : "page-heading-light"

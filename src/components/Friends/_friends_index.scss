@@ -1,14 +1,30 @@
-@import "./AcceptedFriendPreview/AcceptedFriendPreview";
-@import "./AcceptedFriends/AcceptedFriends";
-@import "./PendingFriendPreview/PendingFriendPreview";
-@import "./PendingFriends/PendingFriends";
+.Friends-Pending-Mutual {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+
+  h2 {
+    margin-left: 0.3rem;
+  }
+}
 
 .FriendPreview-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   img {
     height: 6rem;
     width: 6rem;
     margin-right: 1rem;
     margin-left: 0.5rem;
     border-radius: 50%;
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 1200px),
+  only screen and (min-device-width: 0px) and (max-width: 1200px) {
+  .Friends-Pending-Mutual {
+    width: 100%;
+    box-sizing: border-box;
   }
 }

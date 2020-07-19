@@ -7,6 +7,7 @@ import {
 } from "../../components/components_index";
 import Axios from "axios";
 import { utilPageContent } from "../../assets/util/utilPageContent";
+import { useSelector } from "react-redux";
 
 export const GroupPage = (props) => {
   const [pageStatus, setPageStatus] = useState({
@@ -15,6 +16,7 @@ export const GroupPage = (props) => {
     pageData: null,
   });
   const { group } = useParams();
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   useEffect(() => {
     Axios.all([
       Axios.get(`${process.env.REACT_APP_API_URL}/groups/${group}`),
@@ -58,7 +60,11 @@ export const GroupPage = (props) => {
     );
   };
   return (
-    <div className="GroupPage-container">
+    <div
+      className={`GroupPage-container ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       {utilPageContent(pageStatus, content)}
     </div>
   );

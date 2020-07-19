@@ -5,10 +5,14 @@ import { useSelector } from "react-redux";
 export const LogInPage = () => {
   const { isDarkTheme } = useSelector((state) => state.appReducer);
   return (
-    <div className="LogInPage-container">
+    <div
+      className={`LogInPage-container ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       <div
         className={`LogInPage-content ${
-          isDarkTheme ? "ui-content-dark" : "ui-content-light"
+          isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
         }`}
       >
         <LfgMiniBanner />

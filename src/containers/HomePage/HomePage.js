@@ -5,10 +5,14 @@ import { useSelector } from "react-redux";
 export const HomePage = (props) => {
   const { isDarkTheme } = useSelector((state) => state.appReducer);
   return (
-    <div className="HomePage-container">
+    <div
+      className={`HomePage-container ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       <div
         className={`HomePage-welcome-content ${
-          isDarkTheme ? "ui-content-dark" : "ui-content-light"
+          isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
         }`}
       >
         <h1>Welcome to</h1>
@@ -20,7 +24,7 @@ export const HomePage = (props) => {
 
       <div
         className={`HomePage-getting-started-content ${
-          isDarkTheme ? "ui-content-dark" : "ui-content-light"
+          isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
         }`}
       >
         <h2>Getting Started</h2>

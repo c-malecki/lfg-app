@@ -64,7 +64,11 @@ export const GroupsListPage = (props) => {
     );
   };
   return (
-    <div className="GroupsListPage-content">
+    <div
+      className={`GroupsListPage-content ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       {utilPageContent(pageStatus, content)}
     </div>
   );

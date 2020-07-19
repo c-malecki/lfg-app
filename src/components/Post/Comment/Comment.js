@@ -15,7 +15,7 @@ export const Comment = (props) => {
   return (
     <div
       className={`Comment-container ${
-        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+        isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
       }`}
     >
       <span className="head-text-content">By</span>

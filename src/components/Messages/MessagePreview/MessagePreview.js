@@ -8,7 +8,7 @@ export const MessagePreview = (props) => {
   return (
     <div
       className={`MessagePreview-container ${
-        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+        isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
       }`}
     >
       <GeneralLink

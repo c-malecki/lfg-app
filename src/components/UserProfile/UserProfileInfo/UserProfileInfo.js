@@ -63,7 +63,7 @@ export const UserProfileInfo = (props) => {
   return (
     <div
       className={`UserProfileInfo-container ${
-        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+        isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
       }`}
     >
       <h2>{userForPageUsername}</h2>

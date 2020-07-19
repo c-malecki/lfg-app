@@ -30,11 +30,9 @@ export const AcceptedFriends = (props) => {
   };
   const noContentMessage = "Currently no mutual friends.";
   return (
-    <div className="AcceptedFriends-container">
-      <div className="PendingFriends-container">
-        <h2>Friends</h2>
-        {utilComponentContent(accepted, content, noContentMessage)}
-      </div>
+    <div className="Friends-Pending-Mutual">
+      <h2>Friends</h2>
+      {utilComponentContent(accepted, content, noContentMessage)}
     </div>
   );
 };

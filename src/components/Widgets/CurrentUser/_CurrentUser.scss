@@ -1,13 +1,18 @@
 .CurrentUser-container {
   display: flex;
   flex-direction: column;
-  padding: 0.5rem;
   min-height: 12rem;
 
-  img {
-    height: 6rem;
-    width: 6rem;
-    margin: auto;
-    border-radius: 50%;
+  .CurrentUser-content {
+    display: flex;
+    flex-direction: column;
+    padding: 0.3rem;
+
+    img {
+      height: 6rem;
+      width: 6rem;
+      margin: 0.2rem auto;
+      border-radius: 50%;
+    }
   }
 }

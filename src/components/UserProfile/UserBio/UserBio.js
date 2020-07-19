@@ -36,7 +36,7 @@ export const UserBio = (props) => {
       ) : (
         <div
           className={`UserProfile-bio ${
-            isDarkTheme ? "ui-content-dark" : "ui-content-light"
+            isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
           }`}
         >
           <span>{bio}</span>

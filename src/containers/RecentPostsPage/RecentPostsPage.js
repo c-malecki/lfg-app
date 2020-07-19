@@ -121,7 +121,11 @@ export const RecentPostsPage = (props) => {
   };
 
   return (
-    <div className="RecentPostsPage-content">
+    <div
+      className={`RecentPostsPage-container ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       {utilPageContent(pageStatus, content)}
     </div>
   );

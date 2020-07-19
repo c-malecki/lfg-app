@@ -8,7 +8,7 @@ export const MessageReplies = (props) => {
   return (
     <div
       className={`MessageReplies-container ${
-        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+        isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
       }`}
     >
       <GeneralLink

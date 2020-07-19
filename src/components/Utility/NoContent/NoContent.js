@@ -8,7 +8,7 @@ export const NoContent = (props) => {
     <div className="noContent-container">
       <div
         className={`noContent-content ${
-          isDarkTheme ? "ui-content-dark" : "ui-content-light"
+          isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
         }`}
       >
         {noContentMessage}

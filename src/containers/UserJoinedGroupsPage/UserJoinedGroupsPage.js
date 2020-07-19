@@ -52,7 +52,11 @@ export const UserJoinedGroupsPage = (props) => {
   };
   const noContentMessage = `${username} hasn't joined any groups yet.`;
   return (
-    <div className="UserJoinedGroupsPage-content">
+    <div
+      className={`UserJoinedGroupsPage-container ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       <h2
         className={`${
           isDarkTheme ? "page-heading-dark" : "page-heading-light"

@@ -25,7 +25,12 @@ export const YourPosts = (props) => {
           {posts
             ? posts.map((p) => {
                 return (
-                  <div className="YourPosts-item" key={`yp-${p.post_id}`}>
+                  <div
+                    className={`YourPosts-item ${
+                      isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
+                    }`}
+                    key={`yp-${p.post_id}`}
+                  >
                     <GeneralLink
                       url={`/g/${p.posted_in}/posts/${p.post_id}`}
                       text={p.post_title}

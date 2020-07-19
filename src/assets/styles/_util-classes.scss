@@ -12,12 +12,6 @@
   overflow: hidden;
 }
 
-%ui-content-inner {
-  border-radius: 0.3rem;
-  margin: 0.5rem;
-  overflow: hidden;
-}
-
 .ui-content-dark {
   @extend %ui-content-container;
   background-color: $bg-content-dark;
@@ -30,6 +24,24 @@
 .ui-content-light {
   @extend %ui-content-container;
   background-color: $bg-content-light;
+  color: $text-black;
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.ui-inner-dark {
+  @extend %ui-content-container;
+  background-color: $bg-content-inner-dark;
+  color: $text-white;
+  -webkit-box-shadow: 0px 0.5px 3px 0px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 0.5px 3px 0px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 0.5px 3px 0px rgba(255, 255, 255, 0.5);
+}
+
+.ui-inner-light {
+  @extend %ui-content-container;
+  background-color: $bg-content-inner-light;
   color: $text-black;
   -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
@@ -95,15 +107,11 @@
     color: $link-text;
   }
 }
+
 .component-head-light {
   @extend %component-head;
   h3 {
     color: $text-black;
-  }
-  @media (hover: hover) {
-    a:hover {
-      background-color: $bg-button-light;
-    }
   }
 }
 
@@ -112,17 +120,6 @@
   h3 {
     color: $text-white;
   }
-  @media (hover: hover) {
-    a:hover {
-      background-color: $lfg-d-gray;
-    }
-  }
-}
-
-.widget-heading {
-  text-align: center;
-  margin-block-end: 0.5em;
-  margin-block-start: 0.5rem;
 }
 
 // Only in AllMessages, UnreadMessages, SentMessages which will be reworked

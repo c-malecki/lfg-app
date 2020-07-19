@@ -10,14 +10,15 @@ export const UserJoinedGroups = (props) => {
   const content = () => {
     return (
       <>
-        <ul
-          className={`UserJoinedGroups-list ${
-            isDarkTheme ? "ui-content-dark" : "ui-content-light"
-          }`}
-        >
+        <ul className="UserJoinedGroups-list">
           {joined.map((g) => {
             return (
-              <li key={g.group_id}>
+              <li
+                key={g.group_id}
+                className={` ${
+                  isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
+                }`}
+              >
                 <GeneralLink
                   url={`/g/${g.group_name}`}
                   text={g.group_name}

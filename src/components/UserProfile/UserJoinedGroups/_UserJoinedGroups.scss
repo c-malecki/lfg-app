@@ -2,9 +2,14 @@
   padding: 0.5rem;
 
   .UserJoinedGroups-list {
-    padding: 0.5rem;
+    padding: 0.5rem 0;
     margin: 0;
     list-style: none;
+
+    .ui-inner-dark,
+    .ui-inner-light {
+      margin: 0.5rem 0;
+    }
   }
 
   .noContent-container {

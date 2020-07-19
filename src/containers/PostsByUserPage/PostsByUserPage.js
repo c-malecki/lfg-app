@@ -54,7 +54,11 @@ export const PostsByUserPage = (props) => {
   const noContentMessage = `No posts by ${username} found.`;
 
   return (
-    <div className="PostsByUserPage-content">
+    <div
+      className={`PostsByUserPage-content ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       <h2
         className={`${
           isDarkTheme ? "page-heading-dark" : "page-heading-light"

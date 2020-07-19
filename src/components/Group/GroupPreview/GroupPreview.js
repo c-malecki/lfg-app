@@ -8,7 +8,7 @@ export const GroupPreview = (props) => {
   return (
     <div
       className={`GroupPreview-container ${
-        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+        isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
       }`}
     >
       <img src={img} alt={name} />

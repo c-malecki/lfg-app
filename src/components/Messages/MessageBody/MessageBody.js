@@ -8,7 +8,7 @@ export const MessageBody = (props) => {
   return (
     <div
       className={`MessageBody-container ${
-        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+        isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
       }`}
     >
       <h3>{message.message_subject}</h3>

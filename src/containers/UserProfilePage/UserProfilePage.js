@@ -8,6 +8,7 @@ import {
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { utilPageContent } from "../../assets/util/utilPageContent";
+import { useSelector } from "react-redux";
 
 export const UserProfilePage = (props) => {
   // Page state
@@ -17,6 +18,7 @@ export const UserProfilePage = (props) => {
     pageData: null,
   });
   const { username } = useParams();
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   useEffect(() => {
     axios
       .all([
@@ -75,7 +77,11 @@ export const UserProfilePage = (props) => {
   };
   const noContentMessage = `${username} not found.`;
   return (
-    <div className="UserProfilePage-container">
+    <div
+      className={`UserProfilePage-container ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       {utilPageContent(pageStatus, content, noContentMessage)}
     </div>
   );

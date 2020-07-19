@@ -8,7 +8,7 @@ export const GroupInfo = (props) => {
   return (
     <div
       className={`GroupInfo-container ${
-        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+        isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
       }`}
     >
       <h2>

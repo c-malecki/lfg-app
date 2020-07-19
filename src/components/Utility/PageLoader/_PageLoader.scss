@@ -3,23 +3,33 @@
   justify-content: center;
   align-items: center;
   padding: 5rem 0;
-  .PageLoader-content {
+
+  %PageLoader {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 16rem;
     width: 16rem;
-    background-color: $bg-ui-dark;
-    border: 3px solid $lfg-d-gray;
     border-radius: 50%;
-
     animation: loading 3s infinite;
 
     img {
       height: 80%;
       width: 80%;
     }
+  }
+
+  .PageLoader-dark {
+    @extend %PageLoader;
+    background-color: $bg-content-inner-dark;
+    border: 3px solid $lfg-l-gray;
+  }
+
+  .PageLoader-light {
+    @extend %PageLoader;
+    background-color: $bg-content-inner-light;
+    border: 3px solid rgb(215, 215, 215);
   }
 }
 

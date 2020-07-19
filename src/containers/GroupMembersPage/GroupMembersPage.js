@@ -36,14 +36,15 @@ export const GroupMembersPage = (props) => {
     const { pageData } = pageStatus;
     return (
       <>
-        <ul
-          className={`GroupMembers-list ${
-            isDarkTheme ? "ui-content-dark" : "ui-content-light"
-          }`}
-        >
+        <ul className="GroupMembers-list">
           {pageData.map((m) => {
             return (
-              <li key={m.member_id}>
+              <li
+                key={m.member_id}
+                className={`${
+                  isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
+                }`}
+              >
                 <div className="GroupMember-item">
                   <GeneralLink
                     url={`/users/${m.username}`}
@@ -61,7 +62,11 @@ export const GroupMembersPage = (props) => {
   };
   const noContentMessage = `${group} doesn't have any members.`;
   return (
-    <div className="GroupMembersPage-content">
+    <div
+      className={`GroupMembersPage-container ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       <h2
         className={`${
           isDarkTheme ? "page-heading-dark" : "page-heading-light"

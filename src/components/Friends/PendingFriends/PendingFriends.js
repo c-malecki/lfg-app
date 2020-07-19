@@ -47,7 +47,7 @@ export const PendingFriends = (props) => {
   };
   const noContentMessage = "No pending friend requests.";
   return (
-    <div className="PendingFriends-container">
+    <div className="Friends-Pending-Mutual">
       <h2>Pending Requests</h2>
       {utilComponentContent(pending, content, noContentMessage)}
     </div>

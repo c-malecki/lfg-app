@@ -84,7 +84,11 @@ export const ViewPostPage = (props) => {
   // just a fail safe. should return a 404 error that has the same message in the response.data
   const noContentMessage = "Uh oh. It appears this post doesn't exist.";
   return (
-    <div className="ViewPostPage-content">
+    <div
+      className={`ViewPostPage-container ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       <h2
         className={`${
           isDarkTheme ? "page-heading-dark" : "page-heading-light"

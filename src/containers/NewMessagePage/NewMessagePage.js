@@ -20,6 +20,7 @@ export const NewMessagePage = (props) => {
   });
   const history = useHistory();
   const { currentUser } = useSelector((state) => state.userReducer);
+  const { isDarkTheme } = useSelector((state) => state.appReducer);
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_URL}/users/list`)
       .then((res) => {
@@ -68,7 +69,11 @@ export const NewMessagePage = (props) => {
     );
   };
   return (
-    <div className="NewMessagePage-content">
+    <div
+      className={`NewMessagePage-container ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       {utilPageContent(pageStatus, content)}
     </div>
   );

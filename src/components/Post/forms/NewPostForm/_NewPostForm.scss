@@ -28,7 +28,7 @@
 
       .tags-li-dark {
         @extend %tags-li;
-        background-color: $bg-content-dark;
+        background-color: $bg-content-inner-dark;
         color: $text-white;
         -webkit-box-shadow: 0px 0.5px 3px 0px rgba(255, 255, 255, 0.5);
         -moz-box-shadow: 0px 0.5px 3px 0px rgba(255, 255, 255, 0.5);
@@ -36,7 +36,7 @@
       }
       .tags-li-light {
         @extend %tags-li;
-        background-color: $bg-content-light;
+        background-color: $bg-content-inner-light;
         color: $text-black;
         -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
         -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);

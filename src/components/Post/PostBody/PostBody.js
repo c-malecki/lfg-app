@@ -31,7 +31,7 @@ export const PostBody = (props) => {
   return (
     <div
       className={`PostBody-container ${
-        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+        isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
       }`}
     >
       <div className="PostBody-head">

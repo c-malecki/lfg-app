@@ -46,7 +46,11 @@ export const GroupPostsPage = (props) => {
   const noContentMessage = `No posts in ${group} found.`;
 
   return (
-    <div className="GroupPostsPage-content">
+    <div
+      className={`GroupPostsPage-container ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       <h2
         className={`${
           isDarkTheme ? "page-heading-dark" : "page-heading-light"

@@ -11,7 +11,7 @@ export const GroupMembers = (props) => {
       <>
         <ul
           className={`GroupMembers-list ${
-            isDarkTheme ? "ui-content-dark" : "ui-content-light"
+            isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
           }`}
         >
           {members.map((m) => {

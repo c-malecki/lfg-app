@@ -76,7 +76,11 @@ export const NewPostPage = (props) => {
   };
 
   return (
-    <div className="NewPostPage-content">
+    <div
+      className={`NewPostPage-container ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       {utilPageContent(pageStatus, content)}
     </div>
   );

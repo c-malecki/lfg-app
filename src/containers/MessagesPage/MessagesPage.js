@@ -64,7 +64,11 @@ export const MessagesPage = (props) => {
   };
   const noContentMessage = "No messages.";
   return (
-    <div className="MessagesPage-content">
+    <div
+      className={`MessagesPage-container ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       <h2
         className={`${
           isDarkTheme ? "page-heading-dark" : "page-heading-light"

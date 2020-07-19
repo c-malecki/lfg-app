@@ -68,7 +68,11 @@ export const ViewMessagePage = (props) => {
   };
 
   return (
-    <div className="ViewMessagePage-content">
+    <div
+      className={`ViewMessagePage-container ${
+        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+      }`}
+    >
       <h2
         className={`${
           isDarkTheme ? "page-heading-dark" : "page-heading-light"

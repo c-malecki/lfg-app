@@ -8,7 +8,7 @@ export const Error = (props) => {
     <div className="Error-container">
       <div
         className={`Error-content ${
-          isDarkTheme ? "ui-content-dark" : "ui-content-light"
+          isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
         }`}
       >
         {errorMessage}

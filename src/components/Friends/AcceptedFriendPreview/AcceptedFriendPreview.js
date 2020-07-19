@@ -52,7 +52,7 @@ export const AcceptedFriendPreview = (props) => {
   return (
     <div
       className={`FriendPreview-container ${
-        isDarkTheme ? "ui-content-dark" : "ui-content-light"
+        isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
       }`}
     >
       {showConfirm ? (

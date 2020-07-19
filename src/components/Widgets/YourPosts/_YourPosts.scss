@@ -1,12 +1,16 @@
 .YourPosts-container {
   display: flex;
   flex-direction: column;
-  padding: 0.5rem;
   min-height: 12rem;
   max-height: 20rem;
   overflow-y: scroll;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
+
+  .ui-inner-dark,
+  .ui-inner-light {
+    margin: 0.3rem 0.5rem;
+  }
 
   .YourPosts-item {
     display: flex;
