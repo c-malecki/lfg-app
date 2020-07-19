@@ -53,11 +53,9 @@ export const GroupsListPage = (props) => {
         {pageData.map((g) => {
           return (
             <GroupPreview
-              group={{
-                name: g.group_name,
-                description: g.group_profile.description,
-                img: g.group_profile.group_img,
-              }}
+              name={g.group_name}
+              heading={g.group_profile.group_heading}
+              img={g.group_profile.group_img}
               key={g.group_id}
             />
           );

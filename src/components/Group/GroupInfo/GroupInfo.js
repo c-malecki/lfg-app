@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 export const GroupInfo = (props) => {
   const { group_name, group_profile } = props.group;
-  const { group_img, date_created, description } = group_profile;
+  const { group_img, date_created, description, group_heading } = group_profile;
   const { isDarkTheme } = useSelector((state) => state.appReducer);
   return (
     <div
@@ -11,7 +11,9 @@ export const GroupInfo = (props) => {
         isDarkTheme ? "ui-content-dark" : "ui-content-light"
       }`}
     >
-      <h2>{group_name}</h2>
+      <h2>
+        {group_name} - {group_heading}
+      </h2>
       <img src={group_img} alt={group_name} />
       <span>Date Created: {date_created}</span>
       <h3>Group Description</h3>

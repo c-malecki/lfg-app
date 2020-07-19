@@ -14,7 +14,7 @@ export const PostPreview = (props) => {
     >
       <div className="PostPreview-head">
         <GeneralLink
-          url={`/g/${post.posted_in}/posts`}
+          url={`/g/${post.posted_in}`}
           text={`g/${post.posted_in}`}
           addClass="in-text-link"
         />

@@ -54,9 +54,29 @@ export const PendingFriendPreview = (props) => {
   };
   const friendPreviewContent = () => {
     if (requestStatus.removed) {
-      return <div>Removed</div>;
+      return (
+        <>
+          <img src={user_img} alt={username} />
+          <GeneralLink
+            text={username}
+            url={`/users/${username}`}
+            addClass="in-text-link"
+          />
+          <span>Removed</span>
+        </>
+      );
     } else if (requestStatus.accepted) {
-      return <div>Accepted</div>;
+      return (
+        <>
+          <img src={user_img} alt={username} />
+          <GeneralLink
+            text={username}
+            url={`/users/${username}`}
+            addClass="in-text-link"
+          />
+          <span>Accepted</span>
+        </>
+      );
     } else {
       return (
         <>
@@ -86,7 +106,9 @@ export const PendingFriendPreview = (props) => {
         />
       ) : null}
       <div
-        className={`${isDarkTheme ? "ui-content-dark" : "ui-content-light"}`}
+        className={`FriendPreview-container ${
+          isDarkTheme ? "ui-content-dark" : "ui-content-light"
+        }`}
       >
         {friendPreviewContent()}
       </div>

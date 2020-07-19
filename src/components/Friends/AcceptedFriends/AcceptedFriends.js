@@ -1,21 +1,13 @@
 import React from "react";
 import { AcceptedFriendPreview } from "../../components_index";
-import Axios from "axios";
+import { utilComponentContent } from "../../../assets/util/utilComponentContent";
+import { removeFriend } from "../../../assets/util/http_requests/friendsPostRequests";
 
 export const AcceptedFriends = (props) => {
   const { accepted, currentUsername } = props;
-  const removeFriend = (r, username) => {
-    Axios.post(
-      `${process.env.REACT_APP_API_URL}/users/${currentUsername}/friends/accepted/remove/${username}`,
-      r
-    )
-      .then((res) => console.log(res.data))
-      .catch((error) => console.log(error.message));
-  };
-  return (
-    <div className="AcceptedFriends-container">
-      <div className="PendingFriends-container">
-        <h2>Friends</h2>
+  const content = () => {
+    return (
+      <>
         {accepted.map((r) => (
           <AcceptedFriendPreview
             request={
@@ -25,6 +17,7 @@ export const AcceptedFriends = (props) => {
             removeMethod={() =>
               removeFriend(
                 r,
+                currentUsername,
                 r.sent_to.username === currentUsername
                   ? r.sent_from.username
                   : r.sent_to.username
@@ -32,6 +25,15 @@ export const AcceptedFriends = (props) => {
             }
           />
         ))}
+      </>
+    );
+  };
+  const noContentMessage = "Currently no mutual friends.";
+  return (
+    <div className="AcceptedFriends-container">
+      <div className="PendingFriends-container">
+        <h2>Friends</h2>
+        {utilComponentContent(accepted, content, noContentMessage)}
       </div>
     </div>
   );

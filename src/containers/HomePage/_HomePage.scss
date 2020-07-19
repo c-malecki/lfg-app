@@ -17,10 +17,9 @@
   }
 
   .HomePage-getting-started-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    h2 {
+      text-align: center;
+    }
     padding: 0.5rem;
   }
 }
