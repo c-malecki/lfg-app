@@ -2,6 +2,12 @@
   @extend %ui-content-container;
   padding: 0.5rem;
 
+  .ui-link-dark,
+  .ui-link-light {
+    display: inline-block;
+    margin: 0.2rem 0;
+  }
+
   .PostPreview-container {
     margin: 0.5rem 0;
   }

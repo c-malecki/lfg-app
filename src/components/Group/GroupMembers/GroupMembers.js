@@ -9,14 +9,15 @@ export const GroupMembers = (props) => {
   const content = () => {
     return (
       <>
-        <ul
-          className={`GroupMembers-list ${
-            isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
-          }`}
-        >
+        <ul className="GroupMembers-list">
           {members.map((m) => {
             return (
-              <li key={m.member_id}>
+              <li
+                key={m.member_id}
+                className={`${
+                  isDarkTheme ? "ui-inner-dark" : "ui-inner-light"
+                }`}
+              >
                 <div className="GroupMember-item">
                   <GeneralLink
                     url={`/users/${m.username}`}

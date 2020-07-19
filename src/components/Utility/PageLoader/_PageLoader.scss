@@ -29,7 +29,7 @@
   .PageLoader-light {
     @extend %PageLoader;
     background-color: $bg-content-inner-light;
-    border: 3px solid rgb(215, 215, 215);
+    border: 3px solid $ui-link-border;
   }
 }
 

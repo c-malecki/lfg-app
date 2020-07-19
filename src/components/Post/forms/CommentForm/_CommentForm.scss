@@ -1,9 +1,18 @@
 .CommentForm-container {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+  margin-top: 0.5rem;
 
   .textarea-dark,
   .textarea-light {
     width: calc(100% - 6px);
+  }
+  button {
+    margin: 0.3rem 0.5rem 0.5rem 0;
+  }
+  .CommentForm-submit-container {
+    button {
+      margin-top: 0.5rem;
+    }
   }
 }

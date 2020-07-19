@@ -187,7 +187,7 @@ export const NewPostForm = (props) => {
                 placeholder="Write a post..."
               />
               {errors.content ? <div>{errors.content}</div> : null}
-              <span>
+              <div className="PostForm-submit-container">
                 <GeneralButton
                   type="submit"
                   addClass={`${
@@ -195,7 +195,7 @@ export const NewPostForm = (props) => {
                   }`}
                   text="post"
                 />
-              </span>
+              </div>
             </div>
           </Form>
         )}

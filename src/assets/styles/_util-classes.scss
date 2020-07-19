@@ -81,12 +81,16 @@
 .page-actions {
   width: 100%;
   margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  button {
+    margin-right: 0.5rem;
+  }
 }
 
 .search-placeholder {
   width: 10rem;
   padding: 0.2rem 0.4rem;
-  border-radius: 0.3rem;
+  box-sizing: border-box;
 }
 
 %component-head {
