@@ -9,7 +9,8 @@ export * from "./UI/LfgMiniBanner/LfgMiniBanner";
 export * from "./UI/LfgHeaderLink/LfgHeaderLink";
 export * from "./UI/Header/Header";
 export * from "./UI/Header/MobileMenu/MobileMenu";
-export * from "./UI/ToggleSwitch/ToggleSwitch";
+export * from "./UI/PageNav/MobilePageNav/MobilePageNav";
+export * from "./UI/ToggleThemeButton/ToggleThemeButton";
 
 // Widgets
 export * from "./Widgets/CurrentUser/CurrentUser";

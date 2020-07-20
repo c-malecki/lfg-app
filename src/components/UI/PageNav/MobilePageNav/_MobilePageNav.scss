@@ -1,0 +1,100 @@
+@media only screen and (min-width: 768.1px),
+  only screen and (min-device-width: 768.1px) {
+  .MobilePageNav-dark,
+  .MobilePageNav-light {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px),
+  only screen and (max-device-width: 768px) {
+  %MobilePageNav {
+    position: fixed;
+    bottom: 0;
+    margin-left: 0;
+    width: 100%;
+    height: 2.5rem;
+
+    .MobilePageNav-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+  }
+
+  .MobilePageNav-dark {
+    @extend %MobilePageNav;
+    background-color: $bg-content-dark;
+    border-top: 2px solid $lfg-d-gray;
+
+    .MobilePageNav-content {
+      a {
+        border: 1px solid $lfg-d-gray;
+        margin: 0 0.5rem;
+      }
+    }
+  }
+
+  .MobilePageNav-light {
+    @extend %MobilePageNav;
+    background: $bg-content-inner-light;
+    border-top: 2px solid $lfg-l-gray;
+
+    .MobilePageNav-content {
+      a {
+        border: 1px solid $lfg-l-gray;
+
+        margin: 0 0.5rem;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 0) and (max-width: 768px) and (orientation: landscape),
+  only screen and (min-device-width: 0) and (max-width: 768px) and (orientation: landscape) {
+  %MobilePageNavLandscape {
+    position: fixed;
+    top: 0;
+    margin-left: 0;
+    right: 0;
+    width: 2.5rem;
+    height: 100%;
+
+    .MobilePageNav-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+  }
+
+  .MobilePageNav-dark {
+    @extend %MobilePageNavLandscape;
+    background-color: $bg-content-dark;
+    border-left: 2px solid $lfg-d-gray;
+    border-top: none;
+
+    .MobilePageNav-content {
+      a {
+        border: 1px solid $lfg-d-gray;
+        margin: 0.5rem 0;
+      }
+    }
+  }
+
+  .MobilePageNav-light {
+    @extend %MobilePageNavLandscape;
+    background: $bg-content-inner-light;
+    border-left: 2px solid $lfg-l-gray;
+    border-top: none;
+
+    .MobilePageNav-content {
+      a {
+        border: 1px solid $lfg-l-gray;
+        margin: 0.5rem 0;
+      }
+    }
+  }
+}

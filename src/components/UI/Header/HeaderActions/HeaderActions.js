@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ToggleSwitch } from "../../../components_index";
+import { ToggleThemeButton } from "../../../components_index";
 import mail from "../../../../assets/images/mailicon2.svg";
 import allies from "../../../../assets/images/alliesicon.svg";
 import menubars from "../../../../assets/images/menubars.svg";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 export const HeaderActions = (props) => {
   const { setOpenMobile, openMobile } = props;
-  const dispatch = useDispatch();
   const { isDarkTheme } = useSelector((state) => state.appReducer);
   const { currentUser, isLoggedIn } = useSelector((state) => state.userReducer);
   const messageCount = 0;
@@ -45,11 +43,7 @@ export const HeaderActions = (props) => {
         </>
       ) : null}
       <div className="header-desktop">
-        <ToggleSwitch
-          method={() => dispatch({ type: "TOGGLE_THEME" })}
-          boolean={isDarkTheme}
-          addClass={`${isDarkTheme ? "toggle-dark" : "toggle-light"}`}
-        />
+        <ToggleThemeButton />
       </div>
       <div className="MobileMenu-button-container">
         <button

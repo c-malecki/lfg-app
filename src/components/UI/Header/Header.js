@@ -30,7 +30,9 @@ export const Header = (props) => {
           </div>
         </div>
       </div>
-      {openMobile ? <MobileMenu /> : null}
+      {openMobile ? (
+        <MobileMenu setOpenMobile={setOpenMobile} openMobile={openMobile} />
+      ) : null}
     </div>
   );
 };

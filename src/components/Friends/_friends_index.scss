@@ -12,12 +12,27 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  height: 5rem;
   img {
-    height: 6rem;
-    width: 6rem;
-    margin-right: 1rem;
+    height: 4rem;
+    width: 4rem;
     margin-left: 0.5rem;
     border-radius: 50%;
+  }
+
+  .FriendPreview-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-left: 1.5rem;
+    .FriendPreview-actions {
+      margin-top: auto;
+      margin-bottom: 0.3rem;
+
+      button {
+        margin-right: 0.5rem;
+      }
+    }
   }
 }
 

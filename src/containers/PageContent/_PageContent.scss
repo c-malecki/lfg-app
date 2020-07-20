@@ -60,7 +60,8 @@
 @media only screen and (min-width: 0px) and (max-width: 768px),
   only screen and (min-device-width: 0px) and (max-width: 768px) {
   .Page-wrapper {
-    padding-top: 0;
+    padding-top: 36px;
+    padding-bottom: 2.5rem;
     .Page-container {
       padding: 0;
 
@@ -70,6 +71,26 @@
       }
       .Page-content-col2 {
         width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 0) and (max-width: 768px) and (orientation: landscape),
+  only screen and (min-device-width: 0) and (max-width: 768px) and (orientation: landscape) {
+  .Page-wrapper {
+    padding-top: 0;
+    padding-bottom: 2.5rem;
+    .Page-container {
+      padding: 0;
+
+      .Page-content-col1,
+      .Page-content-col3 {
+        display: none;
+      }
+      .Page-content-col2 {
+        width: calc(100% - 5.5rem);
+        margin: auto;
       }
     }
   }

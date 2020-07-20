@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { LogInOut, GeneralLink } from "../../../components_index";
-import { ToggleSwitch } from "../../../components_index";
-import { useSelector, useDispatch } from "react-redux";
+import { ToggleThemeButton } from "../../../components_index";
+import { useSelector } from "react-redux";
 
 export const MobileMenu = (props) => {
-  const dispatch = useDispatch();
+  const { openMobile, setOpenMobile } = props;
   const { isDarkTheme } = useSelector((state) => state.appReducer);
+  const mobileMenu = useRef(null);
+  useEffect(() => {
+    const mRef = mobileMenu.current;
+    if (mobileMenu) {
+      const menuBlur = (event) => {
+        if (openMobile && !mRef.contains(event.target)) {
+          setOpenMobile(!openMobile);
+        }
+      };
+      document.addEventListener("touchend", menuBlur);
+      return () => {
+        document.removeEventListener("touchend", menuBlur);
+      };
+    }
+  }, [openMobile, setOpenMobile]);
   return (
     <div
       className={`${isDarkTheme ? "mobile-menu-dark" : "mobile-menu-light"}`}
+      ref={mobileMenu}
     >
       <div className="MobileMenu-content">
         <div className="MobileMenu-links">
@@ -18,15 +34,8 @@ export const MobileMenu = (props) => {
         </div>
         <div className="MobileMenu-actions">
           <LogInOut />
-          <div className="theme-toggle-mobile">
-            <span>Dark</span>
-            <ToggleSwitch
-              method={() => dispatch({ type: "TOGGLE_THEME" })}
-              boolean={isDarkTheme}
-              addClass={`${isDarkTheme ? "toggle-dark" : "toggle-light"}`}
-            />
-            <span>Light</span>
-          </div>
+
+          <ToggleThemeButton />
         </div>
       </div>
     </div>

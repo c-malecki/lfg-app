@@ -1,0 +1,31 @@
+.ToggleThemeButton-container {
+  width: 2.5rem;
+  height: 1.5rem;
+  border-radius: 0.3rem;
+  margin: auto;
+  button {
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-weight: 500;
+  }
+}
+
+.toggle-button-dark {
+  border: 2px solid $lfg-l-gray;
+  background-color: $bg-dark;
+  button {
+    color: $text-white;
+  }
+}
+
+.toggle-button-light {
+  border: 2px solid $lfg-d-gray;
+  background-color: $bg-light;
+  button {
+    color: $text-black;
+  }
+}

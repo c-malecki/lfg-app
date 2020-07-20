@@ -1,81 +1,139 @@
-%mobile-menu {
-  position: absolute;
-  width: 100%;
-  bottom: -20.25rem;
-  height: 20rem;
-  max-height: 20rem;
-  z-index: 10;
+// mobile portrait
+@media only screen and (min-width: 0px) and (max-width: 768px),
+  only screen and (min-device-width: 0px) and (max-width: 768px) {
+  %mobile-menu {
+    position: absolute;
+    width: 100%;
+    bottom: -20.25rem;
+    height: 20rem;
+    max-height: 20rem;
+    z-index: 10;
 
-  .MobileMenu-content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-
-    .MobileMenu-links {
+    .MobileMenu-content {
+      position: relative;
       display: flex;
       flex-direction: column;
-      padding-top: 2rem;
-      a {
-        margin: 1rem auto;
-      }
-    }
+      height: 100%;
 
-    .MobileMenu-actions {
-      display: flex;
-      flex-direction: row;
-      margin-top: auto;
-      padding-bottom: 0.5rem;
-      a {
-        margin: auto;
+      .MobileMenu-links {
+        display: flex;
+        flex-direction: column;
+        padding-top: 2rem;
+        a {
+          margin: 1rem auto;
+        }
       }
 
-      .theme-toggle-mobile {
+      .MobileMenu-actions {
         display: flex;
         flex-direction: row;
-        margin: auto;
-        span {
-          margin: 0 0.3rem;
-          font-weight: 500;
+        margin-top: auto;
+        padding-bottom: 0.5rem;
+        a {
+          margin: auto;
         }
-        span:nth-of-type(2) {
+      }
+    }
+  }
+
+  .mobile-menu-dark {
+    @extend %mobile-menu;
+    background-color: $bg-content-dark;
+    border-bottom: 2px solid $lfg-d-gray;
+    .MobileMenu-content {
+      .MobileMenu-links {
+        a {
           color: $text-white;
-          margin-left: 0.7rem;
+        }
+      }
+    }
+  }
+
+  .mobile-menu-light {
+    @extend %mobile-menu;
+    background-color: $bg-content-light;
+    border-bottom: 2px solid $lfg-l-gray;
+    .MobileMenu-content {
+      .MobileMenu-links {
+        a {
+          color: $text-black;
         }
       }
     }
   }
 }
 
-.mobile-menu-dark {
-  @extend %mobile-menu;
-  background-color: $bg-content-dark;
-  border-bottom: 2px solid $lfg-d-gray;
-  .MobileMenu-content {
-    .MobileMenu-links {
-      a {
-        color: $text-white;
+// mobile landscape
+@media only screen and (min-width: 0) and (max-width: 768px) and (orientation: landscape),
+  only screen and (min-device-width: 0) and (max-width: 768px) and (orientation: landscape) {
+  %mobile-menu-landscape {
+    position: absolute;
+    width: calc(100vw - (5rem + 4px));
+    top: 0;
+    left: calc(2.5rem + 2px);
+    height: 100vh;
+    max-height: 100vh;
+    z-index: 10;
+
+    .MobileMenu-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+
+      .MobileMenu-links {
+        display: flex;
+        flex-direction: column;
+        padding-top: 2rem;
+        a {
+          margin: 1rem auto;
+        }
+      }
+
+      .MobileMenu-actions {
+        display: flex;
+        flex-direction: row;
+        margin-top: auto;
+        padding-bottom: 0.5rem;
+        a {
+          margin: auto;
+        }
+      }
+    }
+  }
+
+  .mobile-menu-dark {
+    @extend %mobile-menu-landscape;
+    background-color: $bg-content-dark;
+    border-bottom: none;
+    .MobileMenu-content {
+      .MobileMenu-links {
+        a {
+          color: $text-white;
+        }
+      }
+    }
+  }
+
+  .mobile-menu-light {
+    @extend %mobile-menu-landscape;
+    background-color: $bg-content-light;
+    border-bottom: none;
+    .MobileMenu-content {
+      .MobileMenu-links {
+        a {
+          color: $text-black;
+        }
       }
     }
   }
 }
 
-.mobile-menu-light {
-  @extend %mobile-menu;
-  background-color: $bg-content-light;
-  border-bottom: 2px solid $lfg-l-gray;
-  .MobileMenu-content {
-    .MobileMenu-links {
-      a {
-        color: $text-black;
-      }
-    }
-  }
-}
-
+// none mobile
 @media only screen and (min-width: 768.1px),
   only screen and (min-device-width: 768.1px) {
-  .MobileMenu-container {
+  .mobile-menu-dark,
+  .mobile-menu-light {
     display: none;
   }
 }

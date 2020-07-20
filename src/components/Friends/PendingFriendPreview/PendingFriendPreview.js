@@ -57,41 +57,53 @@ export const PendingFriendPreview = (props) => {
       return (
         <>
           <img src={user_img} alt={username} />
-          <GeneralLink
-            text={username}
-            url={`/users/${username}`}
-            addClass="in-text-link"
-          />
-          <span>Removed</span>
+          <div className="FriendPreview-content">
+            <GeneralLink
+              text={username}
+              url={`/users/${username}`}
+              addClass="in-text-link"
+            />
+            <div className="FriendPreview-actions">
+              <span>Removed</span>
+            </div>
+          </div>
         </>
       );
     } else if (requestStatus.accepted) {
       return (
         <>
           <img src={user_img} alt={username} />
-          <GeneralLink
-            text={username}
-            url={`/users/${username}`}
-            addClass="in-text-link"
-          />
-          <span>Accepted</span>
+          <div className="FriendPreview-content">
+            <GeneralLink
+              text={username}
+              url={`/users/${username}`}
+              addClass="in-text-link"
+            />
+            <div className="FriendPreview-actions">
+              <span>Accepted</span>
+            </div>
+          </div>
         </>
       );
     } else {
       return (
         <>
           <img src={user_img} alt={username} />
-          <GeneralLink
-            text={username}
-            url={`/users/${username}`}
-            addClass="in-text-link"
-          />
-          <GeneralButton
-            text={buttonText}
-            method={() => setShowConfirm(true)}
-            addClass="close-delete-button"
-          />
-          {showAcceptButton()}
+          <div className="FriendPreview-content">
+            <GeneralLink
+              text={username}
+              url={`/users/${username}`}
+              addClass="in-text-link"
+            />
+            <div className="FriendPreview-actions">
+              {showAcceptButton()}
+              <GeneralButton
+                text={buttonText}
+                method={() => setShowConfirm(true)}
+                addClass="close-delete-button"
+              />
+            </div>
+          </div>
         </>
       );
     }
