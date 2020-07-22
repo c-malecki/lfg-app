@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Axios from "axios";
 import { utilPageContent } from "../../assets/util/utilPageContent";
+import { sortByDate } from "../../assets/util/sortByDate";
 
 export const GroupPostsPage = (props) => {
   const [pageStatus, setPageStatus] = useState({
@@ -17,10 +18,11 @@ export const GroupPostsPage = (props) => {
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_URL}/groups/${group}/posts`)
       .then((res) => {
+        const sorted = sortByDate(res.data);
         setPageStatus({
           isLoading: false,
           error: null,
-          pageData: res.data,
+          pageData: sorted,
         });
       })
       .catch((error) => {

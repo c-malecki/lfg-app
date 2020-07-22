@@ -3,6 +3,7 @@ import { PostPreview, GeneralButton } from "../../components/components_index";
 import { useSelector } from "react-redux";
 import Axios from "axios";
 import { utilPageContent } from "../../assets/util/utilPageContent";
+import { sortByDate } from "../../assets/util/sortByDate";
 
 export const RecentPostsPage = (props) => {
   // Page state
@@ -18,10 +19,11 @@ export const RecentPostsPage = (props) => {
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_URL}/posts`)
       .then((res) => {
+        const sorted = sortByDate(res.data);
         setPageStatus({
           isLoading: false,
           error: null,
-          pageData: res.data,
+          pageData: sorted,
         });
       })
       .catch((error) => {

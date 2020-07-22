@@ -8,6 +8,7 @@ import {
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { utilPageContent } from "../../assets/util/utilPageContent";
+import { sortByDate } from "../../assets/util/sortByDate";
 import { useSelector } from "react-redux";
 
 export const UserProfilePage = (props) => {
@@ -27,12 +28,13 @@ export const UserProfilePage = (props) => {
       ])
       .then(
         axios.spread((u, p) => {
+          const sorted = sortByDate(p.data);
           setPageStatus({
             isLoading: false,
             error: null,
             pageData: {
               userData: u.data,
-              userPostData: p.data,
+              userPostData: sorted,
             },
           });
         })

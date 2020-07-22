@@ -4,6 +4,7 @@ import { PostPreview, GeneralLink } from "../../components/components_index";
 import axios from "axios";
 import { utilPageContent } from "../../assets/util/utilPageContent";
 import { useSelector } from "react-redux";
+import { sortByDate } from "../../assets/util/sortByDate";
 
 export const PostsByUserPage = (props) => {
   // Page state
@@ -18,10 +19,11 @@ export const PostsByUserPage = (props) => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/users/${username}/posts`)
       .then((res) => {
+        const sorted = sortByDate(res.data);
         setPageStatus({
           isLoading: false,
           error: null,
-          pageData: res.data,
+          pageData: sorted,
         });
       })
       .catch((error) => {

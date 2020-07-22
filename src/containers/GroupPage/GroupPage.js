@@ -7,6 +7,7 @@ import {
 } from "../../components/components_index";
 import Axios from "axios";
 import { utilPageContent } from "../../assets/util/utilPageContent";
+import { sortByDate } from "../../assets/util/sortByDate";
 import { useSelector } from "react-redux";
 
 export const GroupPage = (props) => {
@@ -24,12 +25,13 @@ export const GroupPage = (props) => {
     ])
       .then(
         Axios.spread((g, p) => {
+          const sorted = sortByDate(p.data);
           setPageStatus({
             isLoading: false,
             error: null,
             pageData: {
               group: g.data,
-              posts: p.data,
+              posts: sorted,
             },
           });
         })

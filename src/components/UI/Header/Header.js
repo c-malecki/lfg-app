@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 
 export const Header = (props) => {
   const [openMobile, setOpenMobile] = useState(false);
+  const [mobileMenuButtonRef, setMobileMenuButtonRef] = useState(null);
   const { isDarkTheme } = useSelector((state) => state.appReducer);
   return (
     <div
@@ -24,6 +25,7 @@ export const Header = (props) => {
           <HeaderActions
             setOpenMobile={setOpenMobile}
             openMobile={openMobile}
+            getMenuButtonRef={setMobileMenuButtonRef}
           />
           <div className="header-desktop">
             <LogInOut />
@@ -31,7 +33,11 @@ export const Header = (props) => {
         </div>
       </div>
       {openMobile ? (
-        <MobileMenu setOpenMobile={setOpenMobile} openMobile={openMobile} />
+        <MobileMenu
+          setOpenMobile={setOpenMobile}
+          openMobile={openMobile}
+          menuButtonRef={mobileMenuButtonRef}
+        />
       ) : null}
     </div>
   );

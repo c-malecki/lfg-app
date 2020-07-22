@@ -4,14 +4,18 @@ import { ToggleThemeButton } from "../../../components_index";
 import { useSelector } from "react-redux";
 
 export const MobileMenu = (props) => {
-  const { openMobile, setOpenMobile } = props;
+  const { openMobile, setOpenMobile, menuButtonRef } = props;
   const { isDarkTheme } = useSelector((state) => state.appReducer);
   const mobileMenu = useRef(null);
   useEffect(() => {
     const mRef = mobileMenu.current;
     if (mobileMenu) {
       const menuBlur = (event) => {
-        if (openMobile && !mRef.contains(event.target)) {
+        if (
+          openMobile &&
+          !mRef.contains(event.target) &&
+          !menuButtonRef.contains(event.target)
+        ) {
           setOpenMobile(!openMobile);
         }
       };
@@ -20,7 +24,7 @@ export const MobileMenu = (props) => {
         document.removeEventListener("touchend", menuBlur);
       };
     }
-  }, [openMobile, setOpenMobile]);
+  }, [openMobile, setOpenMobile, menuButtonRef]);
   return (
     <div
       className={`${isDarkTheme ? "mobile-menu-dark" : "mobile-menu-light"}`}
